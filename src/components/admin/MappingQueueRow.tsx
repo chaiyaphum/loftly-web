@@ -9,9 +9,20 @@ import { Input } from '@/components/ui/input';
 interface Props {
   item: MappingQueueItem;
   accessToken: string;
+  /**
+   * Checkbox state controlled by the parent table. When omitted (e.g. future
+   * standalone renders) the row falls back to its original "no-checkbox" layout.
+   */
+  checked?: boolean;
+  onToggle?: () => void;
 }
 
-export function MappingQueueRow({ item, accessToken }: Props) {
+export function MappingQueueRow({
+  item,
+  accessToken,
+  checked,
+  onToggle,
+}: Props) {
   const router = useRouter();
   const [cardIds, setCardIds] = React.useState(
     item.suggested_card_ids.join(', '),
@@ -43,8 +54,21 @@ export function MappingQueueRow({ item, accessToken }: Props) {
     }
   }
 
+  const showCheckbox = typeof checked === 'boolean' && typeof onToggle === 'function';
+
   return (
-    <tr>
+    <tr data-testid={`mapping-queue-row-${item.promo_id}`}>
+      {showCheckbox && (
+        <td className="w-10 px-4 py-2">
+          <input
+            type="checkbox"
+            aria-label={`Select ${item.title_th}`}
+            data-testid={`mapping-queue-row-checkbox-${item.promo_id}`}
+            checked={checked}
+            onChange={onToggle}
+          />
+        </td>
+      )}
       <td className="px-4 py-2 font-medium">{item.title_th}</td>
       <td className="px-4 py-2 text-slate-600">{item.bank_slug}</td>
       <td className="px-4 py-2 text-xs text-slate-600">

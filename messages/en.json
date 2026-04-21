@@ -622,7 +622,24 @@
       "assigning": "Assigning…",
       "assignSuccess": "Mapped — promo will appear on those card pages after cache invalidation.",
       "selectCards": "Select card IDs (comma separated)",
-      "emptyState": "Queue is empty."
+      "emptyState": "Queue is empty.",
+      "emptyFiltered": "No promos match the current filter.",
+      "bulkBar": {
+        "selectAll": "Select all visible",
+        "assign": "Assign",
+        "assignTo": "Assign to {n, plural, one {# promo} other {# promos}}",
+        "cancel": "Cancel",
+        "progress": "{done} / {total}",
+        "cardPickerLabel": "Card to assign",
+        "cardPickerPlaceholder": "Search cards…"
+      },
+      "filter": {
+        "unresolvedDays": "Unresolved for",
+        "days7": "> 7 days",
+        "days14": "> 14 days",
+        "days30": "> 30 days",
+        "all": "All"
+      }
     },
     "affiliate": {
       "indexTitle": "Affiliate dashboard",

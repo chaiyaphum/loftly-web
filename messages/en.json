@@ -191,6 +191,38 @@
         "stickyApply": "Apply to top card",
         "stickyRerun": "Re-run",
         "expandDetails": "Show details"
+      },
+      "chat": {
+        "title": "Ask a follow-up about these results",
+        "subtitle": "Get explanations or stress-test different spend scenarios",
+        "suggestedPrompt": {
+          "rankWhy": "Why card #1?",
+          "compare": "Compare with others",
+          "whatIf": "What if spend changes..."
+        },
+        "input": {
+          "placeholder": "Type your question...",
+          "charCount": "{count}/500"
+        },
+        "button": {
+          "send": "Send",
+          "sending": "Sending..."
+        },
+        "response": {
+          "rerankedTitle": "Updated card ranking after your what-if",
+          "noCardChange": "The ranking didn't change",
+          "viewNewStack": "View new ranking"
+        },
+        "error": {
+          "rateLimit": "You've reached the chat limit for this session",
+          "expired": "These results have expired — start a new Selector",
+          "emailGate": "Enter your email to keep asking follow-up questions",
+          "generic": "Something went wrong. Please try again."
+        },
+        "stats": {
+          "remaining": "{n} questions remaining"
+        },
+        "newSelectorLink": "Start a new Selector"
       }
     }
   },

@@ -12,6 +12,7 @@ import { StreamingRationale } from '@/components/loftly/StreamingRationale';
 import { Badge } from '@/components/ui/badge';
 import { NOINDEX_METADATA } from '@/lib/seo/metadata';
 import type { Card as CardT, SelectorResult } from '@/lib/api/types';
+import { ChatPanel } from './ChatPanel';
 import { MobileCollapse } from './MobileCollapse';
 import { MobileStickyBar } from './MobileStickyBar';
 import { RetryWrapper } from './RetryWrapper';
@@ -258,6 +259,18 @@ export default async function SelectorResultsPage({
           </div>
         </section>
       )}
+
+      {/*
+        POST_V1 §1 follow-up chat — flag-gated client island. When the
+        `post_v1_selector_chat` PostHog flag is OFF (default), ChatPanel
+        returns null and this section is invisible. When ON, users can
+        ask explain-why / what-if questions without leaving the page.
+      */}
+      <ChatPanel
+        sessionId={result.session_id}
+        accessToken={accessToken}
+        authState={accessToken ? 'authenticated' : 'anon'}
+      />
 
       {/* Footer actions */}
       <footer className="flex flex-wrap items-center gap-4 border-t pt-6 text-sm text-slate-600">

@@ -191,6 +191,38 @@
         "stickyApply": "สมัครบัตรแนะนำ",
         "stickyRerun": "รันใหม่",
         "expandDetails": "แสดงรายละเอียด"
+      },
+      "chat": {
+        "title": "ถามต่อเกี่ยวกับผลลัพธ์นี้",
+        "subtitle": "อธิบายเหตุผล หรือทดลองปรับ spend ได้เลย",
+        "suggestedPrompt": {
+          "rankWhy": "ทำไมอันดับ 1?",
+          "compare": "เปรียบเทียบกับบัตรอื่น",
+          "whatIf": "ถ้า spend เปลี่ยน..."
+        },
+        "input": {
+          "placeholder": "พิมพ์คำถามของคุณ...",
+          "charCount": "{count}/500"
+        },
+        "button": {
+          "send": "ส่งคำถาม",
+          "sending": "กำลังส่ง..."
+        },
+        "response": {
+          "rerankedTitle": "ลำดับบัตรใหม่หลังปรับ spend",
+          "noCardChange": "ลำดับบัตรไม่เปลี่ยนจากเดิม",
+          "viewNewStack": "ดูลำดับใหม่"
+        },
+        "error": {
+          "rateLimit": "คำถามต่อเซสชันครบแล้ว",
+          "expired": "ผลลัพธ์หมดอายุแล้ว ทำ Selector ใหม่",
+          "emailGate": "ใส่อีเมลเพื่อถามคำถามเพิ่มเติม",
+          "generic": "เกิดข้อผิดพลาด ลองใหม่อีกครั้ง"
+        },
+        "stats": {
+          "remaining": "{n} คำถามคงเหลือ"
+        },
+        "newSelectorLink": "ทำ Selector ใหม่"
       }
     }
   },

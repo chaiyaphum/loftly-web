@@ -512,6 +512,97 @@ export const KNOWN_AFFILIATE_PARTNERS: readonly AffiliatePartner[] = [
   { id: 'uob', name: 'UOB' },
 ] as const;
 
+// ---------- Analytics (seed-round metrics exporter) ----------
+
+/**
+ * Payload returned by `POST /v1/admin/metrics/export` — the seed-round metrics
+ * exporter shipped in `loftly-api@d89519c`. Sections follow the backend
+ * response shape exactly; everything is optional at the leaf level so the
+ * dashboard can degrade gracefully if the exporter hasn't backfilled a metric.
+ *
+ * `delta_pct` fields are "period-over-period" — current window vs previous
+ * window of the same length; negative values mean decline.
+ */
+export interface MetricsExport {
+  as_of: string;
+  users: {
+    total_registered: number;
+    wau: number;
+    mau: number;
+    retention_12w: number[];
+    consent_grant_pct: number;
+    total_registered_delta_pct?: number | null;
+    wau_delta_pct?: number | null;
+    mau_delta_pct?: number | null;
+  };
+  selector: {
+    invocations: number;
+    unique_users: number;
+    avg_latency_ms: number;
+    top1_conversion_rate: number;
+    eval_recall: number;
+    invocations_delta_pct?: number | null;
+    avg_latency_delta_pct?: number | null;
+  };
+  affiliate: {
+    total_commission_thb: number;
+    commission_by_month: Array<{
+      month: string;
+      pending_thb: number;
+      confirmed_thb: number;
+      paid_thb: number;
+    }>;
+    top_cards: Array<{
+      card_slug: string;
+      clicks: number;
+      conversions: number;
+      commission_thb: number;
+    }>;
+    total_commission_delta_pct?: number | null;
+  };
+  content: {
+    articles_published: number;
+    avg_article_age_days: number;
+    schema_validation_rate: number;
+    articles_published_delta_pct?: number | null;
+  };
+  llm_costs: {
+    anthropic_spend_thb: number;
+    spend_per_mau_thb: number;
+    prompt_cache_hit_rate: number;
+    haiku_fallback_rate: number;
+    anthropic_spend_delta_pct?: number | null;
+  };
+  system: {
+    uptime_pct: number;
+    error_rate_5xx: number;
+    p95_latency_ms: number;
+    uptime_delta_pct?: number | null;
+    p95_latency_delta_pct?: number | null;
+  };
+}
+
+/**
+ * Pulls the full seed-round metrics export, POST-ing `{ as_of }` as required by
+ * the backend contract. Callers typically pass today's ISO date; the backend
+ * normalises to UTC midnight.
+ */
+export function exportMetrics(
+  accessToken: string | null,
+  opts: { asOf: string; signal?: AbortSignal },
+): Promise<MetricsExport> {
+  return apiFetch<MetricsExport>('/admin/metrics/export', {
+    method: 'POST',
+    body: { as_of: opts.asOf },
+    accessToken: requireToken(accessToken),
+    revalidate: false,
+    signal: opts.signal,
+    // The export is expensive server-side — give it a longer window than the
+    // default 5s before the client bails.
+    timeoutMs: 15000,
+  });
+}
+
 export async function listAffiliatePartners(
   accessToken: string | null,
   opts: { signal?: AbortSignal } = {},

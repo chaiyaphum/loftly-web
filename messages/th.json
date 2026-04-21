@@ -252,7 +252,59 @@
       "articles": "Articles",
       "promos": "Promos",
       "mappingQueue": "Mapping queue",
-      "affiliate": "Affiliate"
+      "affiliate": "Affiliate",
+      "analytics": "Analytics"
+    },
+    "analytics": {
+      "title": "Analytics",
+      "subtitle": "ตัวชี้วัด Seed-round · {asOf}",
+      "asOf": "ณ วันที่ {date}",
+      "loading": "กำลังโหลดตัวชี้วัด…",
+      "loadError": "โหลดตัวชี้วัดไม่สำเร็จ — กรุณารีเฟรช",
+      "deltaUp": "เพิ่มขึ้นจากช่วงก่อนหน้า",
+      "deltaDown": "ลดลงจากช่วงก่อนหน้า",
+      "users": {
+        "title": "ผู้ใช้",
+        "wau": "WAU",
+        "mau": "MAU",
+        "consentGrant": "อัตราให้ความยินยอม",
+        "retention12w": "Retention 12 สัปดาห์"
+      },
+      "selector": {
+        "title": "Selector",
+        "uniqueUsers": "ผู้ใช้ที่ไม่ซ้ำ",
+        "avgLatency": "Latency เฉลี่ย",
+        "top1Conversion": "Top-1 conversion",
+        "evalRecall": "Eval recall"
+      },
+      "affiliate": {
+        "title": "Affiliate",
+        "topCards": "บัตรยอดนิยม 5 อันดับ",
+        "columnCard": "บัตร",
+        "columnConversions": "Conv.",
+        "columnCommission": "ค่าคอม",
+        "segmentPending": "รอดำเนินการ",
+        "segmentConfirmed": "ยืนยันแล้ว",
+        "segmentPaid": "จ่ายแล้ว"
+      },
+      "content": {
+        "title": "เนื้อหา",
+        "avgArticleAge": "อายุบทความเฉลี่ย",
+        "schemaValid": "schema.org ถูกต้อง",
+        "days": "{days} วัน"
+      },
+      "llmCosts": {
+        "title": "ต้นทุน LLM",
+        "spendPerMau": "ค่าใช้จ่าย / MAU",
+        "promptCacheHit": "Prompt-cache hit",
+        "haikuFallback": "Haiku fallback"
+      },
+      "system": {
+        "title": "ระบบ",
+        "uptime": "Uptime",
+        "error5xx": "อัตรา 5xx",
+        "p95Latency": "p95 latency"
+      }
     },
     "topbar": {
       "signedInAs": "Signed in as",

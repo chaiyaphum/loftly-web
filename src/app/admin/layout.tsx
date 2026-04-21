@@ -21,6 +21,7 @@ const NAV = [
   { href: '/admin/promos', label: 'Promos' },
   { href: '/admin/mapping-queue', label: 'Mapping queue' },
   { href: '/admin/affiliate', label: 'Affiliate' },
+  { href: '/admin/analytics', label: 'Analytics' },
 ] as const;
 
 /**

@@ -279,7 +279,10 @@
       "topRedemption": "ตัวอย่างการแลกที่คุ้มสุดในรอบนี้",
       "distributionTitle": "การกระจายของค่าแลก (p10 – p90)",
       "historyTitle": "ย้อนหลัง 4 สัปดาห์",
-      "historyHeaders": { "date": "สัปดาห์", "value": "THB ต่อแต้ม" },
+      "historyHeaders": {
+        "date": "สัปดาห์",
+        "value": "THB ต่อแต้ม"
+      },
       "updatedAt": "อัปเดตล่าสุด {date}",
       "viewCardsCta": "ดูบัตรที่สะสม {currency} ▸",
       "underSampledBanner": "ข้อมูลยังน้อย — ถือเป็นกรอบทิศทางเท่านั้น",
@@ -694,6 +697,17 @@
           "twitter": "ติดตาม @loftly_th บน X ▸"
         }
       }
+    }
+  },
+  "article": {
+    "byline": {
+      "readingTime": "{minutes} นาทีอ่าน",
+      "published": "เผยแพร่ {date}",
+      "updated": "อัปเดต {date}",
+      "author": "โดย {name}",
+      "relativeToday": "วันนี้",
+      "relativeYesterday": "เมื่อวาน",
+      "relativeDaysAgo": "{days} วันที่แล้ว"
     }
   }
 }

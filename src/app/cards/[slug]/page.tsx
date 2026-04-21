@@ -16,6 +16,8 @@ import { CardEarnRateTable } from '@/components/loftly/CardEarnRateTable';
 import { CardCompareWidget } from '@/components/loftly/CardCompareWidget';
 import { AffiliateDisclosure } from '@/components/loftly/AffiliateDisclosure';
 import { ThaiNumberFormat } from '@/components/loftly/ThaiNumberFormat';
+import { ArticleByline } from '@/components/articles/ArticleByline';
+import { estimateReadingMinutes } from '@/lib/reading-time';
 import type { Card as CardT } from '@/lib/api/types';
 
 export const dynamic = 'force-dynamic';
@@ -117,6 +119,12 @@ export default async function CardReviewPage({
         <h1 className="text-3xl font-semibold tracking-tight">
           {card.display_name}
         </h1>
+        <ArticleByline
+          publishedAt={updatedAt}
+          readingMinutes={estimateReadingMinutes(
+            (card.description_th ?? '') + ' ' + (card.description_en ?? ''),
+          )}
+        />
         <p className="text-sm text-slate-500">
           {t('reviewTitle')} ·{' '}
           {tc('updatedAt', {

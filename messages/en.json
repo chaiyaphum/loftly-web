@@ -279,7 +279,10 @@
       "topRedemption": "Best sample redemption this cycle",
       "distributionTitle": "Redemption distribution (p10 – p90)",
       "historyTitle": "Last 4 weeks",
-      "historyHeaders": { "date": "Week of", "value": "THB / point" },
+      "historyHeaders": {
+        "date": "Week of",
+        "value": "THB / point"
+      },
       "updatedAt": "Last updated {date}",
       "viewCardsCta": "View cards earning {currency} ▸",
       "underSampledBanner": "Under-sampled — treat as directional only",
@@ -856,6 +859,17 @@
           "twitter": "Follow @loftly_th on X ▸"
         }
       }
+    }
+  },
+  "article": {
+    "byline": {
+      "readingTime": "{minutes} min read",
+      "published": "Published {date}",
+      "updated": "Updated {date}",
+      "author": "By {name}",
+      "relativeToday": "today",
+      "relativeYesterday": "yesterday",
+      "relativeDaysAgo": "{days} days ago"
     }
   }
 }

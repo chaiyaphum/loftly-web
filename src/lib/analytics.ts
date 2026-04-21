@@ -96,6 +96,8 @@ export function useAnalyticsConsent(): boolean {
 
 export type LoftlyEventName =
   | 'landing_viewed'
+  | 'landing_hero_viewed'
+  | 'landing_hero_cta_clicked'
   | 'selector_started'
   | 'selector_submitted'
   | 'selector_results_rendered'

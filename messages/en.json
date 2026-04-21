@@ -7,7 +7,20 @@
     "signIn": "Sign in",
     "cards": "All cards",
     "valuations": "Point valuations",
-    "selector": "Find the right card"
+    "selector": "Find the right card",
+    "account": "Your account"
+  },
+  "common": {
+    "back": "← Back",
+    "retry": "Try again",
+    "loading": "Loading…",
+    "saving": "Saving…",
+    "saved": "Saved",
+    "error": "Something went wrong",
+    "annualFee": "Annual fee",
+    "minIncome": "Minimum income",
+    "perMonth": "per month",
+    "updatedAt": "Updated {date}"
   },
   "landing": {
     "title": "Lift your rewards with AI",
@@ -21,11 +34,15 @@
       "step3": "Apply through Loftly, free"
     },
     "latestReviewsTitle": "Latest reviews",
-    "latestValuationsTitle": "Latest valuations"
+    "latestValuationsTitle": "Latest valuations",
+    "footer": {
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "affiliate": "Affiliate disclosure"
+    }
   },
   "selector": {
     "title": "Find the right card",
-    "back": "← Back",
     "monthlySpendLabel": "Average monthly spend",
     "categoriesLabel": "Break down by category (drag to adjust)",
     "goalLabel": "Goal",
@@ -41,8 +58,44 @@
   },
   "cards": {
     "indexTitle": "Thai credit card reviews",
+    "indexSubtitle": "Editorial reviews and earn-rate data, maintained by Loftly",
     "reviewTitle": "Reviewed by Loftly",
-    "applyCta": "Apply through Loftly ▸"
+    "applyCta": "Apply through Loftly ▸",
+    "viewReview": "Read review",
+    "emptyState": "No cards in the catalog yet",
+    "loadError": "Couldn't load the card catalog. Please try again.",
+    "notFoundTitle": "We couldn't find that card",
+    "notFoundBody": "This card may have been retired, or the URL is misspelled. Head back to the catalog to browse all cards.",
+    "notFoundBackCta": "← Back to all cards",
+    "monthlyEarning": "Monthly earning",
+    "role": {
+      "primary": "Primary",
+      "secondary": "Secondary",
+      "tertiary": "Tertiary"
+    },
+    "earnRate": {
+      "localTitle": "Local spend earn rates",
+      "foreignTitle": "Foreign spend earn rates",
+      "category": "Category",
+      "multiplier": "Multiplier"
+    },
+    "reviewSections": {
+      "hero": "Card details",
+      "whoFor": "Who's it for",
+      "score": "Loftly score",
+      "earnRates": "Earn rates",
+      "valuation": "Valuation by Loftly",
+      "benefits": "Benefits",
+      "promos": "Current promotions",
+      "fees": "Fees and conditions",
+      "apply": "How to apply",
+      "bottomLine": "Bottom line",
+      "faq": "FAQ",
+      "related": "Related cards"
+    },
+    "applyPrimaryCta": "Apply through Loftly ▸",
+    "noValuation": "No valuation available for this currency yet",
+    "disclaimer": "Data maintained by Loftly, sourced from bank sites as of the update date — actual terms may change."
   },
   "valuations": {
     "indexTitle": "THB valuations across 5 currencies",
@@ -50,8 +103,42 @@
   },
   "onboarding": {
     "title": "Get started with Loftly",
-    "consentTitle": "Loftly would like to use your data to",
-    "consentSubmit": "Confirm and continue ▸"
+    "subtitle": "Choose how you'd like to sign in to manage your consents and results.",
+    "signInWith": "Sign in with {provider}",
+    "providers": {
+      "google": "Google",
+      "apple": "Apple",
+      "line": "LINE"
+    },
+    "mockNotice": "Real OAuth isn't wired up yet — the buttons below are mocks so the UX flow can be walked end to end."
+  },
+  "consent": {
+    "pageTitle": "Loftly would like to use your data to",
+    "manageTitle": "Manage data consents",
+    "submit": "Confirm and continue ▸",
+    "required": "Required",
+    "policyVersion": "Policy version: {version}",
+    "optimizationRequiredError": "Consent for core service is required to continue",
+    "saveSuccess": "Consent preferences saved",
+    "saveError": "Couldn't save your consent. Please try again.",
+    "purposes": {
+      "optimization": {
+        "title": "Core service (Optimization)",
+        "description": "Required: we use your spend data to calculate and recommend the best-earning cards."
+      },
+      "marketing": {
+        "title": "Marketing",
+        "description": "Send promotional emails, new-card news, and partner offers."
+      },
+      "analytics": {
+        "title": "Analytics",
+        "description": "Collect anonymized usage stats to improve the user experience."
+      },
+      "sharing": {
+        "title": "Sharing with partners",
+        "description": "Share aggregated, anonymized stats with partner banks to inform product design."
+      }
+    }
   },
   "account": {
     "title": "Your account",
@@ -63,7 +150,8 @@
     "privacyTitle": "Privacy Policy",
     "termsTitle": "Terms of Service",
     "affiliateDisclosureTitle": "Affiliate disclosure",
-    "affiliateDisclosureInline": "Loftly earns commission from the bank — no extra cost to you"
+    "affiliateDisclosureInline": "Loftly earns commission from the bank — no extra cost to you",
+    "affiliateDisclosureFull": "Loftly earns a commission when you apply for a card through our links, at no extra cost to you. Our current partners include MoneyGuru, KTC, and UOB — we disclose all commercial relationships so you can evaluate our recommendations neutrally. Our analyses and scores are not adjusted in favor of any specific partner."
   },
   "apply": {
     "interstitial": "Taking you to the bank ▸"

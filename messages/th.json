@@ -7,7 +7,20 @@
     "signIn": "เข้าสู่ระบบ",
     "cards": "บัตรทั้งหมด",
     "valuations": "มูลค่าแต้ม",
-    "selector": "ค้นหาบัตรที่ใช่"
+    "selector": "ค้นหาบัตรที่ใช่",
+    "account": "บัญชีของคุณ"
+  },
+  "common": {
+    "back": "← กลับ",
+    "retry": "ลองใหม่อีกครั้ง",
+    "loading": "กำลังโหลด…",
+    "saving": "กำลังบันทึก…",
+    "saved": "บันทึกแล้ว",
+    "error": "เกิดข้อผิดพลาด",
+    "annualFee": "ค่าธรรมเนียมรายปี",
+    "minIncome": "รายได้ขั้นต่ำ",
+    "perMonth": "ต่อเดือน",
+    "updatedAt": "อัปเดต {date}"
   },
   "landing": {
     "title": "ยกระดับทุกแต้มบัตรเครดิตของคุณ",
@@ -21,11 +34,15 @@
       "step3": "สมัครบัตรผ่าน Loftly ฟรี"
     },
     "latestReviewsTitle": "รีวิวล่าสุด",
-    "latestValuationsTitle": "มูลค่าแต้มล่าสุด"
+    "latestValuationsTitle": "มูลค่าแต้มล่าสุด",
+    "footer": {
+      "privacy": "นโยบายความเป็นส่วนตัว",
+      "terms": "ข้อกำหนดการใช้งาน",
+      "affiliate": "การเปิดเผย Affiliate"
+    }
   },
   "selector": {
     "title": "ค้นหาบัตรที่ใช่",
-    "back": "← กลับ",
     "monthlySpendLabel": "ใช้จ่ายเฉลี่ยต่อเดือน",
     "categoriesLabel": "แบ่งเป็นหมวด (ลากแถบเพื่อปรับ)",
     "goalLabel": "เป้าหมาย",
@@ -41,8 +58,44 @@
   },
   "cards": {
     "indexTitle": "รีวิวบัตรเครดิตไทย",
+    "indexSubtitle": "รวมรีวิวและอัตราสะสมแต้ม อัปเดตโดยทีม Loftly",
     "reviewTitle": "รีวิวโดย Loftly",
-    "applyCta": "สมัครผ่าน Loftly ▸"
+    "applyCta": "สมัครผ่าน Loftly ▸",
+    "viewReview": "ดูรีวิว",
+    "emptyState": "ยังไม่มีบัตรในระบบ",
+    "loadError": "โหลดข้อมูลบัตรไม่สำเร็จ กรุณาลองใหม่อีกครั้ง",
+    "notFoundTitle": "ไม่พบบัตรที่คุณมองหา",
+    "notFoundBody": "บัตรนี้อาจถูกนำออกจากระบบ หรือ URL พิมพ์ผิด ลองกลับไปที่หน้ารวมบัตรทั้งหมด",
+    "notFoundBackCta": "← กลับไปที่หน้ารวมบัตร",
+    "monthlyEarning": "ได้แต้มต่อเดือน",
+    "role": {
+      "primary": "Primary",
+      "secondary": "Secondary",
+      "tertiary": "Tertiary"
+    },
+    "earnRate": {
+      "localTitle": "อัตราสะสมแต้มในประเทศ",
+      "foreignTitle": "อัตราสะสมแต้มต่างประเทศ",
+      "category": "หมวด",
+      "multiplier": "ตัวคูณ"
+    },
+    "reviewSections": {
+      "hero": "ข้อมูลบัตร",
+      "whoFor": "เหมาะกับใคร",
+      "score": "คะแนน Loftly",
+      "earnRates": "อัตราการสะสมแต้ม",
+      "valuation": "มูลค่าแต้มโดย Loftly",
+      "benefits": "สิทธิประโยชน์",
+      "promos": "โปรโมชั่นปัจจุบัน",
+      "fees": "ค่าธรรมเนียมและเงื่อนไข",
+      "apply": "วิธีสมัคร",
+      "bottomLine": "สรุปโดย Loftly",
+      "faq": "คำถามที่พบบ่อย",
+      "related": "บัตรที่เกี่ยวข้อง"
+    },
+    "applyPrimaryCta": "สมัครผ่าน Loftly ▸",
+    "noValuation": "ยังไม่มีการประเมินมูลค่าสำหรับสกุลนี้",
+    "disclaimer": "ข้อมูลบัตรอัปเดตโดยทีม Loftly อ้างอิงจากเว็บไซต์ธนาคารและข้อมูล ณ วันที่อัปเดต — เงื่อนไขจริงอาจเปลี่ยนแปลงได้"
   },
   "valuations": {
     "indexTitle": "มูลค่าแต้มทั้ง 5 สกุล",
@@ -50,8 +103,42 @@
   },
   "onboarding": {
     "title": "เริ่มใช้งาน Loftly",
-    "consentTitle": "Loftly จะขอใช้ข้อมูลของคุณเพื่อ",
-    "consentSubmit": "ยืนยัน และเริ่มใช้งาน ▸"
+    "subtitle": "เลือกวิธีเข้าสู่ระบบเพื่อจัดการความยินยอมและรีโซลต์ของคุณ",
+    "signInWith": "เข้าสู่ระบบด้วย {provider}",
+    "providers": {
+      "google": "Google",
+      "apple": "Apple",
+      "line": "LINE"
+    },
+    "mockNotice": "OAuth จริงยังไม่พร้อม — ปุ่มด้านล่างเป็นตัวอย่าง (mock) เพื่อเดินเส้นทาง UX ต่อได้"
+  },
+  "consent": {
+    "pageTitle": "Loftly จะขอใช้ข้อมูลของคุณเพื่อ",
+    "manageTitle": "จัดการการยินยอมข้อมูล",
+    "submit": "ยืนยัน และเริ่มใช้งาน ▸",
+    "required": "จำเป็น",
+    "policyVersion": "Policy version: {version}",
+    "optimizationRequiredError": "ต้องยินยอมข้อมูลเพื่อการใช้บริการหลัก",
+    "saveSuccess": "บันทึกการยินยอมเรียบร้อยแล้ว",
+    "saveError": "บันทึกการยินยอมไม่สำเร็จ กรุณาลองใหม่อีกครั้ง",
+    "purposes": {
+      "optimization": {
+        "title": "การให้บริการหลัก (Optimization)",
+        "description": "จำเป็น: เราใช้ข้อมูลการใช้จ่ายของคุณเพื่อคำนวณและแนะนำบัตรที่ให้ผลตอบแทนสูงสุด"
+      },
+      "marketing": {
+        "title": "การตลาด (Marketing)",
+        "description": "ส่งอีเมลโปรโมชั่น ข่าวบัตรใหม่ และข้อเสนอจากพาร์ทเนอร์"
+      },
+      "analytics": {
+        "title": "การวิเคราะห์ (Analytics)",
+        "description": "เก็บสถิติการใช้งานแบบไม่ระบุตัวตนเพื่อปรับปรุงประสบการณ์ผู้ใช้"
+      },
+      "sharing": {
+        "title": "การแชร์กับพาร์ทเนอร์ (Sharing)",
+        "description": "แชร์สถิติรวม (ไม่ระบุตัวตน) กับธนาคารพาร์ทเนอร์เพื่อออกแบบผลิตภัณฑ์ที่ตรงกับผู้ใช้"
+      }
+    }
   },
   "account": {
     "title": "บัญชีของคุณ",
@@ -63,7 +150,8 @@
     "privacyTitle": "นโยบายความเป็นส่วนตัว",
     "termsTitle": "ข้อกำหนดการใช้งาน",
     "affiliateDisclosureTitle": "การเปิดเผย Affiliate",
-    "affiliateDisclosureInline": "Loftly ได้ค่าคอมจากธนาคาร — ไม่มีค่าใช้จ่ายเพิ่มสำหรับคุณ"
+    "affiliateDisclosureInline": "Loftly ได้ค่าคอมจากธนาคาร — ไม่มีค่าใช้จ่ายเพิ่มสำหรับคุณ",
+    "affiliateDisclosureFull": "Loftly ได้รับค่าคอมมิชชั่นเมื่อคุณสมัครบัตรผ่านลิงก์ของเรา โดยไม่มีค่าใช้จ่ายเพิ่มเติมสำหรับคุณ พาร์ทเนอร์ปัจจุบันได้แก่ MoneyGuru, KTC และ UOB — เราเปิดเผยความสัมพันธ์ทางธุรกิจทั้งหมดเพื่อให้คุณตัดสินใจได้อย่างเป็นกลาง บทวิเคราะห์และคะแนนของเราไม่ถูกปรับเพื่อผลประโยชน์ของพาร์ทเนอร์ใดพาร์ทเนอร์หนึ่ง"
   },
   "apply": {
     "interstitial": "กำลังพาคุณไปที่ธนาคาร ▸"

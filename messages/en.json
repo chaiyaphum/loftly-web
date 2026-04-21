@@ -47,6 +47,23 @@
     "subtitle": "ยกระดับทุกแต้มบัตรเครดิตของคุณ",
     "cta": "Find the right card ▸",
     "reassurance": "Free · No sign-up · Results in 10 seconds",
+    "hero": {
+      "control": {
+        "h1": "Lift your rewards with AI",
+        "subtitle": "ยกระดับทุกแต้มบัตรเครดิตของคุณ",
+        "cta": "Find the right card ▸"
+      },
+      "variant_benefit_led": {
+        "h1": "Know before you swipe",
+        "subtitle": "AI picks the best card for your spend in 10 seconds",
+        "cta": "Try it ▸"
+      },
+      "variant_urgency": {
+        "h1": "Stop leaving rewards on the table",
+        "subtitle": "Thai cardholders lose THB 30,000–120,000/year on the wrong card",
+        "cta": "Check your spending ▸"
+      }
+    },
     "howItWorksTitle": "How Loftly works",
     "howItWorks": {
       "step1": "Tell us about your spending",

@@ -23,7 +23,8 @@
     "next-intl": "^3.26.3",
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "tailwind-merge": "^2.5.5"
+    "tailwind-merge": "^2.5.5",
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "@cloudflare/next-on-pages": "^1.13.7",

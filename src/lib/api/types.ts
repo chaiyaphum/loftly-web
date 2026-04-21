@@ -110,21 +110,38 @@ export interface ConsentUpdate {
   source?: 'onboarding' | 'account_settings' | 'selector' | 'admin';
 }
 
+export type SelectorGoalType = 'miles' | 'cashback' | 'benefits';
+
 export interface SelectorGoal {
-  type: 'miles' | 'cashback' | 'benefits';
+  type: SelectorGoalType;
   currency_preference?: string | null;
   horizon_months?: number | null;
   target_points?: number | null;
 }
 
+export type SelectorCategory =
+  | 'dining'
+  | 'online'
+  | 'travel'
+  | 'grocery'
+  | 'petrol'
+  | 'other';
+
 export interface SelectorInput {
   monthly_spend_thb: number;
+  /** keys in {dining, online, travel, grocery, petrol, other} per openapi.yaml */
   spend_categories: Record<string, number>;
   current_cards?: string[];
   goal: SelectorGoal;
   locale: 'th' | 'en';
 }
 
+/**
+ * Alias for openapi.yaml SelectorResult.stack items. The upstream schema does
+ * not give the inline type a name, so we re-export it under the
+ * `SelectorStackCard` alias required by downstream consumers (selector UI,
+ * tests) while keeping `SelectorStackItem` for backward compat.
+ */
 export interface SelectorStackItem {
   card_id: string;
   slug: string;
@@ -135,6 +152,8 @@ export interface SelectorStackItem {
   reason_th: string;
   reason_en?: string | null;
 }
+
+export type SelectorStackCard = SelectorStackItem;
 
 export interface SelectorResult {
   session_id: string;
@@ -150,6 +169,30 @@ export interface SelectorResult {
   llm_model: string;
   fallback: boolean;
   partial_unlock?: boolean;
+}
+
+export interface MagicLinkRequest {
+  email: string;
+  session_id?: string | null;
+}
+
+export interface MagicLinkConsume {
+  token: string;
+}
+
+export interface TokenPairUser {
+  id: string;
+  email: string;
+  locale: 'th' | 'en';
+  role: 'user' | 'admin';
+}
+
+export interface TokenPair {
+  access_token: string;
+  refresh_token: string;
+  /** seconds */
+  expires_in: number;
+  user?: TokenPairUser;
 }
 
 export interface Promo {

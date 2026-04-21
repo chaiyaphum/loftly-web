@@ -1,5 +1,5 @@
 import { getTranslations } from 'next-intl/server';
-import { SelectorForm } from './SelectorForm';
+import { SelectorPane } from './SelectorPane';
 
 /**
  * Selector input page (WF-2). Matches the wireframe top-to-bottom:
@@ -19,7 +19,7 @@ export default async function SelectorPage() {
         <h1 className="text-3xl font-semibold tracking-tight">{t('title')}</h1>
         <p className="mt-2 text-sm text-slate-600">{t('subtitle')}</p>
       </header>
-      <SelectorForm />
+      <SelectorPane />
     </main>
   );
 }

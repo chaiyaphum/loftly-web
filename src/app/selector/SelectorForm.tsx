@@ -26,13 +26,26 @@ import type { SelectorInput } from '@/lib/api/types';
  * Field-level inline errors are kept terse — the zod issue codes map to
  * localized strings from `messages/*.json selector.errors.*`.
  */
-export function SelectorForm() {
+export interface SelectorFormProps {
+  /**
+   * Optional seed values for the form (used by the NLU tab to auto-fill
+   * after parsing). When omitted, the form resets to `defaultSelectorValues()`.
+   */
+  initialValues?: SelectorDraftValues;
+  /**
+   * Optional review-hint banner rendered above the form — shown when values
+   * were auto-filled from free-text so the user knows to sanity-check.
+   */
+  reviewHint?: React.ReactNode;
+}
+
+export function SelectorForm({ initialValues, reviewHint }: SelectorFormProps = {}) {
   const t = useTranslations('selector');
   const tErr = useTranslations('selector.errors');
   const locale = useLocale() as 'th' | 'en';
   const router = useRouter();
-  const [values, setValues] = useState<SelectorDraftValues>(() =>
-    defaultSelectorValues(),
+  const [values, setValues] = useState<SelectorDraftValues>(
+    () => initialValues ?? defaultSelectorValues(),
   );
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -96,6 +109,14 @@ export function SelectorForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-8">
+      {reviewHint ? (
+        <div
+          role="status"
+          className="rounded-md border border-sky-200 bg-sky-50 p-3 text-sm text-sky-900"
+        >
+          {reviewHint}
+        </div>
+      ) : null}
       {/* Total spend */}
       <section className="space-y-2">
         <label

@@ -6,6 +6,7 @@ import { getCard } from '@/lib/api/cards';
 import { LoftlyAPIError } from '@/lib/api/client';
 import { CardResultCard } from '@/components/loftly/CardResultCard';
 import { MagicLinkPrompt } from '@/components/loftly/MagicLinkPrompt';
+import { SelectorApplyCtaLabel } from '@/components/loftly/SelectorApplyCtaLabel';
 import { StreamingRationale } from '@/components/loftly/StreamingRationale';
 import { Badge } from '@/components/ui/badge';
 import type { Card as CardT, SelectorResult } from '@/lib/api/types';
@@ -142,6 +143,7 @@ export default async function SelectorResultsPage({
               monthly_thb: primary.monthly_earning_thb_equivalent,
               monthly_points: primary.monthly_earning_points,
             }}
+            applyCtaLabel={<SelectorApplyCtaLabel />}
           />
           {primary.reason_th && (
             <p className="text-sm text-slate-600">{primary.reason_th}</p>
@@ -187,6 +189,7 @@ export default async function SelectorResultsPage({
                       monthly_thb: slot.monthly_earning_thb_equivalent,
                       monthly_points: slot.monthly_earning_points,
                     }}
+                    applyCtaLabel={<SelectorApplyCtaLabel />}
                   />
                 );
               })}

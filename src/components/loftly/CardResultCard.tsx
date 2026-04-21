@@ -1,3 +1,4 @@
+import type * as React from 'react';
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 import type { Card as CardT } from '@/lib/api/types';
@@ -41,6 +42,13 @@ export interface CardResultCardProps {
   };
   position?: number;
   className?: string;
+  /**
+   * Optional override for the Apply CTA label. When omitted, the default
+   * `cards.applyCta` translation is used. Callers (e.g. the Selector results
+   * page) pass a feature-flag-resolved label for A/B testing. May be any
+   * ReactNode — typically a client component that reads a PostHog flag.
+   */
+  applyCtaLabel?: React.ReactNode;
 }
 
 const roleVariant: Record<
@@ -58,6 +66,7 @@ export async function CardResultCard({
   earning,
   position,
   className,
+  applyCtaLabel,
 }: CardResultCardProps) {
   const t = await getTranslations('cards');
   const tc = await getTranslations('common');
@@ -123,7 +132,7 @@ export async function CardResultCard({
         <div className="flex items-center gap-2">
           <Button asChild className="flex-1">
             <a href={`/apply/${card.id}`} rel="sponsored nofollow">
-              {t('applyCta')}
+              {applyCtaLabel ?? t('applyCta')}
             </a>
           </Button>
           <Button variant="outline" asChild>

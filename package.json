@@ -2,7 +2,7 @@
   "name": "loftly-web",
   "version": "0.1.0",
   "private": true,
-  "description": "Loftly web frontend — Next.js 15 App Router. Spec: ../loftly/mvp/UI_WEB.md",
+  "description": "Loftly web frontend \u2014 Next.js 15 App Router. Spec: ../loftly/mvp/UI_WEB.md",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -60,7 +60,7 @@
     "vitest": "^2.1.8"
   },
   "engines": {
-    "node": ">=22.0.0",
-    "npm": ">=10.0.0"
+    "node": "22.x",
+    "npm": "10.x"
   }
 }

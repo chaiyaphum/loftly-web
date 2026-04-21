@@ -108,7 +108,24 @@ export type LoftlyEventName =
   | 'consent_updated'
   | 'onboarding_completed'
   | 'typhoon_nlu_submitted'
-  | 'admin_mapping_bulk_assigned';
+  | 'admin_mapping_bulk_assigned'
+  // POST_V1 Tier A §1 — Selector follow-up chat
+  | 'selector_chat_opened'
+  | 'selector_chat_question_asked'
+  | 'selector_chat_rerank_delivered'
+  | 'selector_chat_rate_limited'
+  // POST_V1 Tier A §2 — Welcome email
+  // Note: `welcome_email_delivered` and `welcome_email_apply_clicked` may fire
+  // server-side only; registered here for type-safety on eventual client-side
+  // emission paths (e.g., apply-click handler on the results page).
+  // `welcome_email_opened` is the tracking-pixel event, Analytics consent gated.
+  | 'welcome_email_queued'
+  | 'welcome_email_delivered'
+  | 'welcome_email_opened'
+  | 'welcome_email_apply_clicked'
+  // POST_V1 Tier A §3 — Returning-user landing variants
+  | 'landing_returning_user_shown'
+  | 'landing_returning_cta_clicked';
 
 /**
  * Returns a typed tracking function that's safe to call even without consent

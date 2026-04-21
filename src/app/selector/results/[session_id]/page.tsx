@@ -1,19 +1,249 @@
-import { getTranslations } from 'next-intl/server';
+import Link from 'next/link';
+import { cookies } from 'next/headers';
+import { getLocale, getTranslations } from 'next-intl/server';
+import { getSelectorResult } from '@/lib/api/selector';
+import { getCard } from '@/lib/api/cards';
+import { LoftlyAPIError } from '@/lib/api/client';
+import { CardResultCard } from '@/components/loftly/CardResultCard';
+import { MagicLinkPrompt } from '@/components/loftly/MagicLinkPrompt';
+import { Badge } from '@/components/ui/badge';
+import type { Card as CardT, SelectorResult } from '@/lib/api/types';
 
-// Placeholder for WF-3. Session id comes from /v1/selector response.
+export const dynamic = 'force-dynamic';
+
+/**
+ * Selector results page (WF-3).
+ *
+ * SSR flow:
+ *   1. Read `session_id` from params + optional `token` from query.
+ *   2. Read the session cookie (set by `/auth/magic-link/consume`) if any
+ *      so already-authed users skip the email gate.
+ *   3. Fetch the SelectorResult. The backend tags `partial_unlock: true` for
+ *      anon responses; we use that flag to render the blurred-secondaries UX.
+ *   4. Resolve each stack card's full `/cards/{slug}` payload so we can reuse
+ *      `CardResultCard` without re-fetching client-side.
+ *   5. Render primary card prominently, secondaries blurred behind
+ *      `MagicLinkPrompt` when locked, "months to goal" header, AI rationale,
+ *      and footer actions (method / reset / save).
+ */
 export default async function SelectorResultsPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ session_id: string }>;
+  searchParams: Promise<{ token?: string }>;
 }) {
   const { session_id } = await params;
-  const t = await getTranslations('results');
+  const sp = await searchParams;
+  const t = await getTranslations('selector.results');
+  const tCommon = await getTranslations('common');
+  const locale = await getLocale();
+
+  const cookieStore = await cookies();
+  const accessToken = cookieStore.get('loftly_session')?.value ?? null;
+
+  let result: SelectorResult | null = null;
+  let error: string | null = null;
+  try {
+    result = await getSelectorResult(session_id, sp.token, { accessToken });
+  } catch (err) {
+    if (err instanceof LoftlyAPIError) {
+      error = err.message_th || err.message_en;
+    } else {
+      error = tCommon('error');
+    }
+  }
+
+  if (!result) {
+    return (
+      <main className="mx-auto max-w-3xl px-6 py-12">
+        <h1 className="text-3xl font-semibold tracking-tight">{t('title')}</h1>
+        <p className="mt-6 rounded-md bg-red-50 p-4 text-sm text-red-900">
+          {error ?? tCommon('error')}
+        </p>
+        <p className="mt-4">
+          <Link href="/selector" className="text-sm text-slate-600 hover:underline">
+            {t('resetAction')}
+          </Link>
+        </p>
+      </main>
+    );
+  }
+
+  const stack = result.stack ?? [];
+  const primary = stack.find((s) => s.role === 'primary') ?? stack[0];
+  const secondaries = stack.filter((s) => s !== primary);
+  const locked = Boolean(result.partial_unlock) && !accessToken;
+
+  // Resolve each stack slot to a full Card — silently skip if the fetch fails
+  // (card might be archived). The page must still render the rationale.
+  const [primaryCard, ...secondaryCards] = await Promise.all(
+    [primary, ...secondaries]
+      .filter((s): s is NonNullable<typeof primary> => Boolean(s))
+      .map(async (slot) => {
+        try {
+          return await getCard(slot.slug);
+        } catch {
+          return null;
+        }
+      }),
+  );
+
+  const currency =
+    (primary?.monthly_earning_points && primaryCard?.earn_currency.code) ||
+    (result.stack[0]?.monthly_earning_points &&
+      primaryCard?.earn_currency.code) ||
+    '';
 
   return (
-    <main className="mx-auto max-w-3xl px-6 py-12">
-      <h1 className="text-3xl font-semibold">{t('title')}</h1>
-      <p className="mt-2 text-sm text-slate-500">session: {session_id}</p>
-      {/* TODO: primary card, email gate, AI rationale stream — WF-3 */}
+    <main className="mx-auto flex max-w-3xl flex-col gap-8 px-6 py-12">
+      <header className="flex flex-col gap-3">
+        <Link href="/selector" className="text-sm text-slate-500 hover:underline">
+          {tCommon('back')}
+        </Link>
+        <h1 className="text-3xl font-semibold tracking-tight">{t('title')}</h1>
+
+        {result.months_to_goal &&
+          result.stack.length > 0 &&
+          primary &&
+          primaryCard && (
+            <p className="rounded-md bg-loftly-sky/10 p-4 text-sm text-slate-800">
+              {t('monthsToGoalBanner', {
+                targetPoints: formatNumber(
+                  sumTargetPoints(result) ?? 0,
+                  locale,
+                ),
+                currency,
+                months: result.months_to_goal,
+              })}
+            </p>
+          )}
+
+        {result.fallback && (
+          <Badge variant="warn" className="w-fit">
+            {t('fallbackBadge')}
+          </Badge>
+        )}
+      </header>
+
+      {/* Primary */}
+      {primary && primaryCard && (
+        <section className="space-y-2">
+          <h2 className="text-sm font-medium uppercase tracking-wide text-slate-500">
+            {t('primaryLabel')}
+          </h2>
+          <CardResultCard
+            card={primaryCard}
+            role="primary"
+            position={1}
+            earning={{
+              monthly_thb: primary.monthly_earning_thb_equivalent,
+              monthly_points: primary.monthly_earning_points,
+            }}
+          />
+          {primary.reason_th && (
+            <p className="text-sm text-slate-600">{primary.reason_th}</p>
+          )}
+        </section>
+      )}
+
+      {/* Secondaries */}
+      {secondaries.length > 0 && (
+        <section className="space-y-3">
+          <h2 className="text-sm font-medium uppercase tracking-wide text-slate-500">
+            {t('secondaryLabel')}
+          </h2>
+
+          <div className="relative">
+            <div
+              className={
+                locked
+                  ? 'pointer-events-none select-none space-y-3 blur-sm filter'
+                  : 'space-y-3'
+              }
+              aria-hidden={locked}
+            >
+              {secondaries.map((slot, i) => {
+                const card = secondaryCards[i] as CardT | null | undefined;
+                if (!card) {
+                  return (
+                    <div
+                      key={slot.card_id}
+                      className="rounded-md border border-dashed border-slate-200 p-4 text-sm text-slate-500"
+                    >
+                      {slot.slug}
+                    </div>
+                  );
+                }
+                return (
+                  <CardResultCard
+                    key={slot.card_id}
+                    card={card}
+                    role={slot.role}
+                    position={i + 2}
+                    earning={{
+                      monthly_thb: slot.monthly_earning_thb_equivalent,
+                      monthly_points: slot.monthly_earning_points,
+                    }}
+                  />
+                );
+              })}
+            </div>
+
+            {locked && (
+              <div className="absolute inset-0 flex items-center justify-center p-4">
+                <MagicLinkPrompt
+                  sessionId={result.session_id}
+                  source="selector_result"
+                  className="w-full max-w-lg shadow-md"
+                />
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* AI rationale */}
+      {result.rationale_th && (
+        <section className="rounded-md border border-slate-200 bg-slate-50 p-4">
+          <h2 className="text-sm font-medium text-slate-700">
+            {t('rationaleTitle')}
+          </h2>
+          <p className="mt-2 whitespace-pre-line text-sm leading-relaxed text-slate-800">
+            {locale === 'en' && result.rationale_en
+              ? result.rationale_en
+              : result.rationale_th}
+          </p>
+        </section>
+      )}
+
+      {/* Footer actions */}
+      <footer className="flex flex-wrap items-center gap-4 border-t pt-6 text-sm text-slate-600">
+        <Link href="/valuations" className="hover:underline">
+          {t('methodAction')}
+        </Link>
+        <Link href="/selector" className="hover:underline">
+          {t('resetAction')}
+        </Link>
+        {!accessToken && (
+          <span className="text-slate-400">{t('saveHint')}</span>
+        )}
+      </footer>
     </main>
   );
+}
+
+function formatNumber(n: number, locale: string): string {
+  return new Intl.NumberFormat(locale === 'en' ? 'en-US' : 'th-TH').format(n);
+}
+
+function sumTargetPoints(
+  result: SelectorResult,
+): number | null {
+  // Prefer total stack earning (closer to what drives months_to_goal) —
+  // backend guarantees monotonic behavior for this field.
+  if (result.total_monthly_earning_points && result.months_to_goal) {
+    return result.total_monthly_earning_points * result.months_to_goal;
+  }
+  return null;
 }

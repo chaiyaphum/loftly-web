@@ -1,14 +1,25 @@
 import { getTranslations } from 'next-intl/server';
+import { SelectorForm } from './SelectorForm';
 
-// Placeholder — form + slider + goal picker are a later milestone.
-// See UI_WEB.md WF-2 for the target wireframe.
+/**
+ * Selector input page (WF-2). Matches the wireframe top-to-bottom:
+ *   - Back chevron + title in the heading
+ *   - Total monthly spend input
+ *   - Category sliders (residual → `other`)
+ *   - Goal radio + conditional miles fields
+ *   - Current cards placeholder (full card search lands W7+)
+ *   - Submit CTA
+ */
 export default async function SelectorPage() {
   const t = await getTranslations('selector');
 
   return (
     <main className="mx-auto max-w-2xl px-6 py-12">
-      <h1 className="text-3xl font-semibold">{t('title')}</h1>
-      {/* TODO: SpendCategorySliders, GoalPicker, current cards — WF-2 */}
+      <header className="mb-8">
+        <h1 className="text-3xl font-semibold tracking-tight">{t('title')}</h1>
+        <p className="mt-2 text-sm text-slate-600">{t('subtitle')}</p>
+      </header>
+      <SelectorForm />
     </main>
   );
 }

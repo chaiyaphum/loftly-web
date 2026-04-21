@@ -43,16 +43,79 @@
   },
   "selector": {
     "title": "ค้นหาบัตรที่ใช่",
+    "subtitle": "บอกเราเรื่องการใช้จ่ายและเป้าหมาย เราจะคำนวณบัตรที่คุ้มที่สุดให้ภายใน 10 วินาที",
     "monthlySpendLabel": "ใช้จ่ายเฉลี่ยต่อเดือน",
+    "monthlySpendHint": "ใส่ยอดรวมทุกบัตรที่ใช้จ่ายต่อเดือน (THB)",
     "categoriesLabel": "แบ่งเป็นหมวด (ลากแถบเพื่อปรับ)",
     "goalLabel": "เป้าหมาย",
     "currentCardsLabel": "บัตรที่คุณถืออยู่ (ถ้ามี)",
-    "submit": "ค้นหาบัตรแนะนำ ▸"
+    "currentCardsHint": "ข้ามขั้นนี้ได้ — การค้นหาบัตรที่มีอยู่จะพร้อมให้บริการในเวอร์ชันถัดไป",
+    "addCardPlaceholder": "+ เพิ่มบัตร",
+    "skip": "หรือข้ามขั้นนี้",
+    "submit": "ค้นหาบัตรแนะนำ ▸",
+    "submitting": "กำลังคำนวณ…",
+    "categories": {
+      "dining": "ร้านอาหาร",
+      "online": "ออนไลน์",
+      "travel": "ท่องเที่ยว",
+      "grocery": "ซูเปอร์มาร์เก็ต",
+      "other": "อื่น ๆ",
+      "residualHint": "(ที่เหลืออัตโนมัติ)"
+    },
+    "goal": {
+      "groupLabel": "เลือกเป้าหมายของคุณ",
+      "types": {
+        "miles": {
+          "label": "ไมล์ไปต่างประเทศ",
+          "description": "สะสมแต้มไปแลกตั๋วเครื่องบิน"
+        },
+        "cashback": {
+          "label": "เงินคืน / ส่วนลด",
+          "description": "ลดภาระค่าใช้จ่ายประจำ"
+        },
+        "benefits": {
+          "label": "สิทธิประโยชน์",
+          "description": "Lounge, dining, ประกัน"
+        }
+      },
+      "currencyLabel": "สกุลแต้มที่ต้องการ",
+      "currencyOptions": {
+        "ROP": "ROP (การบินไทย)",
+        "KF": "KF (Singapore Airlines)",
+        "AM": "AM (AsiaMiles)",
+        "BONVOY": "Marriott Bonvoy",
+        "K_POINT": "K Point (กสิกรไทย)"
+      },
+      "horizonLabel": "กรอบเวลา",
+      "horizonOption": "{months} เดือน",
+      "targetPointsLabel": "แต้มเป้าหมาย"
+    },
+    "errors": {
+      "spend_too_low": "ยอดขั้นต่ำ THB 5,000",
+      "spend_too_high": "ยอดสูงสุด THB 2,000,000",
+      "category_sum_mismatch": "ผลรวมแต่ละหมวดต้องใกล้เคียงกับยอดรวมต่อเดือน",
+      "invalid_horizon": "เลือกกรอบเวลาไม่ถูกต้อง",
+      "invalid": "กรุณาตรวจสอบข้อมูลอีกครั้ง",
+      "submitFailed": "ส่งคำขอไม่สำเร็จ กรุณาลองใหม่อีกครั้ง"
+    },
+    "results": {
+      "title": "ผลการวิเคราะห์",
+      "primaryLabel": "บัตรหลัก",
+      "secondaryLabel": "บัตรเสริม",
+      "blurredMessage": "ใส่อีเมลเพื่อดูบัตรเสริมทั้งหมด",
+      "rationaleTitle": "AI วิเคราะห์ว่า…",
+      "monthsToGoalBanner": "💡 ด้วย spend ปัจจุบัน คุณจะถึง {targetPoints} {currency} ภายใน {months} เดือน",
+      "fallbackBadge": "โหมดสำรอง",
+      "methodAction": "วิธีคำนวณ",
+      "resetAction": "รีเซ็ต",
+      "saveAction": "บันทึก",
+      "saveHint": "ใส่อีเมลด้านบนเพื่อบันทึกผลลัพธ์นี้"
+    }
   },
   "results": {
     "title": "ผลการวิเคราะห์",
-    "primaryLabel": "Primary",
-    "secondaryLabel": "Secondary (เสริม)",
+    "primaryLabel": "บัตรหลัก",
+    "secondaryLabel": "บัตรเสริม",
     "emailGateTitle": "ใส่อีเมลเพื่อดูผลลัพธ์เต็ม",
     "emailGateSubmit": "ส่งลิงก์ ▸"
   },
@@ -155,5 +218,20 @@
   },
   "apply": {
     "interstitial": "กำลังพาคุณไปที่ธนาคาร ▸"
+  },
+  "auth": {
+    "magicLink": {
+      "formLabel": "รับลิงก์ล็อกอินทางอีเมล",
+      "promptTitle": "ใส่อีเมลเพื่อปลดล็อกผลลัพธ์เต็ม",
+      "emailPlaceholder": "you@example.com",
+      "submit": "ส่งลิงก์ ▸",
+      "submitting": "กำลังส่ง…",
+      "sentMessage": "ส่งลิงก์ไปที่ {email} แล้ว — เช็คอีเมล ลิงก์ใช้ได้ 15 นาที",
+      "invalidEmail": "รูปแบบอีเมลไม่ถูกต้อง",
+      "unknownError": "ส่งลิงก์ไม่สำเร็จ กรุณาลองใหม่",
+      "expiredTitle": "ลิงก์หมดอายุหรือใช้ไม่ได้",
+      "expiredBody": "ลิงก์ล็อกอินมีอายุ 15 นาทีและใช้ได้ครั้งเดียว กรุณาขอลิงก์ใหม่",
+      "expiredCta": "ขอลิงก์ใหม่ ▸"
+    }
   }
 }

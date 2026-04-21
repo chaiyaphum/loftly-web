@@ -43,16 +43,79 @@
   },
   "selector": {
     "title": "Find the right card",
+    "subtitle": "Tell us your spend and your goal — we'll calculate the best-earning cards in 10 seconds.",
     "monthlySpendLabel": "Average monthly spend",
+    "monthlySpendHint": "Total across all cards, in THB per month.",
     "categoriesLabel": "Break down by category (drag to adjust)",
     "goalLabel": "Goal",
     "currentCardsLabel": "Cards you already hold (optional)",
-    "submit": "See recommended cards ▸"
+    "currentCardsHint": "You can skip this — card search ships in a later version.",
+    "addCardPlaceholder": "+ Add a card",
+    "skip": "or skip",
+    "submit": "See recommended cards ▸",
+    "submitting": "Calculating…",
+    "categories": {
+      "dining": "Dining",
+      "online": "Online",
+      "travel": "Travel",
+      "grocery": "Grocery",
+      "other": "Other",
+      "residualHint": "(auto-residual)"
+    },
+    "goal": {
+      "groupLabel": "Pick your goal",
+      "types": {
+        "miles": {
+          "label": "Airline miles",
+          "description": "Earn points toward award flights"
+        },
+        "cashback": {
+          "label": "Cashback / discount",
+          "description": "Offset everyday spending"
+        },
+        "benefits": {
+          "label": "Benefits",
+          "description": "Lounge, dining, insurance"
+        }
+      },
+      "currencyLabel": "Preferred currency",
+      "currencyOptions": {
+        "ROP": "ROP (Thai Airways)",
+        "KF": "KF (Singapore Airlines)",
+        "AM": "AsiaMiles",
+        "BONVOY": "Marriott Bonvoy",
+        "K_POINT": "K Point (KBank)"
+      },
+      "horizonLabel": "Horizon",
+      "horizonOption": "{months} months",
+      "targetPointsLabel": "Target points"
+    },
+    "errors": {
+      "spend_too_low": "Minimum THB 5,000",
+      "spend_too_high": "Maximum THB 2,000,000",
+      "category_sum_mismatch": "Categories must sum close to your monthly total.",
+      "invalid_horizon": "Pick a valid horizon.",
+      "invalid": "Please check your inputs.",
+      "submitFailed": "Could not submit — please try again."
+    },
+    "results": {
+      "title": "Your results",
+      "primaryLabel": "Primary",
+      "secondaryLabel": "Secondary",
+      "blurredMessage": "Enter your email to unlock the full stack",
+      "rationaleTitle": "Loftly AI says…",
+      "monthsToGoalBanner": "💡 At your current spend, you'll reach {targetPoints} {currency} in {months} months",
+      "fallbackBadge": "fallback mode",
+      "methodAction": "How it's calculated",
+      "resetAction": "Reset",
+      "saveAction": "Save",
+      "saveHint": "Enter an email above to save these results"
+    }
   },
   "results": {
     "title": "Your results",
     "primaryLabel": "Primary",
-    "secondaryLabel": "Secondary (complement)",
+    "secondaryLabel": "Secondary",
     "emailGateTitle": "Enter your email to unlock full results",
     "emailGateSubmit": "Send link ▸"
   },
@@ -155,5 +218,20 @@
   },
   "apply": {
     "interstitial": "Taking you to the bank ▸"
+  },
+  "auth": {
+    "magicLink": {
+      "formLabel": "Get a login link by email",
+      "promptTitle": "Enter your email to unlock the full stack",
+      "emailPlaceholder": "you@example.com",
+      "submit": "Send link ▸",
+      "submitting": "Sending…",
+      "sentMessage": "We sent a link to {email}. Check your inbox — it's valid for 15 minutes.",
+      "invalidEmail": "That doesn't look like a valid email.",
+      "unknownError": "Couldn't send the link — please try again.",
+      "expiredTitle": "Link expired or invalid",
+      "expiredBody": "Magic links are valid for 15 minutes and can only be used once. Request a fresh link to continue.",
+      "expiredCta": "Request a new link ▸"
+    }
   }
 }

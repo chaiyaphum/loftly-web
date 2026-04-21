@@ -232,3 +232,43 @@ export interface ErrorEnvelope {
     details?: Record<string, unknown>;
   };
 }
+
+/**
+ * Projected `transfer_ratios` row for the compare widget.
+ * Mirrors `CardComparison.transfer_partners[]` from `loftly-api`.
+ */
+export interface TransferPartner {
+  destination_code: string;
+  destination_display_name_en: string;
+  destination_display_name_th: string;
+  ratio_source: number;
+  ratio_destination: number;
+  bonus_percentage: number;
+}
+
+/** Most-recent `point_valuations` snapshot bundled with a comparison row. */
+export interface CardValuationSnapshot {
+  thb_per_point: number;
+  methodology: string;
+  confidence: number;
+  sample_size: number;
+}
+
+/**
+ * Enriched card payload used by `GET /v1/cards/compare` — superset of `Card`
+ * with transfer partners, valuation snapshot, and a Loftly score (0–5).
+ */
+export interface CardComparison {
+  card: Card;
+  transfer_partners: TransferPartner[];
+  valuation?: CardValuationSnapshot | null;
+  loftly_score?: number | null;
+}
+
+export interface CardComparisonList {
+  data: CardComparison[];
+}
+
+export interface CardSimilarList {
+  data: Card[];
+}

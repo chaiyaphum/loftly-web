@@ -13,6 +13,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { CardEarnRateTable } from '@/components/loftly/CardEarnRateTable';
+import { CardCompareWidget } from '@/components/loftly/CardCompareWidget';
 import { AffiliateDisclosure } from '@/components/loftly/AffiliateDisclosure';
 import { ThaiNumberFormat } from '@/components/loftly/ThaiNumberFormat';
 import type { Card as CardT } from '@/lib/api/types';
@@ -221,6 +222,16 @@ export default async function CardReviewPage({
           </ul>
         )}
       </Section>
+
+      {/* W17 · Compare widget — slotted between Benefits and Current promotions
+          per mvp/UI_CONTENT.md §Card review template. Accordion collapsed by
+          default; widget lazy-fetches similar cards on first expand. */}
+      <div className="mb-8">
+        <CardCompareWidget
+          sourceSlug={card.slug}
+          sourceDisplayName={card.display_name}
+        />
+      </div>
 
       {/* Section 7 · Promotions (placeholder) */}
       <Section title={sections('promos')}>

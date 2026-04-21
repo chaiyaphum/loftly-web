@@ -36,6 +36,10 @@
     },
     "latestReviewsTitle": "Latest reviews",
     "latestValuationsTitle": "Latest valuations",
+    "latestReviewsEmpty": "No reviews yet — browse all cards in the meantime.",
+    "latestValuationsEmpty": "Valuations will appear here once we publish the first snapshot.",
+    "loadError": "ยังไม่มีข้อมูล ลองกลับมาดูใหม่ภายหลัง",
+    "browseAllCards": "Browse all cards",
     "footer": {
       "privacy": "Privacy",
       "terms": "Terms",

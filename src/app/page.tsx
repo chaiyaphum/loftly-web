@@ -1,41 +1,86 @@
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 import { Button } from '@/components/ui/button';
-import { listCards, listValuations } from '@/lib/api/cards';
-import { CardResultCard } from '@/components/loftly/CardResultCard';
-import { ValuationBadge } from '@/components/loftly/ValuationBadge';
-import type { Card as CardT, Valuation } from '@/lib/api/types';
+import { getApiBase } from '@/lib/api/client';
+import {
+  LatestReviewsGrid,
+  type LatestReviewsArticle,
+} from '@/components/homepage/LatestReviewsGrid';
+import { LatestValuationsList } from '@/components/homepage/LatestValuationsList';
+import type { Valuation } from '@/lib/api/types';
 
-export const dynamic = 'force-dynamic';
+export const dynamic = 'force-static';
+export const revalidate = 300;
 
 /**
- * Landing page — tracks WF-1 more closely now:
- *   - Hero with Thai tagline + CTA → /selector
- *   - "How Loftly works" 3-step list
- *   - Latest reviews: top 3 cards from API
- *   - Latest valuations: up to 3 currencies from API (silently hidden on error)
- *   - Footer with PDPA + legal links
+ * Landing page — wires the "รีวิวล่าสุด" and "มูลค่าแต้มล่าสุด" sections
+ * to the staging API so the homepage demonstrates live content.
+ *
+ * Two server-side fetches run in parallel (`Promise.allSettled`), each
+ * with a 5-minute ISR window (`next: { revalidate: 300 }`) to keep the
+ * staging upstream well under its 120/min/IP budget while still feeling
+ * "live" to editors previewing freshly-published content.
+ *
+ * Failure modes:
+ *   - Network / 5xx → `result.status === 'rejected'` → section renders a
+ *     small grey "ยังไม่มีข้อมูล" fallback (no error boundary bubble).
+ *   - Empty list → section renders a friendly empty state with a link
+ *     into `/cards`.
  */
+
+type FetchState<T> =
+  | { kind: 'data'; value: T }
+  | { kind: 'error' };
+
+const REVALIDATE_SECONDS = 300;
+
+async function fetchLatestReviews(): Promise<
+  FetchState<LatestReviewsArticle[]>
+> {
+  const base = getApiBase();
+  const url = `${base}/articles?type=card_review&limit=6&order=published_at_desc`;
+  try {
+    const res = await fetch(url, {
+      headers: { Accept: 'application/json' },
+      next: { revalidate: REVALIDATE_SECONDS },
+    });
+    if (!res.ok) return { kind: 'error' };
+    const body = (await res.json()) as { data?: LatestReviewsArticle[] };
+    return { kind: 'data', value: (body.data ?? []).slice(0, 6) };
+  } catch {
+    return { kind: 'error' };
+  }
+}
+
+async function fetchLatestValuations(): Promise<FetchState<Valuation[]>> {
+  const base = getApiBase();
+  const url = `${base}/valuations?limit=5&order=updated_at_desc`;
+  try {
+    const res = await fetch(url, {
+      headers: { Accept: 'application/json' },
+      next: { revalidate: REVALIDATE_SECONDS },
+    });
+    if (!res.ok) return { kind: 'error' };
+    const body = (await res.json()) as { data?: Valuation[] };
+    return { kind: 'data', value: (body.data ?? []).slice(0, 5) };
+  } catch {
+    return { kind: 'error' };
+  }
+}
+
 export default async function LandingPage() {
   const t = await getTranslations('landing');
   const tn = await getTranslations('nav');
 
-  let topCards: CardT[] = [];
-  let topValuations: Valuation[] = [];
+  const [reviews, valuations] = await Promise.all([
+    fetchLatestReviews(),
+    fetchLatestValuations(),
+  ]);
 
-  try {
-    const cards = await listCards({ limit: 3 });
-    topCards = cards.data ?? [];
-  } catch {
-    // Silent fallback — landing must always render.
-  }
-
-  try {
-    const vals = await listValuations();
-    topValuations = (vals.data ?? []).slice(0, 3);
-  } catch {
-    // Silent fallback — section hides below.
-  }
+  const errorFallback = t('loadError');
+  const reviewsEmpty = t('latestReviewsEmpty');
+  const valuationsEmpty = t('latestValuationsEmpty');
+  const browseCards = t('browseAllCards');
 
   return (
     <main className="mx-auto flex min-h-screen max-w-5xl flex-col gap-16 px-6 py-12">
@@ -89,7 +134,12 @@ export default async function LandingPage() {
                 Step {n}
               </span>
               <span className="block">
-                {t(`howItWorks.step${n}` as 'howItWorks.step1' | 'howItWorks.step2' | 'howItWorks.step3')}
+                {t(
+                  `howItWorks.step${n}` as
+                    | 'howItWorks.step1'
+                    | 'howItWorks.step2'
+                    | 'howItWorks.step3',
+                )}
               </span>
             </li>
           ))}
@@ -97,52 +147,62 @@ export default async function LandingPage() {
       </section>
 
       {/* Latest reviews */}
-      {topCards.length > 0 && (
-        <section className="flex flex-col gap-4">
-          <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-semibold">
-              {t('latestReviewsTitle')}
-            </h2>
-            <Link
-              href="/cards"
-              className="text-sm text-slate-600 hover:underline"
-            >
-              {tn('cards')} →
-            </Link>
-          </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {topCards.map((card, i) => (
-              <CardResultCard key={card.id} card={card} position={i + 1} />
-            ))}
-          </div>
-        </section>
-      )}
+      <section className="flex flex-col gap-4" data-testid="latest-reviews">
+        <div className="flex items-center justify-between">
+          <h2 className="text-2xl font-semibold">{t('latestReviewsTitle')}</h2>
+          <Link
+            href="/cards"
+            className="text-sm text-slate-600 hover:underline"
+          >
+            {tn('cards')} →
+          </Link>
+        </div>
+        {reviews.kind === 'error' ? (
+          <p
+            role="status"
+            data-testid="latest-reviews-error"
+            className="text-sm text-slate-500"
+          >
+            {errorFallback}
+          </p>
+        ) : (
+          <LatestReviewsGrid
+            articles={reviews.value}
+            emptyLabel={reviewsEmpty}
+            browseAllLabel={browseCards}
+          />
+        )}
+      </section>
 
       {/* Latest valuations */}
-      {topValuations.length > 0 && (
-        <section className="flex flex-col gap-4">
-          <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-semibold">
-              {t('latestValuationsTitle')}
-            </h2>
-            <Link
-              href="/valuations"
-              className="text-sm text-slate-600 hover:underline"
-            >
-              {tn('valuations')} →
-            </Link>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            {topValuations.map((v) => (
-              <ValuationBadge
-                key={v.currency.code}
-                currency={v.currency}
-                valuation={v}
-              />
-            ))}
-          </div>
-        </section>
-      )}
+      <section className="flex flex-col gap-4" data-testid="latest-valuations">
+        <div className="flex items-center justify-between">
+          <h2 className="text-2xl font-semibold">
+            {t('latestValuationsTitle')}
+          </h2>
+          <Link
+            href="/valuations"
+            className="text-sm text-slate-600 hover:underline"
+          >
+            {tn('valuations')} →
+          </Link>
+        </div>
+        {valuations.kind === 'error' ? (
+          <p
+            role="status"
+            data-testid="latest-valuations-error"
+            className="text-sm text-slate-500"
+          >
+            {errorFallback}
+          </p>
+        ) : (
+          <LatestValuationsList
+            valuations={valuations.value}
+            emptyLabel={valuationsEmpty}
+            browseAllLabel={browseCards}
+          />
+        )}
+      </section>
 
       <footer className="mt-auto border-t pt-6 text-sm text-slate-500">
         <div className="flex flex-wrap gap-4">

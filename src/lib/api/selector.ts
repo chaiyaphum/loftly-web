@@ -1,5 +1,10 @@
 import { apiFetch } from './client';
-import type { SelectorInput, SelectorResult } from './types';
+import type {
+  SelectorInput,
+  SelectorResult,
+  SpendNLURequest,
+  SpendNLUResponse,
+} from './types';
 
 /**
  * Card Selector API helpers — thin wrappers around `/v1/selector` endpoints.
@@ -27,6 +32,32 @@ export function submitSelector(
     // Larger budget — LLM-backed endpoint can take several seconds.
     timeoutMs: 20_000,
     // Don't retry LLM calls automatically; backend dedupes via cache.
+    maxRetries: 0,
+  });
+}
+
+/**
+ * Typhoon free-text Thai NLU parse — POST /v1/selector/parse-nlu.
+ *
+ * Backend is gated by the `typhoon_nlu_spend` server-side flag:
+ *   - 501 when flag OFF or Typhoon not configured
+ *   - 502 on malformed LLM JSON
+ *   - 504 on upstream timeout
+ *
+ * 30s client timeout — Typhoon's 5s upstream budget + retry headroom.
+ * No retry; backend already retries once on 429/503.
+ */
+export function parseSpendNlu(
+  input: SpendNLURequest,
+  opts: { accessToken?: string | null; signal?: AbortSignal } = {},
+): Promise<SpendNLUResponse> {
+  return apiFetch<SpendNLUResponse>('/selector/parse-nlu', {
+    method: 'POST',
+    body: input,
+    accessToken: opts.accessToken ?? null,
+    revalidate: false,
+    signal: opts.signal,
+    timeoutMs: 30_000,
     maxRetries: 0,
   });
 }

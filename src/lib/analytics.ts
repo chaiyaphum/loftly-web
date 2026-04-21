@@ -104,7 +104,8 @@ export type LoftlyEventName =
   | 'card_review_viewed'
   | 'affiliate_click_fired'
   | 'consent_updated'
-  | 'onboarding_completed';
+  | 'onboarding_completed'
+  | 'typhoon_nlu_submitted';
 
 /**
  * Returns a typed tracking function that's safe to call even without consent

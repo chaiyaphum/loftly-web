@@ -272,3 +272,38 @@ export interface CardComparisonList {
 export interface CardSimilarList {
   data: Card[];
 }
+
+/**
+ * Free-text NLU (Typhoon) parse result — mirrors `loftly-api`
+ * `src/loftly/schemas/spend_nlu.py`.
+ *
+ * `spend_categories` values are **fractional allocations** in [0, 1] summing
+ * to ~1.0. The client multiplies by `monthly_spend_thb` before populating
+ * the structured Selector form (which uses THB amounts, not fractions).
+ */
+export type SpendNluCategory =
+  | 'dining'
+  | 'online'
+  | 'grocery'
+  | 'travel'
+  | 'petrol'
+  | 'default';
+
+export type SpendNluGoal = 'miles' | 'cashback' | 'flexible';
+
+export interface SpendProfile {
+  monthly_spend_thb: number;
+  spend_categories: Partial<Record<SpendNluCategory, number>>;
+  goal: SpendNluGoal;
+}
+
+export interface SpendNLURequest {
+  text_th: string;
+}
+
+export interface SpendNLUResponse {
+  profile: SpendProfile;
+  confidence: number;
+  model: string;
+  duration_ms: number;
+}

@@ -100,6 +100,22 @@
       "invalid": "Please check your inputs.",
       "submitFailed": "Could not submit — please try again."
     },
+    "nlu": {
+      "tab_label": "Describe in words",
+      "form_tab_label": "Structured form",
+      "placeholder": "e.g. I spend around THB 80,000/mo, dine out a lot, and want to save miles for Japan",
+      "button_parse": "Parse",
+      "button_parsing": "Parsing…",
+      "char_count_hint": "{count}/600 characters",
+      "too_short": "Please write at least 30 characters so we can understand you.",
+      "too_long": "Please keep it under 600 characters.",
+      "error_disabled": "This feature isn't enabled yet.",
+      "error_unparseable": "Couldn't parse — try describing it more clearly.",
+      "error_timeout": "Took longer than expected — please try again.",
+      "error_generic": "Something went wrong. Please try again.",
+      "back_to_form": "Back to form",
+      "review_hint": "We filled in the form from your description — please review before submitting."
+    },
     "results": {
       "title": "Your results",
       "primaryLabel": "Primary",

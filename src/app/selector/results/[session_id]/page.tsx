@@ -245,6 +245,7 @@ export default async function SelectorResultsPage({
               }
               streamingLabel={t('streamingLabel')}
               disconnectedLabel={t('streaming.disconnected')}
+              reconnectingLabel={t('streaming.reconnecting')}
               enabled={streamEnabled}
             />
           </div>

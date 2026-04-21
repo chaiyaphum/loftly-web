@@ -184,7 +184,8 @@
         "ariaLabel": "Copy a shareable link to these results"
       },
       "streaming": {
-        "disconnected": "Analysis ready (streaming disconnected)"
+        "disconnected": "Analysis ready (streaming disconnected)",
+        "reconnecting": "Reconnecting…"
       },
       "mobile": {
         "stickyApply": "Apply to top card",

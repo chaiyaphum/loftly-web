@@ -184,7 +184,8 @@
         "ariaLabel": "คัดลอกลิงก์แชร์ผลลัพธ์นี้"
       },
       "streaming": {
-        "disconnected": "การวิเคราะห์สำเร็จ (streaming ขาดการเชื่อมต่อ)"
+        "disconnected": "การวิเคราะห์สำเร็จ (streaming ขาดการเชื่อมต่อ)",
+        "reconnecting": "เชื่อมต่อใหม่…"
       },
       "mobile": {
         "stickyApply": "สมัครบัตรแนะนำ",

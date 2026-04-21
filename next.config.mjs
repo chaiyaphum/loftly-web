@@ -17,4 +17,26 @@ const nextConfig = {
   poweredByHeader: false,
 };
 
-export default withNextIntl(nextConfig);
+const withIntlApplied = withNextIntl(nextConfig);
+
+// Sentry wrapper — only applied when the DSN env var is set. Otherwise we ship
+// the vanilla config (avoids upload-source-maps failures on preview builds).
+const sentryDsn =
+  process.env.SENTRY_DSN ||
+  process.env.NEXT_PUBLIC_SENTRY_DSN;
+
+let finalConfig = withIntlApplied;
+
+if (sentryDsn) {
+  const { withSentryConfig } = await import('@sentry/nextjs');
+  finalConfig = withSentryConfig(withIntlApplied, {
+    org: process.env.SENTRY_ORG,
+    project: process.env.SENTRY_PROJECT,
+    silent: !process.env.CI,
+    widenClientFileUpload: true,
+    hideSourceMaps: true,
+    disableLogger: true,
+  });
+}
+
+export default finalConfig;

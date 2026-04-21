@@ -1,12 +1,20 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 import { listCards } from '@/lib/api/cards';
 import { LoftlyAPIError } from '@/lib/api/client';
 import { CardResultCard } from '@/components/loftly/CardResultCard';
 import { Button } from '@/components/ui/button';
+import { buildPageMetadata } from '@/lib/seo/metadata';
 import type { Card as CardT } from '@/lib/api/types';
 
 export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = buildPageMetadata({
+  title: 'รีวิวบัตรเครดิตไทย',
+  description: 'รวมรีวิวและอัตราสะสมแต้มของบัตรเครดิตไทย อัปเดตโดยทีม Loftly',
+  path: '/cards',
+});
 
 /**
  * Cards catalog index. SSR against `GET /v1/cards` with a short cache window.

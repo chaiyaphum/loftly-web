@@ -1,8 +1,17 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 import { PricingClient } from './PricingClient';
+import { buildPageMetadata } from '@/lib/seo/metadata';
 
 export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = buildPageMetadata({
+  title: 'ค่าบริการ',
+  description:
+    'ช่วง soft launch ใช้ Loftly ได้ฟรีทั้งหมด — บอกเราหน่อยว่าฟีเจอร์ Premium คุ้มค่าไหม',
+  path: '/pricing',
+});
 
 /**
  * `/pricing` — flag-gated pricing page stub.

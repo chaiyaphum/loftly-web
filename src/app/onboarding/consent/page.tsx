@@ -1,10 +1,17 @@
+import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { getConsent } from '@/lib/api/cards';
 import { LoftlyAPIError } from '@/lib/api/client';
 import type { ConsentState } from '@/lib/api/types';
 import { ConsentForm } from './ConsentForm';
+import { NOINDEX_METADATA } from '@/lib/seo/metadata';
 
 export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = {
+  ...NOINDEX_METADATA,
+  title: 'การยินยอมข้อมูล',
+};
 
 const DEFAULT_POLICY_VERSION = '1.0.2';
 

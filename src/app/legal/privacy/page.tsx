@@ -1,4 +1,13 @@
+import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
+import { buildPageMetadata } from '@/lib/seo/metadata';
+
+export const metadata: Metadata = buildPageMetadata({
+  title: 'นโยบายความเป็นส่วนตัว',
+  description:
+    'นโยบายความเป็นส่วนตัวของ Loftly — ข้อมูลที่เราเก็บ วัตถุประสงค์ การประมวลผล และสิทธิ์ตาม PDPA',
+  path: '/legal/privacy',
+});
 
 /**
  * Privacy Policy — stub scaffold.

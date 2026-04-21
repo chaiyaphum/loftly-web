@@ -1,4 +1,13 @@
+import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
+import { buildPageMetadata } from '@/lib/seo/metadata';
+
+export const metadata: Metadata = buildPageMetadata({
+  title: 'เงื่อนไขการใช้บริการ',
+  description:
+    'เงื่อนไขการใช้บริการของ Loftly — ขอบเขตบริการ ความถูกต้องของข้อมูล บัญชีผู้ใช้ affiliate และข้อจำกัดความรับผิด',
+  path: '/legal/terms',
+});
 
 export default async function TermsPage() {
   const t = await getTranslations('legal');

@@ -1,8 +1,10 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 import { getCard } from '@/lib/api/cards';
 import { LoftlyAPIError } from '@/lib/api/client';
+import { buildPageMetadata } from '@/lib/seo/metadata';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
@@ -30,19 +32,29 @@ export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
-}) {
+}): Promise<Metadata> {
   const { slug } = await params;
   try {
     const card = await getCard(slug);
-    return {
-      title: `${card.display_name} — ${card.bank.display_name_en}`,
-      description:
-        card.description_en ??
-        card.description_th ??
-        `Review of ${card.display_name} by Loftly.`,
-    };
+    const title = `${card.display_name} — ${card.bank.display_name_en}`;
+    const description =
+      card.description_en ??
+      card.description_th ??
+      `Review of ${card.display_name} by Loftly.`;
+    return buildPageMetadata({
+      title,
+      description,
+      path: `/cards/${slug}`,
+      // Per-card dynamic OG image is a Phase 2 deliverable — see DEV_PLAN
+      // W13 ("flag as future — use static default for now").
+      // ogImage: `/api/og/card/${slug}.png`,
+      ogType: 'article',
+    });
   } catch {
-    return { title: 'Card review' };
+    return buildPageMetadata({
+      title: 'Card review',
+      path: `/cards/${slug}`,
+    });
   }
 }
 

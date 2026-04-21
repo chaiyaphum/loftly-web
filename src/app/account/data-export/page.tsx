@@ -1,8 +1,15 @@
+import type { Metadata } from 'next';
 import { cookies } from 'next/headers';
 import { getTranslations } from 'next-intl/server';
 import { DataExportClient } from './DataExportClient';
+import { NOINDEX_METADATA } from '@/lib/seo/metadata';
 
 export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = {
+  ...NOINDEX_METADATA,
+  title: 'ดาวน์โหลดข้อมูลส่วนตัว',
+};
 
 /**
  * `/account/data-export` — PDPA §7 right-to-access self-service flow.

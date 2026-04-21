@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 import { Button } from '@/components/ui/button';
@@ -7,10 +8,18 @@ import {
   type LatestReviewsArticle,
 } from '@/components/homepage/LatestReviewsGrid';
 import { LatestValuationsList } from '@/components/homepage/LatestValuationsList';
+import { buildPageMetadata } from '@/lib/seo/metadata';
 import type { Valuation } from '@/lib/api/types';
 
 export const dynamic = 'force-static';
 export const revalidate = 300;
+
+export const metadata: Metadata = buildPageMetadata({
+  title: 'ยกระดับทุกแต้มบัตรเครดิตของคุณ',
+  description:
+    'Loftly — AI-native credit card rewards optimization for Thailand. Find the card that makes every baht count.',
+  path: '/',
+});
 
 /**
  * Landing page — wires the "รีวิวล่าสุด" and "มูลค่าแต้มล่าสุด" sections

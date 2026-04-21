@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { cookies } from 'next/headers';
 import { getLocale, getTranslations } from 'next-intl/server';
@@ -9,6 +10,7 @@ import { MagicLinkPrompt } from '@/components/loftly/MagicLinkPrompt';
 import { SelectorApplyCtaLabel } from '@/components/loftly/SelectorApplyCtaLabel';
 import { StreamingRationale } from '@/components/loftly/StreamingRationale';
 import { Badge } from '@/components/ui/badge';
+import { NOINDEX_METADATA } from '@/lib/seo/metadata';
 import type { Card as CardT, SelectorResult } from '@/lib/api/types';
 import { MobileCollapse } from './MobileCollapse';
 import { MobileStickyBar } from './MobileStickyBar';
@@ -17,6 +19,13 @@ import { ShareButton } from './ShareButton';
 import { statusToKind } from './ResultsError';
 
 export const dynamic = 'force-dynamic';
+
+// Session-scoped results — must match `/selector/results/*` noindex policy
+// in `robots.ts`. Keeps user-specific URLs out of search indexes.
+export const metadata: Metadata = {
+  ...NOINDEX_METADATA,
+  title: 'ผลการวิเคราะห์',
+};
 
 /**
  * Selector results page (WF-3).

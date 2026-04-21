@@ -1,11 +1,20 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 import { listValuations } from '@/lib/api/cards';
 import { LoftlyAPIError } from '@/lib/api/client';
 import { ValuationBadge } from '@/components/loftly/ValuationBadge';
+import { buildPageMetadata } from '@/lib/seo/metadata';
 import type { Valuation } from '@/lib/api/types';
 
 export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = buildPageMetadata({
+  title: 'มูลค่าแต้ม/ไมล์',
+  description:
+    'มูลค่า THB/แต้ม ของสกุลแต้มและไมล์ที่ไทย ด้วย methodology 80th percentile — ไม่ใช่ median ไม่ใช่ค่าเฉลี่ย',
+  path: '/valuations',
+});
 
 /**
  * `/valuations` — public methodology index per VALUATION_METHOD.md.

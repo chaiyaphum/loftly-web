@@ -1,11 +1,18 @@
+import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 import { getSession } from '@/lib/auth/session';
 import { getMe, type MeProfile } from '@/lib/api/me';
 import { LoftlyAPIError } from '@/lib/api/client';
 import { AccountCard } from '@/components/account/AccountCard';
+import { NOINDEX_METADATA } from '@/lib/seo/metadata';
 
 export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = {
+  ...NOINDEX_METADATA,
+  title: 'บัญชีของคุณ',
+};
 
 /**
  * `/account` — settings landing page tying together the PDPA self-service

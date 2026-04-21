@@ -1,8 +1,10 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 import { getValuation } from '@/lib/api/cards';
 import { LoftlyAPIError } from '@/lib/api/client';
+import { buildPageMetadata } from '@/lib/seo/metadata';
 import {
   bandForConfidence,
   ConfidenceBar,
@@ -46,17 +48,27 @@ export async function generateMetadata({
   params,
 }: {
   params: Promise<{ currency: string }>;
-}) {
+}): Promise<Metadata> {
   const { currency } = await params;
   try {
     const v = await getValuation(currency);
     const name = v.currency.display_name_en ?? v.currency.code;
-    return {
-      title: `${name} valuation`,
-      description: `THB-per-point valuation for ${name} — ${v.thb_per_point.toFixed(4)} THB/point at ${Math.round(v.confidence * 100)}% confidence.`,
-    };
+    const thbPerPoint = v.thb_per_point.toFixed(4);
+    // Title reads naturally as "1 ROP = 0.3200 THB · Loftly" once the root
+    // template appends "· Loftly".
+    const title = `1 ${v.currency.code} = ${thbPerPoint} THB`;
+    const description = `THB-per-point valuation for ${name} — ${thbPerPoint} THB/point at ${Math.round(v.confidence * 100)}% confidence, computed with the 80th-percentile methodology.`;
+    return buildPageMetadata({
+      title,
+      description,
+      path: `/valuations/${currency}`,
+      ogType: 'article',
+    });
   } catch {
-    return { title: 'Currency valuation' };
+    return buildPageMetadata({
+      title: 'Currency valuation',
+      path: `/valuations/${currency}`,
+    });
   }
 }
 

@@ -1,10 +1,17 @@
+import type { Metadata } from 'next';
 import { InviteRequiredClient } from './InviteRequiredClient';
+import { NOINDEX_METADATA } from '@/lib/seo/metadata';
 
 interface PageProps {
   searchParams: Promise<{ error?: string }>;
 }
 
 export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = {
+  ...NOINDEX_METADATA,
+  title: 'พรีวิวเฉพาะผู้ได้รับเชิญ',
+};
 
 /**
  * Soft-launch invite-code gate page (W11, capped at 100 users).

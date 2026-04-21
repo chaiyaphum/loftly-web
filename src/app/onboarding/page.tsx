@@ -1,5 +1,12 @@
+import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { Button } from '@/components/ui/button';
+import { NOINDEX_METADATA } from '@/lib/seo/metadata';
+
+export const metadata: Metadata = {
+  ...NOINDEX_METADATA,
+  title: 'เริ่มใช้งาน Loftly',
+};
 
 const PROVIDERS = ['line', 'google', 'apple'] as const;
 

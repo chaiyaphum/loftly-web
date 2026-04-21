@@ -1,6 +1,15 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 import { AffiliateDisclosure } from '@/components/loftly/AffiliateDisclosure';
+import { buildPageMetadata } from '@/lib/seo/metadata';
+
+export const metadata: Metadata = buildPageMetadata({
+  title: 'Affiliate disclosure',
+  description:
+    'How Loftly earns commission from partner banks, and why it does not affect our editorial rankings or the offer you see.',
+  path: '/legal/affiliate-disclosure',
+});
 
 export default async function AffiliateDisclosurePage() {
   const t = await getTranslations('legal');

@@ -1,7 +1,14 @@
+import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { DeleteAccountClient } from './DeleteAccountClient';
+import { NOINDEX_METADATA } from '@/lib/seo/metadata';
 
 export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = {
+  ...NOINDEX_METADATA,
+  title: 'ลบบัญชีของคุณ',
+};
 
 /**
  * `/account/delete` — PDPA §7 right-to-erasure self-service flow.

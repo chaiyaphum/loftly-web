@@ -274,7 +274,33 @@
       "mappingQueue": "Mapping queue",
       "ingestion": "Data ingestion",
       "affiliate": "Affiliate",
-      "analytics": "Analytics"
+      "analytics": "Analytics",
+      "waitlist": "Waitlist"
+    },
+    "waitlist": {
+      "title": "รายชื่อ Waitlist",
+      "subtitle": "อีเมลที่เก็บจากหน้า pricing และหน้า coming-soon",
+      "summaryShown": "แสดง {count} รายการ",
+      "summaryBreakdown": "pricing: {pricing} · coming-soon: {comingSoon}",
+      "filterSource": "แหล่งที่มา",
+      "filterAll": "ทั้งหมด",
+      "filterPricing": "Pricing",
+      "filterComingSoon": "Coming soon",
+      "loadMore": "โหลดเพิ่ม",
+      "loadingMore": "กำลังโหลด…",
+      "exportCsv": "Export CSV",
+      "exporting": "กำลัง export…",
+      "exportError": "Export ไม่สำเร็จ — กรุณาลองใหม่",
+      "emptyState": "ยังไม่มีรายชื่อ",
+      "loadError": "โหลดรายชื่อไม่สำเร็จ — กรุณารีเฟรช",
+      "columns": {
+        "createdAt": "วันที่สร้าง",
+        "email": "อีเมล",
+        "source": "แหล่งที่มา",
+        "variant": "Variant",
+        "tier": "Tier",
+        "monthlyPriceThb": "THB / เดือน"
+      }
     },
     "ingestion": {
       "title": "ความครอบคลุมข้อมูล (Ingestion)",

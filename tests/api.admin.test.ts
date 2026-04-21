@@ -10,6 +10,7 @@ import {
   listAdminCards,
   listAdminPromos,
   listMappingQueue,
+  listWaitlist,
   updateAdminArticle,
   updateAdminCard,
   updateAdminPromo,
@@ -209,6 +210,27 @@ describe('admin API helpers', () => {
     const url = getAffiliateExportUrl('tok-abc');
     expect(url).toContain('/admin/affiliate/export.csv');
     expect(url).toContain('token=tok-abc');
+  });
+
+  it('listWaitlist threads source/limit/offset query params', async () => {
+    const spy = vi
+      .fn()
+      .mockResolvedValue(
+        jsonResponse(200, { data: [], pagination: { has_more: false } }),
+      );
+    globalThis.fetch = spy;
+
+    await listWaitlist('tok', { source: 'pricing', limit: 50, offset: 100 });
+    const url = spy.mock.calls[0]?.[0] as string;
+    expect(url).toContain('/admin/waitlist');
+    expect(url).toContain('source=pricing');
+    expect(url).toContain('limit=50');
+    expect(url).toContain('offset=100');
+    const init = spy.mock.calls[0]?.[1] as RequestInit;
+    expect(init.method).toBe('GET');
+    expect(
+      (init.headers as Record<string, string>)['Authorization'],
+    ).toBe('Bearer tok');
   });
 
   it('surfaces 401 as a LoftlyAPIError', async () => {

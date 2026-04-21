@@ -680,6 +680,61 @@ export function resyncBankIngestion(
   );
 }
 
+// ---------- Waitlist (admin viewer + CSV export) ----------
+
+/**
+ * A single waitlist signup row as returned by `GET /v1/admin/waitlist`
+ * (shipped in loftly-api#12). The endpoint paginates via `limit` + `offset` and
+ * filters by `source` (`pricing` | `coming-soon`); both are optional.
+ *
+ * `variant`, `tier`, and `monthly_price_thb` are only populated for rows from
+ * the pricing-page capture flow — coming-soon rows leave them null.
+ */
+export interface WaitlistEntry {
+  id: string;
+  email: string;
+  source: string;
+  variant?: string | null;
+  tier?: string | null;
+  monthly_price_thb?: number | null;
+  created_at: string;
+}
+
+export interface WaitlistList {
+  data: WaitlistEntry[];
+  pagination: Pagination;
+}
+
+export type WaitlistSource = 'pricing' | 'coming-soon';
+
+/**
+ * List waitlist signups (admin-only). Backend supports:
+ *   - `source` — optional filter (pricing / coming-soon). Omit for "all".
+ *   - `limit`  — page size; backend defaults to 50, caps at 100.
+ *   - `offset` — zero-based offset into the ordered-by-created_at-desc set.
+ */
+export function listWaitlist(
+  accessToken: string | null,
+  opts: {
+    source?: WaitlistSource;
+    limit?: number;
+    offset?: number;
+    signal?: AbortSignal;
+  } = {},
+): Promise<WaitlistList> {
+  return apiFetch<WaitlistList>('/admin/waitlist', {
+    method: 'GET',
+    accessToken: requireToken(accessToken),
+    query: {
+      source: opts.source,
+      limit: opts.limit,
+      offset: opts.offset,
+    },
+    revalidate: false,
+    signal: opts.signal,
+  });
+}
+
 export async function listAffiliatePartners(
   accessToken: string | null,
   opts: { signal?: AbortSignal } = {},

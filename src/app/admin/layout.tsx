@@ -23,6 +23,7 @@ const NAV = [
   { href: '/admin/ingestion', label: 'Data ingestion' },
   { href: '/admin/affiliate', label: 'Affiliate' },
   { href: '/admin/analytics', label: 'Analytics' },
+  { href: '/admin/waitlist', label: 'Waitlist' },
 ] as const;
 
 /**

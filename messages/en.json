@@ -161,8 +161,36 @@
     "disclaimer": "Data maintained by Loftly, sourced from bank sites as of the update date — actual terms may change."
   },
   "valuations": {
-    "indexTitle": "THB valuations across 5 currencies",
-    "currencyTitle": "{currency} valuation"
+    "indexTitle": "Point & mile valuations — 80th-percentile methodology",
+    "indexSubtitle": "Loftly samples real redemptions and publishes the 80th percentile — not the mean, not the median.",
+    "methodologyLink": "Read full methodology ▸",
+    "methodologyGuideLink": "How Loftly calculates point valuations ▸",
+    "groupHeadings": {
+      "airline": "Airlines",
+      "hotel": "Hotels",
+      "bank_proprietary": "Bank proprietary"
+    },
+    "currencyTitle": "{currency} valuation",
+    "notFoundTitle": "Currency not found",
+    "notFoundBody": "This currency may have been retired, or the URL is misspelled — head back to all 8 currencies.",
+    "notFoundCta": "← Back to all currencies",
+    "loadError": "Couldn't load valuation data",
+    "emptyState": "No valuations published yet",
+    "detail": {
+      "heroLabel": "THB per point",
+      "confidenceLabel": "Data confidence",
+      "methodologyTitle": "How we calculate this",
+      "methodologyBody": "We take the 80th percentile across {samples} recent redemptions — the level a deliberate optimizer can reasonably hit, not the average and not the fantasy best-case.",
+      "topRedemption": "Best sample redemption this cycle",
+      "distributionTitle": "Redemption distribution (p10 – p90)",
+      "historyTitle": "Last 4 weeks",
+      "historyHeaders": { "date": "Week of", "value": "THB / point" },
+      "updatedAt": "Last updated {date}",
+      "viewCardsCta": "View cards earning {currency} ▸",
+      "underSampledBanner": "Under-sampled — treat as directional only",
+      "rangeLabel": "Range estimate",
+      "sampleCount": "{n} samples"
+    }
   },
   "onboarding": {
     "title": "Get started with Loftly",
@@ -207,7 +235,48 @@
     "title": "Your account",
     "consentTitle": "Manage data consents",
     "exportTitle": "Download your personal data",
-    "deleteTitle": "Delete account"
+    "deleteTitle": "Delete account",
+    "dataExport": {
+      "title": "Download your personal data (PDPA)",
+      "intro": "You have the right to a copy of your data under PDPA §7 — we'll package it as JSON + CSV and deliver a download link within 24 hours.",
+      "requestCta": "Request your data export",
+      "requesting": "Submitting request…",
+      "rateLimitNotice": "Limited to 2 requests per day",
+      "status": {
+        "queued": "Queued for processing…",
+        "running": "Preparing your file…",
+        "done": "Ready to download",
+        "failed": "Processing failed — please request again"
+      },
+      "downloadCta": "Download file ▸",
+      "expiresIn": "Link expires in",
+      "lastRequestedAt": "Requested on {date}",
+      "notAvailableTitle": "This service is coming soon",
+      "notAvailableBody": "Self-service data export will be available after the Month 3 soft-launch — in the meantime, contact us for a manual export.",
+      "pdpaLinkLabel": "Read your PDPA rights ▸",
+      "errorGeneric": "Couldn't submit your request — please try again"
+    },
+    "delete": {
+      "title": "Delete your account",
+      "warningTitle": "Deleting starts a 14-day grace period",
+      "warningBody": "You can cancel any time during the grace period — after 14 days your data is permanently erased per PDPA §7.",
+      "emailConfirmLabel": "Type your registered email (to confirm identity)",
+      "emailConfirmPlaceholder": "you@example.com",
+      "emailMismatch": "Email doesn't match your account",
+      "confirmCta": "Delete account",
+      "submitting": "Submitting request…",
+      "pendingTitle": "Deletion pending — 14-day grace",
+      "pendingBody": "Your data will be erased in",
+      "cancelCta": "Cancel deletion",
+      "cancelling": "Cancelling…",
+      "cancelledNotice": "Deletion cancelled — your account is active.",
+      "completedNotice": "Your account has been permanently deleted.",
+      "legalHoldTitle": "What we keep after deletion",
+      "legalHoldBody": "Consent records and commission accounting are retained for 7 years per PDPA and accounting regulations.",
+      "notAvailableTitle": "This service is coming soon",
+      "notAvailableBody": "Self-service account deletion will be available after the Month 3 soft-launch — contact us for an early-deletion request.",
+      "errorGeneric": "Couldn't submit your request — please try again"
+    }
   },
   "legal": {
     "privacyTitle": "Privacy Policy",

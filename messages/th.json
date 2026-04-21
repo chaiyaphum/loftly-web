@@ -161,8 +161,36 @@
     "disclaimer": "ข้อมูลบัตรอัปเดตโดยทีม Loftly อ้างอิงจากเว็บไซต์ธนาคารและข้อมูล ณ วันที่อัปเดต — เงื่อนไขจริงอาจเปลี่ยนแปลงได้"
   },
   "valuations": {
-    "indexTitle": "มูลค่าแต้มทั้ง 5 สกุล",
-    "currencyTitle": "มูลค่าแต้ม {currency}"
+    "indexTitle": "มูลค่าแต้ม/ไมล์ — methodology 80th percentile",
+    "indexSubtitle": "Loftly คำนวณจากกลุ่มการแลกจริง แล้วเลือก percentile ที่ 80 — ไม่ใช่ median ไม่ใช่ค่าเฉลี่ย",
+    "methodologyLink": "อ่าน methodology แบบเต็ม ▸",
+    "methodologyGuideLink": "Loftly คำนวณมูลค่าแต้มยังไง ▸",
+    "groupHeadings": {
+      "airline": "สายการบิน",
+      "hotel": "โรงแรม",
+      "bank_proprietary": "แต้มของธนาคาร"
+    },
+    "currencyTitle": "มูลค่าแต้ม {currency}",
+    "notFoundTitle": "ไม่พบสกุลแต้มนี้",
+    "notFoundBody": "อาจถอดออกจากระบบ หรือ URL พิมพ์ผิด — กลับไปดูทั้ง 8 สกุลได้",
+    "notFoundCta": "← กลับไปดูทุกสกุล",
+    "loadError": "โหลดข้อมูลมูลค่าแต้มไม่สำเร็จ",
+    "emptyState": "ยังไม่มีข้อมูลมูลค่าแต้ม",
+    "detail": {
+      "heroLabel": "มูลค่าแต้ม",
+      "confidenceLabel": "ความมั่นใจของข้อมูล",
+      "methodologyTitle": "วิธีคำนวณ",
+      "methodologyBody": "เราเลือก percentile ที่ 80 จากตัวอย่างการแลกทั้งหมด {samples} รายการ — ค่าที่ได้คือระดับที่ผู้ใช้งานที่วางแผนดีสามารถทำได้จริง ไม่ใช่ค่าเฉลี่ย และไม่ใช่แลกที่ดีที่สุด",
+      "topRedemption": "ตัวอย่างการแลกที่คุ้มสุดในรอบนี้",
+      "distributionTitle": "การกระจายของค่าแลก (p10 – p90)",
+      "historyTitle": "ย้อนหลัง 4 สัปดาห์",
+      "historyHeaders": { "date": "สัปดาห์", "value": "THB ต่อแต้ม" },
+      "updatedAt": "อัปเดตล่าสุด {date}",
+      "viewCardsCta": "ดูบัตรที่สะสม {currency} ▸",
+      "underSampledBanner": "ข้อมูลยังน้อย — ถือเป็นกรอบทิศทางเท่านั้น",
+      "rangeLabel": "ช่วงประมาณการ",
+      "sampleCount": "{n} ตัวอย่าง"
+    }
   },
   "onboarding": {
     "title": "เริ่มใช้งาน Loftly",
@@ -207,7 +235,48 @@
     "title": "บัญชีของคุณ",
     "consentTitle": "จัดการการยินยอมข้อมูล",
     "exportTitle": "ดาวน์โหลดข้อมูลส่วนตัว",
-    "deleteTitle": "ลบบัญชี"
+    "deleteTitle": "ลบบัญชี",
+    "dataExport": {
+      "title": "ดาวน์โหลดข้อมูลส่วนตัว (PDPA)",
+      "intro": "คุณมีสิทธิขอสำเนาข้อมูลของคุณได้ตาม PDPA §7 — เราจะเตรียมเป็นไฟล์ JSON + CSV พร้อมดาวน์โหลดภายใน 24 ชั่วโมง",
+      "requestCta": "ขอ export ข้อมูลของคุณ",
+      "requesting": "กำลังส่งคำขอ…",
+      "rateLimitNotice": "ขอได้วันละ 2 ครั้ง",
+      "status": {
+        "queued": "อยู่ในคิวประมวลผล…",
+        "running": "กำลังเตรียมไฟล์…",
+        "done": "พร้อมดาวน์โหลดแล้ว",
+        "failed": "ประมวลผลไม่สำเร็จ — กรุณาขอใหม่อีกครั้ง"
+      },
+      "downloadCta": "ดาวน์โหลดไฟล์ ▸",
+      "expiresIn": "ลิงก์หมดอายุใน",
+      "lastRequestedAt": "ส่งคำขอเมื่อ {date}",
+      "notAvailableTitle": "บริการนี้จะพร้อมใช้เร็ว ๆ นี้",
+      "notAvailableBody": "ระบบ export ข้อมูลจะพร้อมใช้งานหลัง soft-launch (Month 3) — ในระหว่างนี้คุณติดต่อทีมงานเพื่อขอสำเนาข้อมูลได้",
+      "pdpaLinkLabel": "อ่านสิทธิ PDPA ของคุณ ▸",
+      "errorGeneric": "ส่งคำขอไม่สำเร็จ กรุณาลองใหม่"
+    },
+    "delete": {
+      "title": "ลบบัญชีของคุณ",
+      "warningTitle": "การลบบัญชีจะเริ่มช่วงรอ (grace period) 14 วัน",
+      "warningBody": "ระหว่างช่วงรอคุณยกเลิกได้ตลอดเวลา — เมื่อครบ 14 วันระบบจะลบข้อมูลถาวรตาม PDPA §7",
+      "emailConfirmLabel": "พิมพ์อีเมลที่ลงทะเบียน (เพื่อยืนยันตัวตน)",
+      "emailConfirmPlaceholder": "you@example.com",
+      "emailMismatch": "อีเมลไม่ตรงกับบัญชีของคุณ",
+      "confirmCta": "ลบบัญชี",
+      "submitting": "กำลังส่งคำขอ…",
+      "pendingTitle": "อยู่ในช่วงรอ 14 วัน",
+      "pendingBody": "ข้อมูลจะถูกลบในอีก",
+      "cancelCta": "ยกเลิกการลบ",
+      "cancelling": "กำลังยกเลิก…",
+      "cancelledNotice": "ยกเลิกการลบเรียบร้อยแล้ว บัญชีของคุณใช้งานได้ตามปกติ",
+      "completedNotice": "บัญชีของคุณถูกลบถาวรแล้ว",
+      "legalHoldTitle": "ข้อมูลที่เราเก็บต่อหลังลบ",
+      "legalHoldBody": "บันทึก consent และยอดค่าคอมมิชชั่นจะถูกเก็บ 7 ปีตามข้อกำหนด PDPA และกฎหมายบัญชี",
+      "notAvailableTitle": "บริการนี้จะพร้อมใช้เร็ว ๆ นี้",
+      "notAvailableBody": "การลบบัญชีแบบ self-service จะเปิดให้บริการหลัง Month 3 soft-launch — ติดต่อทีมงานเพื่อขอลบบัญชีล่วงหน้าได้",
+      "errorGeneric": "ส่งคำขอไม่สำเร็จ กรุณาลองใหม่"
+    }
   },
   "legal": {
     "privacyTitle": "นโยบายความเป็นส่วนตัว",

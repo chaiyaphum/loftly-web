@@ -151,7 +151,29 @@
       "resetAction": "Reset",
       "saveAction": "Save",
       "saveHint": "Enter an email above to save these results",
-      "streamingLabel": "Generating rationale…"
+      "streamingLabel": "Generating rationale…",
+      "error": {
+        "notFound": "We couldn't find these results. Try a new search.",
+        "notFoundCta": "Start a new search",
+        "expired": "These results have expired — re-run to see fresh picks.",
+        "expiredCta": "Run a new selector",
+        "generic": "Something went wrong loading your results.",
+        "retry": "Reload"
+      },
+      "share": {
+        "copy": "Copy link",
+        "copied": "Copied 📋",
+        "copyFailed": "Couldn't copy — try again",
+        "ariaLabel": "Copy a shareable link to these results"
+      },
+      "streaming": {
+        "disconnected": "Analysis ready (streaming disconnected)"
+      },
+      "mobile": {
+        "stickyApply": "Apply to top card",
+        "stickyRerun": "Re-run",
+        "expandDetails": "Show details"
+      }
     }
   },
   "results": {

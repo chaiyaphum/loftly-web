@@ -123,6 +123,7 @@ export type LoftlyEventName =
   | 'welcome_email_delivered'
   | 'welcome_email_opened'
   | 'welcome_email_apply_clicked'
+  | 'welcome_email_resend_clicked'
   // POST_V1 Tier A §3 — Returning-user landing variants
   | 'landing_returning_user_shown'
   | 'landing_returning_cta_clicked';

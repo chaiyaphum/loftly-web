@@ -852,7 +852,16 @@
       "unknownError": "Couldn't send the link — please try again.",
       "expiredTitle": "Link expired or invalid",
       "expiredBody": "Magic links are valid for 15 minutes and can only be used once. Request a fresh link to continue.",
-      "expiredCta": "Request a new link ▸"
+      "expiredCta": "Request a new link ▸",
+      "resend": {
+        "hint": "Didn't receive it? Check spam or",
+        "spamHint": "Check your spam folder first, or tap the button below to send again.",
+        "button": "Resend link",
+        "cooldown": "Resend in {seconds}s",
+        "success": "Resent — check your inbox again.",
+        "errorRate": "Too many requests — try again shortly.",
+        "errorGeneric": "Try again shortly."
+      }
     }
   },
   "invite": {

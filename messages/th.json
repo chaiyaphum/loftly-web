@@ -23,6 +23,25 @@
     "perMonth": "ต่อเดือน",
     "updatedAt": "อัปเดต {date}"
   },
+  "errors": {
+    "skipToMain": "ไปยังเนื้อหาหลัก",
+    "notFound": {
+      "title": "ไม่พบหน้านี้",
+      "subtitle": "หน้าที่คุณหาอาจถูกย้ายหรือพิมพ์ URL ผิด",
+      "cta_home": "กลับหน้าหลัก",
+      "cta_cards": "ดูรีวิวบัตร",
+      "cta_selector": "ค้นหาบัตรที่ใช่",
+      "supportText": "ถ้าคิดว่าเป็นบั๊ก บอกเราที่ {email} — ตอบภายใน 24 ชั่วโมง"
+    },
+    "serverError": {
+      "title": "มีอะไรผิดพลาด",
+      "subtitle": "ลองโหลดหน้านี้ใหม่ หากยังไม่ได้ กรุณาติดต่อเรา",
+      "cta_retry": "ลองใหม่",
+      "cta_home": "กลับหน้าหลัก",
+      "errorCode": "รหัสข้อผิดพลาด: {digest}",
+      "supportText": "ติดต่อทีมงานที่ {email} — แนบรหัสข้อผิดพลาดด้านบนถ้ามี"
+    }
+  },
   "landing": {
     "title": "ยกระดับทุกแต้มบัตรเครดิตของคุณ",
     "subtitle": "Lift your rewards with AI",

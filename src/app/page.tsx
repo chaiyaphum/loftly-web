@@ -53,6 +53,9 @@ export default async function LandingPage() {
           >
             {tn('valuations')}
           </Link>
+          <Link href="/pricing" className="text-slate-700 hover:underline">
+            {tn('pricing')}
+          </Link>
           <Link href="/onboarding" className="text-slate-700 hover:underline">
             {tn('signIn')}
           </Link>

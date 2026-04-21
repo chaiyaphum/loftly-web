@@ -8,7 +8,8 @@
     "cards": "All cards",
     "valuations": "Point valuations",
     "selector": "Find the right card",
-    "account": "Your account"
+    "account": "Your account",
+    "pricing": "Pricing"
   },
   "common": {
     "back": "← Back",
@@ -495,6 +496,27 @@
   },
   "apply": {
     "interstitial": "Taking you to the bank ▸"
+  },
+  "pricing": {
+    "title": "Pricing",
+    "subtitle": "Loftly is free while we build — tell us if premium features are worth your while.",
+    "free_tier": "Free",
+    "free_tier_description": "Every Loftly feature available today, at no cost. No credit card, no sign-up required.",
+    "premium_tier": "Premium",
+    "premium_monthly": "THB {amount}/month",
+    "premium_yearly": "THB {amount}/year",
+    "feature_award_finder": "Award Finder — live award-seat search",
+    "feature_alerts": "Transfer-bonus alerts, pushed within minutes of announcement",
+    "feature_unified_balance": "Unified points balance across all your loyalty programs",
+    "feature_support": "Priority email support (24h response)",
+    "feature_api": "API access for your own dashboards",
+    "coming_phase_2": "Coming Phase 2",
+    "waitlist_cta": "Join the waitlist",
+    "waitlist_placeholder": "you@example.com",
+    "waitlist_success": "Thanks — you're on the list. We'll email you when Premium opens.",
+    "waitlist_error": "Couldn't join the waitlist — please try again.",
+    "waitlist_invalid_email": "That doesn't look like a valid email.",
+    "control_cta": "Start with Loftly — free"
   },
   "auth": {
     "magicLink": {

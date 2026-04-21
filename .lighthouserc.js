@@ -25,9 +25,9 @@ module.exports = {
       startServerReadyPattern: 'Ready',
       startServerReadyTimeout: 60000,
       url: [
-        'http://localhost:3000/th',
-        'http://localhost:3000/th/cards',
-        'http://localhost:3000/th/selector',
+        'http://localhost:3000/',
+        'http://localhost:3000/cards',
+        'http://localhost:3000/selector',
       ],
       numberOfRuns: 1,
       settings: {

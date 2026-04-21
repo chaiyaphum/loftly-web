@@ -368,3 +368,71 @@ export function getAffiliateExportUrl(accessToken: string | null): string {
   }
   return url.toString();
 }
+
+/**
+ * CSV export URL for the date-range + partner-filtered stats endpoint
+ * (`/admin/affiliate/stats.csv` shipped in loftly-api 4d20e0f).
+ *
+ * `from` / `to` are ISO `YYYY-MM-DD` dates (inclusive); if omitted the backend
+ * defaults to the last 30 days. `partnerId` is an optional affiliate network
+ * slug — when `undefined` or `'all'` the param is dropped and results cover
+ * every partner.
+ */
+export function getAffiliateStatsCsvUrl(
+  accessToken: string | null,
+  opts: { from?: string; to?: string; partnerId?: string | null } = {},
+): string {
+  const base = getApiBase();
+  const url = new URL(`${base}/admin/affiliate/stats.csv`);
+  if (opts.from) url.searchParams.set('from', opts.from);
+  if (opts.to) url.searchParams.set('to', opts.to);
+  if (opts.partnerId && opts.partnerId !== 'all') {
+    url.searchParams.set('partner_id', opts.partnerId);
+  }
+  if (accessToken) {
+    url.searchParams.set('token', accessToken);
+  }
+  return url.toString();
+}
+
+export interface AffiliatePartner {
+  id: string;
+  name: string;
+}
+
+/**
+ * TODO(backend): `/admin/affiliate/partners` is not yet implemented in
+ * loftly-api. Until the endpoint lands, callers should fall back to the
+ * hardcoded list in `KNOWN_AFFILIATE_PARTNERS`. Keeping the helper here so the
+ * swap to the real endpoint is a one-line change.
+ */
+export const KNOWN_AFFILIATE_PARTNERS: readonly AffiliatePartner[] = [
+  { id: 'moneyguru', name: 'MoneyGuru' },
+  { id: 'ktc', name: 'KTC' },
+  { id: 'uob', name: 'UOB' },
+] as const;
+
+export async function listAffiliatePartners(
+  accessToken: string | null,
+  opts: { signal?: AbortSignal } = {},
+): Promise<AffiliatePartner[]> {
+  try {
+    const response = await apiFetch<{ data: AffiliatePartner[] }>(
+      '/admin/affiliate/partners',
+      {
+        method: 'GET',
+        accessToken: requireToken(accessToken),
+        revalidate: false,
+        signal: opts.signal,
+        maxRetries: 0,
+      },
+    );
+    return response.data;
+  } catch (err) {
+    if (err instanceof LoftlyAPIError && err.status === 404) {
+      // TODO(backend): remove this fallback once the partners endpoint ships.
+      return [...KNOWN_AFFILIATE_PARTNERS];
+    }
+    throw err;
+  }
+}

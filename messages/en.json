@@ -389,7 +389,25 @@
         "conversions": "Conversions",
         "commission": "Commission"
       },
-      "exportCta": "Download CSV ▸"
+      "exportCta": "Download CSV ▸",
+      "title": "Affiliate stats",
+      "from": "From",
+      "to": "To",
+      "partner": "Partner",
+      "all_partners": "All partners",
+      "export_csv": "Export CSV",
+      "total_clicks": "Total clicks",
+      "total_conversions": "Total conversions",
+      "commission_thb": "Commission (THB)",
+      "rangeSummary": "Selected range: {days} day(s)",
+      "invalidRange": "Invalid date range — `to` must be on or after `from`.",
+      "rangeTooLarge": "Range too large — pick at most {max} days.",
+      "previewTitle": "Top {count} cards (preview)",
+      "columnCard": "Card",
+      "columnClicks": "Clicks",
+      "columnConversions": "Conversions",
+      "columnCommission": "Commission",
+      "empty": "No affiliate activity in this period."
     }
   },
   "consent": {

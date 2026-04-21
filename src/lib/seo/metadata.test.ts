@@ -59,7 +59,8 @@ describe('generateMetadata — /cards/[slug]', () => {
     expect(og.type).toBe('article');
     expect(og.title).toBe('KBank The One — KBank · Loftly');
     expect(og.url).toBe('https://site.test/cards/kbank-the-one');
-    expect(og.images?.[0]?.url).toBe('/og-default.png');
+    // Per-card dynamic OG image — served by /og/card/[slug] Edge route.
+    expect(og.images?.[0]?.url).toBe('/og/card/kbank-the-one');
     expect(og.images?.[0]?.width).toBe(1200);
     expect(og.images?.[0]?.height).toBe(630);
 

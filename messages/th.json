@@ -277,6 +277,40 @@
       "columnConversions": "Conversion",
       "columnCommission": "ค่าคอม",
       "empty": "ไม่มี affiliate activity ในช่วงเวลานี้"
+    },
+    "stale": {
+      "title": "ตรวจสอบเนื้อหาซ้ำ",
+      "subtitle": "บทความที่ updated_at เกินกำหนด — ตรวจสอบแล้วกด mark เป็นตรวจซ้ำแล้ว",
+      "summary": "มี {count} บทความที่ต้องตรวจสอบซ้ำ",
+      "summaryZero": "ไม่มีบทความค้างตรวจในขณะนี้",
+      "days_threshold": "จำนวนวัน (threshold)",
+      "state": "สถานะ",
+      "issuer": "ธนาคาร",
+      "issuerAll": "ทุกธนาคาร",
+      "columns": {
+        "card": "บัตร",
+        "issuer": "ธนาคาร",
+        "article": "บทความ",
+        "updated": "อัปเดตล่าสุด",
+        "lastReviewedBy": "ผู้ตรวจล่าสุด",
+        "actions": "การดำเนินการ"
+      },
+      "mark_reviewed": "mark ว่าตรวจแล้ว",
+      "marking": "กำลังบันทึก…",
+      "marked": "บันทึกแล้ว",
+      "openArticle": "เปิดบทความ",
+      "confirmTitle": "ยืนยันว่าตรวจบทความนี้แล้ว?",
+      "confirmBody": "การ mark จะ bump updated_at และบันทึก audit log — ใช้เมื่อตรวจ earn rate, มูลค่าแต้ม และ signup bonus เทียบเว็บธนาคารจริงแล้ว",
+      "confirmYes": "ใช่, mark ว่าตรวจแล้ว",
+      "confirmCancel": "ยกเลิก",
+      "empty_state": "ยังไม่มีบทความที่ค้างตรวจ",
+      "loadError": "โหลดรายการไม่สำเร็จ กรุณาลองใหม่",
+      "neverReviewed": "ยังไม่เคยตรวจ",
+      "relativeAbsolute": "{relative} · {absolute}",
+      "daysAgo": "{days} วันที่แล้ว",
+      "pageIndicator": "หน้า {page} / {total}",
+      "prev": "← ก่อนหน้า",
+      "next": "ถัดไป →"
     }
   },
   "consent": {

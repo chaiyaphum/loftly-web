@@ -64,6 +64,24 @@
         "cta": "เช็คการใช้จ่ายของคุณ ▸"
       }
     },
+    "returning": {
+      "personalized": {
+        "title": "ยินดีต้อนรับกลับ — บัตร {cardName} สำหรับคุณ",
+        "subtitle": "ผลลัพธ์ Selector ของคุณยังพร้อมอยู่ ลองดูอีกครั้งหรือเริ่มใหม่ก็ได้",
+        "viewResults": "ดูผลเต็ม ▸",
+        "restartSelector": "ทำ Selector ใหม่"
+      },
+      "expired": {
+        "banner": "คุณเคยใช้ Selector — ทำใหม่ไหม?",
+        "cta": "เริ่มใหม่ ▸"
+      },
+      "restartConfirm": {
+        "title": "ทำ Selector ใหม่?",
+        "body": "ผลลัพธ์เดิมยังอยู่ใน link เดิม 24 ชั่วโมง สามารถกลับมาดูได้ภายหลัง",
+        "yes": "เริ่มใหม่",
+        "no": "ยกเลิก"
+      }
+    },
     "howItWorksTitle": "Loftly ทำงานยังไง",
     "howItWorks": {
       "step1": "บอกพวกเราเรื่องการใช้จ่าย",

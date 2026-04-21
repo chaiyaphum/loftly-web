@@ -9,6 +9,7 @@ import {
 import { LatestValuationsList } from '@/components/homepage/LatestValuationsList';
 import { buildPageMetadata } from '@/lib/seo/metadata';
 import { LandingHero } from '@/components/landing/LandingHero';
+import { LandingHeroSwitcher } from '@/components/landing/LandingHeroSwitcher';
 import type { Valuation } from '@/lib/api/types';
 
 export const dynamic = 'force-static';
@@ -116,9 +117,15 @@ export default async function LandingPage() {
         </nav>
       </header>
 
-      {/* Hero — client island reads the `landing_hero_cta` PostHog flag
-          and picks control / variant_benefit_led / variant_urgency (W15). */}
-      <LandingHero reassurance={t('reassurance')} ctaHref="/selector" />
+      {/* Hero — SSR renders the fresh-visitor LandingHero (A/B variant island).
+          LandingHeroSwitcher hydrates on the client and, gated behind
+          `post_v1_returning_landing`, either keeps the default hero or swaps in
+          the POST_V1 §3 returning-user variant (personalized or expired banner). */}
+      <LandingHeroSwitcher
+        defaultHero={
+          <LandingHero reassurance={t('reassurance')} ctaHref="/selector" />
+        }
+      />
 
       {/* How it works */}
       <section className="flex flex-col gap-4">

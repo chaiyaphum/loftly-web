@@ -64,6 +64,24 @@
         "cta": "Check your spending ▸"
       }
     },
+    "returning": {
+      "personalized": {
+        "title": "Welcome back — your {cardName} pick is ready",
+        "subtitle": "Your Selector result is still live — view it again or start fresh.",
+        "viewResults": "View full result ▸",
+        "restartSelector": "Start a new Selector"
+      },
+      "expired": {
+        "banner": "You've used Selector before — run it again?",
+        "cta": "Restart ▸"
+      },
+      "restartConfirm": {
+        "title": "Start a new Selector?",
+        "body": "Your previous result stays accessible via its direct link for 24 hours.",
+        "yes": "Start new",
+        "no": "Cancel"
+      }
+    },
     "howItWorksTitle": "How Loftly works",
     "howItWorks": {
       "step1": "Tell us about your spending",

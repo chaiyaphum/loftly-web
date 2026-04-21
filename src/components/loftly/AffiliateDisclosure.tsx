@@ -1,37 +1,54 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { cn } from '@/lib/utils';
 
 /**
- * AffiliateDisclosure — STUB.
+ * AffiliateDisclosure.
  *
  * Per UI_CONTENT.md §Affiliate disclosure:
- *   - inline variant: single sentence near every Apply CTA
- *   - footer variant: full 400–600 char disclosure for /legal/affiliate-disclosure
+ *   - `inline` variant: single sentence rendered near every Apply CTA
+ *   - `footer` variant: long-form paragraph used on
+ *     `/legal/affiliate-disclosure` and in page footers
  *
  * BRAND.md §7 principle #3: "Transparency over optimization theater — if we're
  * paid an affiliate commission, we disclose it."
+ *
+ * i18n: strings live in `messages/{th,en}.json` under `legal.affiliateDisclosure*`.
  */
+
 export interface AffiliateDisclosureProps {
   variant?: 'inline' | 'footer';
   className?: string;
 }
 
-export function AffiliateDisclosure({ variant = 'inline', className }: AffiliateDisclosureProps) {
-  const t = useTranslations('legal');
+export async function AffiliateDisclosure({
+  variant = 'inline',
+  className,
+}: AffiliateDisclosureProps) {
+  const t = await getTranslations('legal');
 
   if (variant === 'inline') {
     return (
-      <p className={cn('text-xs text-slate-500', className)}>
+      <p
+        className={cn('text-xs text-slate-500', className)}
+        data-testid="affiliate-disclosure-inline"
+      >
         {t('affiliateDisclosureInline')}
       </p>
     );
   }
 
-  // Footer variant — full long-form copy. Real copy lives in CMS or MDX later.
   return (
-    <section className={cn('prose prose-sm max-w-none text-slate-700', className)}>
-      <p>{t('affiliateDisclosureInline')}</p>
-      {/* TODO: full long-form disclosure (400–600 chars TH + EN) */}
+    <section
+      className={cn(
+        'space-y-2 text-sm leading-relaxed text-slate-700',
+        className,
+      )}
+      data-testid="affiliate-disclosure-footer"
+    >
+      <h3 className="text-base font-semibold text-loftly-ink">
+        {t('affiliateDisclosureTitle')}
+      </h3>
+      <p>{t('affiliateDisclosureFull')}</p>
     </section>
   );
 }

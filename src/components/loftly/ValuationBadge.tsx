@@ -1,40 +1,83 @@
+import type { Currency, Valuation } from '@/lib/api/types';
 import { cn } from '@/lib/utils';
 
 /**
- * ValuationBadge — STUB.
+ * ValuationBadge — inline THB-per-point readout.
  *
- * Per UI_WEB.md §Component inventory, renders an inline THB-per-point badge
- * with a confidence band. When confidence < 0.6, prefixes the THB value with
- * "~" (see UI_CONTENT.md §Honest-uncertainty phrases).
+ * Template per Q8 (UI_CONTENT.md §Valuation sentence template):
+ *   - airline currencies (`currency_type: airline`) → "1 {CODE} mile = {value} THB"
+ *   - bank / hotel currencies → "1 {CODE} point = {value} THB"
  *
- * Currency is displayed verbatim (e.g., "ROP", "KrisFlyer", "K Point") —
- * never translated per BRAND.md §4 "Brand names: keep original".
+ * Confidence banding per VALUATION_METHOD.md:
+ *   - `confidence >= 0.6` → exact value (e.g., "1.52 THB")
+ *   - `0.4 <= confidence < 0.6` → `~1.52 THB` (directional prefix)
+ *   - `confidence < 0.4` → range-only `~{lo}–{hi} THB` using distribution band
+ *     (±40% around the central value as the conservative display band)
+ *
+ * Currency code is rendered verbatim — never translated (BRAND.md §4
+ * "Brand names: keep original").
  */
+
 export interface ValuationBadgeProps {
-  /** Loyalty currency code, e.g., "ROP", "KRISFLYER", "K_POINT" */
-  currency: string;
-  /** THB value per 1 unit (1 mile or 1 point) */
-  value: number;
-  /** 0..1 — below 0.6 triggers the "~" prefix */
-  confidence: number;
+  currency: Currency;
+  valuation: Valuation;
   className?: string;
 }
 
-export function ValuationBadge({ currency, value, confidence, className }: ValuationBadgeProps) {
-  const lowConfidence = confidence < 0.6;
-  const formatted = value.toFixed(2);
+type Band = 'exact' | 'directional' | 'range';
+
+function bandFor(confidence: number): Band {
+  if (confidence >= 0.6) return 'exact';
+  if (confidence >= 0.4) return 'directional';
+  return 'range';
+}
+
+function unitFor(currency: Currency): 'mile' | 'point' {
+  return currency.currency_type === 'airline' ? 'mile' : 'point';
+}
+
+function formatTHB(value: number): string {
+  // 2 decimals — valuations are typically sub-baht precision.
+  return value.toFixed(2);
+}
+
+export function ValuationBadge({
+  currency,
+  valuation,
+  className,
+}: ValuationBadgeProps) {
+  const band = bandFor(valuation.confidence);
+  const unit = unitFor(currency);
+  const value = valuation.thb_per_point;
+
+  let display: string;
+  if (band === 'range') {
+    const lo = formatTHB(value * 0.6);
+    const hi = formatTHB(value * 1.4);
+    display = `~${lo}–${hi} THB`;
+  } else if (band === 'directional') {
+    display = `~${formatTHB(value)} THB`;
+  } else {
+    display = `${formatTHB(value)} THB`;
+  }
+
+  const label = `1 ${currency.code} ${unit} = ${display}`;
+  const isLowConfidence = band !== 'exact';
 
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-1 rounded-full bg-slate-100 px-2 py-0.5 text-xs font-medium',
-        lowConfidence && 'bg-amber-50 text-amber-900',
+        'inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium tabular-nums',
+        isLowConfidence
+          ? 'bg-amber-50 text-amber-900'
+          : 'bg-slate-100 text-slate-900',
         className,
       )}
-      aria-label={`1 ${currency} equals ${lowConfidence ? 'approximately ' : ''}${formatted} THB`}
+      title={valuation.methodology}
+      aria-label={label}
+      data-confidence-band={band}
     >
-      1 {currency} = {lowConfidence ? '~' : ''}
-      {formatted} THB
+      {label}
     </span>
   );
 }

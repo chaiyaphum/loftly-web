@@ -1,0 +1,67 @@
+name: Performance Budget
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  bundle-size:
+    name: Bundle size (size-limit)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install
+        run: npm ci
+
+      - name: Build with analyzer
+        run: ANALYZE=true npm run build
+        env:
+          # Keep ANALYZE on so .next/analyze/ is written for inspection.
+          ANALYZE: 'true'
+
+      - name: Upload analyzer reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bundle-analyzer-reports
+          path: .next/analyze/
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Enforce per-entry size-limit budgets
+        run: npx size-limit
+
+  lighthouse-ci:
+    name: Lighthouse CI (LCP / CLS / FID on 3G)
+    runs-on: ubuntu-latest
+    # Lighthouse assertions use localhost; once a staging preview URL exists
+    # (Cloudflare Pages), swap `collect.url` in `.lighthouserc.js` to point at
+    # the preview and remove startServerCommand.
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Run Lighthouse CI
+        run: npx @lhci/cli autorun --config=.lighthouserc.js
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}

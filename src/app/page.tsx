@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
-import { Button } from '@/components/ui/button';
 import { getApiBase } from '@/lib/api/client';
 import {
   LatestReviewsGrid,
@@ -9,6 +8,7 @@ import {
 } from '@/components/homepage/LatestReviewsGrid';
 import { LatestValuationsList } from '@/components/homepage/LatestValuationsList';
 import { buildPageMetadata } from '@/lib/seo/metadata';
+import { LandingHero } from '@/components/landing/LandingHero';
 import type { Valuation } from '@/lib/api/types';
 
 export const dynamic = 'force-static';
@@ -116,19 +116,9 @@ export default async function LandingPage() {
         </nav>
       </header>
 
-      {/* Hero */}
-      <section className="flex flex-col gap-6">
-        <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-          {t('title')}
-        </h1>
-        <p className="text-lg text-slate-600">{t('subtitle')}</p>
-        <div>
-          <Button asChild size="lg">
-            <Link href="/selector">{t('cta')}</Link>
-          </Button>
-        </div>
-        <p className="text-sm text-slate-500">{t('reassurance')}</p>
-      </section>
+      {/* Hero — client island reads the `landing_hero_cta` PostHog flag
+          and picks control / variant_benefit_led / variant_urgency (W15). */}
+      <LandingHero reassurance={t('reassurance')} ctaHref="/selector" />
 
       {/* How it works */}
       <section className="flex flex-col gap-4">

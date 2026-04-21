@@ -47,9 +47,10 @@ export async function generateMetadata({
       title,
       description,
       path: `/cards/${slug}`,
-      // Per-card dynamic OG image is a Phase 2 deliverable — see DEV_PLAN
-      // W13 ("flag as future — use static default for now").
-      // ogImage: `/api/og/card/${slug}.png`,
+      // Per-card dynamic OG image — rendered by the Next.js Edge route at
+      // `src/app/og/card/[slug]/route.tsx` via `next/og`'s ImageResponse.
+      // Must be `/og/card/...` (Next.js app route), NOT `/v1/og/...` (API path).
+      ogImage: `/og/card/${slug}`,
       ogType: 'article',
     });
   } catch {

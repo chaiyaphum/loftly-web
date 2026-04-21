@@ -252,7 +252,59 @@
       "articles": "Articles",
       "promos": "Promos",
       "mappingQueue": "Mapping queue",
-      "affiliate": "Affiliate"
+      "affiliate": "Affiliate",
+      "analytics": "Analytics"
+    },
+    "analytics": {
+      "title": "Analytics",
+      "subtitle": "Seed-round metrics · {asOf}",
+      "asOf": "as of {date}",
+      "loading": "Loading metrics…",
+      "loadError": "Failed to load metrics — please refresh.",
+      "deltaUp": "Up from previous period",
+      "deltaDown": "Down from previous period",
+      "users": {
+        "title": "Users",
+        "wau": "WAU",
+        "mau": "MAU",
+        "consentGrant": "Consent grant",
+        "retention12w": "12-week retention"
+      },
+      "selector": {
+        "title": "Selector",
+        "uniqueUsers": "Unique users",
+        "avgLatency": "Avg latency",
+        "top1Conversion": "Top-1 conversion",
+        "evalRecall": "Eval recall"
+      },
+      "affiliate": {
+        "title": "Affiliate",
+        "topCards": "Top 5 cards",
+        "columnCard": "Card",
+        "columnConversions": "Conv.",
+        "columnCommission": "Commission",
+        "segmentPending": "Pending",
+        "segmentConfirmed": "Confirmed",
+        "segmentPaid": "Paid"
+      },
+      "content": {
+        "title": "Content",
+        "avgArticleAge": "Avg article age",
+        "schemaValid": "schema.org valid",
+        "days": "{days} days"
+      },
+      "llmCosts": {
+        "title": "LLM costs",
+        "spendPerMau": "Spend / MAU",
+        "promptCacheHit": "Prompt-cache hit",
+        "haikuFallback": "Haiku fallback"
+      },
+      "system": {
+        "title": "System",
+        "uptime": "Uptime",
+        "error5xx": "5xx rate",
+        "p95Latency": "p95 latency"
+      }
     },
     "topbar": {
       "signedInAs": "Signed in as",

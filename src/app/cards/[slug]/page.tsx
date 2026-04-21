@@ -133,6 +133,13 @@ export default async function CardReviewPage({
         </h1>
         <ArticleByline
           publishedAt={updatedAt}
+          // The `card` payload from `GET /v1/cards/{slug}` does not currently
+          // expose an `article.author` shape — so we pass `authorSlug={null}`
+          // and the byline falls back to the default "Loftly" org name.
+          // Once loftly-api plumbs `authors_id` through the articles response,
+          // swap this to `card.article?.author?.slug ?? null`. Tracked as a
+          // follow-up in the companion backend PR.
+          authorSlug={null}
           readingMinutes={estimateReadingMinutes(
             (card.description_th ?? '') + ' ' + (card.description_en ?? ''),
           )}

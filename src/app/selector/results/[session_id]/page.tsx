@@ -15,6 +15,7 @@ import type { Card as CardT, SelectorResult } from '@/lib/api/types';
 import { MobileCollapse } from './MobileCollapse';
 import { MobileStickyBar } from './MobileStickyBar';
 import { RetryWrapper } from './RetryWrapper';
+import { SessionCookieWriter } from './SessionCookieWriter';
 import { ShareButton } from './ShareButton';
 import { statusToKind } from './ResultsError';
 
@@ -106,6 +107,12 @@ export default async function SelectorResultsPage({
 
   return (
     <main className="mx-auto flex max-w-3xl flex-col gap-8 px-6 py-12">
+      {/*
+        Client-only island: writes the POST_V1 §3 recognition cookie on mount
+        so `/` can render a personalized welcome-back hero on the next visit.
+        No PII beyond session_id + timestamp.
+      */}
+      <SessionCookieWriter sessionId={result.session_id} />
       <header className="flex flex-col gap-3">
         <Link href="/selector" className="text-sm text-slate-500 hover:underline">
           {tCommon('back')}

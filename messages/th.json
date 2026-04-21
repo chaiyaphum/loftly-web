@@ -225,6 +225,26 @@
     "topbar": {
       "signedInAs": "Signed in as",
       "logout": "Logout"
+    },
+    "affiliate": {
+      "title": "สถิติ Affiliate",
+      "from": "ตั้งแต่",
+      "to": "ถึง",
+      "partner": "พาร์ทเนอร์",
+      "all_partners": "ทุกพาร์ทเนอร์",
+      "export_csv": "ดาวน์โหลด CSV",
+      "total_clicks": "คลิกทั้งหมด",
+      "total_conversions": "Conversion ทั้งหมด",
+      "commission_thb": "ค่าคอม (THB)",
+      "rangeSummary": "ช่วงที่เลือก: {days} วัน",
+      "invalidRange": "ช่วงวันที่ไม่ถูกต้อง — `ถึง` ต้องไม่ก่อน `ตั้งแต่`",
+      "rangeTooLarge": "ช่วงวันที่กว้างเกินไป — ต้องไม่เกิน {max} วัน",
+      "previewTitle": "บัตรยอดนิยม {count} อันดับ (ตัวอย่าง)",
+      "columnCard": "บัตร",
+      "columnClicks": "คลิก",
+      "columnConversions": "Conversion",
+      "columnCommission": "ค่าคอม",
+      "empty": "ไม่มี affiliate activity ในช่วงเวลานี้"
     }
   },
   "consent": {

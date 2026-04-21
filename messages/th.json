@@ -8,7 +8,8 @@
     "cards": "บัตรทั้งหมด",
     "valuations": "มูลค่าแต้ม",
     "selector": "ค้นหาบัตรที่ใช่",
-    "account": "บัญชีของคุณ"
+    "account": "บัญชีของคุณ",
+    "pricing": "ค่าบริการ"
   },
   "common": {
     "back": "← กลับ",
@@ -331,6 +332,27 @@
   },
   "apply": {
     "interstitial": "กำลังพาคุณไปที่ธนาคาร ▸"
+  },
+  "pricing": {
+    "title": "ค่าบริการ",
+    "subtitle": "ช่วง soft launch ใช้ Loftly ได้ฟรีทั้งหมด — บอกเราหน่อยว่าฟีเจอร์ Premium คุ้มค่าไหม",
+    "free_tier": "ฟรี",
+    "free_tier_description": "ใช้ทุกฟีเจอร์ของ Loftly ได้ฟรี ไม่ต้องใส่บัตรเครดิต ไม่ต้องสมัคร",
+    "premium_tier": "Premium",
+    "premium_monthly": "THB {amount}/เดือน",
+    "premium_yearly": "THB {amount}/ปี",
+    "feature_award_finder": "Award Finder — ค้นหาที่นั่ง award ไมล์แบบเรียลไทม์",
+    "feature_alerts": "แจ้งเตือน transfer-bonus ทันทีที่ธนาคารประกาศ",
+    "feature_unified_balance": "รวมยอดแต้มทุกโปรแกรมของคุณในหน้าเดียว",
+    "feature_support": "Priority email support (ตอบภายใน 24 ชั่วโมง)",
+    "feature_api": "API สำหรับนำข้อมูลไปใช้ใน dashboard ของคุณเอง",
+    "coming_phase_2": "มาใน Phase 2",
+    "waitlist_cta": "เข้าร่วม waitlist",
+    "waitlist_placeholder": "you@example.com",
+    "waitlist_success": "ขอบคุณที่สนใจ — เราจะอีเมลแจ้งคุณเมื่อ Premium เปิดให้บริการ",
+    "waitlist_error": "ส่งคำขอไม่สำเร็จ กรุณาลองใหม่อีกครั้ง",
+    "waitlist_invalid_email": "รูปแบบอีเมลไม่ถูกต้อง",
+    "control_cta": "เริ่มใช้ Loftly — ฟรี"
   },
   "auth": {
     "magicLink": {

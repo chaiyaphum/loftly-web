@@ -700,6 +700,15 @@
     "waitlist_success": "Thanks — you're on the list. We'll email you when Premium opens.",
     "waitlist_error": "Couldn't join the waitlist — please try again.",
     "waitlist_invalid_email": "That doesn't look like a valid email.",
+    "waitlist": {
+      "status": {
+        "created": "We've saved {email} — we'll let you know when we launch 🎉",
+        "exists": "You're already on the waitlist 👍 We'll let you know when we're ready.",
+        "rate_limited": "Please try again in 5 minutes (too many signups from this network).",
+        "invalid": "That email doesn't look right.",
+        "error": "Something went wrong — please try again."
+      }
+    },
     "control_cta": "Start with Loftly — free"
   },
   "auth": {

@@ -91,7 +91,12 @@ describe('PricingClient', () => {
 
   it('emits `pricing_waitlist_joined` with variant + tier when the waitlist form submits', async () => {
     mockGetFeatureFlag.mockReturnValue('variant_a_349');
-    const fetchMock = vi.fn().mockResolvedValue(new Response(null, { status: 204 }));
+    const fetchMock = vi.fn().mockResolvedValue(
+      new Response(JSON.stringify({ status: 'created' }), {
+        status: 201,
+        headers: { 'Content-Type': 'application/json' },
+      }),
+    );
     globalThis.fetch = fetchMock as unknown as typeof fetch;
 
     render(wrap(<PricingClient />));
@@ -143,5 +148,172 @@ describe('PricingClient', () => {
 
     // Without any email typed, no event should have fired yet.
     expect(mockCapture).not.toHaveBeenCalled();
+  });
+
+  // -- W24 follow-up: waitlist response-code branching ----------------------
+  //
+  // The upstream `POST /v1/waitlist` surfaces 201/204/422/429/503 with
+  // distinct meanings; PricingClient must render a different message per
+  // status and never re-enable the submit button before the request resolves.
+
+  async function submitWaitlistEmail(email = 'user@example.com') {
+    fireEvent.change(screen.getByTestId('pricing-waitlist-email'), {
+      target: { value: email },
+    });
+    await act(async () => {
+      fireEvent.click(screen.getByTestId('pricing-waitlist-submit'));
+    });
+  }
+
+  it('renders the `created` message when the proxy returns 201 + status:created', async () => {
+    mockGetFeatureFlag.mockReturnValue('variant_a_349');
+    globalThis.fetch = vi.fn().mockResolvedValue(
+      new Response(JSON.stringify({ status: 'created' }), {
+        status: 201,
+        headers: { 'Content-Type': 'application/json' },
+      }),
+    ) as unknown as typeof fetch;
+
+    render(wrap(<PricingClient />));
+    await waitFor(() =>
+      expect(screen.getByTestId('pricing-premium-card')).toBeInTheDocument(),
+    );
+
+    await submitWaitlistEmail('new@example.com');
+
+    await waitFor(() =>
+      expect(screen.getByTestId('pricing-waitlist-success')).toBeInTheDocument(),
+    );
+    const success = screen.getByTestId('pricing-waitlist-success');
+    expect(success).toHaveAttribute('data-status', 'created');
+    expect(success).toHaveTextContent(/We've saved new@example.com/);
+  });
+
+  it('renders the `exists` message when the proxy returns 200 + status:exists (upstream 204)', async () => {
+    mockGetFeatureFlag.mockReturnValue('variant_a_349');
+    globalThis.fetch = vi.fn().mockResolvedValue(
+      new Response(JSON.stringify({ status: 'exists' }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      }),
+    ) as unknown as typeof fetch;
+
+    render(wrap(<PricingClient />));
+    await waitFor(() =>
+      expect(screen.getByTestId('pricing-premium-card')).toBeInTheDocument(),
+    );
+
+    await submitWaitlistEmail('dupe@example.com');
+
+    await waitFor(() =>
+      expect(screen.getByTestId('pricing-waitlist-success')).toBeInTheDocument(),
+    );
+    const success = screen.getByTestId('pricing-waitlist-success');
+    expect(success).toHaveAttribute('data-status', 'exists');
+    expect(success).toHaveTextContent(/already on the waitlist/i);
+  });
+
+  it('renders the `rate_limited` message when the proxy returns 429', async () => {
+    mockGetFeatureFlag.mockReturnValue('variant_a_349');
+    globalThis.fetch = vi.fn().mockResolvedValue(
+      new Response(JSON.stringify({ status: 'rate_limited' }), {
+        status: 429,
+        headers: { 'Content-Type': 'application/json' },
+      }),
+    ) as unknown as typeof fetch;
+
+    render(wrap(<PricingClient />));
+    await waitFor(() =>
+      expect(screen.getByTestId('pricing-premium-card')).toBeInTheDocument(),
+    );
+
+    await submitWaitlistEmail('spammy@example.com');
+
+    await waitFor(() =>
+      expect(screen.getByTestId('pricing-waitlist-error')).toBeInTheDocument(),
+    );
+    const err = screen.getByTestId('pricing-waitlist-error');
+    expect(err).toHaveAttribute('data-status', 'rate_limited');
+    expect(err).toHaveTextContent(/5 minutes/);
+    // The success banner MUST NOT be rendered on a non-success status.
+    expect(
+      screen.queryByTestId('pricing-waitlist-success'),
+    ).not.toBeInTheDocument();
+  });
+
+  it('renders the `invalid` message when the proxy returns 422 for a server-side rejected email', async () => {
+    mockGetFeatureFlag.mockReturnValue('variant_a_349');
+    globalThis.fetch = vi.fn().mockResolvedValue(
+      new Response(JSON.stringify({ status: 'invalid' }), {
+        status: 422,
+        headers: { 'Content-Type': 'application/json' },
+      }),
+    ) as unknown as typeof fetch;
+
+    render(wrap(<PricingClient />));
+    await waitFor(() =>
+      expect(screen.getByTestId('pricing-premium-card')).toBeInTheDocument(),
+    );
+
+    // Use an email the client-side regex accepts so we reach the fetch and
+    // the 422 is the one that drives the copy.
+    await submitWaitlistEmail('weird+plus@example.com');
+
+    await waitFor(() =>
+      expect(screen.getByTestId('pricing-waitlist-error')).toBeInTheDocument(),
+    );
+    const err = screen.getByTestId('pricing-waitlist-error');
+    expect(err).toHaveAttribute('data-status', 'invalid');
+    expect(err).toHaveTextContent(/doesn't look right/i);
+  });
+
+  it('disables the submit button while the request is in flight and re-enables only after it resolves', async () => {
+    mockGetFeatureFlag.mockReturnValue('variant_a_349');
+
+    // A deferred fetch so we can observe the in-flight state.
+    let resolveFetch: (value: Response) => void = () => {};
+    const fetchPromise = new Promise<Response>((resolve) => {
+      resolveFetch = resolve;
+    });
+    globalThis.fetch = vi
+      .fn()
+      .mockReturnValue(fetchPromise) as unknown as typeof fetch;
+
+    render(wrap(<PricingClient />));
+    await waitFor(() =>
+      expect(screen.getByTestId('pricing-premium-card')).toBeInTheDocument(),
+    );
+
+    fireEvent.change(screen.getByTestId('pricing-waitlist-email'), {
+      target: { value: 'user@example.com' },
+    });
+
+    const submit = screen.getByTestId(
+      'pricing-waitlist-submit',
+    ) as HTMLButtonElement;
+    expect(submit.disabled).toBe(false);
+
+    await act(async () => {
+      fireEvent.click(submit);
+    });
+
+    // In flight: the button must be disabled to prevent duplicate submissions.
+    expect(submit.disabled).toBe(true);
+    expect(submit).toHaveAttribute('aria-busy', 'true');
+
+    // Resolve the fetch with a 201 and let the microtask queue drain so the
+    // component transitions out of `submitting`.
+    await act(async () => {
+      resolveFetch(
+        new Response(JSON.stringify({ status: 'created' }), {
+          status: 201,
+          headers: { 'Content-Type': 'application/json' },
+        }),
+      );
+    });
+
+    await waitFor(() =>
+      expect(screen.getByTestId('pricing-waitlist-success')).toBeInTheDocument(),
+    );
   });
 });

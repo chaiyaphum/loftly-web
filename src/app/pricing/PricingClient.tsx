@@ -17,11 +17,14 @@ import { capture } from '@/lib/posthog';
  * stays identical to the baseline, per the feature-flags contract.
  *
  * Waitlist submission:
- *   - POSTs to `/pricing/waitlist` (local route handler). The handler forwards
- *     to `POST /v1/waitlist` if that endpoint exists upstream; otherwise the
- *     handler logs and returns 204. Either way the client emits the PostHog
- *     event `pricing_waitlist_joined` with the variant + tier so ops can
- *     compare interest across variants without a real backend.
+ *   - POSTs to `/pricing/waitlist` (local route handler) which proxies the
+ *     real `POST /v1/waitlist` endpoint on loftly-api. The route returns a
+ *     `{ status: 'created' | 'exists' | 'rate_limited' | 'invalid' | 'error' }`
+ *     body we branch on — the HTTP status is still forwarded but we rely on
+ *     the string so a missing body (e.g. an unexpected 502) still maps onto
+ *     the `error` branch.
+ *   - The submit button is disabled while the request is in flight so a
+ *     double-click doesn't push the caller over the 10/5min/IP rate-limit.
  */
 
 type PricingVariant = 'control' | 'variant_a_349' | 'variant_b_199';
@@ -39,13 +42,52 @@ const VARIANTS = {
 
 type PremiumVariant = Exclude<PricingVariant, 'control'>;
 
+type WaitlistResultStatus =
+  | 'created'
+  | 'exists'
+  | 'rate_limited'
+  | 'invalid'
+  | 'error';
+
 type WaitlistState =
   | { kind: 'idle' }
   | { kind: 'submitting' }
-  | { kind: 'success' }
-  | { kind: 'error'; message: string };
+  | { kind: 'done'; status: WaitlistResultStatus; email: string };
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const SUCCESS_STATUSES: ReadonlySet<WaitlistResultStatus> = new Set([
+  'created',
+  'exists',
+]);
+
+function statusFromResponse(
+  httpStatus: number,
+  body: unknown,
+): WaitlistResultStatus {
+  const fromBody =
+    body &&
+    typeof body === 'object' &&
+    'status' in body &&
+    typeof (body as { status: unknown }).status === 'string'
+      ? ((body as { status: string }).status as WaitlistResultStatus)
+      : undefined;
+  if (
+    fromBody === 'created' ||
+    fromBody === 'exists' ||
+    fromBody === 'rate_limited' ||
+    fromBody === 'invalid' ||
+    fromBody === 'error'
+  ) {
+    return fromBody;
+  }
+  // Body missing/unparseable — fall back to the HTTP status.
+  if (httpStatus === 201) return 'created';
+  if (httpStatus === 200 || httpStatus === 204) return 'exists';
+  if (httpStatus === 422) return 'invalid';
+  if (httpStatus === 429) return 'rate_limited';
+  return 'error';
+}
 
 export function PricingClient() {
   const variant = useFeatureFlag<PricingVariant>(
@@ -146,9 +188,14 @@ function WaitlistForm({
   const onSubmit = React.useCallback(
     async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
+      // Guard against re-entrancy — the button is also `disabled`, but the
+      // form can still be submitted by pressing Enter while the fetch is in
+      // flight in some browsers.
+      if (state.kind === 'submitting') return;
+
       const trimmed = email.trim();
       if (!EMAIL_RE.test(trimmed)) {
-        setState({ kind: 'error', message: t('waitlist_invalid_email') });
+        setState({ kind: 'done', status: 'invalid', email: trimmed });
         return;
       }
       setState({ kind: 'submitting' });
@@ -163,34 +210,48 @@ function WaitlistForm({
         yearly_price_thb: VARIANTS[variant].yearly,
       });
 
+      let res: Response;
       try {
-        const res = await fetch('/pricing/waitlist', {
+        res = await fetch('/pricing/waitlist', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email: trimmed, variant, tier }),
         });
-        if (!res.ok && res.status !== 204) {
-          throw new Error(`status ${res.status}`);
-        }
-        setState({ kind: 'success' });
       } catch {
-        setState({ kind: 'error', message: t('waitlist_error') });
+        setState({ kind: 'done', status: 'error', email: trimmed });
+        return;
       }
+
+      let body: unknown = undefined;
+      try {
+        body = await res.json();
+      } catch {
+        // Empty / non-JSON body — fall back to HTTP status mapping.
+      }
+      const status = statusFromResponse(res.status, body);
+      setState({ kind: 'done', status, email: trimmed });
     },
-    [email, variant, tier, t],
+    [email, variant, tier, state.kind],
   );
 
-  if (state.kind === 'success') {
+  if (state.kind === 'done' && SUCCESS_STATUSES.has(state.status)) {
+    const key = `waitlist.status.${state.status}` as const;
     return (
       <p
         role="status"
         className="rounded-md border border-emerald-200 bg-emerald-50 p-3 text-sm text-emerald-900"
         data-testid="pricing-waitlist-success"
+        data-status={state.status}
       >
-        {t('waitlist_success')}
+        {t(key, { email: state.email })}
       </p>
     );
   }
+
+  const errorMessage =
+    state.kind === 'done'
+      ? t(`waitlist.status.${state.status}` as const, { email: state.email })
+      : null;
 
   return (
     <form onSubmit={onSubmit} className="flex flex-col gap-2">
@@ -202,17 +263,24 @@ function WaitlistForm({
         autoComplete="email"
         required
         data-testid="pricing-waitlist-email"
+        disabled={state.kind === 'submitting'}
       />
       <Button
         type="submit"
         disabled={state.kind === 'submitting'}
         data-testid="pricing-waitlist-submit"
+        aria-busy={state.kind === 'submitting' ? true : undefined}
       >
         {t('waitlist_cta')}
       </Button>
-      {state.kind === 'error' && (
-        <p role="alert" className="text-xs text-red-600">
-          {state.message}
+      {errorMessage && (
+        <p
+          role="alert"
+          className="text-xs text-red-600"
+          data-testid="pricing-waitlist-error"
+          data-status={state.kind === 'done' ? state.status : undefined}
+        >
+          {errorMessage}
         </p>
       )}
     </form>

@@ -603,6 +603,83 @@ export function exportMetrics(
   });
 }
 
+// ---------- Data ingestion coverage (admin · W16 catalog viewer) ----------
+
+/**
+ * Coverage status for a single bank — drives the coloured badge on
+ * `/admin/ingestion`. Backend semantics:
+ *
+ *   - `full`    — deal harvester is running AND manual catalog is up to date;
+ *                 `active_promos_count` ≥ 10 is the target for MVP banks.
+ *   - `partial` — one of the two sources is returning data but the other is
+ *                 lagging or incomplete.
+ *   - `gap`     — neither source has fresh data; the bank needs attention.
+ */
+export type BankCoverageStatus = 'full' | 'partial' | 'gap';
+
+export interface BankCoverage {
+  bank_slug: string;
+  bank_name: string;
+  deal_harvester_count: number;
+  manual_catalog_count: number;
+  active_promos_count: number;
+  last_synced_at: string | null;
+  coverage_status: BankCoverageStatus;
+}
+
+export interface IngestionCoverage {
+  banks: BankCoverage[];
+  unmapped_promos_count: number;
+  overall_coverage_pct: number;
+}
+
+/**
+ * Pulls per-bank ingestion coverage — `deal_harvester_count` +
+ * `manual_catalog_count` plus a roll-up `coverage_status`. Powers the founder's
+ * W16 "where are my data gaps?" page.
+ *
+ * TODO(backend): `GET /v1/admin/ingestion/coverage` is not yet implemented on
+ * loftly-api — the page falls back to a stub with a visible banner until the
+ * endpoint ships.
+ */
+export function getIngestionCoverage(
+  accessToken: string | null,
+  opts: { signal?: AbortSignal } = {},
+): Promise<IngestionCoverage> {
+  return apiFetch<IngestionCoverage>('/admin/ingestion/coverage', {
+    method: 'GET',
+    accessToken: requireToken(accessToken),
+    revalidate: false,
+    signal: opts.signal,
+  });
+}
+
+/**
+ * Kicks off a manual re-sync of the deal harvester for a single bank. Returns
+ * when the backend has accepted the job — the harvester runs async in the
+ * background, so the UI optimistically refreshes after a short delay.
+ *
+ * TODO(backend): `POST /v1/admin/ingestion/{bank_slug}/resync` is not yet
+ * implemented on loftly-api — callers should surface the 404 as an inline
+ * error in the meantime.
+ */
+export function resyncBankIngestion(
+  bankSlug: string,
+  accessToken: string | null,
+  opts: { signal?: AbortSignal } = {},
+): Promise<{ ok: true }> {
+  return apiFetch<{ ok: true }>(
+    `/admin/ingestion/${encodeURIComponent(bankSlug)}/resync`,
+    {
+      method: 'POST',
+      accessToken: requireToken(accessToken),
+      revalidate: false,
+      signal: opts.signal,
+      maxRetries: 0,
+    },
+  );
+}
+
 export async function listAffiliatePartners(
   accessToken: string | null,
   opts: { signal?: AbortSignal } = {},

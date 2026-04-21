@@ -20,6 +20,7 @@ const NAV = [
   { href: '/admin/articles/stale', label: 'Articles · Stale' },
   { href: '/admin/promos', label: 'Promos' },
   { href: '/admin/mapping-queue', label: 'Mapping queue' },
+  { href: '/admin/ingestion', label: 'Data ingestion' },
   { href: '/admin/affiliate', label: 'Affiliate' },
   { href: '/admin/analytics', label: 'Analytics' },
 ] as const;

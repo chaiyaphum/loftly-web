@@ -268,8 +268,37 @@
       "articles": "Articles",
       "promos": "Promos",
       "mappingQueue": "Mapping queue",
+      "ingestion": "Data ingestion",
       "affiliate": "Affiliate",
       "analytics": "Analytics"
+    },
+    "ingestion": {
+      "title": "ความครอบคลุมข้อมูล (Ingestion)",
+      "subtitle": "ดูจำนวน promo จาก deal-harvester เทียบกับ manual catalog ของแต่ละธนาคาร — ใช้เช็คประจำสัปดาห์ว่าช่องโหว่อยู่ตรงไหน",
+      "overallCoverage": "ความครอบคลุมรวม",
+      "unmappedPromos": "Promo ที่ยังไม่ mapped",
+      "unmappedHelp": "ถูก harvest มาแล้วแต่ยังไม่ผูกกับบัตรใด — ดูที่ mapping queue",
+      "mostRecentSync": "Sync ล่าสุด",
+      "never": "ยังไม่เคย",
+      "columns": {
+        "bank": "ธนาคาร",
+        "dealHarvester": "Harvester",
+        "manual": "Manual",
+        "activeTotal": "Active",
+        "lastSynced": "Sync ล่าสุด",
+        "status": "สถานะ",
+        "actions": "การดำเนินการ"
+      },
+      "statusFull": "ครบ",
+      "statusPartial": "บางส่วน",
+      "statusGap": "ขาด",
+      "viewPromos": "ดู promo ล่าสุด →",
+      "resyncCta": "Re-sync harvester",
+      "resyncRunning": "กำลัง re-sync…",
+      "resyncDone": "เพิ่มเข้าคิวแล้ว",
+      "resyncMissingEndpoint": "ยังไม่มี endpoint re-sync (loftly-api TODO)",
+      "stubBanner": "GET /v1/admin/ingestion/coverage ยังไม่พร้อม — ตัวเลขด้านล่างเป็น stub สำหรับพัฒนา UI",
+      "loadError": "โหลดข้อมูล ingestion ไม่สำเร็จ — กรุณารีเฟรช"
     },
     "analytics": {
       "title": "Analytics",

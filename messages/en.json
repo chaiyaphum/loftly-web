@@ -274,7 +274,33 @@
       "mappingQueue": "Mapping queue",
       "ingestion": "Data ingestion",
       "affiliate": "Affiliate",
-      "analytics": "Analytics"
+      "analytics": "Analytics",
+      "waitlist": "Waitlist"
+    },
+    "waitlist": {
+      "title": "Waitlist signups",
+      "subtitle": "Emails captured from the pricing page and coming-soon landers.",
+      "summaryShown": "{count} shown",
+      "summaryBreakdown": "pricing: {pricing} · coming-soon: {comingSoon}",
+      "filterSource": "Source",
+      "filterAll": "All",
+      "filterPricing": "Pricing",
+      "filterComingSoon": "Coming soon",
+      "loadMore": "Load more",
+      "loadingMore": "Loading…",
+      "exportCsv": "Export CSV",
+      "exporting": "Exporting…",
+      "exportError": "Export failed — please try again.",
+      "emptyState": "No signups yet.",
+      "loadError": "Failed to load waitlist — please refresh.",
+      "columns": {
+        "createdAt": "Created",
+        "email": "Email",
+        "source": "Source",
+        "variant": "Variant",
+        "tier": "Tier",
+        "monthlyPriceThb": "THB / mo"
+      }
     },
     "ingestion": {
       "title": "Data ingestion coverage",

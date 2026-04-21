@@ -251,6 +251,106 @@ export function updateAdminArticle(
   });
 }
 
+// ---------- Stale articles (re-verification) ----------
+
+export interface StaleArticleCard {
+  id: string;
+  slug: string;
+  display_name: string;
+}
+
+export interface StaleArticleBank {
+  slug: string;
+  display_name_en: string;
+  display_name_th: string;
+}
+
+export interface StaleArticleReviewer {
+  actor_id: string;
+  actor_email: string;
+  reviewed_at: string | null;
+}
+
+export interface StaleArticle {
+  id: string;
+  slug: string;
+  title_th: string;
+  state: ArticleState;
+  updated_at: string | null;
+  policy_version: string;
+  card: StaleArticleCard | null;
+  bank: StaleArticleBank | null;
+  last_reviewed_by: StaleArticleReviewer | null;
+}
+
+export interface StalePagination {
+  page: number;
+  page_size: number;
+  total: number;
+  has_more: boolean;
+}
+
+export interface StaleArticleList {
+  data: StaleArticle[];
+  pagination: StalePagination;
+  threshold_days: number;
+  cutoff: string;
+}
+
+/**
+ * List articles whose `updated_at` is older than `days` days, sorted
+ * oldest-first (20 per page). Default threshold: 90 days, default state:
+ * `published`. `issuer` filters by bank slug.
+ */
+export function listStaleArticles(
+  accessToken: string | null,
+  opts: {
+    days?: number;
+    state?: ArticleState;
+    issuer?: string;
+    page?: number;
+    signal?: AbortSignal;
+  } = {},
+): Promise<StaleArticleList> {
+  return apiFetch<StaleArticleList>('/admin/articles/stale', {
+    method: 'GET',
+    accessToken: requireToken(accessToken),
+    query: {
+      days: opts.days,
+      state: opts.state,
+      issuer: opts.issuer,
+      page: opts.page,
+    },
+    revalidate: false,
+    signal: opts.signal,
+  });
+}
+
+export interface MarkReviewedResponse {
+  id: string;
+  slug: string;
+  state: ArticleState;
+  updated_at: string;
+}
+
+/** Bump `updated_at = NOW()` and write an `article.reviewed` audit row. */
+export function markArticleReviewed(
+  id: string,
+  accessToken: string | null,
+  opts: { signal?: AbortSignal } = {},
+): Promise<MarkReviewedResponse> {
+  return apiFetch<MarkReviewedResponse>(
+    `/admin/articles/${encodeURIComponent(id)}/mark-reviewed`,
+    {
+      method: 'POST',
+      accessToken: requireToken(accessToken),
+      revalidate: false,
+      signal: opts.signal,
+      maxRetries: 0,
+    },
+  );
+}
+
 // ---------- Promos ----------
 
 export function listAdminPromos(

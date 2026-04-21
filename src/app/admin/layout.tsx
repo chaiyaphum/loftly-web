@@ -13,6 +13,11 @@ export const dynamic = 'force-dynamic';
 const NAV = [
   { href: '/admin/cards', label: 'Cards' },
   { href: '/admin/articles', label: 'Articles' },
+  // Re-verification sub-entry under Articles — surfaced at the top level in
+  // the MVP admin because we don't yet have nested nav groups (UI_WEB.md
+  // §admin). Sibling of Articles rather than a submenu keeps click depth low
+  // for the weekly content sweep.
+  { href: '/admin/articles/stale', label: 'Articles · Stale' },
   { href: '/admin/promos', label: 'Promos' },
   { href: '/admin/mapping-queue', label: 'Mapping queue' },
   { href: '/admin/affiliate', label: 'Affiliate' },

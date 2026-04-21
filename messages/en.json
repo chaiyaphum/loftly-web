@@ -23,6 +23,25 @@
     "perMonth": "per month",
     "updatedAt": "Updated {date}"
   },
+  "errors": {
+    "skipToMain": "Skip to main content",
+    "notFound": {
+      "title": "Page not found",
+      "subtitle": "This page may have moved, or the URL was typed incorrectly.",
+      "cta_home": "Back to home",
+      "cta_cards": "Browse card reviews",
+      "cta_selector": "Find the right card",
+      "supportText": "Think this is a bug? Tell us at {email} — we reply within 24 hours."
+    },
+    "serverError": {
+      "title": "Something went wrong",
+      "subtitle": "Try reloading this page. If it still fails, please contact us.",
+      "cta_retry": "Try again",
+      "cta_home": "Back to home",
+      "errorCode": "Error code: {digest}",
+      "supportText": "Contact us at {email} — include the error code above if shown."
+    }
+  },
   "landing": {
     "title": "Lift your rewards with AI",
     "subtitle": "ยกระดับทุกแต้มบัตรเครดิตของคุณ",

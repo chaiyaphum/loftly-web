@@ -803,6 +803,37 @@
     "codeHint": "Case-sensitive. The code is in the email from the Loftly team.",
     "submit": "Unlock Loftly ▸",
     "errorInvalid": "That code isn't valid or has been revoked. Double-check the email we sent, or reply to it for a new code.",
-    "noAccess": "Don't have a code yet? We're letting in a small wave at a time — reply to the waitlist email and we'll follow up."
+    "noAccess": "Don't have a code yet? We're letting in a small wave at a time — reply to the waitlist email and we'll follow up.",
+    "required": {
+      "page": {
+        "title": "Loftly is invite-only right now",
+        "subtitle": "We're running a closed soft launch with 50 invites per wave. Three ways from here — enter a code, join the waitlist, or follow along until the next wave opens."
+      },
+      "section": {
+        "haveCode": {
+          "title": "I have an invite code",
+          "submit": "Unlock Loftly ▸"
+        },
+        "joinWaitlist": {
+          "title": "Request a code (waitlist)",
+          "body": "Drop your email and we'll send a code in the next wave. No spam — one email when a slot opens.",
+          "emailLabel": "Email",
+          "submit": "Add me to the waitlist ▸",
+          "status": {
+            "created": "We've got {email} on the list — we'll send a code in the next wave 🎉",
+            "exists": "You're already on the waitlist 👍 We'll send a code when the next wave opens.",
+            "rate_limited": "Please try again in 5 minutes (too many signups from this network).",
+            "invalid": "That email doesn't look right.",
+            "error": "Something went wrong — please try again."
+          }
+        },
+        "followLaunch": {
+          "title": "Follow along until the next wave",
+          "pantip": "Join the Loftly Pantip AMA thread ▸",
+          "line": "Add the Loftly LINE Official Account (@loftly) ▸",
+          "twitter": "Follow @loftly_th on X ▸"
+        }
+      }
+    }
   }
 }

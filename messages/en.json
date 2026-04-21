@@ -54,6 +54,7 @@
     "skip": "or skip",
     "submit": "See recommended cards ▸",
     "submitting": "Calculating…",
+    "streaming": "Streaming…",
     "categories": {
       "dining": "Dining",
       "online": "Online",
@@ -109,7 +110,8 @@
       "methodAction": "How it's calculated",
       "resetAction": "Reset",
       "saveAction": "Save",
-      "saveHint": "Enter an email above to save these results"
+      "saveHint": "Enter an email above to save these results",
+      "streamingLabel": "Generating rationale…"
     }
   },
   "results": {
@@ -201,7 +203,193 @@
       "apple": "Apple",
       "line": "LINE"
     },
-    "mockNotice": "Real OAuth isn't wired up yet — the buttons below are mocks so the UX flow can be walked end to end."
+    "errors": {
+      "oauth_failed": "Sign-in didn't work — please try again or use another provider.",
+      "oauth_provider_unavailable": "This provider isn't ready yet — please try another option."
+    }
+  },
+  "gated": {
+    "title": "Loftly is currently in soft launch",
+    "body": "We're opening the beta to a small set of invited testers first. Enter your invite code or ask us for access.",
+    "contactCta": "Contact the team"
+  },
+  "admin": {
+    "nav": {
+      "dashboard": "Dashboard",
+      "cards": "Cards",
+      "articles": "Articles",
+      "promos": "Promos",
+      "mappingQueue": "Mapping queue",
+      "affiliate": "Affiliate"
+    },
+    "topbar": {
+      "signedInAs": "Signed in as",
+      "logout": "Logout"
+    },
+    "cards": {
+      "indexTitle": "Cards",
+      "newCta": "New card",
+      "filters": {
+        "status": "Status",
+        "all": "All",
+        "active": "Active",
+        "inactive": "Inactive",
+        "archived": "Archived"
+      },
+      "columns": {
+        "name": "Name",
+        "bank": "Bank",
+        "network": "Network",
+        "annualFee": "Annual fee",
+        "status": "Status"
+      },
+      "edit": "Edit",
+      "emptyState": "No cards yet. Create one to get started.",
+      "newTitle": "New card",
+      "editTitle": "Edit card",
+      "fields": {
+        "displayName": "Display name",
+        "slug": "Slug",
+        "bankSlug": "Bank slug",
+        "tier": "Tier",
+        "network": "Network",
+        "annualFee": "Annual fee (THB)",
+        "annualFeeWaiver": "Annual fee waiver",
+        "minIncome": "Min income (THB)",
+        "minAge": "Min age",
+        "earnCurrency": "Earn currency code",
+        "earnRateLocal": "Earn rate — local (JSON)",
+        "earnRateForeign": "Earn rate — foreign (JSON)",
+        "benefits": "Benefits (JSON)",
+        "signupBonus": "Signup bonus",
+        "bonusPoints": "Bonus points",
+        "spendRequired": "Spend required (THB)",
+        "timeframeDays": "Timeframe (days)",
+        "descriptionTh": "Description (Thai)",
+        "descriptionEn": "Description (English)",
+        "status": "Status"
+      },
+      "save": "Save",
+      "saving": "Saving…",
+      "saveError": "Couldn't save — check the form and try again.",
+      "jsonError": "Not valid JSON"
+    },
+    "articles": {
+      "indexTitle": "Articles",
+      "newCta": "New article",
+      "filters": {
+        "state": "State",
+        "cardId": "Card",
+        "all": "All"
+      },
+      "columns": {
+        "title": "Title",
+        "type": "Type",
+        "state": "State",
+        "updated": "Updated"
+      },
+      "states": {
+        "draft": "Draft",
+        "review": "Review",
+        "published": "Published",
+        "archived": "Archived"
+      },
+      "newTitle": "New article",
+      "editTitle": "Edit article",
+      "fields": {
+        "slug": "Slug",
+        "cardId": "Card ID",
+        "articleType": "Article type",
+        "titleTh": "Title (Thai)",
+        "titleEn": "Title (English)",
+        "summaryTh": "Summary (Thai)",
+        "summaryEn": "Summary (English)",
+        "bodyTh": "Body (Thai, Markdown)",
+        "bodyEn": "Body (English, Markdown)",
+        "bestForTags": "Best-for tags (comma separated)",
+        "state": "State"
+      },
+      "preview": "Preview",
+      "transition": "Transition to: {state}"
+    },
+    "promos": {
+      "indexTitle": "Promos",
+      "newCta": "New manual promo",
+      "filters": {
+        "bank": "Bank",
+        "active": "Active only",
+        "manualOnly": "Manual only (no external source)"
+      },
+      "columns": {
+        "title": "Title",
+        "bank": "Bank",
+        "type": "Type",
+        "validUntil": "Valid until",
+        "source": "Source",
+        "active": "Active"
+      },
+      "syncedLabel": "Synced",
+      "manualLabel": "Manual",
+      "newTitle": "New manual promo",
+      "editTitle": "Edit promo",
+      "fields": {
+        "bankSlug": "Bank slug",
+        "sourceUrl": "Source URL",
+        "promoType": "Promo type",
+        "titleTh": "Title (Thai)",
+        "titleEn": "Title (English)",
+        "descriptionTh": "Description (Thai)",
+        "merchantName": "Merchant",
+        "category": "Category",
+        "discountType": "Discount type",
+        "discountValue": "Discount value",
+        "discountAmount": "Discount amount",
+        "discountUnit": "Discount unit",
+        "minimumSpend": "Minimum spend (THB)",
+        "validFrom": "Valid from",
+        "validUntil": "Valid until",
+        "cardIds": "Card IDs (comma separated)",
+        "active": "Active"
+      },
+      "readOnlyNotice": "This promo was synced from an external source — key fields are read-only to prevent drift."
+    },
+    "mapping": {
+      "indexTitle": "Mapping queue",
+      "subtitle": "Unresolved promos harvested from banks — assign to cards to publish them.",
+      "totalCount": "{n} pending",
+      "columns": {
+        "title": "Promo",
+        "bank": "Bank",
+        "cardTypes": "Raw card types",
+        "suggested": "Suggested",
+        "action": "Action"
+      },
+      "assign": "Assign",
+      "assigning": "Assigning…",
+      "assignSuccess": "Mapped — promo will appear on those card pages after cache invalidation.",
+      "selectCards": "Select card IDs (comma separated)",
+      "emptyState": "Queue is empty."
+    },
+    "affiliate": {
+      "indexTitle": "Affiliate dashboard",
+      "periodLabel": "Last {days} days",
+      "metrics": {
+        "clicks": "Clicks",
+        "conversions": "Conversions",
+        "conversionRate": "Conversion rate",
+        "commissionPending": "Commission pending",
+        "commissionConfirmed": "Commission confirmed",
+        "commissionPaid": "Commission paid"
+      },
+      "byCardTitle": "Top by card",
+      "byCardColumns": {
+        "slug": "Card",
+        "clicks": "Clicks",
+        "conversions": "Conversions",
+        "commission": "Commission"
+      },
+      "exportCta": "Download CSV ▸"
+    }
   },
   "consent": {
     "pageTitle": "Loftly would like to use your data to",
@@ -283,7 +471,27 @@
     "termsTitle": "Terms of Service",
     "affiliateDisclosureTitle": "Affiliate disclosure",
     "affiliateDisclosureInline": "Loftly earns commission from the bank — no extra cost to you",
-    "affiliateDisclosureFull": "Loftly earns a commission when you apply for a card through our links, at no extra cost to you. Our current partners include MoneyGuru, KTC, and UOB — we disclose all commercial relationships so you can evaluate our recommendations neutrally. Our analyses and scores are not adjusted in favor of any specific partner."
+    "affiliateDisclosureFull": "Loftly earns a commission when you apply for a card through our links, at no extra cost to you. Our current partners include MoneyGuru, KTC, and UOB — we disclose all commercial relationships so you can evaluate our recommendations neutrally. Our analyses and scores are not adjusted in favor of any specific partner.",
+    "lastUpdatedLabel": "Last updated",
+    "lastUpdatedValue": "21 April 2026",
+    "tocLabel": "On this page",
+    "placeholderNotice": "This policy is in draft — the final Thai-localized copy is pending legal review ahead of the Month 3 soft-launch.",
+    "privacyToc": {
+      "whoWeAre": "Who we are",
+      "dataWeCollect": "Data we collect",
+      "lawfulBasis": "Lawful basis (PDPA §19)",
+      "yourRights": "Your PDPA rights",
+      "retention": "Retention periods",
+      "contact": "Contact & DPO"
+    },
+    "termsToc": {
+      "service": "The Loftly service",
+      "accuracy": "Data accuracy & disclaimers",
+      "accounts": "Accounts & eligibility",
+      "affiliate": "Affiliate relationships",
+      "liability": "Limitation of liability",
+      "law": "Governing law"
+    }
   },
   "apply": {
     "interstitial": "Taking you to the bank ▸"

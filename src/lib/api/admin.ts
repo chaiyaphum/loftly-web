@@ -115,6 +115,17 @@ export interface MappingQueueItem {
   bank_slug: string;
   card_types_raw: string[];
   suggested_card_ids: string[];
+  /**
+   * ISO timestamp of the last harvester sync for this promo. Drives the
+   * "Unresolved > X days" client-side filter. Optional for backward
+   * compatibility — older backend revisions omit the field; treat missing
+   * values as "unknown age" and surface them in all filter windows.
+   *
+   * TODO(backend): `GET /v1/admin/mapping-queue` should include
+   * `last_synced_at` in each row so the days-unresolved filter works without a
+   * second query. Already exists on the `promos` table.
+   */
+  last_synced_at?: string | null;
 }
 
 export interface MappingQueue {
@@ -437,6 +448,75 @@ export function assignMappingQueueItem(
       maxRetries: 0,
     },
   );
+}
+
+export interface BulkAssignProgress {
+  completed: number;
+  total: number;
+  failed: Array<{ promo_id: string; message: string }>;
+}
+
+/**
+ * Assign the same set of `card_ids` to every promo in `promoIds`.
+ *
+ * TODO(backend): once `POST /v1/admin/mapping-queue/bulk-assign` ships
+ * (body: `{ promo_ids, card_ids }`), replace the per-row loop with a single
+ * call. The helper's signature is already bulk-shaped so callers won't need to
+ * change.
+ *
+ * Current implementation: sequential per-row `assignMappingQueueItem` calls.
+ * Sequential (not parallel) because the per-row endpoint writes to
+ * `promo_card_map` with no transactional batching — a burst of concurrent
+ * writes would risk lock contention on SQLite during the MVP window. The
+ * `onProgress` callback fires after each row so the UI can surface a progress
+ * bar.
+ */
+export async function bulkAssignMappingQueueItems(
+  promoIds: string[],
+  cardIds: string[],
+  accessToken: string | null,
+  opts: {
+    signal?: AbortSignal;
+    onProgress?: (progress: BulkAssignProgress) => void;
+  } = {},
+): Promise<BulkAssignProgress> {
+  const token = requireToken(accessToken);
+  const total = promoIds.length;
+  const failed: BulkAssignProgress['failed'] = [];
+  let completed = 0;
+
+  for (const promoId of promoIds) {
+    if (opts.signal?.aborted) break;
+    try {
+      // Inlined per-row POST — when the backend bulk endpoint lands, swap the
+      // entire loop for a single `apiFetch('/admin/mapping-queue/bulk-assign')`.
+      // Inlining (rather than calling `assignMappingQueueItem`) keeps the loop
+      // easy to mock in tests via the `apiFetch` boundary.
+      await apiFetch<void>(
+        `/admin/mapping-queue/${encodeURIComponent(promoId)}/assign`,
+        {
+          method: 'POST',
+          body: { card_ids: cardIds },
+          accessToken: token,
+          revalidate: false,
+          signal: opts.signal,
+          maxRetries: 0,
+        },
+      );
+    } catch (err) {
+      const message =
+        err instanceof LoftlyAPIError
+          ? err.message_en
+          : err instanceof Error
+            ? err.message
+            : 'Unknown error';
+      failed.push({ promo_id: promoId, message });
+    }
+    completed += 1;
+    opts.onProgress?.({ completed, total, failed: [...failed] });
+  }
+
+  return { completed, total, failed };
 }
 
 // ---------- Affiliate stats ----------

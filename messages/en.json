@@ -635,6 +635,30 @@
     "consentTitle": "Manage data consents",
     "exportTitle": "Download your personal data",
     "deleteTitle": "Delete account",
+    "hero": {
+      "email": "Signed in as",
+      "since": "Member since",
+      "lastLogin": "Last login"
+    },
+    "cards": {
+      "consent": {
+        "title": "Data consents",
+        "desc": "Review which data uses you've allowed — optimization, marketing, analytics, partner sharing.",
+        "cta": "Manage consents"
+      },
+      "dataExport": {
+        "title": "Download your data",
+        "desc": "Get a JSON + CSV copy of everything we hold on you. PDPA §7 right-to-access, ready in 24h.",
+        "cta": "Request export"
+      },
+      "delete": {
+        "title": "Delete account",
+        "desc": "Start the 14-day erasure grace period. You can cancel any time before it completes.",
+        "cta": "Delete account"
+      }
+    },
+    "signOut": "Sign out",
+    "loadError": "We couldn't load your profile right now — your settings are still accessible below.",
     "dataExport": {
       "title": "Download your personal data (PDPA)",
       "intro": "You have the right to a copy of your data under PDPA §7 — we'll package it as JSON + CSV and deliver a download link within 24 hours.",

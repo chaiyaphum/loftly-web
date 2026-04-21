@@ -1,7 +1,9 @@
 import { apiFetch } from './client';
 import type {
   Card,
+  CardComparisonList,
   CardList,
+  CardSimilarList,
   ConsentState,
   ConsentUpdate,
   Valuation,
@@ -39,6 +41,45 @@ export function getCard(
     accessToken: null,
     revalidate: opts.revalidate ?? 300,
   });
+}
+
+/**
+ * Fetch up to 3 cards' comparison rows for the `/cards/[slug]` compare widget.
+ * Backend guarantees response order matches the input `slugs` order and 404s
+ * when any slug is missing.
+ */
+export function compareCards(
+  slugs: string[],
+  opts: { revalidate?: number | false; signal?: AbortSignal } = {},
+): Promise<CardComparisonList> {
+  return apiFetch<CardComparisonList>('/cards/compare', {
+    method: 'GET',
+    query: { slugs: slugs.join(',') },
+    accessToken: null,
+    revalidate: opts.revalidate ?? 300,
+    signal: opts.signal,
+  });
+}
+
+/**
+ * Fetch up to `limit` similar cards for the compare-picker autocomplete.
+ * Ranked server-side by issuer > earn currency > tier match.
+ */
+export function listSimilarCards(
+  slug: string,
+  params: { limit?: number } = {},
+  opts: { revalidate?: number | false; signal?: AbortSignal } = {},
+): Promise<CardSimilarList> {
+  return apiFetch<CardSimilarList>(
+    `/cards/similar/${encodeURIComponent(slug)}`,
+    {
+      method: 'GET',
+      query: { limit: params.limit },
+      accessToken: null,
+      revalidate: opts.revalidate ?? 300,
+      signal: opts.signal,
+    },
+  );
 }
 
 export function listValuations(

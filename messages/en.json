@@ -161,7 +161,38 @@
     },
     "applyPrimaryCta": "Apply through Loftly ▸",
     "noValuation": "No valuation available for this currency yet",
-    "disclaimer": "Data maintained by Loftly, sourced from bank sites as of the update date — actual terms may change."
+    "disclaimer": "Data maintained by Loftly, sourced from bank sites as of the update date — actual terms may change.",
+    "compare": {
+      "title": "Compare with other cards",
+      "cta_expand": "Compare with other cards ▸",
+      "picker_placeholder": "Pick up to 2 cards to compare",
+      "picker_max_reached": "Maximum 2 additional cards",
+      "compare_button": "Compare",
+      "empty_state": "Select at least one card to compare",
+      "earn_rate_by_category": "Earn rate by category",
+      "transfer_partners": "Transfer partners",
+      "valuation": "THB per point",
+      "score": "Loftly score",
+      "apply": "Apply",
+      "loadError": "Couldn't load comparison data — please try again.",
+      "loading": "Loading comparison…",
+      "pickerEmpty": "No similar cards available yet",
+      "categories": {
+        "dining": "Dining",
+        "online": "Online",
+        "grocery": "Grocery",
+        "travel": "Travel",
+        "petrol": "Petrol",
+        "default": "Default"
+      },
+      "columns": {
+        "displayName": "Card",
+        "issuer": "Issuer",
+        "tier": "Tier",
+        "annualFee": "Annual fee",
+        "minIncome": "Min income"
+      }
+    }
   },
   "valuations": {
     "indexTitle": "Point & mile valuations — 80th-percentile methodology",

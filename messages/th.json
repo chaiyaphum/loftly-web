@@ -1,0 +1,71 @@
+{
+  "meta": {
+    "siteName": "Loftly",
+    "tagline": "ยกระดับทุกแต้มของคุณ"
+  },
+  "nav": {
+    "signIn": "เข้าสู่ระบบ",
+    "cards": "บัตรทั้งหมด",
+    "valuations": "มูลค่าแต้ม",
+    "selector": "ค้นหาบัตรที่ใช่"
+  },
+  "landing": {
+    "title": "ยกระดับทุกแต้มบัตรเครดิตของคุณ",
+    "subtitle": "Lift your rewards with AI",
+    "cta": "ค้นหาบัตรที่ใช่ ▸",
+    "reassurance": "ใช้ฟรี · ไม่ต้องสมัคร · ได้ผลใน 10 วินาที",
+    "howItWorksTitle": "Loftly ทำงานยังไง",
+    "howItWorks": {
+      "step1": "บอกพวกเราเรื่องการใช้จ่าย",
+      "step2": "AI คำนวณบัตรที่ทำให้ได้แต้มเยอะที่สุด",
+      "step3": "สมัครบัตรผ่าน Loftly ฟรี"
+    },
+    "latestReviewsTitle": "รีวิวล่าสุด",
+    "latestValuationsTitle": "มูลค่าแต้มล่าสุด"
+  },
+  "selector": {
+    "title": "ค้นหาบัตรที่ใช่",
+    "back": "← กลับ",
+    "monthlySpendLabel": "ใช้จ่ายเฉลี่ยต่อเดือน",
+    "categoriesLabel": "แบ่งเป็นหมวด (ลากแถบเพื่อปรับ)",
+    "goalLabel": "เป้าหมาย",
+    "currentCardsLabel": "บัตรที่คุณถืออยู่ (ถ้ามี)",
+    "submit": "ค้นหาบัตรแนะนำ ▸"
+  },
+  "results": {
+    "title": "ผลการวิเคราะห์",
+    "primaryLabel": "Primary",
+    "secondaryLabel": "Secondary (เสริม)",
+    "emailGateTitle": "ใส่อีเมลเพื่อดูผลลัพธ์เต็ม",
+    "emailGateSubmit": "ส่งลิงก์ ▸"
+  },
+  "cards": {
+    "indexTitle": "รีวิวบัตรเครดิตไทย",
+    "reviewTitle": "รีวิวโดย Loftly",
+    "applyCta": "สมัครผ่าน Loftly ▸"
+  },
+  "valuations": {
+    "indexTitle": "มูลค่าแต้มทั้ง 5 สกุล",
+    "currencyTitle": "มูลค่าแต้ม {currency}"
+  },
+  "onboarding": {
+    "title": "เริ่มใช้งาน Loftly",
+    "consentTitle": "Loftly จะขอใช้ข้อมูลของคุณเพื่อ",
+    "consentSubmit": "ยืนยัน และเริ่มใช้งาน ▸"
+  },
+  "account": {
+    "title": "บัญชีของคุณ",
+    "consentTitle": "จัดการการยินยอมข้อมูล",
+    "exportTitle": "ดาวน์โหลดข้อมูลส่วนตัว",
+    "deleteTitle": "ลบบัญชี"
+  },
+  "legal": {
+    "privacyTitle": "นโยบายความเป็นส่วนตัว",
+    "termsTitle": "ข้อกำหนดการใช้งาน",
+    "affiliateDisclosureTitle": "การเปิดเผย Affiliate",
+    "affiliateDisclosureInline": "Loftly ได้ค่าคอมจากธนาคาร — ไม่มีค่าใช้จ่ายเพิ่มสำหรับคุณ"
+  },
+  "apply": {
+    "interstitial": "กำลังพาคุณไปที่ธนาคาร ▸"
+  }
+}

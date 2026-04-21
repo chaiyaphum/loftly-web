@@ -1,0 +1,71 @@
+{
+  "meta": {
+    "siteName": "Loftly",
+    "tagline": "Lift your rewards"
+  },
+  "nav": {
+    "signIn": "Sign in",
+    "cards": "All cards",
+    "valuations": "Point valuations",
+    "selector": "Find the right card"
+  },
+  "landing": {
+    "title": "Lift your rewards with AI",
+    "subtitle": "ยกระดับทุกแต้มบัตรเครดิตของคุณ",
+    "cta": "Find the right card ▸",
+    "reassurance": "Free · No sign-up · Results in 10 seconds",
+    "howItWorksTitle": "How Loftly works",
+    "howItWorks": {
+      "step1": "Tell us about your spending",
+      "step2": "AI calculates the cards that maximize your points",
+      "step3": "Apply through Loftly, free"
+    },
+    "latestReviewsTitle": "Latest reviews",
+    "latestValuationsTitle": "Latest valuations"
+  },
+  "selector": {
+    "title": "Find the right card",
+    "back": "← Back",
+    "monthlySpendLabel": "Average monthly spend",
+    "categoriesLabel": "Break down by category (drag to adjust)",
+    "goalLabel": "Goal",
+    "currentCardsLabel": "Cards you already hold (optional)",
+    "submit": "See recommended cards ▸"
+  },
+  "results": {
+    "title": "Your results",
+    "primaryLabel": "Primary",
+    "secondaryLabel": "Secondary (complement)",
+    "emailGateTitle": "Enter your email to unlock full results",
+    "emailGateSubmit": "Send link ▸"
+  },
+  "cards": {
+    "indexTitle": "Thai credit card reviews",
+    "reviewTitle": "Reviewed by Loftly",
+    "applyCta": "Apply through Loftly ▸"
+  },
+  "valuations": {
+    "indexTitle": "THB valuations across 5 currencies",
+    "currencyTitle": "{currency} valuation"
+  },
+  "onboarding": {
+    "title": "Get started with Loftly",
+    "consentTitle": "Loftly would like to use your data to",
+    "consentSubmit": "Confirm and continue ▸"
+  },
+  "account": {
+    "title": "Your account",
+    "consentTitle": "Manage data consents",
+    "exportTitle": "Download your personal data",
+    "deleteTitle": "Delete account"
+  },
+  "legal": {
+    "privacyTitle": "Privacy Policy",
+    "termsTitle": "Terms of Service",
+    "affiliateDisclosureTitle": "Affiliate disclosure",
+    "affiliateDisclosureInline": "Loftly earns commission from the bank — no extra cost to you"
+  },
+  "apply": {
+    "interstitial": "Taking you to the bank ▸"
+  }
+}

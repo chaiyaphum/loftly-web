@@ -1,0 +1,47 @@
+name: E2E Smoke (staging)
+
+on:
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: 'Target base URL (defaults to staging)'
+        required: false
+        default: 'https://loftly-web-staging-xymb5.ondigitalocean.app'
+  schedule:
+    # 02:00 UTC = 09:00 ICT — a quiet window after nightly deploys.
+    - cron: '0 2 * * *'
+
+jobs:
+  smoke:
+    name: Playwright smoke — staging
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      E2E_BASE_URL: ${{ github.event.inputs.base_url || 'https://loftly-web-staging-xymb5.ondigitalocean.app' }}
+      CI: 'true'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Run smoke tests
+        run: npm run test:e2e
+
+      - name: Upload Playwright HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report-${{ github.run_id }}
+          path: playwright-report/
+          retention-days: 14

@@ -252,8 +252,37 @@
       "articles": "Articles",
       "promos": "Promos",
       "mappingQueue": "Mapping queue",
+      "ingestion": "Data ingestion",
       "affiliate": "Affiliate",
       "analytics": "Analytics"
+    },
+    "ingestion": {
+      "title": "Data ingestion coverage",
+      "subtitle": "Per-bank view of deal-harvester vs. manual-catalog counts — use this page weekly to spot where the pipeline has gaps.",
+      "overallCoverage": "Overall coverage",
+      "unmappedPromos": "Unmapped promos",
+      "unmappedHelp": "Harvested but not yet tied to a card — see mapping queue.",
+      "mostRecentSync": "Most recent sync",
+      "never": "Never",
+      "columns": {
+        "bank": "Bank",
+        "dealHarvester": "Harvester",
+        "manual": "Manual",
+        "activeTotal": "Active",
+        "lastSynced": "Last synced",
+        "status": "Status",
+        "actions": "Actions"
+      },
+      "statusFull": "Full",
+      "statusPartial": "Partial",
+      "statusGap": "Gap",
+      "viewPromos": "View recent promos →",
+      "resyncCta": "Re-sync harvester",
+      "resyncRunning": "Re-syncing…",
+      "resyncDone": "Re-sync queued",
+      "resyncMissingEndpoint": "Re-sync endpoint not live yet (loftly-api TODO).",
+      "stubBanner": "GET /v1/admin/ingestion/coverage is not live yet — numbers below are stub data for UI development.",
+      "loadError": "Failed to load ingestion coverage — please refresh."
     },
     "analytics": {
       "title": "Analytics",

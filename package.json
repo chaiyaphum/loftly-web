@@ -12,6 +12,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
+    "test:e2e:postv1": "playwright test e2e/post-v1/",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "pages:build": "npx @cloudflare/next-on-pages",

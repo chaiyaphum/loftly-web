@@ -510,5 +510,15 @@
       "expiredBody": "Magic links are valid for 15 minutes and can only be used once. Request a fresh link to continue.",
       "expiredCta": "Request a new link ▸"
     }
+  },
+  "invite": {
+    "title": "Invite-only preview",
+    "subtitle": "Loftly is in a closed soft launch. Enter the invite code we sent you to continue.",
+    "codeLabel": "Invite code",
+    "codePlaceholder": "e.g. A1B2C3D4",
+    "codeHint": "Case-sensitive. The code is in the email from the Loftly team.",
+    "submit": "Unlock Loftly ▸",
+    "errorInvalid": "That code isn't valid or has been revoked. Double-check the email we sent, or reply to it for a new code.",
+    "noAccess": "Don't have a code yet? We're letting in a small wave at a time — reply to the waitlist email and we'll follow up."
   }
 }

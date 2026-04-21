@@ -1,6 +1,14 @@
 import createNextIntlPlugin from 'next-intl/plugin';
+import createBundleAnalyzer from '@next/bundle-analyzer';
 
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
+
+// Bundle analyzer — only enabled when ANALYZE=true. Writes client.html /
+// server.html / edge.html into `.next/analyze/` for inspection.
+const withBundleAnalyzer = createBundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+  openAnalyzer: false,
+});
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -17,7 +25,7 @@ const nextConfig = {
   poweredByHeader: false,
 };
 
-const withIntlApplied = withNextIntl(nextConfig);
+const withIntlApplied = withBundleAnalyzer(withNextIntl(nextConfig));
 
 // Sentry wrapper — only applied when the DSN env var is set. Otherwise we ship
 // the vanilla config (avoids upload-source-maps failures on preview builds).

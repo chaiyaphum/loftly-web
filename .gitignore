@@ -16,6 +16,9 @@ dist/
 .vercel/
 .wrangler/
 
+# lighthouse ci
+.lighthouseci/
+
 # env
 .env
 .env.local

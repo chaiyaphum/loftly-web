@@ -1,0 +1,56 @@
+[
+  {
+    "name": "Shared framework chunk",
+    "path": ".next/static/chunks/framework-*.js",
+    "limit": "60 KB",
+    "gzip": true
+  },
+  {
+    "name": "Shared main chunk",
+    "path": ".next/static/chunks/main-*.js",
+    "limit": "40 KB",
+    "gzip": true
+  },
+  {
+    "name": "Shared webpack runtime",
+    "path": ".next/static/chunks/webpack-*.js",
+    "limit": "10 KB",
+    "gzip": true
+  },
+  {
+    "name": "Polyfills",
+    "path": ".next/static/chunks/polyfills-*.js",
+    "limit": "45 KB",
+    "gzip": true
+  },
+  {
+    "name": "Shared vendor chunks (all)",
+    "path": ".next/static/chunks/[0-9]*-*.js",
+    "limit": "175 KB",
+    "gzip": true
+  },
+  {
+    "name": "Selector route bundle",
+    "path": ".next/static/chunks/app/selector/**/page-*.js",
+    "limit": "20 KB",
+    "gzip": true
+  },
+  {
+    "name": "Cards route bundle",
+    "path": ".next/static/chunks/app/cards/**/page-*.js",
+    "limit": "20 KB",
+    "gzip": true
+  },
+  {
+    "name": "Account route bundle",
+    "path": ".next/static/chunks/app/account/**/page-*.js",
+    "limit": "20 KB",
+    "gzip": true
+  },
+  {
+    "name": "Admin route bundles",
+    "path": ".next/static/chunks/app/admin/**/page-*.js",
+    "limit": "20 KB",
+    "gzip": true
+  }
+]

@@ -14,7 +14,10 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "pages:build": "npx @cloudflare/next-on-pages",
-    "pages:dev": "npx @cloudflare/next-on-pages && npx wrangler pages dev .vercel/output/static"
+    "pages:dev": "npx @cloudflare/next-on-pages && npx wrangler pages dev .vercel/output/static",
+    "analyze": "ANALYZE=true next build",
+    "size": "size-limit",
+    "lighthouse": "lhci autorun --config=.lighthouserc.js"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.1",
@@ -32,6 +35,10 @@
   "devDependencies": {
     "@cloudflare/next-on-pages": "^1.13.7",
     "@eslint/eslintrc": "^3.2.0",
+    "@lhci/cli": "^0.15.1",
+    "@next/bundle-analyzer": "^16.2.4",
+    "@size-limit/file": "^12.1.0",
+    "@size-limit/preset-app": "^12.1.0",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
@@ -47,6 +54,7 @@
     "postcss": "^8.4.49",
     "prettier": "^3.4.2",
     "prettier-plugin-tailwindcss": "^0.6.9",
+    "size-limit": "^12.1.0",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.2",
     "vitest": "^2.1.8"

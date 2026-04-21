@@ -6,6 +6,7 @@ import { getCard } from '@/lib/api/cards';
 import { LoftlyAPIError } from '@/lib/api/client';
 import { CardResultCard } from '@/components/loftly/CardResultCard';
 import { MagicLinkPrompt } from '@/components/loftly/MagicLinkPrompt';
+import { StreamingRationale } from '@/components/loftly/StreamingRationale';
 import { Badge } from '@/components/ui/badge';
 import type { Card as CardT, SelectorResult } from '@/lib/api/types';
 
@@ -31,10 +32,11 @@ export default async function SelectorResultsPage({
   searchParams,
 }: {
   params: Promise<{ session_id: string }>;
-  searchParams: Promise<{ token?: string }>;
+  searchParams: Promise<{ token?: string; stream?: string }>;
 }) {
   const { session_id } = await params;
   const sp = await searchParams;
+  const streamEnabled = sp.stream === '1';
   const t = await getTranslations('selector.results');
   const tCommon = await getTranslations('common');
   const locale = await getLocale();
@@ -203,17 +205,25 @@ export default async function SelectorResultsPage({
         </section>
       )}
 
-      {/* AI rationale */}
+      {/* AI rationale — progressively streamed when ?stream=1 is set */}
       {result.rationale_th && (
         <section className="rounded-md border border-slate-200 bg-slate-50 p-4">
           <h2 className="text-sm font-medium text-slate-700">
             {t('rationaleTitle')}
           </h2>
-          <p className="mt-2 whitespace-pre-line text-sm leading-relaxed text-slate-800">
-            {locale === 'en' && result.rationale_en
-              ? result.rationale_en
-              : result.rationale_th}
-          </p>
+          <div className="mt-2">
+            <StreamingRationale
+              sessionId={result.session_id}
+              token={sp.token ?? null}
+              fallback={
+                locale === 'en' && result.rationale_en
+                  ? result.rationale_en
+                  : result.rationale_th
+              }
+              streamingLabel={t('streamingLabel')}
+              enabled={streamEnabled}
+            />
+          </div>
         </section>
       )}
 

@@ -10,6 +10,11 @@ import { SelectorApplyCtaLabel } from '@/components/loftly/SelectorApplyCtaLabel
 import { StreamingRationale } from '@/components/loftly/StreamingRationale';
 import { Badge } from '@/components/ui/badge';
 import type { Card as CardT, SelectorResult } from '@/lib/api/types';
+import { MobileCollapse } from './MobileCollapse';
+import { MobileStickyBar } from './MobileStickyBar';
+import { RetryWrapper } from './RetryWrapper';
+import { ShareButton } from './ShareButton';
+import { statusToKind } from './ResultsError';
 
 export const dynamic = 'force-dynamic';
 
@@ -46,31 +51,23 @@ export default async function SelectorResultsPage({
   const accessToken = cookieStore.get('loftly_session')?.value ?? null;
 
   let result: SelectorResult | null = null;
-  let error: string | null = null;
+  let errorStatus: number | null = null;
   try {
     result = await getSelectorResult(session_id, sp.token, { accessToken });
   } catch (err) {
     if (err instanceof LoftlyAPIError) {
-      error = err.message_th || err.message_en;
+      errorStatus = err.status;
     } else {
-      error = tCommon('error');
+      errorStatus = 0;
     }
   }
 
   if (!result) {
-    return (
-      <main className="mx-auto max-w-3xl px-6 py-12">
-        <h1 className="text-3xl font-semibold tracking-tight">{t('title')}</h1>
-        <p className="mt-6 rounded-md bg-red-50 p-4 text-sm text-red-900">
-          {error ?? tCommon('error')}
-        </p>
-        <p className="mt-4">
-          <Link href="/selector" className="text-sm text-slate-600 hover:underline">
-            {t('resetAction')}
-          </Link>
-        </p>
-      </main>
-    );
+    // Differentiate by status so the UX matches user intent:
+    //   404 → hard miss (unknown session)  — offer new search
+    //   410 → expired (24h TTL)            — offer re-run
+    //   anything else (5xx, timeout, 0)    — recoverable; show Retry
+    return <RetryWrapper kind={statusToKind(errorStatus)} />;
   }
 
   const stack = result.stack ?? [];
@@ -104,7 +101,15 @@ export default async function SelectorResultsPage({
         <Link href="/selector" className="text-sm text-slate-500 hover:underline">
           {tCommon('back')}
         </Link>
-        <h1 className="text-3xl font-semibold tracking-tight">{t('title')}</h1>
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <h1 className="text-3xl font-semibold tracking-tight">{t('title')}</h1>
+          {/*
+            Share URL uses only `session_id` from the current path — the
+            selector query (spend breakdown, goal) is NOT encoded in the
+            URL, so links are safe to paste publicly.
+          */}
+          <ShareButton sessionId={result.session_id} />
+        </div>
 
         {result.months_to_goal &&
           result.stack.length > 0 &&
@@ -179,18 +184,24 @@ export default async function SelectorResultsPage({
                     </div>
                   );
                 }
+                // MobileCollapse is a no-op on sm+; on mobile the secondary
+                // tiles start collapsed to a preview height and expand on tap.
                 return (
-                  <CardResultCard
+                  <MobileCollapse
                     key={slot.card_id}
-                    card={card}
-                    role={slot.role}
-                    position={i + 2}
-                    earning={{
-                      monthly_thb: slot.monthly_earning_thb_equivalent,
-                      monthly_points: slot.monthly_earning_points,
-                    }}
-                    applyCtaLabel={<SelectorApplyCtaLabel />}
-                  />
+                    label={t('mobile.expandDetails')}
+                  >
+                    <CardResultCard
+                      card={card}
+                      role={slot.role}
+                      position={i + 2}
+                      earning={{
+                        monthly_thb: slot.monthly_earning_thb_equivalent,
+                        monthly_points: slot.monthly_earning_points,
+                      }}
+                      applyCtaLabel={<SelectorApplyCtaLabel />}
+                    />
+                  </MobileCollapse>
                 );
               })}
             </div>
@@ -224,6 +235,7 @@ export default async function SelectorResultsPage({
                   : result.rationale_th
               }
               streamingLabel={t('streamingLabel')}
+              disconnectedLabel={t('streaming.disconnected')}
               enabled={streamEnabled}
             />
           </div>
@@ -242,6 +254,16 @@ export default async function SelectorResultsPage({
           <span className="text-slate-400">{t('saveHint')}</span>
         )}
       </footer>
+
+      {/*
+        Mobile-only sticky CTA. Appears after the user scrolls past the
+        primary card. `applyHref` falls back to `/selector` when we don't
+        have a primary recommendation (e.g. empty stack — shouldn't happen
+        but defensive).
+      */}
+      {primary && primaryCard && (
+        <MobileStickyBar applyHref={`/apply/${primaryCard.id}`} />
+      )}
     </main>
   );
 }

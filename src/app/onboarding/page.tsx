@@ -1,12 +1,41 @@
-import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 
 const PROVIDERS = ['line', 'google', 'apple'] as const;
 
-export default async function OnboardingPage() {
+type OnboardingSearchParams = {
+  next?: string;
+  session_id?: string;
+  error?: string;
+};
+
+/**
+ * Onboarding — sign-in provider picker.
+ *
+ * Each button is a link to `/api/auth/oauth/start?provider=…` which 302s to
+ * the provider's authorize URL. If env vars for the selected provider are
+ * unset, the start route short-circuits to the callback with a
+ * `provider_not_configured` error which surfaces here via `?error=…`.
+ */
+export default async function OnboardingPage({
+  searchParams,
+}: {
+  searchParams: Promise<OnboardingSearchParams>;
+}) {
   const t = await getTranslations('onboarding');
+  const sp = await searchParams;
+
+  const errorKey =
+    sp.error === 'oauth_provider_unavailable'
+      ? 'oauth_provider_unavailable'
+      : sp.error
+        ? 'oauth_failed'
+        : null;
+
+  const qs = new URLSearchParams();
+  if (sp.next) qs.set('next', sp.next);
+  if (sp.session_id) qs.set('session_id', sp.session_id);
+  const baseQuery = qs.toString() ? `&${qs.toString()}` : '';
 
   return (
     <main className="mx-auto flex min-h-[60vh] max-w-md flex-col gap-6 px-6 py-12">
@@ -15,12 +44,14 @@ export default async function OnboardingPage() {
         <p className="mt-2 text-sm text-slate-600">{t('subtitle')}</p>
       </div>
 
-      <div className="rounded-md bg-amber-50 p-3 text-sm text-amber-900">
-        <Badge variant="warn" className="mr-2">
-          MOCK
-        </Badge>
-        {t('mockNotice')}
-      </div>
+      {errorKey && (
+        <div
+          role="alert"
+          className="rounded-md bg-red-50 p-3 text-sm text-red-900"
+        >
+          {t(`errors.${errorKey}` as 'errors.oauth_failed')}
+        </div>
+      )}
 
       <div className="flex flex-col gap-3">
         {PROVIDERS.map((provider) => (
@@ -31,12 +62,12 @@ export default async function OnboardingPage() {
             size="lg"
             className="justify-center"
           >
-            <Link
-              href={`/onboarding/consent?provider=${provider}&_mock=true`}
+            <a
+              href={`/api/auth/oauth/start?provider=${provider}${baseQuery}`}
               data-provider={provider}
             >
               {t('signInWith', { provider: t(`providers.${provider}`) })}
-            </Link>
+            </a>
           </Button>
         ))}
       </div>

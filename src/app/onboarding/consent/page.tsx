@@ -3,7 +3,6 @@ import { getConsent } from '@/lib/api/cards';
 import { LoftlyAPIError } from '@/lib/api/client';
 import type { ConsentState } from '@/lib/api/types';
 import { ConsentForm } from './ConsentForm';
-import { Badge } from '@/components/ui/badge';
 
 export const dynamic = 'force-dynamic';
 
@@ -19,7 +18,7 @@ const DEFAULT_CONSENT: ConsentState = {
   },
 };
 
-type SearchParams = Promise<{ provider?: string; _mock?: string }>;
+type SearchParams = Promise<{ provider?: string }>;
 
 export default async function OnboardingConsentPage({
   searchParams,
@@ -41,8 +40,6 @@ export default async function OnboardingConsentPage({
     }
   }
 
-  const isMock = sp?._mock === 'true';
-
   return (
     <main className="mx-auto flex max-w-xl flex-col gap-6 px-6 py-12">
       <header>
@@ -52,17 +49,11 @@ export default async function OnboardingConsentPage({
         {sp?.provider && (
           <p className="mt-2 text-sm text-slate-600">
             {to('signInWith', {
-              provider: to(`providers.${sp.provider as 'google' | 'apple' | 'line'}`),
+              provider: to(
+                `providers.${sp.provider as 'google' | 'apple' | 'line'}`,
+              ),
             })}
           </p>
-        )}
-        {isMock && (
-          <div className="mt-3 rounded-md bg-amber-50 p-3 text-sm text-amber-900">
-            <Badge variant="warn" className="mr-2">
-              MOCK
-            </Badge>
-            {to('mockNotice')}
-          </div>
         )}
       </header>
 

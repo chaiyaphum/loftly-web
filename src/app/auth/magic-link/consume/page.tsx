@@ -81,9 +81,9 @@ function ExpiredView({
       <h1 className="text-2xl font-semibold tracking-tight">
         {t('expiredTitle')}
       </h1>
-      <p className="mt-3 text-sm text-slate-600">{t('expiredBody')}</p>
+      <p className="mt-3 text-sm text-loftly-ink-muted">{t('expiredBody')}</p>
       {detail && (
-        <p className="mt-2 text-xs text-slate-400">{detail}</p>
+        <p className="mt-2 text-xs text-loftly-ink-muted/70">{detail}</p>
       )}
       <p className="mt-6">
         <Link

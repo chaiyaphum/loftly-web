@@ -37,15 +37,15 @@ export default async function PricingPage() {
           Loftly
         </Link>
         <nav className="flex items-center gap-4 text-sm">
-          <Link href="/cards" className="text-slate-700 hover:underline">
+          <Link href="/cards" className="text-loftly-ink hover:underline">
             {tn('cards')}
           </Link>
-          <Link href="/valuations" className="text-slate-700 hover:underline">
+          <Link href="/valuations" className="text-loftly-ink hover:underline">
             {tn('valuations')}
           </Link>
           <Link
             href="/pricing"
-            className="font-medium text-slate-900 underline underline-offset-4"
+            className="font-medium text-loftly-ink underline underline-offset-4"
           >
             {tn('pricing')}
           </Link>
@@ -54,7 +54,7 @@ export default async function PricingPage() {
 
       <section className="flex flex-col gap-3">
         <h1 className="text-4xl font-semibold tracking-tight">{t('title')}</h1>
-        <p className="text-lg text-slate-600">{t('subtitle')}</p>
+        <p className="text-lg text-loftly-ink-muted">{t('subtitle')}</p>
       </section>
 
       <PricingClient />

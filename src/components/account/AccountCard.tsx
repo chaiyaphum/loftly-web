@@ -40,10 +40,10 @@ export function AccountCard({
       data-testid={testId}
       className={cn(
         'group flex h-full flex-col gap-3 rounded-lg border p-5 shadow-sm transition-colors',
-        'hover:border-slate-300 hover:bg-slate-50',
+        'hover:border-loftly-divider hover:bg-loftly-teal-soft/40',
         tone === 'danger'
           ? 'border-red-200 bg-white'
-          : 'border-slate-200 bg-white',
+          : 'border-loftly-divider bg-white',
       )}
     >
       <div className="flex items-start gap-3">
@@ -53,23 +53,23 @@ export function AccountCard({
             className={cn(
               'flex h-9 w-9 shrink-0 items-center justify-center rounded-md text-lg',
               tone === 'danger'
-                ? 'bg-red-50 text-red-700'
-                : 'bg-slate-100 text-slate-700',
+                ? 'bg-loftly-danger/10 text-loftly-danger'
+                : 'bg-loftly-divider/50 text-loftly-ink',
             )}
           >
             {icon}
           </span>
         ) : null}
         <div className="min-w-0 flex-1">
-          <h2 className="text-base font-semibold text-slate-900">{title}</h2>
-          <p className="mt-1 text-sm text-slate-600">{description}</p>
+          <h2 className="text-base font-semibold text-loftly-ink">{title}</h2>
+          <p className="mt-1 text-sm text-loftly-ink-muted">{description}</p>
         </div>
       </div>
       <span
         className={cn(
           'mt-auto inline-flex items-center gap-1 text-sm font-medium',
           tone === 'danger'
-            ? 'text-red-700 group-hover:text-red-800'
+            ? 'text-loftly-danger group-hover:text-red-800'
             : 'text-loftly-baht group-hover:text-loftly-baht/80',
         )}
         data-testid={testId ? `${testId}-cta` : undefined}

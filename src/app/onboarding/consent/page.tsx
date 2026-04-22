@@ -54,7 +54,7 @@ export default async function OnboardingConsentPage({
           {t('pageTitle')}
         </h1>
         {sp?.provider && (
-          <p className="mt-2 text-sm text-slate-600">
+          <p className="mt-2 text-sm text-loftly-ink-muted">
             {to('signInWith', {
               provider: to(
                 `providers.${sp.provider as 'google' | 'apple' | 'line'}`,

@@ -99,11 +99,11 @@ export function InviteRequiredClient({ hasError }: { hasError: boolean }) {
       <h1 className="text-3xl font-semibold text-loftly-ink">
         {tr('page.title')}
       </h1>
-      <p className="mt-3 text-sm text-slate-600">{tr('page.subtitle')}</p>
+      <p className="mt-3 text-sm text-loftly-ink-muted">{tr('page.subtitle')}</p>
 
       {/* 1. Have a code */}
       <section
-        className="mt-10 border-t border-slate-200 pt-8"
+        className="mt-10 border-t border-loftly-divider pt-8"
         aria-labelledby="invite-have-code-heading"
         data-testid="invite-section-have-code"
       >
@@ -141,14 +141,14 @@ export function InviteRequiredClient({ hasError }: { hasError: boolean }) {
               aria-errormessage={hasError ? 'invite-error' : undefined}
               placeholder={t('codePlaceholder')}
             />
-            <p className="text-xs text-slate-500">{t('codeHint')}</p>
+            <p className="text-xs text-loftly-ink-muted">{t('codeHint')}</p>
           </div>
 
           {hasError ? (
             <p
               id="invite-error"
               role="alert"
-              className="rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700"
+              className="rounded-md border border-red-200 bg-loftly-danger/10 px-3 py-2 text-sm text-loftly-danger"
             >
               {t('errorInvalid')}
             </p>
@@ -162,7 +162,7 @@ export function InviteRequiredClient({ hasError }: { hasError: boolean }) {
 
       {/* 2. Join the waitlist */}
       <section
-        className="mt-10 border-t border-slate-200 pt-8"
+        className="mt-10 border-t border-loftly-divider pt-8"
         aria-labelledby="invite-waitlist-heading"
         data-testid="invite-section-waitlist"
       >
@@ -172,7 +172,7 @@ export function InviteRequiredClient({ hasError }: { hasError: boolean }) {
         >
           {tr('section.joinWaitlist.title')}
         </h2>
-        <p className="mt-2 text-sm text-slate-600">
+        <p className="mt-2 text-sm text-loftly-ink-muted">
           {tr('section.joinWaitlist.body')}
         </p>
         <WaitlistForm />
@@ -180,7 +180,7 @@ export function InviteRequiredClient({ hasError }: { hasError: boolean }) {
 
       {/* 3. Follow the launch */}
       <section
-        className="mt-10 border-t border-slate-200 pt-8"
+        className="mt-10 border-t border-loftly-divider pt-8"
         aria-labelledby="invite-follow-heading"
         data-testid="invite-section-follow"
       >
@@ -281,7 +281,7 @@ function WaitlistForm() {
     return (
       <p
         role="status"
-        className="mt-4 rounded-md border border-emerald-200 bg-emerald-50 p-3 text-sm text-emerald-900"
+        className="mt-4 rounded-md border border-emerald-200 bg-loftly-teal-soft p-3 text-sm text-loftly-teal"
         data-testid="invite-waitlist-success"
         data-status={state.status}
       >

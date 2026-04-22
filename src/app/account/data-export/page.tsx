@@ -35,7 +35,7 @@ export default async function AccountDataExportPage() {
     <main className="mx-auto max-w-xl px-6 py-12">
       <header className="mb-6 space-y-1">
         <h1 className="text-3xl font-semibold tracking-tight">{t('title')}</h1>
-        <p className="text-sm text-slate-600">{t('intro')}</p>
+        <p className="text-sm text-loftly-ink-muted">{t('intro')}</p>
       </header>
 
       <DataExportClient initialJobId={initialJobId} />

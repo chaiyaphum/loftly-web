@@ -75,13 +75,13 @@ export default async function AccountPage() {
       <header className="space-y-2">
         <h1 className="text-3xl font-semibold tracking-tight">{t('title')}</h1>
         {profile?.email ? (
-          <dl className="grid gap-3 text-sm text-slate-700 sm:grid-cols-3">
+          <dl className="grid gap-3 text-sm text-loftly-ink sm:grid-cols-3">
             <div>
-              <dt className="text-xs font-medium uppercase tracking-wide text-slate-500">
+              <dt className="text-xs font-medium uppercase tracking-wide text-loftly-ink-muted">
                 {t('hero.email')}
               </dt>
               <dd
-                className="mt-0.5 font-medium text-slate-900"
+                className="mt-0.5 font-medium text-loftly-ink"
                 data-testid="account-hero-email"
               >
                 {profile.email}
@@ -89,11 +89,11 @@ export default async function AccountPage() {
             </div>
             {signupLabel && (
               <div>
-                <dt className="text-xs font-medium uppercase tracking-wide text-slate-500">
+                <dt className="text-xs font-medium uppercase tracking-wide text-loftly-ink-muted">
                   {t('hero.since')}
                 </dt>
                 <dd
-                  className="mt-0.5 font-medium text-slate-900"
+                  className="mt-0.5 font-medium text-loftly-ink"
                   data-testid="account-hero-since"
                 >
                   {signupLabel}
@@ -102,11 +102,11 @@ export default async function AccountPage() {
             )}
             {lastLoginLabel && (
               <div>
-                <dt className="text-xs font-medium uppercase tracking-wide text-slate-500">
+                <dt className="text-xs font-medium uppercase tracking-wide text-loftly-ink-muted">
                   {t('hero.lastLogin')}
                 </dt>
                 <dd
-                  className="mt-0.5 font-medium text-slate-900"
+                  className="mt-0.5 font-medium text-loftly-ink"
                   data-testid="account-hero-last-login"
                 >
                   {lastLoginLabel}
@@ -116,7 +116,7 @@ export default async function AccountPage() {
           </dl>
         ) : profileError ? (
           <p
-            className="rounded-md border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900"
+            className="rounded-md border border-amber-200 bg-loftly-amber/15 p-3 text-sm text-loftly-amber-urgent"
             data-testid="account-hero-error"
             role="status"
           >
@@ -156,11 +156,11 @@ export default async function AccountPage() {
         />
       </section>
 
-      <footer className="border-t border-slate-200 pt-6">
+      <footer className="border-t border-loftly-divider pt-6">
         <form action="/api/auth/logout" method="post">
           <button
             type="submit"
-            className="rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+            className="rounded-md border border-loftly-divider bg-white px-4 py-2 text-sm font-medium text-loftly-ink hover:bg-loftly-teal-soft/40"
             data-testid="account-sign-out"
           >
             {t('signOut')}

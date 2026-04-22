@@ -86,13 +86,13 @@ export function ConsentForm({
       {status.kind === 'success' && (
         <p
           role="status"
-          className="rounded-md bg-emerald-50 p-3 text-sm text-emerald-900"
+          className="rounded-md bg-loftly-teal-soft p-3 text-sm text-loftly-teal"
         >
           {t('saveSuccess')}
         </p>
       )}
       {status.kind === 'error' && (
-        <p role="alert" className="rounded-md bg-red-50 p-3 text-sm text-red-900">
+        <p role="alert" className="rounded-md bg-loftly-danger/10 p-3 text-sm text-loftly-danger">
           {status.message}
         </p>
       )}

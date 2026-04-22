@@ -25,13 +25,13 @@ export default async function NotFound() {
         id="main-content"
         className="mx-auto flex min-h-[100dvh] max-w-xl flex-col items-center justify-center px-6 py-8 text-center"
       >
-        <p className="mb-3 text-sm font-medium uppercase tracking-wide text-slate-500">
+        <p className="mb-3 text-sm font-medium uppercase tracking-wide text-loftly-ink-muted">
           404
         </p>
         <h1 className="text-3xl font-semibold text-loftly-ink sm:text-4xl">
           {t('title')}
         </h1>
-        <p className="mt-3 text-base text-slate-600">{t('subtitle')}</p>
+        <p className="mt-3 text-base text-loftly-ink-muted">{t('subtitle')}</p>
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
           <Button asChild size="lg">
@@ -51,7 +51,7 @@ export default async function NotFound() {
           </Button>
         </div>
 
-        <p className="mt-8 text-xs text-slate-500">
+        <p className="mt-8 text-xs text-loftly-ink-muted">
           {t('supportText', { email: supportEmail })
             .split(supportEmail)
             .flatMap((chunk, i, arr) =>

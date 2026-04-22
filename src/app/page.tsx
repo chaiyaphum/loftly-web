@@ -10,6 +10,7 @@ import { LatestValuationsList } from '@/components/homepage/LatestValuationsList
 import { buildPageMetadata } from '@/lib/seo/metadata';
 import { LandingHero } from '@/components/landing/LandingHero';
 import { LandingHeroSwitcher } from '@/components/landing/LandingHeroSwitcher';
+import { MerchantSearchBar } from '@/components/merchants/MerchantSearchBar';
 import type { Valuation } from '@/lib/api/types';
 
 export const dynamic = 'force-static';
@@ -126,6 +127,17 @@ export default async function LandingPage() {
           <LandingHero reassurance={t('reassurance')} ctaHref="/selector" />
         }
       />
+
+      {/* Secondary CTA — Merchant Reverse Lookup search bar (post-v1 §9).
+          Sits below the primary Selector hero so users who don't want to
+          fill the full profile form can still ask "best card at Starbucks?"
+          and land on a ranked answer. */}
+      <section className="flex flex-col items-center gap-3 text-center">
+        <p className="text-sm font-medium text-slate-700">
+          หรือค้นหาบัตรที่ดีที่สุดสำหรับร้านโปรดของคุณ
+        </p>
+        <MerchantSearchBar variant="inline" />
+      </section>
 
       {/* How it works */}
       <section className="flex flex-col gap-4">

@@ -19,11 +19,9 @@ import { test, expect } from '@playwright/test';
  * `/v1/selector/recent` response; because we cannot reach Redis from
  * Playwright we use `page.route()` to intercept and return canned bodies.
  *
- * Tests 2 & 3 are `.skip()`'d pending the PR-11 LandingHero variant client
- * island landing in `main` — the current `LandingHero.tsx` in PR-11 adds
- * `data-testid="landing-hero"` with a `data-variant` attribute we use to
- * distinguish default vs personalized. Until PR-11 lands, the cookie +
- * fetch stubs have nothing to render into.
+ * All 4 tests active as of 2026-04-22 — PR-11 LandingHero variant + PR-12a
+ * expired-banner merged (loftly-web#34), and `post_v1_returning_landing`
+ * flag enabled 100% on staging PostHog.
  */
 
 const COOKIE_NAME = 'loftly_selector_session';
@@ -78,10 +76,9 @@ test.describe('POST_V1 §3 returning-user landing', () => {
     }
   });
 
-  // TODO(founder): remove `.skip()` once PR-11 LandingHero personalized
-  // variant is merged on main. Test relies on the client island mounting
-  // a personalized H1 containing "ยินดีต้อนรับกลับ".
-  test.skip('personalized — valid session cookie renders welcome-back hero', async ({
+  // PR-11 LandingHero personalized variant merged (loftly-web#34, 2026-04-22)
+  // + `post_v1_returning_landing` flag enabled 100% on staging PostHog.
+  test('personalized — valid session cookie renders welcome-back hero', async ({
     browser,
   }) => {
     const sessionId = '00000000-0000-4000-8000-e2ereturning001';
@@ -118,9 +115,9 @@ test.describe('POST_V1 §3 returning-user landing', () => {
     }
   });
 
-  // TODO(founder): remove `.skip()` once PR-11 expired-banner variant
-  // lands (PR-12a). Test relies on "คุณเคยใช้ Selector" banner copy.
-  test.skip('expired — stubbed /v1/selector/recent returns expired, banner shows', async ({
+  // PR-12a expired-banner variant folded into PR-11 (loftly-web#34); banner
+  // copy "คุณเคยใช้ Selector" rendered on expired-cookie path.
+  test('expired — stubbed /v1/selector/recent returns expired, banner shows', async ({
     browser,
   }) => {
     const sessionId = '00000000-0000-4000-8000-e2ereturning002';

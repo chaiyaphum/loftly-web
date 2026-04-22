@@ -3,26 +3,21 @@ import { test, expect } from '@playwright/test';
 /**
  * POST_V1 §1 — Selector chat panel.
  *
- * The chat panel is flag-gated by `post_v1_selector_chat` in PostHog. When
- * the flag is OFF, the panel renders nothing and these tests have nothing
- * to assert — they are marked `.skip()` with a TODO so the founder can run
- * them manually after enabling the flag on staging.
+ * The chat panel is flag-gated by `post_v1_selector_chat` in PostHog.
+ * Enabled 100% on staging 2026-04-22. Each test still has an inner
+ * panel-visibility guard (`test.skip` runtime check) so the suite stays
+ * green if the flag is ever turned OFF for an ops reason.
  *
  * Detection approach: we look for `[data-testid="selector-chat-panel"]` on
- * the results page. When absent after `networkidle`, we assume the flag is
- * OFF. This keeps the suite green pre-rollout and transparent once the
- * flag flips ON.
+ * the results page. When absent after `networkidle`, we runtime-skip.
  *
  * Three sub-tests, matching POST_V1.md §1 AC-2, AC-5, AC-6:
  *   1. Happy path — click a suggested prompt, assert response renders.
  *   2. Rate-limit — send 11 follow-ups, assert 11th is blocked.
  *   3. Email-gate on anonymous — partial_unlock=true → MagicLinkPrompt.
  *
- * Because the chat panel is not merged on `main` yet (PR-10 in progress),
- * we guard the happy-path + rate-limit tests behind a panel-visibility
- * check. The email-gate test uses MagicLinkPrompt which already ships, so
- * it runs against the existing `partial_unlock` locked-secondaries UX as
- * an interim assertion until the chat flow lands.
+ * PR-10 ChatPanel + PR-9 backend `/v1/selector/{id}/chat` both merged on
+ * main. The email-gate test uses MagicLinkPrompt which already ships.
  */
 
 const CHAT_PANEL_TESTID = 'selector-chat-panel';
@@ -64,10 +59,10 @@ async function provisionResultsSession(
 }
 
 test.describe('POST_V1 §1 selector chat', () => {
-  // TODO(founder): remove `.skip()` once `post_v1_selector_chat` is ON
-  // in the staging PostHog project. The test is authored against the
-  // PR-10 ChatPanel.tsx testid contract; re-run to verify.
-  test.skip('happy path — suggested prompt populates input, send produces response', async ({
+  // `post_v1_selector_chat` flag enabled on staging 2026-04-22. Inner
+  // panel-visibility guard still skips gracefully if the flag flips OFF
+  // or the session's results page doesn't render the chat island.
+  test('happy path — suggested prompt populates input, send produces response', async ({
     page,
   }) => {
     const resultsUrl = await provisionResultsSession(page);
@@ -102,9 +97,9 @@ test.describe('POST_V1 §1 selector chat', () => {
     await expect(response).not.toBeEmpty();
   });
 
-  // TODO(founder): remove `.skip()` once `post_v1_selector_chat` is ON.
+  // `post_v1_selector_chat` flag enabled on staging 2026-04-22.
   // Note: this test sends 11 real API calls; budget ~THB 5 per run.
-  test.skip('rate-limit — 11th follow-up receives rate-limit message', async ({
+  test('rate-limit — 11th follow-up receives rate-limit message', async ({
     page,
   }) => {
     const resultsUrl = await provisionResultsSession(page);

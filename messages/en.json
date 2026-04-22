@@ -193,6 +193,28 @@
     }
   },
   "landing": {
+    "heroSearch": {
+      "statusPill": "{count}+ active promos · synced a few minutes ago",
+      "h1Prefix": "Which card pays you most",
+      "h1Connector": "at",
+      "h1Accent": "this shop",
+      "h1Suffix": "?",
+      "subheading": "Type a merchant. See the best card, the live promo, and exactly how much THB you earn per ฿1,000.",
+      "placeholder": "Try Starbucks, Lazada, Central...",
+      "ariaInput": "Search merchants",
+      "ariaResults": "Merchant search results",
+      "clear": "Clear search",
+      "earn": "Earn",
+      "earnPer1k": "฿42 / ฿1,000",
+      "activePromos": "{count} active promos",
+      "showing": "Showing {count} merchants",
+      "pressEnterPrefix": "Press",
+      "pressEnterSuffix": "to open",
+      "popular": "Popular:",
+      "loading": "Searching…",
+      "altCtaLead": "— or —",
+      "altCta": "Run the full Selector (30s) →"
+    },
     "title": "Know which card wins — at every merchant, every day",
     "subtitle": "Live Thai credit-card intelligence for every merchant",
     "cta": "Find the right card ▸",

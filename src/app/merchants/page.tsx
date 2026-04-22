@@ -8,13 +8,13 @@ import { MerchantSearchBar } from '@/components/merchants/MerchantSearchBar';
 /**
  * `/merchants` — browse hub.
  *
- * Dynamic-rendered with a 1-hour revalidate cache (first hit after expiry
- * repopulates). Previously `force-static` + build-time prerender, but that
- * caused `npm run build` to hang indefinitely when the upstream API was
- * unreachable (e.g. contributor builds with no `NEXT_PUBLIC_API_BASE` or a
- * transient staging outage). The hub is a bilingual A–Z nav surface — the
- * SEO-valuable pages are `/merchants/[slug]` (separately ISR'd), so there's
- * no lost ranking signal from skipping prerender here.
+ * Dynamic-rendered (server on each request). Previously `force-static` +
+ * 1h revalidate, but build-time prerender hung indefinitely when the
+ * upstream API was unreachable (contributor builds without
+ * `NEXT_PUBLIC_API_BASE` set, or a transient staging outage). The hub is
+ * a bilingual A–Z nav surface — SEO-valuable pages are the individual
+ * `/merchants/[slug]` entries (still ISR'd with a 5m revalidate), so
+ * nothing is lost by skipping prerender here.
  *
  * Primary entry points:
  *   - Deep link from blog/SEO backlinks.

@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Flame, Search } from 'lucide-react';
+import { Flame, Search, UserRound } from 'lucide-react';
 import { Link, usePathname } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
 import { LocaleSwitcher } from './LocaleSwitcher';
@@ -10,10 +10,12 @@ import { LocaleSwitcher } from './LocaleSwitcher';
  * Customer header — brief §15.4 nav order with Selector demoted to a
  * right-side CTA. Sticky top on `loftly-surface` with a divider hairline.
  *
- * Account/avatar is a thin text link for now; upgrades to a DropdownMenu
- * once the `/account` dashboard surfaces user state globally.
+ * Auth-aware: when `isAuthed` is true the "Sign in" text link flips to
+ * an "Account" link pointing at `/account`. Real avatar + dropdown is
+ * a future upgrade; this just matches the logged-in user's expectation
+ * that the sign-in affordance goes away once they already have a session.
  */
-export function AppHeader() {
+export function AppHeader({ isAuthed = false }: { isAuthed?: boolean }) {
   const t = useTranslations('nav');
   const pathname = usePathname();
 
@@ -75,12 +77,23 @@ export function AppHeader() {
             {t('selectorCta')}
           </Link>
 
-          <Link
-            href="/onboarding"
-            className="hidden text-body-sm font-medium text-loftly-ink-muted hover:text-loftly-ink sm:inline-flex"
-          >
-            {t('signIn')}
-          </Link>
+          {isAuthed ? (
+            <Link
+              href="/account"
+              aria-label={t('account')}
+              className="hidden items-center gap-1.5 text-body-sm font-medium text-loftly-ink-muted hover:text-loftly-ink sm:inline-flex"
+            >
+              <UserRound className="h-4 w-4" aria-hidden />
+              <span>{t('account')}</span>
+            </Link>
+          ) : (
+            <Link
+              href="/onboarding"
+              className="hidden text-body-sm font-medium text-loftly-ink-muted hover:text-loftly-ink sm:inline-flex"
+            >
+              {t('signIn')}
+            </Link>
+          )}
         </div>
       </div>
     </header>

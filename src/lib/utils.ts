@@ -10,11 +10,12 @@ export function cn(...inputs: ClassValue[]): string {
 }
 
 /**
- * THB formatter per UI_WEB.md §i18n spec: use `THB` prefix, not the `฿` glyph.
+ * THB formatter per BRAND.md §3 (canonical): `฿80,000` glyph + comma
+ * thousands. `UI_WEB.md §i18n`'s older "THB prefix" note is superseded.
  */
 export function formatTHB(value: number): string {
   const formatter = new Intl.NumberFormat('th-TH', {
     maximumFractionDigits: 0,
   });
-  return `THB ${formatter.format(value)}`;
+  return `฿${formatter.format(value)}`;
 }

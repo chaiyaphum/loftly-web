@@ -5,6 +5,7 @@ import { getLocale, getMessages } from 'next-intl/server';
 import './globals.css';
 import { DEFAULT_METADATA, SITE_URL } from '@/lib/seo/metadata';
 import { SiteShell } from '@/components/layout/SiteShell';
+import { getSession } from '@/lib/auth/session';
 
 // Self-hosted via next/font (per UI_WEB.md §i18n spec — no runtime Google Fonts request).
 const inter = Inter({
@@ -38,8 +39,12 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const locale = await getLocale();
-  const messages = await getMessages();
+  const [locale, messages, session] = await Promise.all([
+    getLocale(),
+    getMessages(),
+    getSession(),
+  ]);
+  const isAuthed = session !== null;
 
   return (
     <html
@@ -48,7 +53,7 @@ export default async function RootLayout({
     >
       <body className="min-h-screen bg-loftly-warm-white font-sans text-loftly-ink antialiased">
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <SiteShell>{children}</SiteShell>
+          <SiteShell isAuthed={isAuthed}>{children}</SiteShell>
         </NextIntlClientProvider>
       </body>
     </html>

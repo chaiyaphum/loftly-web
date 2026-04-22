@@ -119,7 +119,7 @@ export default async function CardReviewPage({
       />
 
       {/* Breadcrumb */}
-      <nav className="mb-4 text-xs text-slate-500">
+      <nav className="mb-4 text-xs text-loftly-ink-muted">
         <Link href="/cards" className="hover:underline">
           {t('indexTitle')}
         </Link>
@@ -145,7 +145,7 @@ export default async function CardReviewPage({
             (card.description_th ?? '') + ' ' + (card.description_en ?? ''),
           )}
         />
-        <p className="text-sm text-slate-500">
+        <p className="text-sm text-loftly-ink-muted">
           {t('reviewTitle')} ·{' '}
           {tc('updatedAt', {
             date: new Date(updatedAt).toLocaleDateString('th-TH'),
@@ -163,16 +163,16 @@ export default async function CardReviewPage({
 
       <Separator className="my-6" />
 
-      <div className="grid gap-3 rounded-md border border-slate-200 p-4 text-sm sm:grid-cols-2">
+      <div className="grid gap-3 rounded-md border border-loftly-divider p-4 text-sm sm:grid-cols-2">
         {card.annual_fee_thb !== null && card.annual_fee_thb !== undefined && (
           <div>
-            <dt className="text-xs uppercase tracking-wide text-slate-500">
+            <dt className="text-xs uppercase tracking-wide text-loftly-ink-muted">
               {tc('annualFee')}
             </dt>
             <dd className="font-medium">
               <ThaiNumberFormat value={card.annual_fee_thb} />
               {card.annual_fee_waiver && (
-                <span className="ml-1 text-slate-500">
+                <span className="ml-1 text-loftly-ink-muted">
                   ({card.annual_fee_waiver})
                 </span>
               )}
@@ -181,12 +181,12 @@ export default async function CardReviewPage({
         )}
         {card.min_income_thb !== null && card.min_income_thb !== undefined && (
           <div>
-            <dt className="text-xs uppercase tracking-wide text-slate-500">
+            <dt className="text-xs uppercase tracking-wide text-loftly-ink-muted">
               {tc('minIncome')}
             </dt>
             <dd className="font-medium">
               <ThaiNumberFormat value={card.min_income_thb} />{' '}
-              <span className="text-slate-500">/ {tc('perMonth')}</span>
+              <span className="text-loftly-ink-muted">/ {tc('perMonth')}</span>
             </dd>
           </div>
         )}
@@ -205,16 +205,16 @@ export default async function CardReviewPage({
 
       {/* Section 2 · Who's it for */}
       <Section title={sections('whoFor')}>
-        <p className="text-sm text-slate-700">
+        <p className="text-sm text-loftly-ink">
           {card.description_th ?? card.description_en ?? '—'}
         </p>
       </Section>
 
       {/* Section 3 · Loftly score */}
       <Section title={sections('score')}>
-        <p className="text-sm text-slate-700">
+        <p className="text-sm text-loftly-ink">
           <span className="text-2xl font-semibold tabular-nums">4.2</span>
-          <span className="ml-2 text-slate-500">/ 5</span>
+          <span className="ml-2 text-loftly-ink-muted">/ 5</span>
         </p>
       </Section>
 
@@ -228,7 +228,7 @@ export default async function CardReviewPage({
 
       {/* Section 5 · Valuation snapshot */}
       <Section title={sections('valuation')}>
-        <p className="text-sm text-slate-600">
+        <p className="text-sm text-loftly-ink-muted">
           {t('noValuation')}
         </p>
       </Section>
@@ -236,9 +236,9 @@ export default async function CardReviewPage({
       {/* Section 6 · Benefits */}
       <Section title={sections('benefits')}>
         {Object.keys(card.benefits ?? {}).length === 0 ? (
-          <p className="text-sm text-slate-500">—</p>
+          <p className="text-sm text-loftly-ink-muted">—</p>
         ) : (
-          <ul className="list-disc space-y-1 pl-6 text-sm text-slate-700">
+          <ul className="list-disc space-y-1 pl-6 text-sm text-loftly-ink">
             {Object.entries(card.benefits).map(([key, val]) => (
               <li key={key}>
                 <span className="font-medium capitalize">{key}</span>:{' '}
@@ -263,17 +263,17 @@ export default async function CardReviewPage({
 
       {/* Section 7 · Promotions (placeholder) */}
       <Section title={sections('promos')}>
-        <p className="text-sm text-slate-500">—</p>
+        <p className="text-sm text-loftly-ink-muted">—</p>
       </Section>
 
       {/* Section 8 · Fees & conditions */}
       <Section title={sections('fees')}>
-        <ul className="list-disc space-y-1 pl-6 text-sm text-slate-700">
+        <ul className="list-disc space-y-1 pl-6 text-sm text-loftly-ink">
           {card.annual_fee_thb !== null && card.annual_fee_thb !== undefined && (
             <li>
               {tc('annualFee')}: <ThaiNumberFormat value={card.annual_fee_thb} />
               {card.annual_fee_waiver && (
-                <span className="text-slate-500">
+                <span className="text-loftly-ink-muted">
                   {' '}
                   ({card.annual_fee_waiver})
                 </span>
@@ -296,7 +296,7 @@ export default async function CardReviewPage({
 
       {/* Section 9 · How to apply */}
       <Section title={sections('apply')}>
-        <p className="text-sm text-slate-700">
+        <p className="text-sm text-loftly-ink">
           {t('applyCta')}
         </p>
         <div className="mt-3">
@@ -313,7 +313,7 @@ export default async function CardReviewPage({
 
       {/* Section 10 · Bottom line */}
       <Section title={sections('bottomLine')}>
-        <p className="text-sm text-slate-700">
+        <p className="text-sm text-loftly-ink">
           {card.description_th ?? card.description_en ?? '—'}
         </p>
       </Section>
@@ -324,7 +324,7 @@ export default async function CardReviewPage({
           <CardHeader>
             <CardTitle className="text-sm">—</CardTitle>
           </CardHeader>
-          <CardContent className="text-sm text-slate-500">
+          <CardContent className="text-sm text-loftly-ink-muted">
             {t('disclaimer')}
           </CardContent>
         </Card>
@@ -332,7 +332,7 @@ export default async function CardReviewPage({
 
       {/* Section 12 · Related cards placeholder */}
       <Section title={sections('related')}>
-        <p className="text-sm text-slate-500">—</p>
+        <p className="text-sm text-loftly-ink-muted">—</p>
       </Section>
 
       <Separator className="my-8" />

@@ -91,7 +91,7 @@ export function PDPAConsentMatrix({
           return (
             <div
               key={purpose}
-              className="flex items-start justify-between gap-4 rounded-md border border-slate-200 p-4"
+              className="flex items-start justify-between gap-4 rounded-md border border-loftly-divider p-4"
             >
               <div>
                 <label htmlFor={inputId} className="text-base font-medium">
@@ -103,7 +103,7 @@ export function PDPAConsentMatrix({
                   )}
                 </label>
                 <p
-                  className="mt-1 text-sm text-slate-600"
+                  className="mt-1 text-sm text-loftly-ink-muted"
                   id={`${inputId}-desc`}
                 >
                   {t(`purposes.${purpose}.description`)}
@@ -125,7 +125,7 @@ export function PDPAConsentMatrix({
       {error && (
         <p
           role="alert"
-          className="rounded-md bg-red-50 p-3 text-sm text-red-900"
+          className="rounded-md bg-loftly-danger/10 p-3 text-sm text-loftly-danger"
         >
           {error}
         </p>
@@ -134,7 +134,7 @@ export function PDPAConsentMatrix({
       <Separator />
 
       <div className="flex items-center justify-between gap-4">
-        <p className="text-xs text-slate-500">
+        <p className="text-xs text-loftly-ink-muted">
           {t('policyVersion', { version: policyVersion })}
         </p>
         <Button onClick={handleSubmit} disabled={submitting}>

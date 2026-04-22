@@ -115,13 +115,13 @@ export function MerchantSearchBar({
       {open && (
         <div
           role="listbox"
-          className="mt-2 rounded-md border border-slate-200 bg-white shadow-sm"
+          className="mt-2 rounded-md border border-loftly-divider bg-loftly-surface shadow"
         >
           {loading && (
-            <p className="px-3 py-2 text-sm text-slate-500">กำลังค้นหา…</p>
+            <p className="px-3 py-2 text-body-sm text-loftly-ink-muted">กำลังค้นหา…</p>
           )}
           {!loading && results.length === 0 && (
-            <p className="px-3 py-2 text-sm text-slate-500">{emptyLabel}</p>
+            <p className="px-3 py-2 text-body-sm text-loftly-ink-muted">{emptyLabel}</p>
           )}
           {!loading &&
             results.map((r) => (
@@ -129,7 +129,7 @@ export function MerchantSearchBar({
                 key={r.slug}
                 href={`/merchants/${r.slug}`}
                 role="option"
-                className="flex items-center justify-between gap-3 px-3 py-2 text-sm hover:bg-slate-50"
+                className="flex items-center justify-between gap-3 px-3 py-2 text-body-sm hover:bg-loftly-teal-soft"
               >
                 <span className="flex items-center gap-2">
                   {r.logo_url && (
@@ -142,15 +142,15 @@ export function MerchantSearchBar({
                       className="h-5 w-5 rounded"
                     />
                   )}
-                  <span className="font-medium">{r.display_name}</span>
+                  <span className="font-medium text-loftly-ink">{r.display_name}</span>
                   {r.category_default && (
-                    <span className="text-xs text-slate-500">
+                    <span className="text-caption text-loftly-ink-muted">
                       {r.category_default}
                     </span>
                   )}
                 </span>
                 {r.active_promo_count > 0 && (
-                  <span className="text-xs text-emerald-700">
+                  <span className="text-caption font-medium text-loftly-teal">
                     {r.active_promo_count} โปรฯ
                   </span>
                 )}

@@ -50,12 +50,12 @@ export function LatestReviewsGrid({
     return (
       <div
         data-testid="latest-reviews-empty"
-        className="rounded-md border border-dashed border-slate-300 p-6 text-sm text-slate-600"
+        className="rounded-md border border-dashed border-loftly-divider p-6 text-sm text-loftly-ink-muted"
       >
         <p>{emptyLabel}</p>
         <Link
           href="/cards"
-          className="mt-2 inline-block font-medium text-slate-900 underline-offset-2 hover:underline"
+          className="mt-2 inline-block font-medium text-loftly-ink underline-offset-2 hover:underline"
         >
           {browseAllLabel} →
         </Link>
@@ -73,19 +73,19 @@ export function LatestReviewsGrid({
           <Link
             href={hrefFor(article)}
             data-testid="latest-reviews-item"
-            className="flex h-full flex-col rounded-md border border-slate-200 bg-white p-4 transition hover:border-slate-400"
+            className="flex h-full flex-col rounded-md border border-loftly-divider bg-white p-4 transition hover:border-slate-400"
           >
-            <h3 className="text-base font-semibold text-slate-900">
+            <h3 className="text-base font-semibold text-loftly-ink">
               {article.title_th}
             </h3>
             {article.summary_th && (
-              <p className="mt-2 line-clamp-3 text-sm text-slate-600">
+              <p className="mt-2 line-clamp-3 text-sm text-loftly-ink-muted">
                 {article.summary_th}
               </p>
             )}
             {article.published_at && (
               <time
-                className="mt-auto pt-3 text-xs text-slate-500"
+                className="mt-auto pt-3 text-xs text-loftly-ink-muted"
                 dateTime={article.published_at}
               >
                 {new Date(article.published_at).toISOString().slice(0, 10)}

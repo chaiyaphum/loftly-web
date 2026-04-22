@@ -47,13 +47,13 @@ export default async function CardsIndexPage() {
         <h1 className="text-3xl font-semibold tracking-tight">
           {t('indexTitle')}
         </h1>
-        <p className="text-sm text-slate-600">{t('indexSubtitle')}</p>
+        <p className="text-sm text-loftly-ink-muted">{t('indexSubtitle')}</p>
       </header>
 
       {loadError && (
         <div
           role="alert"
-          className="mb-8 rounded-md border border-red-200 bg-red-50 p-4 text-sm text-red-900"
+          className="mb-8 rounded-md border border-red-200 bg-loftly-danger/10 p-4 text-sm text-loftly-danger"
         >
           <p className="mb-2">{loadError}</p>
           <Button asChild variant="outline" size="sm">
@@ -63,7 +63,7 @@ export default async function CardsIndexPage() {
       )}
 
       {!loadError && cards.length === 0 && (
-        <p className="rounded-md bg-slate-50 p-6 text-center text-sm text-slate-600">
+        <p className="rounded-md bg-loftly-teal-soft/40 p-6 text-center text-sm text-loftly-ink-muted">
           {t('emptyState')}
         </p>
       )}
@@ -76,7 +76,7 @@ export default async function CardsIndexPage() {
         </div>
       )}
 
-      <p className="mt-10 text-xs text-slate-500">{t('disclaimer')}</p>
+      <p className="mt-10 text-xs text-loftly-ink-muted">{t('disclaimer')}</p>
     </main>
   );
 }

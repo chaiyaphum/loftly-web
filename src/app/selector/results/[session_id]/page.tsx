@@ -128,7 +128,7 @@ export default async function SelectorResultsPage({
       */}
       <SessionCookieWriter sessionId={result.session_id} />
       <header className="flex flex-col gap-3">
-        <Link href="/selector" className="text-sm text-slate-500 hover:underline">
+        <Link href="/selector" className="text-sm text-loftly-ink-muted hover:underline">
           {tCommon('back')}
         </Link>
         <div className="flex flex-wrap items-center justify-between gap-3">
@@ -145,7 +145,7 @@ export default async function SelectorResultsPage({
           result.stack.length > 0 &&
           primary &&
           primaryCard && (
-            <p className="rounded-md bg-loftly-sky/10 p-4 text-sm text-slate-800">
+            <p className="rounded-md bg-loftly-sky/10 p-4 text-sm text-loftly-ink">
               {t('monthsToGoalBanner', {
                 targetPoints: formatNumber(
                   sumTargetPoints(result) ?? 0,
@@ -171,7 +171,7 @@ export default async function SelectorResultsPage({
       {/* Primary */}
       {primary && primaryCard && (
         <section className="space-y-2">
-          <h2 className="text-sm font-medium uppercase tracking-wide text-slate-500">
+          <h2 className="text-sm font-medium uppercase tracking-wide text-loftly-ink-muted">
             {t('primaryLabel')}
           </h2>
           <CardResultCard
@@ -185,7 +185,7 @@ export default async function SelectorResultsPage({
             applyCtaLabel={<SelectorApplyCtaLabel />}
           />
           {primary.reason_th && (
-            <p className="text-sm text-slate-600">{primary.reason_th}</p>
+            <p className="text-sm text-loftly-ink-muted">{primary.reason_th}</p>
           )}
           {(primary.cited_promo_ids ?? []).length > 0 && (
             <div className="flex flex-wrap gap-2">
@@ -214,7 +214,7 @@ export default async function SelectorResultsPage({
       {/* Secondaries */}
       {secondaries.length > 0 && (
         <section className="space-y-3">
-          <h2 className="text-sm font-medium uppercase tracking-wide text-slate-500">
+          <h2 className="text-sm font-medium uppercase tracking-wide text-loftly-ink-muted">
             {t('secondaryLabel')}
           </h2>
 
@@ -233,7 +233,7 @@ export default async function SelectorResultsPage({
                   return (
                     <div
                       key={slot.card_id}
-                      className="rounded-md border border-dashed border-slate-200 p-4 text-sm text-slate-500"
+                      className="rounded-md border border-dashed border-loftly-divider p-4 text-sm text-loftly-ink-muted"
                     >
                       {slot.slug}
                     </div>
@@ -297,8 +297,8 @@ export default async function SelectorResultsPage({
 
       {/* AI rationale — progressively streamed when ?stream=1 is set */}
       {result.rationale_th && (
-        <section className="rounded-md border border-slate-200 bg-slate-50 p-4">
-          <h2 className="text-sm font-medium text-slate-700">
+        <section className="rounded-md border border-loftly-divider bg-loftly-teal-soft/40 p-4">
+          <h2 className="text-sm font-medium text-loftly-ink">
             {t('rationaleTitle')}
           </h2>
           <div className="mt-2">
@@ -332,7 +332,7 @@ export default async function SelectorResultsPage({
       />
 
       {/* Footer actions */}
-      <footer className="flex flex-wrap items-center gap-4 border-t pt-6 text-sm text-slate-600">
+      <footer className="flex flex-wrap items-center gap-4 border-t pt-6 text-sm text-loftly-ink-muted">
         <Link href="/valuations" className="hover:underline">
           {t('methodAction')}
         </Link>
@@ -340,7 +340,7 @@ export default async function SelectorResultsPage({
           {t('resetAction')}
         </Link>
         {!accessToken && (
-          <span className="text-slate-400">{t('saveHint')}</span>
+          <span className="text-loftly-ink-muted/70">{t('saveHint')}</span>
         )}
       </footer>
 

@@ -127,7 +127,7 @@ export function CardCompareWidget({
   return (
     <section
       className={cn(
-        'rounded-md border border-slate-200 bg-white',
+        'rounded-md border border-loftly-divider bg-white',
         className,
       )}
       data-testid="card-compare-widget"
@@ -137,13 +137,13 @@ export function CardCompareWidget({
         onClick={handleToggle}
         aria-expanded={open}
         aria-controls={panelId}
-        className="flex w-full items-center justify-between gap-3 rounded-md px-4 py-3 text-left text-sm font-medium text-slate-900 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-loftly-sky"
+        className="flex w-full items-center justify-between gap-3 rounded-md px-4 py-3 text-left text-sm font-medium text-loftly-ink hover:bg-loftly-teal-soft/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-loftly-sky"
       >
         <span>{t('title')}</span>
         <span
           aria-hidden="true"
           className={cn(
-            'text-slate-400 transition-transform',
+            'text-loftly-ink-muted/70 transition-transform',
             open && 'rotate-180',
           )}
         >
@@ -156,7 +156,7 @@ export function CardCompareWidget({
           id={panelId}
           role="region"
           aria-label={t('title')}
-          className="border-t border-slate-200 p-4"
+          className="border-t border-loftly-divider p-4"
         >
           {similar.kind === 'loading' && (
             <div className="space-y-2" aria-busy="true">
@@ -167,18 +167,18 @@ export function CardCompareWidget({
           )}
 
           {similar.kind === 'error' && (
-            <p role="alert" className="text-sm text-red-700">
+            <p role="alert" className="text-sm text-loftly-danger">
               {similar.message}
             </p>
           )}
 
           {similar.kind === 'ready' && similar.cards.length === 0 && (
-            <p className="text-sm text-slate-500">{t('pickerEmpty')}</p>
+            <p className="text-sm text-loftly-ink-muted">{t('pickerEmpty')}</p>
           )}
 
           {similar.kind === 'ready' && similar.cards.length > 0 && (
             <fieldset className="space-y-3">
-              <legend className="mb-1 text-xs font-medium uppercase tracking-wide text-slate-500">
+              <legend className="mb-1 text-xs font-medium uppercase tracking-wide text-loftly-ink-muted">
                 {t('picker_placeholder')}
               </legend>
               <ul className="grid gap-2 sm:grid-cols-2">
@@ -189,10 +189,10 @@ export function CardCompareWidget({
                     <li key={c.slug}>
                       <label
                         className={cn(
-                          'flex cursor-pointer items-start gap-2 rounded-md border border-slate-200 p-2 text-sm hover:bg-slate-50',
+                          'flex cursor-pointer items-start gap-2 rounded-md border border-loftly-divider p-2 text-sm hover:bg-loftly-teal-soft/40',
                           disabled &&
                             'cursor-not-allowed opacity-50 hover:bg-transparent',
-                          checked && 'border-loftly-baht bg-slate-50',
+                          checked && 'border-loftly-baht bg-loftly-teal-soft/40',
                         )}
                       >
                         <input
@@ -204,10 +204,10 @@ export function CardCompareWidget({
                           className="mt-0.5"
                         />
                         <span className="flex-1">
-                          <span className="block font-medium text-slate-900">
+                          <span className="block font-medium text-loftly-ink">
                             {c.display_name}
                           </span>
-                          <span className="block text-xs text-slate-500">
+                          <span className="block text-xs text-loftly-ink-muted">
                             {c.bank.display_name_th}
                             {c.tier ? ` · ${c.tier}` : ''}
                           </span>
@@ -219,7 +219,7 @@ export function CardCompareWidget({
               </ul>
 
               {maxReached && (
-                <p className="text-xs text-slate-500" role="note">
+                <p className="text-xs text-loftly-ink-muted" role="note">
                   {t('picker_max_reached')}
                 </p>
               )}
@@ -237,7 +237,7 @@ export function CardCompareWidget({
                     ? t('loading')
                     : t('compare_button')}
                 </Button>
-                <span className="text-xs text-slate-500">
+                <span className="text-xs text-loftly-ink-muted">
                   {sourceDisplayName}
                   {selected.length > 0 && ` + ${selected.length}`}
                 </span>
@@ -246,7 +246,7 @@ export function CardCompareWidget({
           )}
 
           {compare.kind === 'error' && (
-            <p role="alert" className="mt-4 text-sm text-red-700">
+            <p role="alert" className="mt-4 text-sm text-loftly-danger">
               {compare.message}
             </p>
           )}

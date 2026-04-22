@@ -104,11 +104,11 @@ export function StreamingRationale({
 
   return (
     <div>
-      <p className="whitespace-pre-line text-sm leading-relaxed text-slate-800">
+      <p className="whitespace-pre-line text-sm leading-relaxed text-loftly-ink">
         {text}
       </p>
       {streaming && reconnecting === 0 && (
-        <p className="mt-1 text-xs italic text-slate-400" aria-live="polite">
+        <p className="mt-1 text-xs italic text-loftly-ink-muted/70" aria-live="polite">
           {streamingLabel}
         </p>
       )}
@@ -124,7 +124,7 @@ export function StreamingRationale({
       )}
       {disconnected && disconnectedLabel && (
         <p
-          className="mt-1 text-xs text-amber-700"
+          className="mt-1 text-xs text-loftly-amber-urgent"
           role="status"
           aria-live="polite"
           data-testid="streaming-disconnected"

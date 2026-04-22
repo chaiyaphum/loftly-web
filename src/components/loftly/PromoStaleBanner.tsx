@@ -22,7 +22,7 @@ export async function PromoStaleBanner({
   return (
     <div
       role="status"
-      className="rounded-md border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900"
+      className="rounded-md border border-amber-200 bg-loftly-amber/15 p-3 text-sm text-loftly-amber-urgent"
     >
       {t('stale', { days })}
     </div>

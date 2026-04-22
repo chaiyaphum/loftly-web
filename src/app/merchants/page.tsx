@@ -68,7 +68,7 @@ export default async function MerchantsHubPage() {
         <h1 className="text-3xl font-semibold tracking-tight">
           ค้นหาร้านค้า
         </h1>
-        <p className="mt-2 text-sm text-slate-600">
+        <p className="mt-2 text-sm text-loftly-ink-muted">
           เปรียบเทียบบัตรเครดิตที่ดีที่สุดสำหรับแต่ละร้าน
         </p>
       </header>
@@ -88,7 +88,7 @@ export default async function MerchantsHubPage() {
             href={`#letter-${l}`}
             className={`rounded px-2 py-1 font-mono ${
               activeLetters.has(l)
-                ? 'text-slate-900 hover:bg-slate-100'
+                ? 'text-loftly-ink hover:bg-loftly-divider/50'
                 : 'text-slate-300'
             }`}
             aria-disabled={!activeLetters.has(l)}
@@ -99,7 +99,7 @@ export default async function MerchantsHubPage() {
       </nav>
 
       {items.length === 0 && (
-        <p className="text-sm text-slate-500">
+        <p className="text-sm text-loftly-ink-muted">
           ยังไม่มีข้อมูลร้านค้าในขณะนี้ — กำลังอัปเดต
         </p>
       )}
@@ -115,11 +115,11 @@ export default async function MerchantsHubPage() {
                   <li key={m.slug}>
                     <Link
                       href={`/merchants/${m.slug}`}
-                      className="flex items-center justify-between rounded-md border border-slate-200 px-3 py-2 hover:border-slate-400"
+                      className="flex items-center justify-between rounded-md border border-loftly-divider px-3 py-2 hover:border-slate-400"
                     >
                       <div>
                         <p className="font-medium">{m.display_name_th}</p>
-                        <p className="text-xs text-slate-500">
+                        <p className="text-xs text-loftly-ink-muted">
                           {m.display_name_en}
                         </p>
                       </div>

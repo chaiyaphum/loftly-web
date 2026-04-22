@@ -74,7 +74,7 @@ export function CountdownTimer({
   if (!Number.isFinite(targetMs)) {
     return (
       <span
-        className={cn('text-sm text-slate-500', className)}
+        className={cn('text-sm text-loftly-ink-muted', className)}
         data-testid="countdown-invalid"
       >
         —
@@ -86,7 +86,7 @@ export function CountdownTimer({
   if (remaining.delta <= 0) {
     return (
       <span
-        className={cn('text-sm text-slate-500', className)}
+        className={cn('text-sm text-loftly-ink-muted', className)}
         data-testid="countdown-expired"
       >
         {effectiveLabels.expired}

@@ -40,7 +40,7 @@ export async function CardEarnRateTable({
   return (
     <div className={cn('space-y-6', className)}>
       <div>
-        <h3 className="mb-2 text-sm font-semibold text-slate-700">
+        <h3 className="mb-2 text-sm font-semibold text-loftly-ink">
           {t('localTitle')}
         </h3>
         <Table>
@@ -67,7 +67,7 @@ export async function CardEarnRateTable({
 
       {foreignEntries.length > 0 && (
         <div>
-          <h3 className="mb-2 text-sm font-semibold text-slate-700">
+          <h3 className="mb-2 text-sm font-semibold text-loftly-ink">
             {t('foreignTitle')}
           </h3>
           <Table>

@@ -43,15 +43,15 @@ export function MerchantPageHeader({
           alt={`${merchant.display_name_en} logo`}
           width={64}
           height={64}
-          className="h-16 w-16 rounded-md border border-slate-200 object-contain"
+          className="h-16 w-16 rounded-md border border-loftly-divider object-contain"
         />
       )}
 
       <div className="flex-1">
-        <h1 className="text-3xl font-semibold tracking-tight">
+        <h1 className="text-display text-loftly-ink">
           {merchant.display_name_th}
         </h1>
-        <p className="mt-1 text-sm text-slate-500">
+        <p className="mt-1 text-body-sm text-loftly-ink-muted">
           {merchant.display_name_en}
         </p>
 
@@ -61,14 +61,14 @@ export function MerchantPageHeader({
             <Badge variant="outline">{merchant.category_default}</Badge>
           )}
           {activePromoCount > 0 && (
-            <Badge variant="success">
+            <Badge variant="teal">
               {activePromoCount} โปรโมชันที่ใช้งานได้
             </Badge>
           )}
         </div>
 
         {merchant.description_th && (
-          <p className="mt-4 max-w-prose text-sm text-slate-700">
+          <p className="mt-4 max-w-prose text-body-sm text-loftly-ink">
             {merchant.description_th}
           </p>
         )}

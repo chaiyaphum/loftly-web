@@ -107,7 +107,7 @@ export default async function MerchantDetailPage({
         />
 
         {/* Breadcrumb */}
-        <nav className="mb-4 text-xs text-slate-500">
+        <nav className="mb-4 text-xs text-loftly-ink-muted">
           <Link href="/" className="hover:underline">
             หน้าแรก
           </Link>
@@ -129,7 +129,7 @@ export default async function MerchantDetailPage({
           <h2 className="mb-4 text-xl font-semibold tracking-tight">
             บัตรไหนดีที่ {merchantName}?
           </h2>
-          <p className="mb-4 text-sm text-slate-600">
+          <p className="mb-4 text-sm text-loftly-ink-muted">
             เปรียบเทียบบัตรเครดิตทุกใบ + โปรโมชันที่ active ที่{' '}
             {merchantName}
           </p>
@@ -145,7 +145,7 @@ export default async function MerchantDetailPage({
           heading="ร้านค้าใกล้เคียง"
         />
 
-        <p className="mt-8 text-xs text-slate-400">
+        <p className="mt-8 text-xs text-loftly-ink-muted/70">
           อัปเดต:{' '}
           {new Date(data.generated_at).toLocaleString('th-TH', {
             dateStyle: 'medium',

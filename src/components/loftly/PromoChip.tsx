@@ -71,7 +71,7 @@ export async function PromoChip({
 
   const urgencyClass =
     days !== null && days <= 7
-      ? 'bg-red-50 text-red-900 ring-1 ring-red-200'
+      ? 'bg-loftly-danger/10 text-loftly-danger ring-1 ring-loftly-danger/30'
       : '';
 
   const label = t('chip.label', {
@@ -88,7 +88,7 @@ export async function PromoChip({
 
   return (
     <details
-      className="group rounded-md border border-slate-200 bg-white p-2 text-xs"
+      className="group rounded-md border border-loftly-divider bg-loftly-surface p-2 text-caption"
       data-promo-id={promoId}
     >
       <summary className="flex cursor-pointer items-center gap-2 outline-none">
@@ -101,8 +101,8 @@ export async function PromoChip({
         {expiryCopy && (
           <span
             className={cn(
-              'text-[11px] text-slate-500',
-              days !== null && days <= 7 && 'text-red-700',
+              'text-caption text-loftly-ink-muted',
+              days !== null && days <= 7 && 'text-loftly-danger',
             )}
           >
             {expiryCopy}
@@ -110,8 +110,8 @@ export async function PromoChip({
         )}
       </summary>
 
-      <div className="mt-2 space-y-1 border-t border-slate-100 pt-2 text-slate-700">
-        <p className="text-[11px] font-medium uppercase tracking-wide text-slate-500">
+      <div className="mt-2 space-y-1 border-t border-loftly-divider pt-2 text-loftly-ink">
+        <p className="text-caption font-medium uppercase tracking-wide text-loftly-ink-muted">
           {t('chip.expandedTitle')}
         </p>
         {minSpend !== null && minSpend > 0 && (
@@ -124,20 +124,14 @@ export async function PromoChip({
           </p>
         )}
         {validUntil && (
-          <p className="text-slate-500">
+          <p className="text-loftly-ink-muted">
             {t('expiry.soon', { days: days ?? 0 })}
           </p>
         )}
-        {/*
-          Apply CTA routes through `/apply/promo/[id]` so the affiliate-click
-          handler can log placement=promo before 302-redirecting to the
-          upstream `source_url`. We avoid linking `sourceUrl` directly — that
-          bypasses affiliate tracking + T&C expansion analytics.
-        */}
         <a
           href={`/apply/promo/${encodeURIComponent(promoId)}`}
           rel="sponsored nofollow"
-          className="mt-1 inline-block text-[11px] font-medium text-loftly-sky hover:underline"
+          className="mt-1 inline-block text-caption font-medium text-loftly-teal hover:text-loftly-teal-hover hover:underline"
         >
           {t('source')}
         </a>

@@ -40,7 +40,7 @@ export function SelectorPane() {
         <div
           role="tablist"
           aria-label="selector-input-mode"
-          className="flex gap-2 rounded-md border border-slate-200 bg-slate-50 p-1 text-sm"
+          className="flex gap-2 rounded-md border border-loftly-divider bg-loftly-teal-soft/40 p-1 text-sm"
         >
           <button
             type="button"
@@ -50,8 +50,8 @@ export function SelectorPane() {
             className={
               'flex-1 rounded px-3 py-2 font-medium transition-colors ' +
               (tab === 'form'
-                ? 'bg-white text-slate-900 shadow-sm'
-                : 'text-slate-600 hover:text-slate-900')
+                ? 'bg-white text-loftly-ink shadow-sm'
+                : 'text-loftly-ink-muted hover:text-loftly-ink')
             }
           >
             {t('form_tab_label')}
@@ -64,8 +64,8 @@ export function SelectorPane() {
             className={
               'flex-1 rounded px-3 py-2 font-medium transition-colors ' +
               (tab === 'nlu'
-                ? 'bg-white text-slate-900 shadow-sm'
-                : 'text-slate-600 hover:text-slate-900')
+                ? 'bg-white text-loftly-ink shadow-sm'
+                : 'text-loftly-ink-muted hover:text-loftly-ink')
             }
           >
             {t('tab_label')}

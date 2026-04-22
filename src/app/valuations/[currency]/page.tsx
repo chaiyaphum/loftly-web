@@ -147,7 +147,7 @@ export default async function ValuationDetailPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <nav className="mb-4 text-xs text-slate-500">
+      <nav className="mb-4 text-xs text-loftly-ink-muted">
         <Link href="/valuations" className="hover:underline">
           {t('indexTitle')}
         </Link>
@@ -159,27 +159,27 @@ export default async function ValuationDetailPage({
         <h1 className="text-3xl font-semibold tracking-tight">
           {t('currencyTitle', { currency: currencyLabel })}
         </h1>
-        <p className="text-xs text-slate-500">
+        <p className="text-xs text-loftly-ink-muted">
           {t('detail.updatedAt', { date: updatedAt })}
         </p>
       </header>
 
       {/* Hero: big value + confidence */}
       <section
-        className="mb-8 rounded-lg border border-slate-200 bg-white p-6"
+        className="mb-8 rounded-lg border border-loftly-divider bg-white p-6"
         data-testid="valuation-hero"
       >
-        <div className="text-xs uppercase tracking-wide text-slate-500">
+        <div className="text-xs uppercase tracking-wide text-loftly-ink-muted">
           {t('detail.heroLabel')}
         </div>
         <div className="mt-1 flex items-baseline gap-2">
-          <span className="text-4xl font-semibold tabular-nums text-slate-900">
+          <span className="text-4xl font-semibold tabular-nums text-loftly-ink">
             {heroValue}
           </span>
-          <span className="text-base text-slate-600">THB / point</span>
+          <span className="text-base text-loftly-ink-muted">THB / point</span>
         </div>
         <div className="mt-4">
-          <div className="text-xs font-medium uppercase tracking-wide text-slate-500">
+          <div className="text-xs font-medium uppercase tracking-wide text-loftly-ink-muted">
             {t('detail.confidenceLabel')}
           </div>
           <ConfidenceBar
@@ -191,7 +191,7 @@ export default async function ValuationDetailPage({
         {band === 'range' && (
           <p
             role="note"
-            className="mt-4 rounded-md bg-amber-50 p-3 text-xs text-amber-900"
+            className="mt-4 rounded-md bg-loftly-amber/15 p-3 text-xs text-loftly-amber-urgent"
           >
             {t('detail.underSampledBanner')}
           </p>
@@ -203,7 +203,7 @@ export default async function ValuationDetailPage({
         <h2 className="mb-2 text-xl font-semibold tracking-tight">
           {t('detail.methodologyTitle')}
         </h2>
-        <p className="text-sm text-slate-700">
+        <p className="text-sm text-loftly-ink">
           {t('detail.methodologyBody', { samples: detail.sample_size })}
         </p>
       </section>
@@ -214,7 +214,7 @@ export default async function ValuationDetailPage({
           <h2 className="mb-2 text-xl font-semibold tracking-tight">
             {t('detail.topRedemption')}
           </h2>
-          <blockquote className="rounded-md border-l-4 border-loftly-baht bg-slate-50 p-4 text-sm italic text-slate-700">
+          <blockquote className="rounded-md border-l-4 border-loftly-baht bg-loftly-teal-soft/40 p-4 text-sm italic text-loftly-ink">
             {detail.top_redemption_example}
           </blockquote>
         </section>

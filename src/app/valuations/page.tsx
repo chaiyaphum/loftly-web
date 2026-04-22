@@ -94,10 +94,10 @@ export default async function ValuationsIndexPage() {
         <h1 className="text-3xl font-semibold tracking-tight">
           {t('indexTitle')}
         </h1>
-        <p className="max-w-2xl text-sm text-slate-600">
+        <p className="max-w-2xl text-sm text-loftly-ink-muted">
           {t('indexSubtitle')}
         </p>
-        <p className="text-xs text-slate-500">
+        <p className="text-xs text-loftly-ink-muted">
           <Link
             href="/guides/how-loftly-calculates-point-valuations"
             className="text-loftly-baht hover:underline"
@@ -110,7 +110,7 @@ export default async function ValuationsIndexPage() {
       {loadError && (
         <div
           role="alert"
-          className="mb-8 rounded-md border border-red-200 bg-red-50 p-4 text-sm text-red-900"
+          className="mb-8 rounded-md border border-red-200 bg-loftly-danger/10 p-4 text-sm text-loftly-danger"
         >
           {loadError}
           <div className="mt-2">
@@ -122,7 +122,7 @@ export default async function ValuationsIndexPage() {
       )}
 
       {!loadError && valuations.length === 0 && (
-        <p className="rounded-md bg-slate-50 p-6 text-center text-sm text-slate-600">
+        <p className="rounded-md bg-loftly-teal-soft/40 p-6 text-center text-sm text-loftly-ink-muted">
           {t('emptyState')}
         </p>
       )}
@@ -138,20 +138,20 @@ export default async function ValuationsIndexPage() {
             return (
               <li
                 key={v.currency.code}
-                className="rounded-md border border-slate-200 bg-white p-4 transition-shadow hover:shadow-sm"
+                className="rounded-md border border-loftly-divider bg-white p-4 transition-shadow hover:shadow-sm"
               >
                 <Link
                   href={`/valuations/${encodeURIComponent(v.currency.code)}`}
                   className="block space-y-2"
                 >
                   <div className="flex items-center justify-between gap-2">
-                    <span className="font-medium text-slate-900">{name}</span>
-                    <span className="text-xs uppercase tracking-wide text-slate-500">
+                    <span className="font-medium text-loftly-ink">{name}</span>
+                    <span className="text-xs uppercase tracking-wide text-loftly-ink-muted">
                       {v.currency.code}
                     </span>
                   </div>
                   <ValuationBadge currency={v.currency} valuation={v} />
-                  <div className="text-xs text-slate-500">
+                  <div className="text-xs text-loftly-ink-muted">
                     confidence {(v.confidence * 100).toFixed(0)}%
                     {' · '}
                     {t('detail.sampleCount', { n: v.sample_size })}
@@ -163,7 +163,7 @@ export default async function ValuationsIndexPage() {
         </ul>
       )}
 
-      <footer className="mt-12 border-t border-slate-200 pt-6 text-xs text-slate-500">
+      <footer className="mt-12 border-t border-loftly-divider pt-6 text-xs text-loftly-ink-muted">
         <Link
           href="/legal/valuation-method"
           className="text-loftly-baht hover:underline"

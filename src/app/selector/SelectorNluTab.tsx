@@ -134,7 +134,7 @@ export function SelectorNluTab({
 
   return (
     <form onSubmit={handleParse} className="space-y-4">
-      <label htmlFor="nlu-text" className="block text-base font-medium text-slate-900">
+      <label htmlFor="nlu-text" className="block text-base font-medium text-loftly-ink">
         {t('tab_label')}
       </label>
       <textarea
@@ -151,12 +151,12 @@ export function SelectorNluTab({
         aria-invalid={Boolean(validationKey)}
         aria-describedby="nlu-char-count"
         disabled={isPending}
-        className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 disabled:bg-slate-100"
+        className="w-full rounded-md border border-loftly-divider bg-white px-3 py-2 text-sm text-loftly-ink shadow-sm focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 disabled:bg-loftly-divider/50"
       />
-      <div className="flex items-center justify-between text-xs text-slate-500">
+      <div className="flex items-center justify-between text-xs text-loftly-ink-muted">
         <span
           id="nlu-char-count"
-          className={isTooShort || isTooLong ? 'text-red-700' : undefined}
+          className={isTooShort || isTooLong ? 'text-loftly-danger' : undefined}
         >
           {t('char_count_hint', { count: charCount })}
         </span>
@@ -170,7 +170,7 @@ export function SelectorNluTab({
       </div>
 
       {validationKey && (
-        <p role="alert" className="text-sm text-red-700">
+        <p role="alert" className="text-sm text-loftly-danger">
           {t(validationKey)}
         </p>
       )}
@@ -178,7 +178,7 @@ export function SelectorNluTab({
       {errorKey && (
         <p
           role="alert"
-          className="rounded-md bg-red-50 p-3 text-sm text-red-900"
+          className="rounded-md bg-loftly-danger/10 p-3 text-sm text-loftly-danger"
         >
           {t(errorKey)}
         </p>

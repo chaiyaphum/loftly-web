@@ -74,7 +74,7 @@ export function GoalPicker({
                 'flex cursor-pointer items-start gap-2 rounded-md border p-3 text-sm transition-colors',
                 checked
                   ? 'border-loftly-baht bg-loftly-baht/5'
-                  : 'border-slate-200 hover:bg-slate-50',
+                  : 'border-loftly-divider hover:bg-loftly-teal-soft/40',
                 disabled && 'cursor-not-allowed opacity-60',
               )}
             >
@@ -90,12 +90,12 @@ export function GoalPicker({
                 aria-describedby={`${id}-desc`}
               />
               <span className="flex-1">
-                <span className="block font-medium text-slate-900">
+                <span className="block font-medium text-loftly-ink">
                   {t(`types.${type}.label`)}
                 </span>
                 <span
                   id={`${id}-desc`}
-                  className="mt-0.5 block text-xs text-slate-500"
+                  className="mt-0.5 block text-xs text-loftly-ink-muted"
                 >
                   {t(`types.${type}.description`)}
                 </span>
@@ -106,11 +106,11 @@ export function GoalPicker({
       </div>
 
       {value.type === 'miles' && (
-        <div className="grid gap-3 rounded-md border border-slate-200 bg-slate-50 p-4 sm:grid-cols-3">
+        <div className="grid gap-3 rounded-md border border-loftly-divider bg-loftly-teal-soft/40 p-4 sm:grid-cols-3">
           <div>
             <label
               htmlFor={`${nameId}-currency`}
-              className="mb-1 block text-xs font-medium text-slate-600"
+              className="mb-1 block text-xs font-medium text-loftly-ink-muted"
             >
               {t('currencyLabel')}
             </label>
@@ -125,7 +125,7 @@ export function GoalPicker({
                   currency_preference: e.target.value,
                 })
               }
-              className="h-10 w-full rounded-md border border-slate-300 bg-white px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-loftly-sky"
+              className="h-10 w-full rounded-md border border-loftly-divider bg-white px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-loftly-sky"
             >
               {COMMON_CURRENCIES.map((c) => (
                 <option key={c} value={c}>
@@ -138,7 +138,7 @@ export function GoalPicker({
           <div>
             <label
               htmlFor={`${nameId}-horizon`}
-              className="mb-1 block text-xs font-medium text-slate-600"
+              className="mb-1 block text-xs font-medium text-loftly-ink-muted"
             >
               {t('horizonLabel')}
             </label>
@@ -153,7 +153,7 @@ export function GoalPicker({
                   horizon_months: Number(e.target.value),
                 })
               }
-              className="h-10 w-full rounded-md border border-slate-300 bg-white px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-loftly-sky"
+              className="h-10 w-full rounded-md border border-loftly-divider bg-white px-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-loftly-sky"
             >
               {HORIZON_OPTIONS.map((h) => (
                 <option key={h} value={h}>
@@ -166,7 +166,7 @@ export function GoalPicker({
           <div>
             <label
               htmlFor={`${nameId}-target`}
-              className="mb-1 block text-xs font-medium text-slate-600"
+              className="mb-1 block text-xs font-medium text-loftly-ink-muted"
             >
               {t('targetPointsLabel')}
             </label>

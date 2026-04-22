@@ -91,7 +91,7 @@ export function ShareButton({ sessionId, className, resolveUrl }: Props) {
           aria-live="polite"
           data-testid="share-toast"
           data-state={toast}
-          className="ml-2 text-xs text-slate-600"
+          className="ml-2 text-xs text-loftly-ink-muted"
         >
           {toast === 'copied' ? t('copied') : t('copyFailed')}
         </span>

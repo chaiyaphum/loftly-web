@@ -15,13 +15,19 @@
     --loftly-teal-soft: 230 244 239;      /* #E6F4EF */
     --loftly-ink: 30 42 58;               /* #1E2A3A */
     --loftly-ink-muted: 74 85 104;        /* #4A5568 */
+    --loftly-ink-subtle: 122 134 153;     /* #7A8699 */
     --loftly-amber: 239 159 39;           /* #EF9F27 */
     --loftly-amber-urgent: 217 119 6;     /* #D97706 */
+    --loftly-amber-soft: 253 243 227;     /* #FDF3E3 */
     --loftly-warm-white: 250 247 242;     /* #FAF7F2 */
     --loftly-surface: 255 255 255;        /* #FFFFFF */
+    --loftly-surface-muted: 244 240 232;  /* #F4F0E8 — inputs, kbd */
     --loftly-divider: 232 228 220;        /* #E8E4DC */
+    --loftly-divider-strong: 216 210 196; /* #D8D2C4 — input borders at rest */
     --loftly-success: 21 128 61;          /* #15803D */
+    --loftly-success-soft: 220 252 231;   /* #DCFCE7 */
     --loftly-danger: 220 38 38;           /* #DC2626 */
+    --loftly-danger-soft: 254 226 226;    /* #FEE2E2 */
     --loftly-charcoal: 44 44 42;          /* #2C2C2A — dark bg, v1.1 */
     --loftly-charcoal-elev: 58 58 55;     /* #3A3A37 — dark elev, v1.1 */
 
@@ -76,4 +82,10 @@
       scroll-behavior: auto !important;
     }
   }
+}
+
+/* PromoTicker infinite-scroll keyframe — paired with `animate-ticker` utility. */
+@keyframes loftly-ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }

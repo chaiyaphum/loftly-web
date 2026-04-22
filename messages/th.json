@@ -193,6 +193,85 @@
     }
   },
   "landing": {
+    "heroSearch": {
+      "statusPill": "โปร active {count}+ · sync ล่าสุดไม่กี่นาทีก่อน",
+      "h1Prefix": "บัตรไหนให้คุ้มที่สุด",
+      "h1Connector": "ที่",
+      "h1Accent": "ร้านนี้",
+      "h1Suffix": "?",
+      "subheading": "พิมพ์ชื่อร้าน ดูบัตรที่คุ้มสุด โปรสดที่ใช้ได้ พร้อมคำนวณ THB ต่อ ฿1,000 ใช้จ่าย",
+      "placeholder": "ลอง Starbucks · Lazada · Central...",
+      "ariaInput": "ค้นหาร้านค้า",
+      "ariaResults": "ผลการค้นหาร้านค้า",
+      "clear": "ล้างคำค้นหา",
+      "earn": "Earn",
+      "earnPer1k": "฿42 / ฿1,000",
+      "activePromos": "{count} โปร active",
+      "showing": "แสดง {count} ร้าน",
+      "pressEnterPrefix": "กด",
+      "pressEnterSuffix": "เพื่อเปิด",
+      "popular": "ยอดนิยม:",
+      "loading": "กำลังค้นหา…",
+      "altCtaLead": "— หรือ —",
+      "altCta": "ใช้ Selector แบบเต็ม (30 วินาที) →"
+    },
+    "promoTicker": {
+      "heading": "ใกล้หมดเขต · สด",
+      "subheading": "เก็บข้อมูลจาก 40+ บัตรทุก 4 ชั่วโมง",
+      "daysLeft": "{count}d left"
+    },
+    "howItWorks": {
+      "eyebrow": "Loftly ทำงานยังไง",
+      "heading": "กรอก 30 วินาที — ได้ตัวเลขที่แม่นยำกว่า ตลอดปี",
+      "step1": {
+        "title": "บอกการใช้จ่ายของคุณ",
+        "body": "ยอดรวมต่อเดือน + สัดส่วนแต่ละหมวด ใช้เวลา 30 วินาที · ไม่ต้อง login ธนาคาร"
+      },
+      "step2": {
+        "title": "ดูตัวเลขจริง",
+        "body": "บัตร 1–3 ใบ พร้อม THB ต่อเดือน ต่อปี — ตัวเลขจริง ไม่ใช่โฆษณา",
+        "mathPrimary": "UOB PRVI",
+        "mathSecondary": "CardX ONE",
+        "mathTertiary": "KTC X U",
+        "mathTotal": "รวม / ปี"
+      },
+      "step3": {
+        "title": "สมัครหรือเก็บไว้",
+        "body": "ลิงก์ตรงจากธนาคาร + promo chip สด · Affiliate-disclosed ทุก CTA บอกตรงเมื่อเรามีส่วนได้",
+        "chipA": "15% off · 22d",
+        "chipB": "BOGO · 3d",
+        "chipC": "2x miles · 39d",
+        "chipD": "฿50 off · ongoing"
+      }
+    },
+    "featured": {
+      "eyebrow": "รีวิวจากบรรณาธิการ",
+      "heading": "รีวิวบัตรแบบตรงไปตรงมา",
+      "subheading": "40+ บัตรไทย · อัปเดตทุกไตรมาส · ไม่มีโฆษณาแฝง",
+      "allReviews": "ดูรีวิวทั้งหมด",
+      "baseLabel": "Base",
+      "feeLabel": "Fee",
+      "feeFree": "Free"
+    },
+    "trust": {
+      "srHeading": "Loftly ตอบโจทย์อะไร",
+      "livePromos": {
+        "label": "โปร active ที่ติดตาม",
+        "desc": "อัปเดตทุก 4 ชั่วโมง · ครอบคลุม 40+ บัตรไทย"
+      },
+      "perMile": {
+        "label": "ต่อ KrisFlyer ไมล์",
+        "desc": "วิธีคำนวณโปร่งใส · อัปเดตทุกไตรมาส"
+      },
+      "cardsReviewed": {
+        "label": "บัตรที่รีวิว",
+        "desc": "เขียนมือ · คำนวณ THB เต็ม · ไม่ใช่ affiliate scrape"
+      },
+      "affiliate": {
+        "label": "เปิดเผย affiliate",
+        "desc": "ทุกลิงก์บอกตรง ๆ เมื่อคลิกแล้วเราได้ค่าตอบแทน"
+      }
+    },
     "title": "รู้ทันทีว่าใช้บัตรไหนคุ้ม — ที่ทุกร้าน ทุกวัน",
     "subtitle": "Live Thai credit-card intelligence for every merchant",
     "cta": "ค้นหาบัตรที่ใช่ ▸",

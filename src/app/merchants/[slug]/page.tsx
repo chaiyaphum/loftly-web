@@ -155,12 +155,12 @@ export default async function MerchantDetailPage({
       </main>
     );
   } catch (err) {
-    // 404 → hard miss, show branded not-found.
-    // status 0 (network error / timeout — `fetch` never got a structured
-    // response) → also treat as not-found so we don't serve a raw 500 when
-    // the backend is unreachable. Anything else (5xx, unexpected 4xx) is
-    // rethrown so the scoped `error.tsx` boundary can render a retry UI.
-    if (err instanceof LoftlyAPIError && (err.status === 404 || err.status === 0)) {
+    // Any LoftlyAPIError on the primary lookup — 404 (unknown slug), 405
+    // (feature flag off: merchants_reverse_lookup_disabled), 501 (endpoint
+    // not yet implemented), status 0 (network/timeout) — all render the
+    // branded not-found page instead of a raw 500. Only truly unexpected
+    // throws (non-LoftlyAPIError) bubble to the error boundary.
+    if (err instanceof LoftlyAPIError) {
       notFound();
     }
     throw err;

@@ -14,6 +14,139 @@
     "account": "บัญชี",
     "pricing": "ค่าบริการ"
   },
+  "promosToday": {
+    "eyebrow": "สด · อัปเดตทุกวัน",
+    "heading": "โปรโมชันบัตรเครดิตไทย วันนี้",
+    "subheading": "ทุกโปรที่ active จากธนาคารไทย — KTC · SCB · KBank พร้อมวันหมดอายุจริง ไม่ใช่รีวิวปีเก่า",
+    "stats": {
+      "total": "{count} โปร active",
+      "banks": "{count} ธนาคาร",
+      "merchants": "{count} ร้าน",
+      "updated": "อัปเดตล่าสุด {ago}"
+    },
+    "empty": "ยังไม่มีข้อมูลโปรโมชันในขณะนี้ — กลับมาดูใหม่ภายใน 24 ชั่วโมง",
+    "emptyCta": "ดูร้านทั้งหมด",
+    "viewMerchant": "ดูหน้าร้าน",
+    "daysLeft": "เหลือ {count} วัน",
+    "minSpend": "ยอดขั้นต่ำ THB {amount}",
+    "sourceLink": "ดูเงื่อนไขจากธนาคาร",
+    "unknownPromo": "โปรโมชัน"
+  },
+  "features": {
+    "merchantLookup": {
+      "eyebrow": "Merchant Lookup · Idea 2",
+      "heading": "ร้านไหน บัตรไหนคุ้ม — รู้ทันที",
+      "subheading": "ถามแบบจุดตรง: ที่ Starbucks ใช้บัตรไหนคุ้มสุด — ได้คำตอบพร้อม THB ต่อ ฿1,000 ภายในวินาทีเดียว ไม่ต้องอ่านรีวิว 10 หน้า",
+      "demo": {
+        "heading": "ลองค้นหาร้านที่คุณใช้บ่อย",
+        "body": "พิมพ์ชื่อร้านภาษาไทยหรืออังกฤษ — Loftly จะจัดอันดับบัตรตามมูลค่าจริงที่ร้านนั้น",
+        "hint": "ตัวอย่าง: Starbucks, Grab, Shopee, Lazada, 7-Eleven, Central"
+      },
+      "why": {
+        "heading": "ทำไม Merchant Lookup คือตัวเปลี่ยนเกม",
+        "concrete": {
+          "title": "คำตอบเป็นตัวเลข ไม่ใช่ความเห็น",
+          "body": "ที่ Starbucks → KBank WISDOM · ~฿340/เดือน ที่ spend ฿80k — ทุกอันดับมาพร้อม THB จริง"
+        },
+        "live": {
+          "title": "Promo update ทุกวัน",
+          "body": "deal-harvester ดึงโปรจาก KTC · SCB · KBank ทุกวัน ข้อมูลที่คุณเห็นน้อยกว่า 24 ชั่วโมง"
+        },
+        "bilingual": {
+          "title": "ภาษาไทย + อังกฤษ",
+          "body": "อ่านได้ทั้ง 2 ภาษา — ไม่ใช่แค่แปล แต่ปรับคำให้เข้าใจแบบไทย (KrisFlyer, cashback, promo ไม่แปลทิ้ง)"
+        }
+      },
+      "compare": {
+        "heading": "เปรียบเทียบกับเพื่อน",
+        "dimension": "มิติ",
+        "rows": {
+          "merchantAnswer": {
+            "dim": "ตอบโจทย์เฉพาะร้าน",
+            "loftly": "✓ ร้าน → บัตร",
+            "chaimiles": "✕ รีวิวทั่วไป",
+            "punpro": "✕ รีวิวทั่วไป"
+          },
+          "livePromo": {
+            "dim": "Promo สด",
+            "loftly": "< 24h",
+            "chaimiles": "— ไม่มี",
+            "punpro": "— ไม่มี"
+          },
+          "thbMath": {
+            "dim": "คำนวณ THB",
+            "loftly": "✓ ต่อ ฿1,000",
+            "chaimiles": "✕",
+            "punpro": "✕"
+          },
+          "bilingual": {
+            "dim": "TH + EN",
+            "loftly": "✓",
+            "chaimiles": "TH เท่านั้น",
+            "punpro": "TH เท่านั้น"
+          }
+        }
+      },
+      "cta": {
+        "eyebrow": "ลองเลย",
+        "heading": "ร้านไหนที่คุณใช้บ่อย?",
+        "body": "ค้นหาร้านใน Loftly Merchant Lookup — ได้คำตอบภายในวินาทีเดียว ไม่ต้องสมัคร",
+        "primary": "ดูร้านทั้งหมด",
+        "secondary": "ดู Starbucks เป็นตัวอย่าง"
+      }
+    },
+    "promoIntelligence": {
+      "eyebrow": "Promo Intelligence · Idea 1",
+      "heading": "Promo สด จาก 3 ธนาคารไทย อัปเดตทุกวัน",
+      "subheading": "deal-harvester ดึงโปร 160+ รายการ/วัน · AI จับคู่เข้ากับบัตรแต่ละใบ · คำนวณ THB ต่อ spend ของคุณ",
+      "pipeline": {
+        "heading": "ข้อมูลมาจากไหน",
+        "steps": {
+          "harvest": {
+            "title": "Harvest",
+            "body": "Crawler ดึงโปรจากหน้าธนาคาร KTC · SCB · KBank วันละหลายรอบ"
+          },
+          "canonicalize": {
+            "title": "Canonicalize",
+            "body": "AI จับคู่ชื่อร้าน (เช่น 'สตาร์บัคส์' = 'Starbucks') เพื่อค้นหาได้ทุกสะกด"
+          },
+          "value": {
+            "title": "Value",
+            "body": "คำนวณมูลค่า THB ต่อ ฿1,000 spend โดยใช้ valuation แต่ละแต้ม"
+          },
+          "surface": {
+            "title": "Surface",
+            "body": "แสดงในหน้าร้าน, Selector, และ /promos-today แบบ real-time"
+          }
+        }
+      },
+      "why": {
+        "heading": "ทำไม Promo Intelligence แตกต่าง",
+        "freshness": {
+          "title": "Freshness < 24h",
+          "body": "ทุกโปรที่คุณเห็นอายุไม่เกิน 24 ชั่วโมง — ไม่ใช่ listicle ปีเก่าที่ลิงก์หมดแล้ว",
+          "stat": "~160 โปร · < 24h"
+        },
+        "thaiCoverage": {
+          "title": "ครอบคลุมไทย",
+          "body": "3 ธนาคารใหญ่ไทย + scaling ไปอีก 5 ธนาคารใน Phase 2",
+          "stat": "3 · 50+ ร้าน"
+        },
+        "aiReasoning": {
+          "title": "AI ภาษาไทย",
+          "body": "Sonnet + Haiku + Typhoon — เหตุผลเป็นภาษาไทยที่เข้าใจจริง",
+          "stat": "TH + EN · bilingual"
+        }
+      },
+      "cta": {
+        "eyebrow": "ลอง Selector",
+        "heading": "ให้ AI เลือกบัตรที่คุ้มที่สุด 3 ใบ",
+        "body": "บอก spend รายเดือน + เป้าหมาย → Loftly เลือกบัตรพร้อมคำนวณ THB จริง ใช้เวลา 2 นาที ฟรี",
+        "primary": "เริ่ม Selector",
+        "secondary": "ดู Promo วันนี้"
+      }
+    }
+  },
   "footer": {
     "affiliateNote": "Loftly ได้รับค่าคอมมิชชันเมื่อคุณสมัครบัตรผ่านลิงก์ของเรา — เราแนะนำบัตรที่คุ้มตามข้อมูลเท่านั้น ไม่ใช่จากค่าคอม",
     "featuresHeading": "ฟีเจอร์",

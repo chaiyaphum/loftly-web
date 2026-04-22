@@ -14,6 +14,139 @@
     "account": "Account",
     "pricing": "Pricing"
   },
+  "promosToday": {
+    "eyebrow": "Live · Updated daily",
+    "heading": "Thai credit-card promos today",
+    "subheading": "Every active promo from Thai banks — KTC, SCB, KBank — with real expiry dates, not year-old listicles.",
+    "stats": {
+      "total": "{count} active",
+      "banks": "{count} banks",
+      "merchants": "{count} merchants",
+      "updated": "updated {ago}"
+    },
+    "empty": "No active promos right now — check back within 24 hours.",
+    "emptyCta": "Browse all merchants",
+    "viewMerchant": "View merchant",
+    "daysLeft": "{count} days left",
+    "minSpend": "Min spend THB {amount}",
+    "sourceLink": "View T&Cs at bank",
+    "unknownPromo": "Promotion"
+  },
+  "features": {
+    "merchantLookup": {
+      "eyebrow": "Merchant Lookup · Idea 2",
+      "heading": "Which card wins — per merchant, instantly",
+      "subheading": "Ask the direct question: at Starbucks, which card earns most? Get a ranked answer with THB per ฿1,000 spend in one second — no 10-page review.",
+      "demo": {
+        "heading": "Try a merchant you use often",
+        "body": "Type in Thai or English — Loftly ranks cards by actual value at that merchant.",
+        "hint": "Examples: Starbucks, Grab, Shopee, Lazada, 7-Eleven, Central"
+      },
+      "why": {
+        "heading": "Why Merchant Lookup changes the game",
+        "concrete": {
+          "title": "Numbers, not opinions",
+          "body": "At Starbucks → KBank WISDOM · ~฿340/mo at ฿80k spend — every rank comes with real THB."
+        },
+        "live": {
+          "title": "Promos refreshed daily",
+          "body": "deal-harvester pulls promos from KTC, SCB, KBank every day — data you see is < 24h old."
+        },
+        "bilingual": {
+          "title": "Thai + English",
+          "body": "Read either language — not translated; phrased natively (we don't translate 'KrisFlyer' or 'cashback' into forced Thai)."
+        }
+      },
+      "compare": {
+        "heading": "How we compare",
+        "dimension": "Dimension",
+        "rows": {
+          "merchantAnswer": {
+            "dim": "Merchant-specific answer",
+            "loftly": "✓ Merchant → Card",
+            "chaimiles": "✕ General reviews",
+            "punpro": "✕ General reviews"
+          },
+          "livePromo": {
+            "dim": "Live promos",
+            "loftly": "< 24h",
+            "chaimiles": "— None",
+            "punpro": "— None"
+          },
+          "thbMath": {
+            "dim": "THB math",
+            "loftly": "✓ per ฿1,000",
+            "chaimiles": "✕",
+            "punpro": "✕"
+          },
+          "bilingual": {
+            "dim": "TH + EN",
+            "loftly": "✓",
+            "chaimiles": "TH only",
+            "punpro": "TH only"
+          }
+        }
+      },
+      "cta": {
+        "eyebrow": "Try it",
+        "heading": "Which merchant do you use most?",
+        "body": "Search any merchant in Loftly Merchant Lookup — one-second answer, no sign-up required.",
+        "primary": "Browse all merchants",
+        "secondary": "See Starbucks as an example"
+      }
+    },
+    "promoIntelligence": {
+      "eyebrow": "Promo Intelligence · Idea 1",
+      "heading": "Live promos from 3 Thai banks — refreshed daily",
+      "subheading": "deal-harvester pulls 160+ promos/day · AI matches each to cards · THB math personalized to your spend.",
+      "pipeline": {
+        "heading": "Where the data comes from",
+        "steps": {
+          "harvest": {
+            "title": "Harvest",
+            "body": "Crawler pulls promos from KTC, SCB, KBank bank pages several times a day."
+          },
+          "canonicalize": {
+            "title": "Canonicalize",
+            "body": "AI reconciles merchant names (e.g., 'สตาร์บัคส์' = 'Starbucks') so every spelling resolves."
+          },
+          "value": {
+            "title": "Value",
+            "body": "Computes THB per ฿1,000 spend using per-currency valuations."
+          },
+          "surface": {
+            "title": "Surface",
+            "body": "Renders on merchant pages, Selector, and /promos-today in real time."
+          }
+        }
+      },
+      "why": {
+        "heading": "What makes it different",
+        "freshness": {
+          "title": "Freshness < 24h",
+          "body": "Every promo you see is < 24h old — not a year-old listicle with dead links.",
+          "stat": "~160 promos · < 24h"
+        },
+        "thaiCoverage": {
+          "title": "Thai coverage",
+          "body": "3 major Thai banks today, scaling to 5 more in Phase 2.",
+          "stat": "3 banks · 50+ merchants"
+        },
+        "aiReasoning": {
+          "title": "Thai-language AI",
+          "body": "Sonnet + Haiku + Typhoon — reasoning that reads as native Thai, not translation.",
+          "stat": "TH + EN · bilingual"
+        }
+      },
+      "cta": {
+        "eyebrow": "Try Selector",
+        "heading": "Let AI pick your top-3 cards",
+        "body": "Tell us your monthly spend and goal → Loftly picks cards with real THB math. Takes 2 minutes, free.",
+        "primary": "Start Selector",
+        "secondary": "See today's promos"
+      }
+    }
+  },
   "footer": {
     "affiliateNote": "Loftly earns a commission when you apply through our links — we rank cards by the numbers, not by what pays us.",
     "featuresHeading": "Features",

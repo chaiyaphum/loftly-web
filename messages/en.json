@@ -220,77 +220,7 @@
     "subtitle": "Live Thai credit-card intelligence for every merchant",
     "cta": "Find the right card ▸",
     "reassurance": "Free · No sign-up · Results in 10 seconds",
-    "dualHero": {
-      "heading": "Know which card wins — at every merchant, every day",
-      "subheading": "Live promo data from every major Thai bank + AI that picks the best card for your spend",
-      "merchant": {
-        "title": "Which merchant?",
-        "subtitle": "Type a merchant name → see cards with active promos + THB math in seconds",
-        "browseLink": "Browse all merchants"
-      },
-      "selector": {
-        "title": "Plan holistically",
-        "subtitle": "Share your spend + goal → AI picks your best 3-card stack",
-        "cta": "Start Selector ▸",
-        "reassurance": "Free · No sign-up · Results in 10 seconds"
-      },
-      "trust": {
-        "promos": "Live from deal-harvester",
-        "banks": "3 Thai banks",
-        "merchants": "50+ top merchants",
-        "bilingual": "TH + EN",
-        "pdpa": "PDPA-safe"
-      }
-    },
-    "liveStrip": {
-      "liveWith": "Live · {count} active offers",
-      "banks": "{count} Thai banks",
-      "merchants": "{count}+ merchants",
-      "updated": "Updated {ago}",
-      "cta": "View all ›",
-      "ariaLabel": "View all active offers"
-    },
-    "hero": {
-      "control": {
-        "h1": "Lift your rewards with AI",
-        "subtitle": "ยกระดับทุกแต้มบัตรเครดิตของคุณ",
-        "cta": "Find the right card ▸"
-      },
-      "variant_benefit_led": {
-        "h1": "Know before you swipe",
-        "subtitle": "AI picks the best card for your spend in 10 seconds",
-        "cta": "Try it ▸"
-      },
-      "variant_urgency": {
-        "h1": "Stop leaving rewards on the table",
-        "subtitle": "Thai cardholders lose THB 30,000–120,000/year on the wrong card",
-        "cta": "Check your spending ▸"
-      }
-    },
-    "returning": {
-      "personalized": {
-        "title": "Welcome back — your {cardName} pick is ready",
-        "subtitle": "Your Selector result is still live — view it again or start fresh.",
-        "viewResults": "View full result ▸",
-        "restartSelector": "Start a new Selector"
-      },
-      "expired": {
-        "banner": "You've used Selector before — run it again?",
-        "cta": "Restart ▸"
-      },
-      "restartConfirm": {
-        "title": "Start a new Selector?",
-        "body": "Your previous result stays accessible via its direct link for 24 hours.",
-        "yes": "Start new",
-        "no": "Cancel"
-      }
-    },
     "howItWorksTitle": "How Loftly works",
-    "howItWorks": {
-      "step1": "Tell us about your spending",
-      "step2": "AI calculates the cards that maximize your points",
-      "step3": "Apply through Loftly, free"
-    },
     "topPromosTitle": "What's hot today?",
     "topPromosViewAll": "View all",
     "topPromosExpiry": "{days} days left",

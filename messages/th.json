@@ -220,77 +220,7 @@
     "subtitle": "Live Thai credit-card intelligence for every merchant",
     "cta": "ค้นหาบัตรที่ใช่ ▸",
     "reassurance": "ใช้ฟรี · ไม่ต้องสมัคร · ได้ผลใน 10 วินาที",
-    "dualHero": {
-      "heading": "รู้ทันทีว่าใช้บัตรไหนคุ้ม — ที่ทุกร้าน ทุกวัน",
-      "subheading": "ข้อมูลโปรโมชันสดจาก 3 ธนาคารไทย + AI แนะนำบัตรที่คุ้มสุดสำหรับคุณ",
-      "merchant": {
-        "title": "ร้านไหน?",
-        "subtitle": "พิมพ์ชื่อร้าน ดูบัตรที่ได้โปร active ตอนนี้ พร้อมคำนวณ THB",
-        "browseLink": "เรียกดูร้านทั้งหมด"
-      },
-      "selector": {
-        "title": "วางแผนภาพรวม",
-        "subtitle": "บอก spend + เป้าหมาย → AI เลือกบัตร 3 ใบคุ้มสุดสำหรับคุณ",
-        "cta": "เริ่ม Selector ▸",
-        "reassurance": "ใช้ฟรี · ไม่ต้องสมัคร · ได้ผลใน 10 วินาที"
-      },
-      "trust": {
-        "promos": "โปรสดจาก deal-harvester",
-        "banks": "3 ธนาคารไทย",
-        "merchants": "50+ ร้านยอดนิยม",
-        "bilingual": "TH + EN",
-        "pdpa": "PDPA-safe"
-      }
-    },
-    "liveStrip": {
-      "liveWith": "สด · {count} โปร active",
-      "banks": "{count} ธนาคารไทย",
-      "merchants": "{count}+ ร้าน",
-      "updated": "อัปเดตล่าสุด {ago}",
-      "cta": "ดูทั้งหมด ›",
-      "ariaLabel": "ดูโปรโมชัน active ทั้งหมด"
-    },
-    "hero": {
-      "control": {
-        "h1": "ยกระดับทุกแต้มบัตรเครดิตของคุณ",
-        "subtitle": "Lift your rewards with AI",
-        "cta": "ค้นหาบัตรที่ใช่ ▸"
-      },
-      "variant_benefit_led": {
-        "h1": "เช็คให้รู้ก่อนรูด",
-        "subtitle": "AI คำนวณบัตรที่คุ้มที่สุดภายใน 10 วินาที",
-        "cta": "ลองเลย ▸"
-      },
-      "variant_urgency": {
-        "h1": "เก็บค่าคอมแต่ละเดือนก่อนเสีย",
-        "subtitle": "คนไทยเสียโอกาส THB 30,000–120,000 ต่อปีจากใช้บัตรผิดใบ",
-        "cta": "เช็คการใช้จ่ายของคุณ ▸"
-      }
-    },
-    "returning": {
-      "personalized": {
-        "title": "ยินดีต้อนรับกลับ — บัตร {cardName} สำหรับคุณ",
-        "subtitle": "ผลลัพธ์ Selector ของคุณยังพร้อมอยู่ ลองดูอีกครั้งหรือเริ่มใหม่ก็ได้",
-        "viewResults": "ดูผลเต็ม ▸",
-        "restartSelector": "ทำ Selector ใหม่"
-      },
-      "expired": {
-        "banner": "คุณเคยใช้ Selector — ทำใหม่ไหม?",
-        "cta": "เริ่มใหม่ ▸"
-      },
-      "restartConfirm": {
-        "title": "ทำ Selector ใหม่?",
-        "body": "ผลลัพธ์เดิมยังอยู่ใน link เดิม 24 ชั่วโมง สามารถกลับมาดูได้ภายหลัง",
-        "yes": "เริ่มใหม่",
-        "no": "ยกเลิก"
-      }
-    },
     "howItWorksTitle": "Loftly ทำงานยังไง",
-    "howItWorks": {
-      "step1": "บอกพวกเราเรื่องการใช้จ่าย",
-      "step2": "AI คำนวณบัตรที่ทำให้ได้แต้มเยอะที่สุด",
-      "step3": "สมัครบัตรผ่าน Loftly ฟรี"
-    },
     "latestReviewsTitle": "รีวิวล่าสุด",
     "latestValuationsTitle": "มูลค่าแต้มล่าสุด",
     "latestReviewsEmpty": "ยังไม่มีรีวิวในขณะนี้ ลองดูบัตรทั้งหมดก่อนได้เลย",

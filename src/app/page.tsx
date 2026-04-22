@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
+import { Link } from '@/i18n/routing';
 import { getApiBase } from '@/lib/api/client';
 import {
   LatestReviewsGrid,
@@ -10,6 +10,10 @@ import { LatestValuationsList } from '@/components/homepage/LatestValuationsList
 import { buildPageMetadata } from '@/lib/seo/metadata';
 import { DualHero } from '@/components/landing/DualHero';
 import { LivePromoStrip } from '@/components/landing/LivePromoStrip';
+import { SelectorCtaBlock } from '@/components/landing/SelectorCtaBlock';
+import { TopMerchantsGrid } from '@/components/landing/TopMerchantsGrid';
+import { TopPromosCarousel } from '@/components/landing/TopPromosCarousel';
+import { WhyLoftly } from '@/components/landing/WhyLoftly';
 import type { Valuation } from '@/lib/api/types';
 
 export const dynamic = 'force-static';
@@ -23,19 +27,16 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 /**
- * Landing page — wires the "รีวิวล่าสุด" and "มูลค่าแต้มล่าสุด" sections
- * to the staging API so the homepage demonstrates live content.
+ * Landing page — section order per brief §15.3:
  *
- * Two server-side fetches run in parallel (`Promise.allSettled`), each
- * with a 5-minute ISR window (`next: { revalidate: 300 }`) to keep the
- * staging upstream well under its 120/min/IP budget while still feeling
- * "live" to editors previewing freshly-published content.
- *
- * Failure modes:
- *   - Network / 5xx → `result.status === 'rejected'` → section renders a
- *     small grey "ยังไม่มีข้อมูล" fallback (no error boundary bubble).
- *   - Empty list → section renders a friendly empty state with a link
- *     into `/cards`.
+ *   1. LivePromoStrip (above hero, full-bleed)
+ *   2. DualHero (merchant lookup + Selector, co-equal)
+ *   3. TopPromosCarousel ("วันนี้โปรไหนน่าสนใจ?")
+ *   4. TopMerchantsGrid ("ใช้บัตรไหนดีที่...")
+ *   5. SelectorCtaBlock ("หรือบอกการใช้จ่ายของคุณ")
+ *   6. WhyLoftly (3 pillars)
+ *   7. LatestReviewsGrid
+ *   8. LatestValuationsList
  */
 
 type FetchState<T> =
@@ -44,9 +45,7 @@ type FetchState<T> =
 
 const REVALIDATE_SECONDS = 300;
 
-async function fetchLatestReviews(): Promise<
-  FetchState<LatestReviewsArticle[]>
-> {
+async function fetchLatestReviews(): Promise<FetchState<LatestReviewsArticle[]>> {
   const base = getApiBase();
   const url = `${base}/articles?type=card_review&limit=6&order=published_at_desc`;
   try {
@@ -94,47 +93,35 @@ export default async function LandingPage() {
 
   return (
     <>
-      {/* LivePromoStrip sits outside the max-w container so its band extends
-          full-width. Renders nothing if the backend can't supply fresh data. */}
       <LivePromoStrip />
 
-      <main className="mx-auto flex max-w-5xl flex-col gap-16 px-6 py-8">
-        {/* Dual hero — Merchant quick-lookup + Selector deep-analysis as
-            co-equal primary CTAs (brief §15.2 + POSITIONING_SHIFT §4.1). */}
+      <main className="mx-auto flex max-w-6xl flex-col gap-16 px-4 py-10 md:px-6 md:py-14">
         <DualHero />
 
-        {/* How it works */}
-        <section className="flex flex-col gap-4">
-          <h2 className="text-2xl font-semibold">{t('howItWorksTitle')}</h2>
-          <ol className="grid gap-4 sm:grid-cols-3">
-            {[1, 2, 3].map((n) => (
-              <li
-                key={n}
-                className="rounded-md border border-slate-200 p-4 text-slate-700"
-              >
-                <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
-                  Step {n}
-                </span>
-                <span className="block">
-                  {t(
-                    `howItWorks.step${n}` as
-                      | 'howItWorks.step1'
-                      | 'howItWorks.step2'
-                      | 'howItWorks.step3',
-                  )}
-                </span>
-              </li>
-            ))}
-          </ol>
-        </section>
+        <TopPromosCarousel />
+
+        <TopMerchantsGrid />
+
+        <SelectorCtaBlock />
+
+        <WhyLoftly />
 
         {/* Latest reviews */}
-        <section className="flex flex-col gap-4" data-testid="latest-reviews">
-          <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-semibold">{t('latestReviewsTitle')}</h2>
+        <section
+          className="flex flex-col gap-4"
+          data-testid="latest-reviews"
+          aria-labelledby="latest-reviews-heading"
+        >
+          <div className="flex items-end justify-between">
+            <h2
+              id="latest-reviews-heading"
+              className="text-heading-lg text-loftly-ink"
+            >
+              {t('latestReviewsTitle')}
+            </h2>
             <Link
               href="/cards"
-              className="text-sm text-slate-600 hover:underline"
+              className="text-body-sm font-medium text-loftly-teal hover:text-loftly-teal-hover"
             >
               {tn('cards')} →
             </Link>
@@ -143,7 +130,7 @@ export default async function LandingPage() {
             <p
               role="status"
               data-testid="latest-reviews-error"
-              className="text-sm text-slate-500"
+              className="text-body-sm text-loftly-ink-muted"
             >
               {errorFallback}
             </p>
@@ -160,14 +147,18 @@ export default async function LandingPage() {
         <section
           className="flex flex-col gap-4"
           data-testid="latest-valuations"
+          aria-labelledby="latest-valuations-heading"
         >
-          <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-semibold">
+          <div className="flex items-end justify-between">
+            <h2
+              id="latest-valuations-heading"
+              className="text-heading-lg text-loftly-ink"
+            >
               {t('latestValuationsTitle')}
             </h2>
             <Link
               href="/valuations"
-              className="text-sm text-slate-600 hover:underline"
+              className="text-body-sm font-medium text-loftly-teal hover:text-loftly-teal-hover"
             >
               {tn('valuations')} →
             </Link>
@@ -176,7 +167,7 @@ export default async function LandingPage() {
             <p
               role="status"
               data-testid="latest-valuations-error"
-              className="text-sm text-slate-500"
+              className="text-body-sm text-loftly-ink-muted"
             >
               {errorFallback}
             </p>
@@ -188,7 +179,6 @@ export default async function LandingPage() {
             />
           )}
         </section>
-
       </main>
     </>
   );

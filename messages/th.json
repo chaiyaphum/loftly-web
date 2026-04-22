@@ -140,6 +140,40 @@
     "latestValuationsEmpty": "ยังไม่มีข้อมูลมูลค่าแต้ม เรากำลังรวบรวมข้อมูลอยู่",
     "loadError": "ยังไม่มีข้อมูล ลองกลับมาดูใหม่ภายหลัง",
     "browseAllCards": "ดูบัตรทั้งหมด",
+    "topPromosTitle": "วันนี้โปรไหนน่าสนใจ?",
+    "topPromosViewAll": "ดูทั้งหมด",
+    "topPromosExpiry": "เหลือ {days} วัน",
+    "topPromosWithCard": "{bank} · {card}",
+    "topPromosViewDetails": "ดูรายละเอียด",
+    "topMerchantsTitle": "ใช้บัตรไหนดีที่…",
+    "topMerchantsBrowse": "ดูร้านทั้งหมด",
+    "selectorCta": {
+      "eyebrow": "Selector · deep analysis",
+      "heading": "หรือบอกการใช้จ่ายของคุณ",
+      "body": "ถ้าอยากได้ภาพรวมทั้ง stack — ไม่ใช่แค่ร้านเดียว — ใส่ spend รายเดือน + เป้าหมาย แล้วให้ AI เลือกบัตร 3 ใบที่คุ้มที่สุดพร้อมคำนวณ THB ตัวเลขจริง",
+      "whyGoDeepLabel": "ทำไมต้อง deep?",
+      "whyGoDeepBody": "Selector เทียบทุกบัตรใน catalog กับ promo ที่ active ตอนนี้ ใช้เวลา 2 นาที ได้ผลที่ปรับตาม spend เฉพาะคุณ",
+      "cta": "เริ่ม Selector",
+      "reassurance": "ฟรี · ไม่ต้องสมัครก่อน · 2 นาที"
+    },
+    "whyLoftly": {
+      "heading": "ทำไม Loftly",
+      "livePromo": {
+        "title": "Live promo data",
+        "body": "โปรจาก KTC · SCB · KBank อัปเดตทุกวัน — freshness < 24h ไม่ใช่รีวิวปีเก่าที่ลิงก์หมดแล้ว",
+        "stat": "160+ โปร active ทุกวัน"
+      },
+      "merchantIntel": {
+        "title": "Merchant-level intel",
+        "body": "ถามแบบจุดตรง: ร้าน X → บัตรไหนคุ้ม พร้อม THB ต่อเดือน ไม่ต้องไล่อ่านรีวิว 10 หน้า",
+        "stat": "50+ ร้านยอดนิยม"
+      },
+      "thaiAi": {
+        "title": "Thai-language AI",
+        "body": "เหตุผลภาษาไทยที่เข้าใจจริง — ไม่ใช่ translation-smell ปน KrisFlyer/cashback/promo ได้ตรงแบบที่เราใช้จริง",
+        "stat": "TH + EN · bilingual"
+      }
+    },
     "footer": {
       "privacy": "นโยบายความเป็นส่วนตัว",
       "terms": "ข้อกำหนดการใช้งาน",

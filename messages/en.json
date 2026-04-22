@@ -134,6 +134,40 @@
       "step2": "AI calculates the cards that maximize your points",
       "step3": "Apply through Loftly, free"
     },
+    "topPromosTitle": "What's hot today?",
+    "topPromosViewAll": "View all",
+    "topPromosExpiry": "{days} days left",
+    "topPromosWithCard": "{bank} · {card}",
+    "topPromosViewDetails": "View details",
+    "topMerchantsTitle": "Best card at…",
+    "topMerchantsBrowse": "All merchants",
+    "selectorCta": {
+      "eyebrow": "Selector · deep analysis",
+      "heading": "Or tell us how you spend",
+      "body": "If you want the whole-stack picture — not just one merchant — enter your monthly spend and goal, and AI picks the three cards that maximize THB for you.",
+      "whyGoDeepLabel": "Why go deep?",
+      "whyGoDeepBody": "Selector compares every card in the catalog against currently-active promos. Takes 2 minutes; result is personalized to your spend profile.",
+      "cta": "Start Selector",
+      "reassurance": "Free · No sign-up required · ~2 min"
+    },
+    "whyLoftly": {
+      "heading": "Why Loftly",
+      "livePromo": {
+        "title": "Live promo data",
+        "body": "Promos from KTC, SCB, and KBank, refreshed daily — freshness < 24h. Not last-year reviews with dead links.",
+        "stat": "160+ active promos every day"
+      },
+      "merchantIntel": {
+        "title": "Merchant-level intel",
+        "body": "Ask the direct question: which card wins at {merchant}? THB-per-month answer, not a 10-page review.",
+        "stat": "50+ popular merchants"
+      },
+      "thaiAi": {
+        "title": "Thai-language AI",
+        "body": "Reasoning in natural Thai — not translation-smell. Mixes English loanwords (KrisFlyer, cashback, promo) the way Thai readers actually speak.",
+        "stat": "TH + EN · bilingual"
+      }
+    },
     "latestReviewsTitle": "Latest reviews",
     "latestValuationsTitle": "Latest valuations",
     "latestReviewsEmpty": "No reviews yet — browse all cards in the meantime.",

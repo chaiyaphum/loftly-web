@@ -243,6 +243,19 @@
       "cta": "เริ่ม Selector",
       "reassurance": "ฟรี · ไม่ต้องสมัครก่อน · 2 นาที"
     },
+    "personalizedPromos": {
+      "eyebrow": "โปรคัดพิเศษ",
+      "heading": "โปรที่เหมาะกับคุณ",
+      "subheading": "อัปเดต real-time จาก deal-harvester · จัดอันดับด้วยความเร่งด่วน × มูลค่าส่วนลด × freshness",
+      "viewAll": "ดูทั้งหมด",
+      "daysLeft": "เหลือ {count} วัน",
+      "reason": {
+        "expiring": "หมดเร็ว",
+        "valuable": "ประหยัดเยอะ",
+        "fresh": "เพิ่งเพิ่ม"
+      },
+      "rankingFootnote": "จัดอันดับอัตโนมัติ · ไม่ได้รับเงินจาก ranking · ข้อมูลสดจากธนาคารต้นทางผ่าน deal-harvester"
+    },
     "whyLoftly": {
       "heading": "ทำไม Loftly",
       "livePromo": {

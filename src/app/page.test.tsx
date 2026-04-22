@@ -25,6 +25,9 @@ vi.mock('@/components/landing/HeroSearch', () => ({
 vi.mock('@/components/landing/TopPromosCarousel', () => ({
   TopPromosCarousel: () => null,
 }));
+vi.mock('@/components/landing/PersonalizedPromos', () => ({
+  PersonalizedPromos: () => null,
+}));
 vi.mock('@/components/landing/TopMerchantsGrid', () => ({
   TopMerchantsGrid: () => null,
 }));

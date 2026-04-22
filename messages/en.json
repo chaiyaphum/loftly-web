@@ -237,6 +237,19 @@
       "cta": "Start Selector",
       "reassurance": "Free · No sign-up required · ~2 min"
     },
+    "personalizedPromos": {
+      "eyebrow": "Handpicked",
+      "heading": "Promos for you",
+      "subheading": "Live from deal-harvester · ranked by urgency × discount value × freshness",
+      "viewAll": "View all",
+      "daysLeft": "{count} days left",
+      "reason": {
+        "expiring": "Expires soon",
+        "valuable": "High value",
+        "fresh": "Just added"
+      },
+      "rankingFootnote": "Auto-ranked · no pay-for-placement · data refreshed hourly from bank sources via deal-harvester"
+    },
     "whyLoftly": {
       "heading": "Why Loftly",
       "livePromo": {

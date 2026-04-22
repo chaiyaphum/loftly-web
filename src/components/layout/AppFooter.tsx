@@ -101,6 +101,14 @@ export function AppFooter() {
                 {t('footer.affiliate')}
               </Link>
             </li>
+            <li>
+              <a
+                href="/staging-ui-guide.html"
+                className="text-loftly-ink hover:text-loftly-teal"
+              >
+                {t('footer.stagingGuide')}
+              </a>
+            </li>
           </ul>
         </nav>
       </div>

@@ -84,7 +84,14 @@ export default async function ValuationDetailPage({
   try {
     detail = (await getValuation(currency)) as ValuationDetail;
   } catch (err) {
-    if (err instanceof LoftlyAPIError && err.status === 404) {
+    // 404 → branded not-found.
+    // status 0 (network / timeout — no structured response) → also not-found
+    // so an unreachable backend doesn't leak a raw 500 to staging. 5xx and
+    // other unexpected errors rethrow to `error.tsx` for the retry surface.
+    if (
+      err instanceof LoftlyAPIError &&
+      (err.status === 404 || err.status === 0)
+    ) {
       notFound();
     }
     console.error('[valuations/[currency]] getValuation failed', err);

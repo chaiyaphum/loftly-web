@@ -44,7 +44,17 @@ vi.mock('next/headers', () => ({
   cookies: () => mockCookies(),
 }));
 
+const mockNotFound = vi.fn(() => {
+  // Next's real `notFound()` throws NEXT_NOT_FOUND to short-circuit the
+  // render. Mirror that here so the server component's control flow exits at
+  // the same point it would in production.
+  const err = new Error('NEXT_HTTP_ERROR_FALLBACK;404');
+  (err as Error & { digest?: string }).digest = 'NEXT_HTTP_ERROR_FALLBACK;404';
+  throw err;
+});
+
 vi.mock('next/navigation', () => ({
+  notFound: () => mockNotFound(),
   useRouter: () => ({
     refresh: mockRouterRefresh,
     push: vi.fn(),
@@ -106,13 +116,14 @@ describe('SelectorResultsPage — error paths', () => {
     mockGetSelectorResult.mockReset();
     mockGetCard.mockReset();
     mockRouterRefresh.mockReset();
+    mockNotFound.mockClear();
   });
 
   afterEach(() => {
     vi.restoreAllMocks();
   });
 
-  it('renders the 404 "not found" branch + new-search CTA', async () => {
+  it('calls notFound() on 404 so the branded not-found.tsx renders', async () => {
     mockGetSelectorResult.mockRejectedValue(
       new LoftlyAPIError({
         code: 'selector_session_not_found',
@@ -122,15 +133,10 @@ describe('SelectorResultsPage — error paths', () => {
       }),
     );
 
-    await renderPage('missing');
-
-    const wrapper = screen.getByTestId('selector-results-error');
-    expect(wrapper).toHaveAttribute('data-kind', 'notFound');
-    expect(wrapper).toHaveTextContent('ไม่พบผลการค้นหา');
-    const cta = screen.getByTestId('selector-error-cta-notfound');
-    expect(cta).toHaveAttribute('href', '/selector');
-    // No retry CTA on 404.
-    expect(screen.queryByTestId('selector-error-cta-retry')).toBeNull();
+    // `notFound()` throws NEXT_NOT_FOUND (mocked above) — Next catches it
+    // upstream and renders `not-found.tsx`. We assert the call site here.
+    await expect(renderPage('missing')).rejects.toThrow();
+    expect(mockNotFound).toHaveBeenCalledTimes(1);
   });
 
   it('renders the 410 "expired" branch + re-run CTA', async () => {

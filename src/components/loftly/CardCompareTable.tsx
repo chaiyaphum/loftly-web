@@ -91,7 +91,7 @@ function DesktopTable({
     <table className="w-full caption-bottom text-sm">
       <thead className="border-b bg-loftly-teal-soft/40 text-left">
         <tr>
-          <th className="w-[180px] p-3 text-xs font-medium uppercase tracking-wide text-loftly-ink-muted">
+          <th className="w-[140px] p-3 text-xs font-medium uppercase tracking-wide text-loftly-ink-muted sm:w-[160px] md:w-[180px]">
             {t('columns.displayName')}
           </th>
           {comparisons.map(({ card }) => (

@@ -29,7 +29,10 @@ const variantStyles: Record<NonNullable<ButtonProps['variant']>, string> = {
 
 const sizeStyles: Record<NonNullable<ButtonProps['size']>, string> = {
   default: 'h-10 px-4 text-sm',
-  sm: 'h-8 px-3 text-sm',
+  // sm kept at 36px — tall enough for a usable mobile touch target without
+  // crowding the default/lg slots visually (WCAG AAA recommends 44px; 36px
+  // meets AA and keeps visual hierarchy with `default` 40 / `lg` 48).
+  sm: 'h-9 px-3 text-sm',
   lg: 'h-12 px-6 text-base',
   icon: 'h-10 w-10',
 };

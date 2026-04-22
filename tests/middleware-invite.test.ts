@@ -146,11 +146,11 @@ describe('signInvite / verifyInvite', () => {
 
 describe('middleware — gate semantics', () => {
   // Import lazily so module-level env reads don't cache before we set them.
-  let middleware: typeof import('../middleware').default;
+  let middleware: typeof import('../src/middleware').default;
 
   async function load() {
     vi.resetModules();
-    middleware = (await import('../middleware')).default;
+    middleware = (await import('../src/middleware')).default;
   }
 
   const originalEnv = { ...process.env };

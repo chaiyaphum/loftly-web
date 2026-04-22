@@ -195,7 +195,7 @@
   "landing": {
     "heroSearch": {
       "statusPill": "โปร active {count}+ · sync ล่าสุดไม่กี่นาทีก่อน",
-      "h1Prefix": "บัตรไหนให้คุ้มที่สุด",
+      "h1Prefix": "รูดบัตรไหน ได้คืนมากสุด",
       "h1Connector": "ที่",
       "h1Accent": "ร้านนี้",
       "h1Suffix": "?",

@@ -29,7 +29,7 @@ export async function AffiliateDisclosure({
   if (variant === 'inline') {
     return (
       <p
-        className={cn('text-xs text-slate-500', className)}
+        className={cn('text-caption text-loftly-ink-muted', className)}
         data-testid="affiliate-disclosure-inline"
       >
         {t('affiliateDisclosureInline')}
@@ -40,12 +40,12 @@ export async function AffiliateDisclosure({
   return (
     <section
       className={cn(
-        'space-y-2 text-sm leading-relaxed text-slate-700',
+        'space-y-2 text-body-sm leading-relaxed text-loftly-ink',
         className,
       )}
       data-testid="affiliate-disclosure-footer"
     >
-      <h3 className="text-base font-semibold text-loftly-ink">
+      <h3 className="text-heading font-semibold text-loftly-ink">
         {t('affiliateDisclosureTitle')}
       </h3>
       <p>{t('affiliateDisclosureFull')}</p>

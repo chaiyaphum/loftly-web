@@ -12,7 +12,7 @@ export default async function NewAdminArticlePage() {
   return (
     <section className="space-y-4">
       <nav className="text-sm">
-        <Link href="/admin/articles" className="text-slate-500 hover:underline">
+        <Link href="/admin/articles" className="text-loftly-ink-muted hover:underline">
           ← Articles
         </Link>
       </nav>

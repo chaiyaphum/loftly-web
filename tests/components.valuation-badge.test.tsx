@@ -72,6 +72,6 @@ describe('ValuationBadge', () => {
       <ValuationBadge currency={v.currency} valuation={v} />,
     );
     const badge = container.querySelector('[data-confidence-band]');
-    expect(badge?.className).toContain('bg-amber-50');
+    expect(badge?.className).toContain('bg-loftly-amber/15');
   });
 });

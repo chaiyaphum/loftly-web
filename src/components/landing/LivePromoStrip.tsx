@@ -1,42 +1,32 @@
 import { getLocale, getTranslations } from 'next-intl/server';
 import Link from 'next/link';
 import { getApiBase } from '@/lib/api/client';
+import { cn } from '@/lib/utils';
 
 /**
  * LivePromoStrip — slim freshness strip above the landing hero.
  *
- * POSITIONING_SHIFT §15.5: makes "live Thai promo intelligence" the
- * dominant narrative above the fold. SSR-rendered with ISR so it feels
- * live without hammering the API on every request.
- *
- * Data: best-effort fetch of (count, bank_count, last_synced_at). On
- * any failure (network, 5xx, empty), the component renders NOTHING —
- * liveness claims collapse gracefully rather than showing a skeleton
- * or error bar (which would undermine the narrative the strip is
- * trying to establish).
- *
- * Freshness states drive the leading dot color:
- *   < 1h         → emerald pulse
- *   1h  – 24h    → emerald static
- *   24h – 72h    → amber
+ * Brief §15.5 — 4-state freshness drives the leading dot:
+ *   < 1h         → loftly-success + pulse animation
+ *   1h  – 24h    → loftly-ink-muted static
+ *   24h – 72h    → loftly-amber
  *   > 72h        → hidden entirely (stale ≠ live)
+ *
+ * Returns null on any fetch failure so the landing page reads fine
+ * without visual noise when the liveness story fails.
  */
 
 type LiveSnapshot = {
   active_promos: number;
   banks: number;
   merchants?: number;
-  last_synced_at: string; // ISO
+  last_synced_at: string;
 };
 
 const REVALIDATE_SECONDS = 300;
 
 async function fetchLiveSnapshot(): Promise<LiveSnapshot | null> {
   const base = getApiBase();
-  // The count endpoint isn't wired yet server-side; the regular /promos
-  // endpoint can supply the numbers via a small limit + pagination meta
-  // in the interim. If the response shape is missing, we return null
-  // and the component renders nothing.
   const url = `${base}/promos?active=true&limit=1`;
   try {
     const res = await fetch(url, {
@@ -71,8 +61,7 @@ function freshnessState(
   lastSyncedAt: string,
 ): 'fresh' | 'recent' | 'aging' | 'stale' {
   const synced = new Date(lastSyncedAt).getTime();
-  const age = Date.now() - synced;
-  const hr = age / (1000 * 60 * 60);
+  const hr = (Date.now() - synced) / (1000 * 60 * 60);
   if (hr < 1) return 'fresh';
   if (hr < 24) return 'recent';
   if (hr < 72) return 'aging';
@@ -93,54 +82,62 @@ function relativeAge(lastSyncedAt: string, locale: string): string {
   return rtf.format(-days, 'day');
 }
 
+const DOT_COLOR: Record<'fresh' | 'recent' | 'aging', string> = {
+  fresh: 'bg-loftly-success animate-loftly-pulse-dot',
+  recent: 'bg-loftly-ink-muted',
+  aging: 'bg-loftly-amber',
+};
+
 export async function LivePromoStrip(): Promise<React.ReactElement | null> {
   const snap = await fetchLiveSnapshot();
   if (!snap) return null;
 
   const state = freshnessState(snap.last_synced_at);
-  if (state === 'stale') return null; // stale ≠ live — hide rather than lie
+  if (state === 'stale') return null;
 
   const [t, locale] = await Promise.all([
     getTranslations('landing.liveStrip'),
     getLocale(),
   ]);
 
-  const dotClass =
-    state === 'fresh'
-      ? 'bg-emerald-500 animate-pulse'
-      : state === 'recent'
-        ? 'bg-emerald-500'
-        : 'bg-amber-500';
-
   return (
     <Link
-      href="/merchants"
-      className="group block w-full border-b border-emerald-200 bg-emerald-50/60 text-sm"
+      href="/promos-today"
       aria-label={t('ariaLabel')}
+      className="group block w-full border-b border-loftly-teal/20 bg-loftly-teal-soft text-body-sm"
     >
-      <div className="mx-auto flex max-w-5xl items-center justify-between gap-2 px-6 py-2">
-        <span className="flex flex-wrap items-center gap-x-2 gap-y-1 text-slate-700">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-2 px-4 py-2 md:px-6">
+        <span className="flex flex-wrap items-center gap-x-2 gap-y-1 text-loftly-ink">
           <span
-            className={`h-2 w-2 rounded-full ${dotClass}`}
             aria-hidden="true"
+            className={cn(
+              'inline-block h-2 w-2 shrink-0 rounded-full',
+              DOT_COLOR[state],
+            )}
           />
-          <span className="font-medium">
+          <span className="font-semibold">
             {t('liveWith', { count: snap.active_promos })}
           </span>
-          <span className="text-slate-400">·</span>
+          <span aria-hidden="true" className="text-loftly-divider">
+            ·
+          </span>
           <span>{t('banks', { count: snap.banks })}</span>
           {snap.merchants ? (
             <>
-              <span className="text-slate-400">·</span>
+              <span aria-hidden="true" className="text-loftly-divider">
+                ·
+              </span>
               <span>{t('merchants', { count: snap.merchants })}</span>
             </>
           ) : null}
-          <span className="text-slate-400">·</span>
-          <span className="text-slate-500">
+          <span aria-hidden="true" className="text-loftly-divider">
+            ·
+          </span>
+          <span className="text-loftly-ink-muted">
             {t('updated', { ago: relativeAge(snap.last_synced_at, locale) })}
           </span>
         </span>
-        <span className="hidden text-slate-500 group-hover:text-slate-700 sm:inline">
+        <span className="hidden text-loftly-teal transition-colors group-hover:text-loftly-teal-hover sm:inline">
           {t('cta')}
         </span>
       </div>

@@ -139,7 +139,7 @@ export function DataExportClient({ initialJobId }: { initialJobId?: string }) {
     return (
       <div
         role="status"
-        className="rounded-md border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900"
+        className="rounded-md border border-amber-200 bg-loftly-amber/15 p-4 text-sm text-loftly-amber-urgent"
         data-testid="export-not-available"
       >
         <p className="mb-2 font-medium">{t('notAvailableTitle')}</p>
@@ -157,7 +157,7 @@ export function DataExportClient({ initialJobId }: { initialJobId?: string }) {
     return (
       <div
         role="status"
-        className="rounded-md border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900"
+        className="rounded-md border border-amber-200 bg-loftly-amber/15 p-4 text-sm text-loftly-amber-urgent"
       >
         {t('rateLimitNotice')}
       </div>
@@ -168,7 +168,7 @@ export function DataExportClient({ initialJobId }: { initialJobId?: string }) {
     return (
       <div
         role="alert"
-        className="rounded-md border border-red-200 bg-red-50 p-4 text-sm text-red-900"
+        className="rounded-md border border-red-200 bg-loftly-danger/10 p-4 text-sm text-loftly-danger"
       >
         <p>{view.message}</p>
         <Button
@@ -188,7 +188,7 @@ export function DataExportClient({ initialJobId }: { initialJobId?: string }) {
     const statusKey: JobStatus = job.status;
     return (
       <div
-        className="space-y-3 rounded-md border border-slate-200 bg-white p-4 text-sm"
+        className="space-y-3 rounded-md border border-loftly-divider bg-white p-4 text-sm"
         data-testid="export-tracking"
         data-status={statusKey}
       >
@@ -201,7 +201,7 @@ export function DataExportClient({ initialJobId }: { initialJobId?: string }) {
               </a>
             </Button>
             {job.expires_at && (
-              <span className="text-xs text-slate-500">
+              <span className="text-xs text-loftly-ink-muted">
                 {t('expiresIn')}{' '}
                 <CountdownTimer
                   targetIso={job.expires_at}
@@ -218,7 +218,7 @@ export function DataExportClient({ initialJobId }: { initialJobId?: string }) {
             )}
           </div>
         )}
-        <p className="text-xs text-slate-500">{t('rateLimitNotice')}</p>
+        <p className="text-xs text-loftly-ink-muted">{t('rateLimitNotice')}</p>
       </div>
     );
   }
@@ -229,7 +229,7 @@ export function DataExportClient({ initialJobId }: { initialJobId?: string }) {
       <Button onClick={onRequest} disabled={view.kind === 'submitting'}>
         {view.kind === 'submitting' ? t('requesting') : t('requestCta')}
       </Button>
-      <p className="text-xs text-slate-500">{t('rateLimitNotice')}</p>
+      <p className="text-xs text-loftly-ink-muted">{t('rateLimitNotice')}</p>
     </div>
   );
 }

@@ -19,9 +19,9 @@ export interface BankCoverageBadgeProps {
 }
 
 const STYLES: Record<BankCoverageStatus, string> = {
-  full: 'bg-emerald-50 text-emerald-700 border-emerald-200',
-  partial: 'bg-amber-50 text-amber-800 border-amber-200',
-  gap: 'bg-red-50 text-red-700 border-red-200',
+  full: 'bg-loftly-teal-soft text-loftly-teal border-emerald-200',
+  partial: 'bg-loftly-amber/15 text-loftly-amber-urgent border-amber-200',
+  gap: 'bg-loftly-danger/10 text-loftly-danger border-red-200',
 };
 
 export function BankCoverageBadge({

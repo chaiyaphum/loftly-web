@@ -48,7 +48,7 @@ export default async function AdminArticlesPage({
         <h1 className="text-2xl font-semibold">Articles</h1>
         <Link
           href="/admin/articles/new"
-          className="rounded-md bg-loftly-baht px-4 py-2 text-sm font-medium text-white hover:bg-loftly-baht/90"
+          className="rounded-md bg-loftly-teal px-4 py-2 text-sm font-medium text-white hover:bg-loftly-teal/90"
         >
           New article
         </Link>
@@ -64,29 +64,29 @@ export default async function AdminArticlesPage({
             className={
               state === opt
                 ? 'rounded-md bg-slate-900 px-3 py-1.5 text-xs font-medium text-white'
-                : 'rounded-md border border-slate-300 px-3 py-1.5 text-xs text-slate-700 hover:bg-slate-50'
+                : 'rounded-md border border-loftly-divider px-3 py-1.5 text-xs text-loftly-ink hover:bg-loftly-teal-soft/40'
             }
           >
             {opt}
           </Link>
         ))}
         {sp.card_id && (
-          <span className="text-xs text-slate-500">
+          <span className="text-xs text-loftly-ink-muted">
             filter: card_id={sp.card_id}
           </span>
         )}
       </div>
 
       {error ? (
-        <p className="rounded-md bg-red-50 p-3 text-sm text-red-900">{error}</p>
+        <p className="rounded-md bg-loftly-danger/10 p-3 text-sm text-loftly-danger">{error}</p>
       ) : items.length === 0 ? (
-        <p className="rounded-md border border-dashed border-slate-200 p-6 text-sm text-slate-500">
+        <p className="rounded-md border border-dashed border-loftly-divider p-6 text-sm text-loftly-ink-muted">
           No articles yet.
         </p>
       ) : (
-        <div className="overflow-auto rounded-md border border-slate-200 bg-white">
+        <div className="overflow-auto rounded-md border border-loftly-divider bg-white">
           <table className="w-full text-sm">
-            <thead className="border-b bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-500">
+            <thead className="border-b bg-loftly-teal-soft/40 text-left text-xs uppercase tracking-wide text-loftly-ink-muted">
               <tr>
                 <th className="px-4 py-2">Title</th>
                 <th className="px-4 py-2">Type</th>
@@ -99,7 +99,7 @@ export default async function AdminArticlesPage({
               {items.map((a) => (
                 <tr key={a.id}>
                   <td className="px-4 py-2 font-medium">{a.title_th}</td>
-                  <td className="px-4 py-2 text-slate-600">{a.article_type}</td>
+                  <td className="px-4 py-2 text-loftly-ink-muted">{a.article_type}</td>
                   <td className="px-4 py-2">
                     <Badge
                       variant={
@@ -113,13 +113,13 @@ export default async function AdminArticlesPage({
                       {a.state}
                     </Badge>
                   </td>
-                  <td className="px-4 py-2 text-xs text-slate-500">
+                  <td className="px-4 py-2 text-xs text-loftly-ink-muted">
                     {a.updated_at.slice(0, 10)}
                   </td>
                   <td className="px-4 py-2 text-right">
                     <Link
                       href={`/admin/articles/${a.id}`}
-                      className="text-loftly-sky hover:underline"
+                      className="text-loftly-teal hover:underline"
                     >
                       Edit
                     </Link>

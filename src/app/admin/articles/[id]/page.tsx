@@ -33,12 +33,12 @@ export default async function EditAdminArticlePage({
   return (
     <section className="space-y-4">
       <nav className="text-sm">
-        <Link href="/admin/articles" className="text-slate-500 hover:underline">
+        <Link href="/admin/articles" className="text-loftly-ink-muted hover:underline">
           ← Articles
         </Link>
       </nav>
       <h1 className="text-2xl font-semibold">Edit article</h1>
-      <p className="text-sm text-slate-500">
+      <p className="text-sm text-loftly-ink-muted">
         {article.title_th} · {article.id}
       </p>
       <ArticleForm article={article} accessToken={session.accessToken} />

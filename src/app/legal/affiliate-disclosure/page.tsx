@@ -20,14 +20,14 @@ export default async function AffiliateDisclosurePage() {
         <h1 className="text-3xl font-semibold">
           {t('affiliateDisclosureTitle')}
         </h1>
-        <p className="text-sm text-slate-500">
+        <p className="text-sm text-loftly-ink-muted">
           {t('lastUpdatedLabel')}: {t('lastUpdatedValue')}
         </p>
       </header>
 
       <AffiliateDisclosure variant="footer" />
 
-      <section className="space-y-2 text-sm leading-relaxed text-slate-700">
+      <section className="space-y-2 text-sm leading-relaxed text-loftly-ink">
         <h2 className="text-lg font-semibold">How our partnerships work</h2>
         <p>
           When you apply for a card through a Loftly link, the issuing bank pays
@@ -39,7 +39,7 @@ export default async function AffiliateDisclosurePage() {
           Our editorial rankings and scores are computed by the same model for
           every card regardless of commercial relationship — see
           {' '}
-          <Link href="/valuations" className="text-loftly-sky hover:underline">
+          <Link href="/valuations" className="text-loftly-teal hover:underline">
             the methodology page
           </Link>{' '}
           for details.

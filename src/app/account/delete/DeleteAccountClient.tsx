@@ -124,7 +124,7 @@ export function DeleteAccountClient({
     return (
       <div
         role="status"
-        className="rounded-md border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900"
+        className="rounded-md border border-amber-200 bg-loftly-amber/15 p-4 text-sm text-loftly-amber-urgent"
         data-testid="delete-not-available"
       >
         <p className="mb-2 font-medium">{t('notAvailableTitle')}</p>
@@ -137,7 +137,7 @@ export function DeleteAccountClient({
     return (
       <div
         role="status"
-        className="rounded-md border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-900"
+        className="rounded-md border border-emerald-200 bg-loftly-teal-soft p-4 text-sm text-loftly-teal"
       >
         {t('cancelledNotice')}
       </div>
@@ -148,7 +148,7 @@ export function DeleteAccountClient({
     return (
       <div
         role="status"
-        className="rounded-md border border-slate-200 bg-slate-50 p-4 text-sm text-slate-700"
+        className="rounded-md border border-loftly-divider bg-loftly-teal-soft/40 p-4 text-sm text-loftly-ink"
       >
         {t('completedNotice')}
       </div>
@@ -160,7 +160,7 @@ export function DeleteAccountClient({
     const graceEndsAt = status.grace_ends_at ?? null;
     return (
       <div
-        className="space-y-4 rounded-md border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900"
+        className="space-y-4 rounded-md border border-amber-200 bg-loftly-amber/15 p-4 text-sm text-loftly-amber-urgent"
         data-testid="delete-pending"
       >
         <div>
@@ -196,14 +196,14 @@ export function DeleteAccountClient({
     <div className="space-y-4">
       <div
         role="alert"
-        className="rounded-md border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900"
+        className="rounded-md border border-amber-300 bg-loftly-amber/15 p-4 text-sm text-loftly-amber-urgent"
       >
         <p className="mb-1 font-medium">{t('warningTitle')}</p>
         <p>{t('warningBody')}</p>
       </div>
 
       <label className="flex flex-col gap-1 text-sm">
-        <span className="text-slate-700">{t('emailConfirmLabel')}</span>
+        <span className="text-loftly-ink">{t('emailConfirmLabel')}</span>
         <Input
           type="email"
           value={typedEmail}
@@ -229,15 +229,15 @@ export function DeleteAccountClient({
         {view.kind === 'submitting' ? t('submitting') : t('confirmCta')}
       </Button>
 
-      <section className="rounded-md bg-slate-50 p-4 text-xs text-slate-600">
-        <p className="mb-1 font-medium text-slate-700">{t('legalHoldTitle')}</p>
+      <section className="rounded-md bg-loftly-teal-soft/40 p-4 text-xs text-loftly-ink-muted">
+        <p className="mb-1 font-medium text-loftly-ink">{t('legalHoldTitle')}</p>
         <p>{t('legalHoldBody')}</p>
       </section>
 
       {view.kind === 'error' && (
         <div
           role="alert"
-          className="rounded-md border border-red-200 bg-red-50 p-4 text-sm text-red-900"
+          className="rounded-md border border-red-200 bg-loftly-danger/10 p-4 text-sm text-loftly-danger"
         >
           <p>{view.message}</p>
           <Button

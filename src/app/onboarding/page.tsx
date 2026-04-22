@@ -48,13 +48,13 @@ export default async function OnboardingPage({
     <main className="mx-auto flex min-h-[60vh] max-w-md flex-col gap-6 px-6 py-12">
       <div>
         <h1 className="text-3xl font-semibold tracking-tight">{t('title')}</h1>
-        <p className="mt-2 text-sm text-slate-600">{t('subtitle')}</p>
+        <p className="mt-2 text-sm text-loftly-ink-muted">{t('subtitle')}</p>
       </div>
 
       {errorKey && (
         <div
           role="alert"
-          className="rounded-md bg-red-50 p-3 text-sm text-red-900"
+          className="rounded-md bg-loftly-danger/10 p-3 text-sm text-loftly-danger"
         >
           {t(`errors.${errorKey}` as 'errors.oauth_failed')}
         </div>

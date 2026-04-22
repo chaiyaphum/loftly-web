@@ -243,7 +243,7 @@ export function MappingQueueTable({
       <div className="flex flex-wrap items-center gap-3">
         <label
           htmlFor="mapping-queue-days-filter"
-          className="text-xs font-medium uppercase tracking-wide text-slate-500"
+          className="text-xs font-medium uppercase tracking-wide text-loftly-ink-muted"
         >
           {labels.filter.unresolvedDays}
         </label>
@@ -252,26 +252,26 @@ export function MappingQueueTable({
           data-testid="mapping-queue-days-filter"
           value={window}
           onChange={(e) => setWindow(e.target.value as UnresolvedWindow)}
-          className="rounded-md border border-slate-300 bg-white px-2 py-1 text-sm"
+          className="rounded-md border border-loftly-divider bg-white px-2 py-1 text-sm"
         >
           <option value="7">{labels.filter.days7}</option>
           <option value="14">{labels.filter.days14}</option>
           <option value="30">{labels.filter.days30}</option>
           <option value="all">{labels.filter.all}</option>
         </select>
-        <p className="text-xs text-slate-500" data-testid="mapping-queue-count">
+        <p className="text-xs text-loftly-ink-muted" data-testid="mapping-queue-count">
           {visible.length} / {items.length}
         </p>
       </div>
 
       {selected.size > 0 && (
         <div
-          className="flex flex-wrap items-center gap-3 rounded-md border border-loftly-baht/40 bg-loftly-baht/5 p-3"
+          className="flex flex-wrap items-center gap-3 rounded-md border border-loftly-teal/40 bg-loftly-teal/5 p-3"
           data-testid="mapping-queue-bulk-bar"
           role="region"
           aria-label={labels.bulkBar.assignTo(selected.size)}
         >
-          <span className="text-sm font-medium text-slate-700">
+          <span className="text-sm font-medium text-loftly-ink">
             {labels.bulkBar.assignTo(selected.size)}
           </span>
 
@@ -292,7 +292,7 @@ export function MappingQueueTable({
               setCardId(match ? match.id : '');
             }}
             placeholder={labels.bulkBar.cardPickerPlaceholder}
-            className="min-w-[240px] rounded-md border border-slate-300 bg-white px-2 py-1 text-sm"
+            className="min-w-[240px] rounded-md border border-loftly-divider bg-white px-2 py-1 text-sm"
           />
           <datalist id="mapping-queue-card-options">
             {filteredCards.map((c) => (
@@ -307,7 +307,7 @@ export function MappingQueueTable({
             onClick={handleBulkAssign}
             disabled={!cardId || isSubmitting}
             data-testid="mapping-queue-bulk-assign"
-            className="rounded-md bg-loftly-baht px-3 py-1.5 text-xs font-medium text-white hover:bg-loftly-baht/90 disabled:opacity-50"
+            className="rounded-md bg-loftly-teal px-3 py-1.5 text-xs font-medium text-white hover:bg-loftly-teal/90 disabled:opacity-50"
           >
             {labels.bulkBar.assign}
           </button>
@@ -316,14 +316,14 @@ export function MappingQueueTable({
             type="button"
             onClick={cancelBulk}
             disabled={isSubmitting}
-            className="rounded-md border border-slate-300 bg-white px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-50"
+            className="rounded-md border border-loftly-divider bg-white px-3 py-1.5 text-xs font-medium text-loftly-ink hover:bg-loftly-teal-soft/40 disabled:opacity-50"
           >
             {labels.bulkBar.cancel}
           </button>
 
           {progress && isSubmitting && (
             <span
-              className="text-xs text-slate-600"
+              className="text-xs text-loftly-ink-muted"
               data-testid="mapping-queue-bulk-progress"
               role="status"
               aria-live="polite"
@@ -333,7 +333,7 @@ export function MappingQueueTable({
           )}
           {error && (
             <span
-              className="text-xs text-red-700"
+              className="text-xs text-loftly-danger"
               data-testid="mapping-queue-bulk-error"
               role="alert"
             >
@@ -344,13 +344,13 @@ export function MappingQueueTable({
       )}
 
       {visible.length === 0 ? (
-        <p className="rounded-md border border-dashed border-slate-200 p-6 text-sm text-slate-500">
+        <p className="rounded-md border border-dashed border-loftly-divider p-6 text-sm text-loftly-ink-muted">
           {items.length === 0 ? labels.emptyState : labels.emptyFiltered}
         </p>
       ) : (
-        <div className="overflow-auto rounded-md border border-slate-200 bg-white">
+        <div className="overflow-auto rounded-md border border-loftly-divider bg-white">
           <table className="w-full text-sm">
-            <thead className="border-b bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-500">
+            <thead className="border-b bg-loftly-teal-soft/40 text-left text-xs uppercase tracking-wide text-loftly-ink-muted">
               <tr>
                 <th className="w-10 px-4 py-2">
                   <input

@@ -26,7 +26,7 @@ export default async function SelectorPage() {
     <main className="mx-auto max-w-2xl px-6 py-12">
       <header className="mb-8">
         <h1 className="text-3xl font-semibold tracking-tight">{t('title')}</h1>
-        <p className="mt-2 text-sm text-slate-600">{t('subtitle')}</p>
+        <p className="mt-2 text-sm text-loftly-ink-muted">{t('subtitle')}</p>
       </header>
       <SelectorPane />
     </main>

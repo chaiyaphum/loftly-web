@@ -38,7 +38,7 @@ export default async function AdminPromosPage({
         <h1 className="text-2xl font-semibold">Promos</h1>
         <Link
           href="/admin/promos/new"
-          className="rounded-md bg-loftly-baht px-4 py-2 text-sm font-medium text-white hover:bg-loftly-baht/90"
+          className="rounded-md bg-loftly-teal px-4 py-2 text-sm font-medium text-white hover:bg-loftly-teal/90"
         >
           New manual promo
         </Link>
@@ -49,9 +49,9 @@ export default async function AdminPromosPage({
           name="bank"
           defaultValue={bank}
           placeholder="Bank slug"
-          className="h-9 w-36 rounded-md border border-slate-300 px-2 text-sm"
+          className="h-9 w-36 rounded-md border border-loftly-divider px-2 text-sm"
         />
-        <label className="flex items-center gap-2 text-sm text-slate-600">
+        <label className="flex items-center gap-2 text-sm text-loftly-ink-muted">
           <input
             type="checkbox"
             name="active"
@@ -60,7 +60,7 @@ export default async function AdminPromosPage({
           />
           Active only
         </label>
-        <label className="flex items-center gap-2 text-sm text-slate-600">
+        <label className="flex items-center gap-2 text-sm text-loftly-ink-muted">
           <input
             type="checkbox"
             name="manual"
@@ -71,22 +71,22 @@ export default async function AdminPromosPage({
         </label>
         <button
           type="submit"
-          className="rounded-md border border-slate-300 px-3 py-1.5 text-xs hover:bg-slate-50"
+          className="rounded-md border border-loftly-divider px-3 py-1.5 text-xs hover:bg-loftly-teal-soft/40"
         >
           Apply
         </button>
       </form>
 
       {error ? (
-        <p className="rounded-md bg-red-50 p-3 text-sm text-red-900">{error}</p>
+        <p className="rounded-md bg-loftly-danger/10 p-3 text-sm text-loftly-danger">{error}</p>
       ) : promos.length === 0 ? (
-        <p className="rounded-md border border-dashed border-slate-200 p-6 text-sm text-slate-500">
+        <p className="rounded-md border border-dashed border-loftly-divider p-6 text-sm text-loftly-ink-muted">
           No promos match these filters.
         </p>
       ) : (
-        <div className="overflow-auto rounded-md border border-slate-200 bg-white">
+        <div className="overflow-auto rounded-md border border-loftly-divider bg-white">
           <table className="w-full text-sm">
-            <thead className="border-b bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-500">
+            <thead className="border-b bg-loftly-teal-soft/40 text-left text-xs uppercase tracking-wide text-loftly-ink-muted">
               <tr>
                 <th className="px-4 py-2">Title</th>
                 <th className="px-4 py-2">Bank</th>
@@ -101,9 +101,9 @@ export default async function AdminPromosPage({
               {promos.map((p) => (
                 <tr key={p.id}>
                   <td className="px-4 py-2 font-medium">{p.title_th}</td>
-                  <td className="px-4 py-2 text-slate-600">{p.bank_slug}</td>
-                  <td className="px-4 py-2 text-slate-600">{p.promo_type}</td>
-                  <td className="px-4 py-2 text-slate-600">
+                  <td className="px-4 py-2 text-loftly-ink-muted">{p.bank_slug}</td>
+                  <td className="px-4 py-2 text-loftly-ink-muted">{p.promo_type}</td>
+                  <td className="px-4 py-2 text-loftly-ink-muted">
                     {p.valid_until ?? '—'}
                   </td>
                   <td className="px-4 py-2 text-xs">
@@ -123,7 +123,7 @@ export default async function AdminPromosPage({
                   <td className="px-4 py-2 text-right">
                     <Link
                       href={`/admin/promos/${p.id}`}
-                      className="text-loftly-sky hover:underline"
+                      className="text-loftly-teal hover:underline"
                     >
                       Edit
                     </Link>

@@ -2,10 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
+/**
+ * Loftly design tokens — canonical from UI_REDESIGN_BRIEF.md §5.
+ * Format: space-separated RGB triplets so Tailwind's `rgb(var(--x) / <alpha>)`
+ * composition works for both solid and alpha-blended uses.
+ */
 @layer base {
   :root {
-    --background: #ffffff;
-    --foreground: #0f172a;
+    /* Brand + surfaces */
+    --loftly-teal: 29 158 117;            /* #1D9E75 */
+    --loftly-teal-hover: 23 134 97;       /* #178661 */
+    --loftly-teal-soft: 230 244 239;      /* #E6F4EF */
+    --loftly-ink: 30 42 58;               /* #1E2A3A */
+    --loftly-ink-muted: 74 85 104;        /* #4A5568 */
+    --loftly-amber: 239 159 39;           /* #EF9F27 */
+    --loftly-amber-urgent: 217 119 6;     /* #D97706 */
+    --loftly-warm-white: 250 247 242;     /* #FAF7F2 */
+    --loftly-surface: 255 255 255;        /* #FFFFFF */
+    --loftly-divider: 232 228 220;        /* #E8E4DC */
+    --loftly-success: 21 128 61;          /* #15803D */
+    --loftly-danger: 220 38 38;           /* #DC2626 */
+    --loftly-charcoal: 44 44 42;          /* #2C2C2A — dark bg, v1.1 */
+    --loftly-charcoal-elev: 58 58 55;     /* #3A3A37 — dark elev, v1.1 */
+
+    /* Legacy shim — delete once layout tokens propagate to every surface. */
+    --background: 250 247 242;            /* warm-white */
+    --foreground: 30 42 58;               /* ink */
+  }
+
+  /* Dark-mode stub — v1.1 skin swap. Not yet wired via `class="dark"`. */
+  .dark {
+    --loftly-warm-white: 44 44 42;        /* charcoal base */
+    --loftly-surface: 58 58 55;           /* charcoal-elev */
+    --loftly-ink: 245 245 243;            /* inverted */
+    --loftly-ink-muted: 163 163 157;      /* inverted muted */
+    --loftly-divider: 58 58 55;           /* charcoal-elev used as divider */
+    --background: 44 44 42;
+    --foreground: 245 245 243;
   }
 
   html {
@@ -13,7 +46,34 @@
   }
 
   body {
-    color: var(--foreground);
-    background: var(--background);
+    color: rgb(var(--loftly-ink));
+    background: rgb(var(--loftly-warm-white));
+    font-feature-settings: 'cv11', 'ss01';
+  }
+
+  /* Numeric columns — tabular alignment + JetBrains Mono (brief §6). */
+  .font-mono,
+  [class*='text-numeric-'] {
+    font-family: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Global focus ring — brief §11: 2px teal, 2px offset, always visible. */
+  :focus-visible {
+    outline: 2px solid rgb(var(--loftly-teal));
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Reduced-motion respect (brief §11). */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }

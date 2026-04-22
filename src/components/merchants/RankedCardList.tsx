@@ -46,7 +46,7 @@ export function RankedCardList({
 }: RankedCardListProps) {
   if (ranked.length === 0) {
     return (
-      <p className="text-sm text-slate-500">
+      <p className="text-body-sm text-loftly-ink-muted">
         {noPromosLabel ??
           'ยังไม่มีโปรโมชันพิเศษตอนนี้ — บัตรเหล่านี้ให้คะแนนฐานสูงสุด'}
       </p>
@@ -64,29 +64,29 @@ export function RankedCardList({
               <div className="flex items-start justify-between gap-2">
                 <div>
                   <CardTitle>
-                    <span className="mr-2 rounded-full bg-slate-900 px-2 py-0.5 text-xs text-white">
+                    <span className="mr-2 rounded-full bg-loftly-ink px-2 py-0.5 text-caption text-white">
                       #{idx + 1}
                     </span>
                     {row.display_name}
                   </CardTitle>
                   {row.bank_display_name_th && (
-                    <p className="text-xs text-slate-500">
+                    <p className="text-caption text-loftly-ink-muted">
                       {row.bank_display_name_th}
                     </p>
                   )}
                 </div>
                 {row.user_owns && (
-                  <Badge variant="success">คุณมีบัตรนี้</Badge>
+                  <Badge variant="teal">คุณมีบัตรนี้</Badge>
                 )}
               </div>
             </CardHeader>
 
-            <CardContent className="flex flex-1 flex-col gap-3 text-sm">
-              <div className="rounded-md bg-emerald-50 p-3 text-emerald-900">
-                <p className="text-xs font-medium uppercase tracking-wide">
+            <CardContent className="flex flex-1 flex-col gap-3 text-body-sm">
+              <div className="rounded-md bg-loftly-teal-soft p-3 text-loftly-teal">
+                <p className="text-caption font-medium uppercase tracking-wide">
                   ประมาณการมูลค่า
                 </p>
-                <p className="mt-0.5 text-lg font-semibold tabular-nums">
+                <p className="mt-0.5 font-mono text-numeric-table font-semibold">
                   ได้ประมาณ ~฿
                   {new Intl.NumberFormat('th-TH', {
                     maximumFractionDigits: 0,
@@ -94,7 +94,7 @@ export function RankedCardList({
                   ต่อ ฿1,000 ที่ใช้จ่ายที่ {merchantDisplayName}
                 </p>
                 {row.confidence === 0 && (
-                  <p className="mt-1 text-xs text-emerald-800">
+                  <p className="mt-1 text-caption text-loftly-teal-hover">
                     (base-earn เท่านั้น — ยังไม่มี valuation)
                   </p>
                 )}

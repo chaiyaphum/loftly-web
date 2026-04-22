@@ -46,7 +46,7 @@ export function CardCompareTable({
       <p
         role="status"
         className={cn(
-          'rounded-md border border-dashed border-slate-300 bg-slate-50 p-4 text-sm text-slate-600',
+          'rounded-md border border-dashed border-loftly-divider bg-loftly-teal-soft/40 p-4 text-sm text-loftly-ink-muted',
           className,
         )}
       >
@@ -58,7 +58,7 @@ export function CardCompareTable({
   return (
     <div
       className={cn(
-        'overflow-hidden rounded-md border border-slate-200 bg-white',
+        'overflow-hidden rounded-md border border-loftly-divider bg-white',
         className,
       )}
       data-testid="card-compare-table"
@@ -89,15 +89,15 @@ function DesktopTable({
   const cols = comparisons.length;
   return (
     <table className="w-full caption-bottom text-sm">
-      <thead className="border-b bg-slate-50 text-left">
+      <thead className="border-b bg-loftly-teal-soft/40 text-left">
         <tr>
-          <th className="w-[180px] p-3 text-xs font-medium uppercase tracking-wide text-slate-500">
+          <th className="w-[180px] p-3 text-xs font-medium uppercase tracking-wide text-loftly-ink-muted">
             {t('columns.displayName')}
           </th>
           {comparisons.map(({ card }) => (
             <th
               key={card.id}
-              className="p-3 text-sm font-semibold text-slate-900"
+              className="p-3 text-sm font-semibold text-loftly-ink"
               scope="col"
             >
               {card.display_name}
@@ -105,7 +105,7 @@ function DesktopTable({
           ))}
         </tr>
       </thead>
-      <tbody className="divide-y divide-slate-200">
+      <tbody className="divide-y divide-loftly-divider">
         <Row label={t('columns.issuer')}>
           {comparisons.map((c) => (
             <td key={c.card.id} className="p-3 text-sm">
@@ -140,11 +140,11 @@ function DesktopTable({
         </Row>
 
         {/* Category earn-rate section header */}
-        <tr className="bg-slate-50">
+        <tr className="bg-loftly-teal-soft/40">
           <th
             colSpan={cols + 1}
             scope="colgroup"
-            className="p-2 text-left text-xs font-semibold uppercase tracking-wide text-slate-600"
+            className="p-2 text-left text-xs font-semibold uppercase tracking-wide text-loftly-ink-muted"
           >
             {t('earn_rate_by_category')}
           </th>
@@ -168,7 +168,7 @@ function DesktopTable({
               {c.transfer_partners.length === 0 ? (
                 '—'
               ) : (
-                <ul className="list-disc space-y-0.5 pl-4 text-xs text-slate-700">
+                <ul className="list-disc space-y-0.5 pl-4 text-xs text-loftly-ink">
                   {c.transfer_partners.slice(0, 5).map((p) => (
                     <li key={p.destination_code}>
                       {p.destination_display_name_th} ({p.ratio_source}:
@@ -227,7 +227,7 @@ function Row({
     <tr>
       <th
         scope="row"
-        className="p-3 text-left text-xs font-medium uppercase tracking-wide text-slate-500"
+        className="p-3 text-left text-xs font-medium uppercase tracking-wide text-loftly-ink-muted"
       >
         {label}
       </th>
@@ -246,14 +246,14 @@ function MobileStack({
   tc: T;
 }) {
   return (
-    <div className="divide-y divide-slate-200">
+    <div className="divide-y divide-loftly-divider">
       {comparisons.map((c) => (
         <section key={c.card.id} className="space-y-2 p-4 text-sm">
           <header className="mb-2">
-            <h3 className="text-base font-semibold text-slate-900">
+            <h3 className="text-base font-semibold text-loftly-ink">
               {c.card.display_name}
             </h3>
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-loftly-ink-muted">
               {c.card.bank.display_name_th}
             </p>
           </header>
@@ -269,7 +269,7 @@ function MobileStack({
               : '—'}
           </Dl>
           <div>
-            <dt className="text-xs font-medium uppercase tracking-wide text-slate-500">
+            <dt className="text-xs font-medium uppercase tracking-wide text-loftly-ink-muted">
               {t('earn_rate_by_category')}
             </dt>
             <dd className="mt-1 grid grid-cols-2 gap-1 text-xs tabular-nums">
@@ -277,7 +277,7 @@ function MobileStack({
                 const rate = c.card.earn_rate_local?.[category];
                 return (
                   <div key={category} className="flex justify-between gap-2">
-                    <span className="text-slate-600">
+                    <span className="text-loftly-ink-muted">
                       {t(`categories.${category}` as const)}
                     </span>
                     <span>
@@ -328,10 +328,10 @@ function Dl({
 }) {
   return (
     <div className="flex items-baseline justify-between gap-3">
-      <dt className="text-xs font-medium uppercase tracking-wide text-slate-500">
+      <dt className="text-xs font-medium uppercase tracking-wide text-loftly-ink-muted">
         {label}
       </dt>
-      <dd className="text-right text-sm text-slate-900">{children}</dd>
+      <dd className="text-right text-sm text-loftly-ink">{children}</dd>
     </div>
   );
 }

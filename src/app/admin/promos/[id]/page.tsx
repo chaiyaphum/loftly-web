@@ -33,12 +33,12 @@ export default async function EditAdminPromoPage({
   return (
     <section className="space-y-4">
       <nav className="text-sm">
-        <Link href="/admin/promos" className="text-slate-500 hover:underline">
+        <Link href="/admin/promos" className="text-loftly-ink-muted hover:underline">
           ← Promos
         </Link>
       </nav>
       <h1 className="text-2xl font-semibold">Edit promo</h1>
-      <p className="text-sm text-slate-500">
+      <p className="text-sm text-loftly-ink-muted">
         {promo.title_th} · {promo.id}
       </p>
       <PromoForm promo={promo} accessToken={session.accessToken} />

@@ -12,7 +12,7 @@ export default async function NewAdminPromoPage() {
   return (
     <section className="space-y-4">
       <nav className="text-sm">
-        <Link href="/admin/promos" className="text-slate-500 hover:underline">
+        <Link href="/admin/promos" className="text-loftly-ink-muted hover:underline">
           ← Promos
         </Link>
       </nav>

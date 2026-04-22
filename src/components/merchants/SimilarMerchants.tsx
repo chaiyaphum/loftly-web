@@ -41,13 +41,13 @@ export async function SimilarMerchants({
 
   return (
     <section className="mt-8 flex flex-col gap-3">
-      <h3 className="text-sm font-semibold text-slate-700">{heading}</h3>
+      <h3 className="text-sm font-semibold text-loftly-ink">{heading}</h3>
       <ul className="flex flex-wrap gap-2">
         {items.map((m) => (
           <li key={m.slug}>
             <Link
               href={`/merchants/${m.slug}`}
-              className="inline-flex items-center gap-1 rounded-md border border-slate-200 px-3 py-1.5 text-sm hover:bg-slate-50"
+              className="inline-flex items-center gap-1 rounded-md border border-loftly-divider px-3 py-1.5 text-sm hover:bg-loftly-teal-soft/40"
             >
               <span className="font-medium">{m.display_name_th}</span>
               {m.active_promo_count > 0 && (

@@ -54,7 +54,7 @@ export function ValuationHistoryTable({
 
   if (rows.length === 0) {
     return (
-      <p className={cn('text-sm text-slate-500', className)}>{emptyText}</p>
+      <p className={cn('text-sm text-loftly-ink-muted', className)}>{emptyText}</p>
     );
   }
 
@@ -67,7 +67,7 @@ export function ValuationHistoryTable({
       data-testid="valuation-history-table"
     >
       <thead>
-        <tr className="border-b border-slate-200 text-xs uppercase tracking-wide text-slate-500">
+        <tr className="border-b border-loftly-divider text-xs uppercase tracking-wide text-loftly-ink-muted">
           <th className="py-2 pr-4 font-medium">{headers.date}</th>
           <th className="py-2 font-medium">{headers.value}</th>
         </tr>
@@ -76,12 +76,12 @@ export function ValuationHistoryTable({
         {rows.map((row, i) => (
           <tr
             key={`${row.computed_at}-${i}`}
-            className="border-b border-slate-100 last:border-b-0"
+            className="border-b border-loftly-divider last:border-b-0"
           >
-            <td className="py-2 pr-4 text-slate-700">
+            <td className="py-2 pr-4 text-loftly-ink">
               {formatDate(row.computed_at, locale)}
             </td>
-            <td className="py-2 font-medium tabular-nums text-slate-900">
+            <td className="py-2 font-medium tabular-nums text-loftly-ink">
               {row.thb_per_point.toFixed(4)}
             </td>
           </tr>

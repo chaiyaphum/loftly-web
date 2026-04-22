@@ -81,14 +81,14 @@ function ExpiredView({
       <h1 className="text-2xl font-semibold tracking-tight">
         {t('expiredTitle')}
       </h1>
-      <p className="mt-3 text-sm text-slate-600">{t('expiredBody')}</p>
+      <p className="mt-3 text-sm text-loftly-ink-muted">{t('expiredBody')}</p>
       {detail && (
-        <p className="mt-2 text-xs text-slate-400">{detail}</p>
+        <p className="mt-2 text-xs text-loftly-ink-muted/70">{detail}</p>
       )}
       <p className="mt-6">
         <Link
           href="/onboarding"
-          className="inline-flex items-center rounded-md bg-loftly-baht px-4 py-2 text-sm font-medium text-white hover:bg-loftly-baht/90"
+          className="inline-flex items-center rounded-md bg-loftly-teal px-4 py-2 text-sm font-medium text-white hover:bg-loftly-teal/90"
         >
           {t('expiredCta')}
         </Link>

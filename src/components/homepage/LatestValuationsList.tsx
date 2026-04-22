@@ -27,12 +27,12 @@ export function LatestValuationsList({
     return (
       <div
         data-testid="latest-valuations-empty"
-        className="rounded-md border border-dashed border-slate-300 p-6 text-sm text-slate-600"
+        className="rounded-md border border-dashed border-loftly-divider p-6 text-sm text-loftly-ink-muted"
       >
         <p>{emptyLabel}</p>
         <Link
           href="/cards"
-          className="mt-2 inline-block font-medium text-slate-900 underline-offset-2 hover:underline"
+          className="mt-2 inline-block font-medium text-loftly-ink underline-offset-2 hover:underline"
         >
           {browseAllLabel} →
         </Link>
@@ -43,18 +43,18 @@ export function LatestValuationsList({
   return (
     <ul
       data-testid="latest-valuations-list"
-      className="divide-y divide-slate-200 rounded-md border border-slate-200 bg-white"
+      className="divide-y divide-loftly-divider rounded-md border border-loftly-divider bg-white"
     >
       {valuations.map((v) => (
         <li key={v.currency.code}>
           <Link
             href={`/valuations/${encodeURIComponent(v.currency.code)}`}
             data-testid="latest-valuations-item"
-            className="flex flex-wrap items-center justify-between gap-3 px-4 py-3 text-sm transition hover:bg-slate-50"
+            className="flex flex-wrap items-center justify-between gap-3 px-4 py-3 text-sm transition hover:bg-loftly-teal-soft/40"
           >
-            <span className="font-medium text-slate-900">
+            <span className="font-medium text-loftly-ink">
               {v.currency.display_name_th}
-              <span className="ml-1 text-xs tracking-wide text-slate-500">
+              <span className="ml-1 text-xs tracking-wide text-loftly-ink-muted">
                 {v.currency.code}
               </span>
             </span>

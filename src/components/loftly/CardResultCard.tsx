@@ -81,7 +81,7 @@ export async function CardResultCard({
         <div className="flex items-start justify-between gap-2">
           <div>
             <CardTitle>{card.display_name}</CardTitle>
-            <p className="text-xs text-slate-500">
+            <p className="text-caption text-loftly-ink-muted">
               {card.bank.display_name_th} · {card.network}
               {card.tier ? ` · ${card.tier}` : ''}
             </p>
@@ -92,28 +92,28 @@ export async function CardResultCard({
         </div>
       </CardHeader>
 
-      <CardContent className="flex flex-1 flex-col gap-3 text-sm">
+      <CardContent className="flex flex-1 flex-col gap-3 text-body-sm">
         {card.annual_fee_thb !== null && card.annual_fee_thb !== undefined && (
-          <p className="text-slate-700">
+          <p className="text-loftly-ink">
             {tc('annualFee')}:{' '}
-            <span className="font-medium">
+            <span className="font-medium font-mono">
               <ThaiNumberFormat value={card.annual_fee_thb} />
             </span>
             {card.annual_fee_waiver && (
-              <span className="text-slate-500"> ({card.annual_fee_waiver})</span>
+              <span className="text-loftly-ink-muted"> ({card.annual_fee_waiver})</span>
             )}
           </p>
         )}
 
         {earning?.monthly_thb !== undefined && (
-          <div className="rounded-md bg-emerald-50 p-3 text-emerald-900">
-            <p className="text-xs font-medium uppercase tracking-wide">
+          <div className="rounded-md bg-loftly-teal-soft p-3 text-loftly-teal">
+            <p className="text-caption font-medium uppercase tracking-wide">
               {t('monthlyEarning')}
             </p>
-            <p className="mt-0.5 text-lg font-semibold tabular-nums">
+            <p className="mt-0.5 font-mono text-numeric-table font-semibold">
               {formatTHBFull(earning.monthly_thb)}
               {earning.monthly_points !== undefined && (
-                <span className="ml-1 text-sm font-normal text-emerald-800">
+                <span className="ml-1 text-body-sm font-normal text-loftly-teal-hover">
                   (
                   {new Intl.NumberFormat('th-TH').format(earning.monthly_points)}{' '}
                   {card.earn_currency.code})
@@ -124,7 +124,7 @@ export async function CardResultCard({
         )}
 
         {card.description_th && (
-          <p className="line-clamp-3 text-slate-700">{card.description_th}</p>
+          <p className="line-clamp-3 text-loftly-ink">{card.description_th}</p>
         )}
       </CardContent>
 

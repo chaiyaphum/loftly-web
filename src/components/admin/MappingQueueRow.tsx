@@ -70,8 +70,8 @@ export function MappingQueueRow({
         </td>
       )}
       <td className="px-4 py-2 font-medium">{item.title_th}</td>
-      <td className="px-4 py-2 text-slate-600">{item.bank_slug}</td>
-      <td className="px-4 py-2 text-xs text-slate-600">
+      <td className="px-4 py-2 text-loftly-ink-muted">{item.bank_slug}</td>
+      <td className="px-4 py-2 text-xs text-loftly-ink-muted">
         {item.card_types_raw.join(', ') || '—'}
       </td>
       <td className="px-4 py-2">
@@ -82,7 +82,7 @@ export function MappingQueueRow({
           className="w-64"
         />
         {error && (
-          <p className="mt-1 text-xs text-red-700" role="alert">
+          <p className="mt-1 text-xs text-loftly-danger" role="alert">
             {error}
           </p>
         )}
@@ -92,7 +92,7 @@ export function MappingQueueRow({
           type="button"
           onClick={handleAssign}
           disabled={status === 'saving' || status === 'done'}
-          className="rounded-md bg-loftly-baht px-3 py-1.5 text-xs font-medium text-white hover:bg-loftly-baht/90 disabled:opacity-50"
+          className="rounded-md bg-loftly-teal px-3 py-1.5 text-xs font-medium text-white hover:bg-loftly-teal/90 disabled:opacity-50"
         >
           {status === 'saving'
             ? 'Assigning…'

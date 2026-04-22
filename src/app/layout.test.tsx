@@ -16,6 +16,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 vi.mock('next/font/google', () => ({
   Inter: () => ({ variable: '--font-inter' }),
   Noto_Sans_Thai_Looped: () => ({ variable: '--font-noto-thai' }),
+  JetBrains_Mono: () => ({ variable: '--font-jetbrains-mono' }),
 }));
 
 beforeEach(() => {

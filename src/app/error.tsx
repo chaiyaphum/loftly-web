@@ -46,17 +46,17 @@ export default function RootError({
         id="main-content"
         className="mx-auto flex min-h-[100dvh] max-w-xl flex-col items-center justify-center px-6 py-8 text-center"
       >
-        <p className="mb-3 text-sm font-medium uppercase tracking-wide text-slate-500">
+        <p className="mb-3 text-sm font-medium uppercase tracking-wide text-loftly-ink-muted">
           500
         </p>
         <h1 className="text-3xl font-semibold text-loftly-ink sm:text-4xl">
           {t('title')}
         </h1>
-        <p className="mt-3 text-base text-slate-600">{t('subtitle')}</p>
+        <p className="mt-3 text-base text-loftly-ink-muted">{t('subtitle')}</p>
 
         {error.digest ? (
           <p
-            className="mt-4 font-mono text-xs text-slate-500"
+            className="mt-4 font-mono text-xs text-loftly-ink-muted"
             data-testid="error-digest"
           >
             {t('errorCode', { digest: error.digest })}
@@ -78,7 +78,7 @@ export default function RootError({
           </Button>
         </div>
 
-        <p className="mt-8 text-xs text-slate-500">
+        <p className="mt-8 text-xs text-loftly-ink-muted">
           {t('supportText', { email: supportEmail })
             .split(supportEmail)
             .flatMap((chunk, i, arr) =>
@@ -88,7 +88,7 @@ export default function RootError({
                     <a
                       key={i}
                       href={`mailto:${supportEmail}`}
-                      className="text-loftly-baht underline underline-offset-2 hover:opacity-80"
+                      className="text-loftly-teal underline underline-offset-2 hover:opacity-80"
                     >
                       {supportEmail}
                     </a>,

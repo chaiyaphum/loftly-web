@@ -39,19 +39,19 @@ export function AnalyticsPanel({
   const hasDelta = typeof delta === 'number' && Number.isFinite(delta) && delta !== 0;
   const deltaColor =
     hasDelta && (delta as number) > 0
-      ? 'bg-emerald-50 text-emerald-700'
-      : 'bg-red-50 text-red-700';
+      ? 'bg-loftly-teal-soft text-loftly-teal'
+      : 'bg-loftly-danger/10 text-loftly-danger';
   const deltaArrow = hasDelta && (delta as number) > 0 ? '▲' : '▼';
   const deltaAria =
     hasDelta && (delta as number) > 0 ? 'Up from previous period' : 'Down from previous period';
 
   return (
     <section
-      className="flex flex-col gap-3 rounded-md border border-slate-200 bg-white p-5"
+      className="flex flex-col gap-3 rounded-md border border-loftly-divider bg-white p-5"
       data-testid={testId}
     >
       <header className="flex items-start justify-between gap-2">
-        <h2 className="text-xs font-medium uppercase tracking-wide text-slate-500">
+        <h2 className="text-xs font-medium uppercase tracking-wide text-loftly-ink-muted">
           {title}
         </h2>
         {hasDelta && (
@@ -66,12 +66,12 @@ export function AnalyticsPanel({
         )}
       </header>
       <p
-        className="text-3xl font-semibold text-slate-900"
+        className="text-3xl font-semibold text-loftly-ink"
         data-testid={testId ? `${testId}-value` : undefined}
       >
         {value}
       </p>
-      {footer ? <div className="text-sm text-slate-600">{footer}</div> : null}
+      {footer ? <div className="text-sm text-loftly-ink-muted">{footer}</div> : null}
     </section>
   );
 }

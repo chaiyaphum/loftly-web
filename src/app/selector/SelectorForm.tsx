@@ -121,13 +121,13 @@ export function SelectorForm({ initialValues, reviewHint }: SelectorFormProps = 
       <section className="space-y-2">
         <label
           htmlFor="monthly-spend"
-          className="block text-base font-medium text-slate-900"
+          className="block text-base font-medium text-loftly-ink"
         >
           {t('monthlySpendLabel')}
         </label>
-        <p className="text-xs text-slate-500">{t('monthlySpendHint')}</p>
+        <p className="text-xs text-loftly-ink-muted">{t('monthlySpendHint')}</p>
         <div className="flex items-center gap-2">
-          <span className="text-sm font-medium text-slate-600">THB</span>
+          <span className="text-sm font-medium text-loftly-ink-muted">THB</span>
           <Input
             id="monthly-spend"
             type="number"
@@ -142,7 +142,7 @@ export function SelectorForm({ initialValues, reviewHint }: SelectorFormProps = 
           />
         </div>
         {fieldErrors.monthly_spend_thb && (
-          <p role="alert" className="text-sm text-red-700">
+          <p role="alert" className="text-sm text-loftly-danger">
             {fieldErrors.monthly_spend_thb}
           </p>
         )}
@@ -150,7 +150,7 @@ export function SelectorForm({ initialValues, reviewHint }: SelectorFormProps = 
 
       {/* Category sliders */}
       <section className="space-y-3">
-        <h2 className="text-base font-medium text-slate-900">
+        <h2 className="text-base font-medium text-loftly-ink">
           {t('categoriesLabel')}
         </h2>
         <SpendCategorySliders
@@ -162,7 +162,7 @@ export function SelectorForm({ initialValues, reviewHint }: SelectorFormProps = 
           disabled={isPending}
         />
         {fieldErrors.spend_categories && (
-          <p role="alert" className="text-sm text-red-700">
+          <p role="alert" className="text-sm text-loftly-danger">
             {fieldErrors.spend_categories}
           </p>
         )}
@@ -170,7 +170,7 @@ export function SelectorForm({ initialValues, reviewHint }: SelectorFormProps = 
 
       {/* Goal */}
       <section className="space-y-3">
-        <h2 className="text-base font-medium text-slate-900">{t('goalLabel')}</h2>
+        <h2 className="text-base font-medium text-loftly-ink">{t('goalLabel')}</h2>
         <GoalPicker
           value={values.goal}
           onChange={(next) => setValues((prev) => ({ ...prev, goal: next }))}
@@ -179,7 +179,7 @@ export function SelectorForm({ initialValues, reviewHint }: SelectorFormProps = 
         {Object.entries(fieldErrors)
           .filter(([k]) => k.startsWith('goal'))
           .map(([k, msg]) => (
-            <p key={k} role="alert" className="text-sm text-red-700">
+            <p key={k} role="alert" className="text-sm text-loftly-danger">
               {msg}
             </p>
           ))}
@@ -187,10 +187,10 @@ export function SelectorForm({ initialValues, reviewHint }: SelectorFormProps = 
 
       {/* Current cards placeholder */}
       <section className="space-y-2">
-        <h2 className="text-base font-medium text-slate-900">
+        <h2 className="text-base font-medium text-loftly-ink">
           {t('currentCardsLabel')}
         </h2>
-        <p className="text-xs text-slate-500">{t('currentCardsHint')}</p>
+        <p className="text-xs text-loftly-ink-muted">{t('currentCardsHint')}</p>
         <div className="flex items-center gap-2">
           <Button
             type="button"
@@ -201,14 +201,14 @@ export function SelectorForm({ initialValues, reviewHint }: SelectorFormProps = 
           >
             {t('addCardPlaceholder')}
           </Button>
-          <span className="text-xs text-slate-400">{t('skip')}</span>
+          <span className="text-xs text-loftly-ink-muted/70">{t('skip')}</span>
         </div>
       </section>
 
       {submitError && (
         <p
           role="alert"
-          className="rounded-md bg-red-50 p-3 text-sm text-red-900"
+          className="rounded-md bg-loftly-danger/10 p-3 text-sm text-loftly-danger"
         >
           {submitError}
         </p>

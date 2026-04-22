@@ -79,11 +79,11 @@ export function SpendCategorySliders({
           <div key={cat} className="grid grid-cols-[7rem_1fr_6.5rem] items-center gap-3">
             <label
               htmlFor={inputId}
-              className="text-sm font-medium text-slate-700"
+              className="text-sm font-medium text-loftly-ink"
             >
               {t(cat)}
               {isResidual && (
-                <span className="ml-1 text-xs font-normal text-slate-400">
+                <span className="ml-1 text-xs font-normal text-loftly-ink-muted/70">
                   {t('residualHint')}
                 </span>
               )}
@@ -100,7 +100,7 @@ export function SpendCategorySliders({
               aria-valuetext={formatTHBFull(value)}
             />
             <span
-              className="text-right text-sm tabular-nums text-slate-700"
+              className="text-right text-sm tabular-nums text-loftly-ink"
               data-testid={`spend-value-${cat}`}
             >
               {formatTHBFull(value)}

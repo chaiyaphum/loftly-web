@@ -168,13 +168,13 @@ export function AdminAffiliateClient({ accessToken }: Props) {
     <section className="space-y-6">
       <header className="space-y-1">
         <h1 className="text-2xl font-semibold">{t('title')}</h1>
-        <p className="text-sm text-slate-500">
+        <p className="text-sm text-loftly-ink-muted">
           {t('rangeSummary', { days: rangeDays > 0 ? rangeDays : 0 })}
         </p>
       </header>
 
       <div
-        className="flex flex-wrap items-end gap-4 rounded-md border border-slate-200 bg-white p-4"
+        className="flex flex-wrap items-end gap-4 rounded-md border border-loftly-divider bg-white p-4"
         data-testid="affiliate-filters"
       >
         <label className="flex flex-col gap-1 text-sm">
@@ -201,7 +201,7 @@ export function AdminAffiliateClient({ accessToken }: Props) {
         <fieldset className="flex flex-col gap-1 text-sm">
           <legend className="mb-1 font-medium">{t('partner')}</legend>
           <div className="flex flex-wrap gap-2">
-            <label className="flex items-center gap-2 rounded-md border border-slate-200 bg-slate-50 px-2 py-1">
+            <label className="flex items-center gap-2 rounded-md border border-loftly-divider bg-loftly-teal-soft/40 px-2 py-1">
               <input
                 type="checkbox"
                 checked={selectedPartners.length === 0}
@@ -213,7 +213,7 @@ export function AdminAffiliateClient({ accessToken }: Props) {
             {partners.map((p) => (
               <label
                 key={p.id}
-                className="flex items-center gap-2 rounded-md border border-slate-200 px-2 py-1"
+                className="flex items-center gap-2 rounded-md border border-loftly-divider px-2 py-1"
               >
                 <input
                   type="checkbox"
@@ -245,7 +245,7 @@ export function AdminAffiliateClient({ accessToken }: Props) {
       {rangeError && (
         <p
           role="alert"
-          className="rounded-md border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900"
+          className="rounded-md border border-amber-200 bg-loftly-amber/15 p-3 text-sm text-loftly-amber-urgent"
           data-testid="affiliate-range-error"
         >
           {rangeError}
@@ -255,7 +255,7 @@ export function AdminAffiliateClient({ accessToken }: Props) {
       {statsError && (
         <p
           role="alert"
-          className="rounded-md border border-red-200 bg-red-50 p-3 text-sm text-red-900"
+          className="rounded-md border border-red-200 bg-loftly-danger/10 p-3 text-sm text-loftly-danger"
         >
           {statsError}
         </p>
@@ -286,12 +286,12 @@ export function AdminAffiliateClient({ accessToken }: Props) {
         />
       </div>
 
-      <div className="rounded-md border border-slate-200 bg-white">
-        <div className="border-b bg-slate-50 px-4 py-2 text-sm font-medium">
+      <div className="rounded-md border border-loftly-divider bg-white">
+        <div className="border-b bg-loftly-teal-soft/40 px-4 py-2 text-sm font-medium">
           {t('previewTitle', { count: previewRows.length })}
         </div>
         <table className="w-full text-sm">
-          <thead className="border-b text-left text-xs uppercase tracking-wide text-slate-500">
+          <thead className="border-b text-left text-xs uppercase tracking-wide text-loftly-ink-muted">
             <tr>
               <th className="px-4 py-2">{t('columnCard')}</th>
               <th className="px-4 py-2">{t('columnClicks')}</th>
@@ -311,7 +311,7 @@ export function AdminAffiliateClient({ accessToken }: Props) {
             {previewRows.length === 0 && (
               <tr>
                 <td
-                  className="px-4 py-6 text-center text-slate-500"
+                  className="px-4 py-6 text-center text-loftly-ink-muted"
                   colSpan={4}
                 >
                   {t('empty')}
@@ -327,8 +327,8 @@ export function AdminAffiliateClient({ accessToken }: Props) {
 
 function Metric({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-md border border-slate-200 bg-white p-4">
-      <p className="text-xs uppercase tracking-wide text-slate-500">{label}</p>
+    <div className="rounded-md border border-loftly-divider bg-white p-4">
+      <p className="text-xs uppercase tracking-wide text-loftly-ink-muted">{label}</p>
       <p className="mt-1 text-2xl font-semibold">{value}</p>
     </div>
   );

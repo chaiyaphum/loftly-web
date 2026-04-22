@@ -108,11 +108,11 @@ function ControlTier() {
       data-testid="pricing-variant-control"
       className="grid gap-6 sm:grid-cols-1"
     >
-      <article className="flex flex-col gap-4 rounded-lg border border-slate-200 p-6">
+      <article className="flex flex-col gap-4 rounded-lg border border-loftly-divider p-6">
         <header className="flex items-baseline justify-between">
           <h2 className="text-2xl font-semibold">{t('free_tier')}</h2>
         </header>
-        <p className="text-slate-600">{t('free_tier_description')}</p>
+        <p className="text-loftly-ink-muted">{t('free_tier_description')}</p>
         <div>
           <Button asChild size="lg">
             <Link href="/selector">{t('control_cta')}</Link>
@@ -131,11 +131,11 @@ function PremiumTier({ variant }: { variant: PremiumVariant }) {
       data-testid={`pricing-variant-${variant}`}
       className="grid gap-6 sm:grid-cols-2"
     >
-      <article className="flex flex-col gap-4 rounded-lg border border-slate-200 p-6">
+      <article className="flex flex-col gap-4 rounded-lg border border-loftly-divider p-6">
         <header>
           <h2 className="text-2xl font-semibold">{t('free_tier')}</h2>
         </header>
-        <p className="text-slate-600">{t('free_tier_description')}</p>
+        <p className="text-loftly-ink-muted">{t('free_tier_description')}</p>
         <div>
           <Button asChild variant="outline">
             <Link href="/selector">{t('control_cta')}</Link>
@@ -144,23 +144,23 @@ function PremiumTier({ variant }: { variant: PremiumVariant }) {
       </article>
 
       <article
-        className="flex flex-col gap-4 rounded-lg border-2 border-loftly-baht p-6"
+        className="flex flex-col gap-4 rounded-lg border-2 border-loftly-teal p-6"
         data-testid="pricing-premium-card"
       >
         <header className="flex flex-col gap-1">
-          <span className="text-xs font-medium uppercase tracking-wide text-loftly-baht">
+          <span className="text-xs font-medium uppercase tracking-wide text-loftly-teal">
             {t('coming_phase_2')}
           </span>
           <h2 className="text-2xl font-semibold">{t('premium_tier')}</h2>
           <p className="text-xl" data-testid="pricing-premium-monthly">
             {t('premium_monthly', { amount: prices.monthly.toLocaleString() })}
           </p>
-          <p className="text-sm text-slate-500">
+          <p className="text-sm text-loftly-ink-muted">
             {t('premium_yearly', { amount: prices.yearly.toLocaleString() })}
           </p>
         </header>
 
-        <ul className="flex flex-col gap-2 text-sm text-slate-700">
+        <ul className="flex flex-col gap-2 text-sm text-loftly-ink">
           <li>• {t('feature_award_finder')}</li>
           <li>• {t('feature_alerts')}</li>
           <li>• {t('feature_unified_balance')}</li>
@@ -239,7 +239,7 @@ function WaitlistForm({
     return (
       <p
         role="status"
-        className="rounded-md border border-emerald-200 bg-emerald-50 p-3 text-sm text-emerald-900"
+        className="rounded-md border border-emerald-200 bg-loftly-teal-soft p-3 text-sm text-loftly-teal"
         data-testid="pricing-waitlist-success"
         data-status={state.status}
       >

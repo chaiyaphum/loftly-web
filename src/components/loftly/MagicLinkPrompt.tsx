@@ -170,7 +170,7 @@ export function MagicLinkPrompt({
     return (
       <div
         className={cn(
-          'rounded-md border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-900',
+          'rounded-md border border-emerald-200 bg-loftly-teal-soft p-4 text-sm text-loftly-teal',
           className,
         )}
       >
@@ -178,9 +178,9 @@ export function MagicLinkPrompt({
 
         {resend.kind !== 'hidden' && (
           <div className="mt-3 flex flex-col gap-2 border-t border-emerald-200 pt-3 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-xs text-emerald-800">
+            <p className="text-xs text-loftly-teal-hover">
               <span className="font-medium">{t('resend.hint')}</span>
-              <span className="ml-1 text-emerald-700">
+              <span className="ml-1 text-loftly-teal">
                 {t('resend.spamHint')}
               </span>
             </p>
@@ -210,7 +210,7 @@ export function MagicLinkPrompt({
           <p
             role="status"
             data-testid="magic-link-resend-success"
-            className="mt-2 text-xs font-medium text-emerald-800"
+            className="mt-2 text-xs font-medium text-loftly-teal-hover"
           >
             {t('resend.success')}
           </p>
@@ -220,7 +220,7 @@ export function MagicLinkPrompt({
           <p
             role="alert"
             data-testid="magic-link-resend-error"
-            className="mt-2 text-xs font-medium text-red-700"
+            className="mt-2 text-xs font-medium text-loftly-danger"
           >
             {resendError}
           </p>
@@ -234,7 +234,7 @@ export function MagicLinkPrompt({
       onSubmit={handleSubmit}
       noValidate
       className={cn(
-        'flex flex-col gap-3 rounded-md border border-slate-200 bg-white p-4 sm:flex-row sm:items-end',
+        'flex flex-col gap-3 rounded-md border border-loftly-divider bg-white p-4 sm:flex-row sm:items-end',
         className,
       )}
       aria-label={t('formLabel')}
@@ -242,7 +242,7 @@ export function MagicLinkPrompt({
       <div className="flex-1">
         <label
           htmlFor={inputId}
-          className="mb-1 block text-sm font-medium text-slate-700"
+          className="mb-1 block text-sm font-medium text-loftly-ink"
         >
           {t('promptTitle')}
         </label>
@@ -262,7 +262,7 @@ export function MagicLinkPrompt({
         {state.kind === 'submitting' ? t('submitting') : t('submit')}
       </Button>
       {state.kind === 'error' && (
-        <p role="alert" className="basis-full text-sm text-red-700">
+        <p role="alert" className="basis-full text-sm text-loftly-danger">
           {state.message}
         </p>
       )}

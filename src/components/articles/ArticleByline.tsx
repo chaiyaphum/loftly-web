@@ -96,7 +96,7 @@ export async function ArticleByline({
 
   return (
     <div
-      className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-500"
+      className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-loftly-ink-muted"
       data-testid="article-byline"
     >
       <span>{t('author', { name: resolvedName })}</span>

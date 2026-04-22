@@ -41,9 +41,9 @@ export function ConfidenceBar({
   const band = bandForConfidence(clamped);
 
   const fillClass: Record<ConfidenceBand, string> = {
-    full: 'bg-emerald-500',
+    full: 'bg-loftly-teal-soft0',
     tooltip: 'bg-sky-500',
-    directional: 'bg-amber-500',
+    directional: 'bg-loftly-amber/150',
     range: 'bg-slate-400',
   };
 
@@ -61,7 +61,7 @@ export function ConfidenceBar({
         aria-valuemax={100}
         aria-valuenow={pct}
         aria-label={label}
-        className="relative h-2 w-full overflow-hidden rounded-full bg-slate-100"
+        className="relative h-2 w-full overflow-hidden rounded-full bg-loftly-divider/50"
       >
         <div
           className={cn('h-full rounded-full transition-all', fillClass[band])}
@@ -69,7 +69,7 @@ export function ConfidenceBar({
           data-testid="confidence-bar-fill"
         />
       </div>
-      <span className="text-xs tabular-nums text-slate-600">
+      <span className="text-xs tabular-nums text-loftly-ink-muted">
         {pct}%
       </span>
     </div>

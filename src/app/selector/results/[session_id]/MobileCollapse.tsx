@@ -39,7 +39,7 @@ export function MobileCollapse({
       <button
         type="button"
         onClick={() => setExpanded((v) => !v)}
-        className="mt-2 w-full rounded-md border border-slate-200 py-2 text-xs font-medium text-slate-600 sm:hidden"
+        className="mt-2 w-full rounded-md border border-loftly-divider py-2 text-xs font-medium text-loftly-ink-muted sm:hidden"
         data-testid="mobile-collapse-toggle"
       >
         {label} {expanded ? '▲' : '▼'}

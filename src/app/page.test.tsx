@@ -25,6 +25,18 @@ vi.mock('@/components/landing/LivePromoStrip', () => ({
 vi.mock('@/components/landing/DualHero', () => ({
   DualHero: () => null,
 }));
+vi.mock('@/components/landing/TopPromosCarousel', () => ({
+  TopPromosCarousel: () => null,
+}));
+vi.mock('@/components/landing/TopMerchantsGrid', () => ({
+  TopMerchantsGrid: () => null,
+}));
+vi.mock('@/components/landing/SelectorCtaBlock', () => ({
+  SelectorCtaBlock: () => null,
+}));
+vi.mock('@/components/landing/WhyLoftly', () => ({
+  WhyLoftly: () => null,
+}));
 
 function makeT(scope: string) {
   const dict = thMessages as unknown as Record<string, unknown>;

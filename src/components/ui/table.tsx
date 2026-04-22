@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { cn } from '@/lib/utils';
 
-/**
- * Minimal shadcn-style table primitives. Used by `CardEarnRateTable` and review
- * section blocks.
- */
-
 export const Table = React.forwardRef<
   HTMLTableElement,
   React.HTMLAttributes<HTMLTableElement>
@@ -14,7 +9,7 @@ export const Table = React.forwardRef<
     <div className="w-full overflow-auto">
       <table
         ref={ref}
-        className={cn('w-full caption-bottom text-sm', className)}
+        className={cn('w-full caption-bottom text-body-sm', className)}
         {...props}
       />
     </div>
@@ -26,7 +21,7 @@ export const TableHeader = React.forwardRef<
   React.HTMLAttributes<HTMLTableSectionElement>
 >(function TableHeader({ className, ...props }, ref) {
   return (
-    <thead ref={ref} className={cn('border-b text-left', className)} {...props} />
+    <thead ref={ref} className={cn('border-b border-loftly-divider text-left', className)} {...props} />
   );
 });
 
@@ -35,7 +30,7 @@ export const TableBody = React.forwardRef<
   React.HTMLAttributes<HTMLTableSectionElement>
 >(function TableBody({ className, ...props }, ref) {
   return (
-    <tbody ref={ref} className={cn('divide-y divide-slate-200', className)} {...props} />
+    <tbody ref={ref} className={cn('divide-y divide-loftly-divider', className)} {...props} />
   );
 });
 
@@ -43,7 +38,7 @@ export const TableRow = React.forwardRef<
   HTMLTableRowElement,
   React.HTMLAttributes<HTMLTableRowElement>
 >(function TableRow({ className, ...props }, ref) {
-  return <tr ref={ref} className={cn('hover:bg-slate-50', className)} {...props} />;
+  return <tr ref={ref} className={cn('hover:bg-loftly-teal-soft/40', className)} {...props} />;
 });
 
 export const TableHead = React.forwardRef<
@@ -53,7 +48,7 @@ export const TableHead = React.forwardRef<
   return (
     <th
       ref={ref}
-      className={cn('h-10 px-3 text-xs font-medium uppercase tracking-wide text-slate-500', className)}
+      className={cn('h-10 px-3 text-caption font-medium uppercase tracking-wide text-loftly-ink-muted', className)}
       {...props}
     />
   );

@@ -67,10 +67,10 @@ export function ValuationBadge({
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium tabular-nums',
+        'inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-caption font-medium font-mono',
         isLowConfidence
-          ? 'bg-amber-50 text-amber-900'
-          : 'bg-slate-100 text-slate-900',
+          ? 'bg-loftly-amber/15 text-loftly-amber-urgent'
+          : 'bg-loftly-teal-soft text-loftly-teal',
         className,
       )}
       title={valuation.methodology}

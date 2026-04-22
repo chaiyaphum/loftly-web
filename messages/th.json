@@ -193,6 +193,28 @@
     }
   },
   "landing": {
+    "heroSearch": {
+      "statusPill": "โปร active {count}+ · sync ล่าสุดไม่กี่นาทีก่อน",
+      "h1Prefix": "บัตรไหนให้คุ้มที่สุด",
+      "h1Connector": "ที่",
+      "h1Accent": "ร้านนี้",
+      "h1Suffix": "?",
+      "subheading": "พิมพ์ชื่อร้าน ดูบัตรที่คุ้มสุด โปรสดที่ใช้ได้ พร้อมคำนวณ THB ต่อ ฿1,000 ใช้จ่าย",
+      "placeholder": "ลอง Starbucks · Lazada · Central...",
+      "ariaInput": "ค้นหาร้านค้า",
+      "ariaResults": "ผลการค้นหาร้านค้า",
+      "clear": "ล้างคำค้นหา",
+      "earn": "Earn",
+      "earnPer1k": "฿42 / ฿1,000",
+      "activePromos": "{count} โปร active",
+      "showing": "แสดง {count} ร้าน",
+      "pressEnterPrefix": "กด",
+      "pressEnterSuffix": "เพื่อเปิด",
+      "popular": "ยอดนิยม:",
+      "loading": "กำลังค้นหา…",
+      "altCtaLead": "— หรือ —",
+      "altCta": "ใช้ Selector แบบเต็ม (30 วินาที) →"
+    },
     "title": "รู้ทันทีว่าใช้บัตรไหนคุ้ม — ที่ทุกร้าน ทุกวัน",
     "subtitle": "Live Thai credit-card intelligence for every merchant",
     "cta": "ค้นหาบัตรที่ใช่ ▸",

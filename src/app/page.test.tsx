@@ -19,11 +19,8 @@ vi.mock('next-intl/server', () => ({
 // Mock the post-positioning-shift hero/strip components so these tests stay
 // focused on the "latest reviews + latest valuations" SSR wiring — they don't
 // need to re-exercise LivePromoStrip freshness math or DualHero layout.
-vi.mock('@/components/landing/LivePromoStrip', () => ({
-  LivePromoStrip: () => null,
-}));
-vi.mock('@/components/landing/DualHero', () => ({
-  DualHero: () => null,
+vi.mock('@/components/landing/HeroSearch', () => ({
+  HeroSearch: () => null,
 }));
 vi.mock('@/components/landing/TopPromosCarousel', () => ({
   TopPromosCarousel: () => null,

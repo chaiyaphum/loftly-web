@@ -8,8 +8,7 @@ import {
 } from '@/components/homepage/LatestReviewsGrid';
 import { LatestValuationsList } from '@/components/homepage/LatestValuationsList';
 import { buildPageMetadata } from '@/lib/seo/metadata';
-import { DualHero } from '@/components/landing/DualHero';
-import { LivePromoStrip } from '@/components/landing/LivePromoStrip';
+import { HeroSearch } from '@/components/landing/HeroSearch';
 import { SelectorCtaBlock } from '@/components/landing/SelectorCtaBlock';
 import { TopMerchantsGrid } from '@/components/landing/TopMerchantsGrid';
 import { TopPromosCarousel } from '@/components/landing/TopPromosCarousel';
@@ -27,16 +26,18 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 /**
- * Landing page — section order per brief §15.3:
+ * Landing page — merchant-first hero + §15.3 below-fold sections:
  *
- *   1. LivePromoStrip (above hero, full-bleed)
- *   2. DualHero (merchant lookup + Selector, co-equal)
- *   3. TopPromosCarousel ("วันนี้โปรไหนน่าสนใจ?")
- *   4. TopMerchantsGrid ("ใช้บัตรไหนดีที่...")
- *   5. SelectorCtaBlock ("หรือบอกการใช้จ่ายของคุณ")
- *   6. WhyLoftly (3 pillars)
- *   7. LatestReviewsGrid
- *   8. LatestValuationsList
+ *   1. HeroSearch ("บัตรไหนให้คุ้มที่สุด ที่ ร้านนี้?") — V1 product-first
+ *      style with inline status pill + underline accent + big search box
+ *      (replaces DualHero; LivePromoStrip's role is absorbed into the
+ *      inline status pill to avoid double-banding)
+ *   2. TopPromosCarousel ("วันนี้โปรไหนน่าสนใจ?")
+ *   3. TopMerchantsGrid ("ใช้บัตรไหนดีที่...")
+ *   4. SelectorCtaBlock ("หรือบอกการใช้จ่ายของคุณ")
+ *   5. WhyLoftly (3 pillars)
+ *   6. LatestReviewsGrid
+ *   7. LatestValuationsList
  */
 
 type FetchState<T> =
@@ -93,11 +94,9 @@ export default async function LandingPage() {
 
   return (
     <>
-      <LivePromoStrip />
+      <HeroSearch />
 
-      <main className="mx-auto flex max-w-6xl flex-col gap-16 px-4 py-10 md:px-6 md:py-14">
-        <DualHero />
-
+      <main className="mx-auto flex max-w-6xl flex-col gap-16 px-4 pb-10 pt-6 md:px-6 md:pb-14 md:pt-10">
         <TopPromosCarousel />
 
         <TopMerchantsGrid />

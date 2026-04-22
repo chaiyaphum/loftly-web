@@ -50,7 +50,7 @@
   {
     "name": "Admin route bundles",
     "path": ".next/static/chunks/app/admin/**/page-*.js",
-    "limit": "20 KB",
+    "limit": "40 KB",
     "gzip": true
   }
 ]

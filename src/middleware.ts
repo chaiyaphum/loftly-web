@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import createMiddleware from 'next-intl/middleware';
-import { routing } from './src/i18n/routing';
+import { routing } from './i18n/routing';
 import {
   INVITE_COOKIE,
   INVITE_COOKIE_MAX_AGE,
@@ -11,14 +11,78 @@ import {
   readInviteEnv,
   signInvite,
   verifyInvite,
-} from './src/lib/invite';
+} from './lib/invite';
 
 const intlMiddleware = createMiddleware(routing);
 
 /**
+ * Flat-app-directory adapter for next-intl v3.
+ *
+ * `src/app/` has no `[locale]` segment — pages live directly at
+ * `src/app/cards/page.tsx`, `src/app/selector/page.tsx`, etc. But next-intl's
+ * middleware (see node_modules/next-intl/dist/esm/middleware/middleware.js)
+ * always rewrites to a locale-prefixed path: `/` → `/th`, `/en/foo` → `/en/foo`.
+ * With a flat directory, neither rewrite target exists as a Next.js route, so
+ * every request 404s.
+ *
+ * Fix: after next-intl emits its rewrite, strip the locale prefix from the
+ * rewrite target so the flat-app route matches. We preserve the
+ * `X-NEXT-INTL-LOCALE` header next-intl set so `getRequestConfig` still
+ * resolves the correct messages bundle.
+ */
+function stripLocalePrefix(pathname: string): {
+  stripped: string;
+  locale: (typeof routing.locales)[number] | null;
+} {
+  for (const locale of routing.locales) {
+    const prefix = `/${locale}`;
+    if (pathname === prefix) {
+      return { stripped: '/', locale };
+    }
+    if (pathname.startsWith(`${prefix}/`)) {
+      return { stripped: pathname.slice(prefix.length), locale };
+    }
+  }
+  return { stripped: pathname, locale: null };
+}
+
+function adaptIntlResponse(
+  request: NextRequest,
+  response: NextResponse,
+): NextResponse {
+  const rewriteTarget = response.headers.get('x-middleware-rewrite');
+  if (!rewriteTarget) return response;
+
+  let rewriteUrl: URL;
+  try {
+    rewriteUrl = new URL(rewriteTarget);
+  } catch {
+    return response;
+  }
+  const { stripped, locale } = stripLocalePrefix(rewriteUrl.pathname);
+  if (!locale || stripped === rewriteUrl.pathname) return response;
+
+  rewriteUrl.pathname = stripped;
+  const forwardHeaders = new Headers(request.headers);
+  forwardHeaders.set('X-NEXT-INTL-LOCALE', locale);
+
+  const rewritten = NextResponse.rewrite(rewriteUrl, {
+    request: { headers: forwardHeaders },
+  });
+  // Preserve response-side headers (Set-Cookie for NEXT_LOCALE, Link, Vary…),
+  // excluding the original rewrite target we're superseding.
+  response.headers.forEach((value, key) => {
+    if (key.toLowerCase() === 'x-middleware-rewrite') return;
+    rewritten.headers.set(key, value);
+  });
+  return rewritten;
+}
+
+/**
  * Order of concerns:
  *   1. Soft-launch invite gate (W11 — capped at 100 users per OPEN_QUESTIONS.md Q5).
- *   2. next-intl locale routing (default: th at `/`, English at `/en/*`).
+ *   2. next-intl locale routing (default: th at `/`, English at `/en/*`) +
+ *      flat-directory rewrite adapter above.
  *
  * The gate is disabled when the env is not configured, so local dev and preview
  * deploys without secrets behave as before.
@@ -62,7 +126,8 @@ export default async function middleware(
     }
   }
 
-  return intlMiddleware(request);
+  const intlResponse = intlMiddleware(request);
+  return adaptIntlResponse(request, intlResponse);
 }
 
 /**

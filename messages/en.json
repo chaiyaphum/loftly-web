@@ -460,7 +460,10 @@
       "ecommerce": "E-commerce",
       "travel": "Travel",
       "service": "Services"
-    }
+    },
+    "notFoundTitle": "We couldn't find that merchant",
+    "notFoundBody": "This merchant isn't in our directory yet, or the URL is misspelled. Head back to browse the full list.",
+    "notFoundCta": "← Back to merchants"
   },
   "results": {
     "title": "Your results",

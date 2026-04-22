@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { cookies } from 'next/headers';
 import { getLocale, getTranslations } from 'next-intl/server';
+import { notFound } from 'next/navigation';
 import { getSelectorResult } from '@/lib/api/selector';
 import { getCard } from '@/lib/api/cards';
 import { LoftlyAPIError } from '@/lib/api/client';
@@ -71,15 +72,27 @@ export default async function SelectorResultsPage({
     if (err instanceof LoftlyAPIError) {
       errorStatus = err.status;
     } else {
-      errorStatus = 0;
+      // Non-LoftlyAPIError: genuine crash (e.g. code bug, unexpected throw
+      // during parsing). Let the scoped `error.tsx` render its retry UI
+      // rather than hiding the failure behind a generic RetryWrapper.
+      throw err;
     }
   }
 
   if (!result) {
     // Differentiate by status so the UX matches user intent:
-    //   404 → hard miss (unknown session)  — offer new search
-    //   410 → expired (24h TTL)            — offer re-run
-    //   anything else (5xx, timeout, 0)    — recoverable; show Retry
+    //   404 → hard miss (unknown session)   — branded `not-found.tsx`
+    //   410 → expired (24h TTL)             — RetryWrapper `expired` CTA
+    //   anything else (5xx, timeout, 0)     — RetryWrapper `generic` retry
+    //
+    // `notFound()` throws NEXT_NOT_FOUND up to the route's `not-found.tsx`,
+    // giving us a cleaner surface than the inline red-pill RetryWrapper for
+    // the 404 case. 5xx and network/timeout errors stay on the page with
+    // `router.refresh()`-backed retry so we don't lose client state while
+    // the LLM backend recovers.
+    if (errorStatus === 404) {
+      notFound();
+    }
     return <RetryWrapper kind={statusToKind(errorStatus)} />;
   }
 

@@ -155,7 +155,12 @@ export default async function MerchantDetailPage({
       </main>
     );
   } catch (err) {
-    if (err instanceof LoftlyAPIError && err.status === 404) {
+    // 404 → hard miss, show branded not-found.
+    // status 0 (network error / timeout — `fetch` never got a structured
+    // response) → also treat as not-found so we don't serve a raw 500 when
+    // the backend is unreachable. Anything else (5xx, unexpected 4xx) is
+    // rethrown so the scoped `error.tsx` boundary can render a retry UI.
+    if (err instanceof LoftlyAPIError && (err.status === 404 || err.status === 0)) {
       notFound();
     }
     throw err;

@@ -9,6 +9,7 @@ import {
 import { LatestValuationsList } from '@/components/homepage/LatestValuationsList';
 import { buildPageMetadata } from '@/lib/seo/metadata';
 import { HeroSearch } from '@/components/landing/HeroSearch';
+import { PersonalizedPromos } from '@/components/landing/PersonalizedPromos';
 import { SelectorCtaBlock } from '@/components/landing/SelectorCtaBlock';
 import { TopMerchantsGrid } from '@/components/landing/TopMerchantsGrid';
 import { TopPromosCarousel } from '@/components/landing/TopPromosCarousel';
@@ -34,10 +35,13 @@ export const metadata: Metadata = buildPageMetadata({
  *      inline status pill to avoid double-banding)
  *   2. TopPromosCarousel ("วันนี้โปรไหนน่าสนใจ?")
  *   3. TopMerchantsGrid ("ใช้บัตรไหนดีที่...")
- *   4. SelectorCtaBlock ("หรือบอกการใช้จ่ายของคุณ")
- *   5. WhyLoftly (3 pillars)
- *   6. LatestReviewsGrid
- *   7. LatestValuationsList
+ *   4. PersonalizedPromos ("โปรที่เหมาะกับคุณ") — top 5 live promos,
+ *      ranked by urgency × discount-magnitude × freshness, real
+ *      deal-harvester data. Silent-fails when no active promos.
+ *   5. SelectorCtaBlock ("หรือบอกการใช้จ่ายของคุณ")
+ *   6. WhyLoftly (3 pillars)
+ *   7. LatestReviewsGrid
+ *   8. LatestValuationsList
  */
 
 type FetchState<T> =
@@ -100,6 +104,8 @@ export default async function LandingPage() {
         <TopPromosCarousel />
 
         <TopMerchantsGrid />
+
+        <PersonalizedPromos />
 
         <SelectorCtaBlock />
 

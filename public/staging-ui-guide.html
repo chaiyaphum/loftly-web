@@ -15,13 +15,17 @@
     --loftly-teal-soft: #E6F4EF;
     --loftly-ink: #1E2A3A;
     --loftly-ink-muted: #4A5568;
+    --loftly-ink-subtle: #7A8699;
     --loftly-amber: #EF9F27;
     --loftly-amber-urgent: #D97706;
+    --loftly-amber-soft: #FDF3E3;
     --loftly-warm-white: #FAF7F2;
     --loftly-surface: #FFFFFF;
     --loftly-divider: #E8E4DC;
     --loftly-success: #15803D;
+    --loftly-success-soft: #E6F4EF;
     --loftly-danger: #DC2626;
+    --loftly-danger-soft: #FEE2E2;
   }
   * { box-sizing: border-box; }
   html { color-scheme: light; }
@@ -29,7 +33,7 @@
     font-family: 'Inter', 'Noto Sans Thai Looped', -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
     line-height: 1.65;
     color: var(--loftly-ink);
-    max-width: 760px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 40px 24px 96px;
     background: var(--loftly-warm-white);
@@ -49,9 +53,7 @@
     margin-bottom: 16px;
   }
   .eyebrow .dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 999px;
+    width: 6px; height: 6px; border-radius: 999px;
     background: var(--loftly-success);
     animation: pulse 2.2s ease-in-out infinite;
   }
@@ -59,9 +61,8 @@
     0%, 100% { opacity: 1; transform: scale(1); }
     50% { opacity: 0.55; transform: scale(0.8); }
   }
-  @media (prefers-reduced-motion: reduce) {
-    .eyebrow .dot { animation: none; }
-  }
+  @media (prefers-reduced-motion: reduce) { .eyebrow .dot { animation: none; } }
+
   h1 {
     font-size: clamp(28px, 3vw + 1rem, 40px);
     line-height: 1.1;
@@ -73,18 +74,11 @@
     color: var(--loftly-ink-muted);
     margin: 0 0 28px;
     font-size: 16px;
-    max-width: 600px;
+    max-width: 640px;
   }
-  .subtitle .en {
-    display: block;
-    font-size: 13px;
-    font-style: normal;
-    color: var(--loftly-ink-muted);
-    margin-top: 4px;
-    opacity: 0.85;
-  }
+  .subtitle strong { color: var(--loftly-ink); font-weight: 600; }
   h2 {
-    font-size: 22px;
+    font-size: 20px;
     line-height: 1.2;
     letter-spacing: -0.01em;
     margin: 48px 0 14px;
@@ -95,21 +89,17 @@
   }
   h2::before {
     content: "";
-    display: inline-block;
-    width: 4px;
-    height: 20px;
+    width: 4px; height: 20px;
     background: var(--loftly-teal);
     border-radius: 2px;
   }
-  h3 { margin: 0 0 6px; font-size: 15px; font-weight: 600; }
-  p { margin: 10px 0; font-size: 15px; }
-  code, .mono {
+  p { margin: 8px 0; }
+  code {
     font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
     font-size: 0.9em;
     background: var(--loftly-divider);
     padding: 1px 5px;
     border-radius: 3px;
-    font-variant-numeric: tabular-nums;
   }
   a {
     color: var(--loftly-teal);
@@ -131,136 +121,86 @@
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin: 20px 0 12px;
+    margin: 20px 0;
   }
-  .cta-btn {
+  .cta {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: var(--loftly-teal);
-    color: #fff !important;
     padding: 12px 20px;
     border-radius: 8px;
-    font-size: 15px;
     font-weight: 500;
+    font-size: 15px;
     text-decoration: none;
+    transition: all 0.12s ease;
+  }
+  .cta.primary {
+    background: var(--loftly-teal);
+    color: #fff !important;
     box-shadow: 0 1px 2px 0 rgb(30 42 58 / 0.06);
-    transition: background-color 0.12s ease, transform 0.08s ease;
   }
-  .cta-btn:hover {
-    background: var(--loftly-teal-hover);
-    transform: translateY(-1px);
-    text-decoration: none;
-  }
-  .cta-btn.secondary {
+  .cta.primary:hover { background: var(--loftly-teal-hover); transform: translateY(-1px); text-decoration: none; }
+  .cta.outline {
     background: var(--loftly-surface);
     color: var(--loftly-ink) !important;
     border: 1px solid var(--loftly-divider);
-    box-shadow: none;
   }
-  .cta-btn.secondary:hover {
-    border-color: var(--loftly-teal);
-    color: var(--loftly-teal) !important;
-    background: var(--loftly-teal-soft);
-  }
-  .card {
-    background: var(--loftly-surface);
-    border: 1px solid var(--loftly-divider);
-    border-radius: 12px;
-    padding: 18px 20px;
-    margin: 12px 0;
-    box-shadow: 0 1px 2px 0 rgb(30 42 58 / 0.04);
-  }
-  .card p {
-    margin: 0;
-    color: var(--loftly-ink-muted);
-    font-size: 14px;
-  }
-  .card .try {
-    margin-top: 10px;
-    font-size: 13px;
-  }
-  .route-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    gap: 8px;
-  }
-  .route {
+  .cta.outline:hover { border-color: var(--loftly-teal); color: var(--loftly-teal) !important; background: var(--loftly-teal-soft); text-decoration: none; }
+
+  .item {
     display: grid;
     grid-template-columns: auto 1fr auto;
     gap: 12px;
     align-items: start;
-    padding: 12px 14px;
+    padding: 14px 16px;
     background: var(--loftly-surface);
     border: 1px solid var(--loftly-divider);
     border-radius: 8px;
+    margin: 6px 0;
   }
-  .route .path {
+  .item .path {
     font-family: 'JetBrains Mono', ui-monospace, monospace;
     font-size: 13px;
     font-weight: 500;
     color: var(--loftly-ink);
-    white-space: nowrap;
+    padding-top: 2px;
   }
-  .route .desc {
+  .item .path a { text-decoration-color: transparent; }
+  .item .path a:hover { text-decoration-color: currentColor; }
+  .item .desc {
     font-size: 14px;
     color: var(--loftly-ink-muted);
-  }
-  .route .desc .caveat {
-    display: block;
-    font-size: 12px;
-    color: var(--loftly-amber-urgent);
-    margin-top: 2px;
   }
   .status {
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    padding: 2px 8px;
+    padding: 3px 8px;
     border-radius: 999px;
     white-space: nowrap;
   }
-  .status.shipped {
-    background: var(--loftly-teal-soft);
-    color: var(--loftly-teal);
-  }
-  .status.new {
-    background: var(--loftly-teal);
-    color: #fff;
-  }
-  .status.stub {
-    background: color-mix(in srgb, var(--loftly-amber) 18%, transparent);
-    color: var(--loftly-amber-urgent);
-  }
-  .status.deferred {
-    background: color-mix(in srgb, var(--loftly-danger) 10%, transparent);
-    color: var(--loftly-danger);
-  }
-  .limitations {
-    background: color-mix(in srgb, var(--loftly-amber) 12%, transparent);
+  .status.ok    { background: var(--loftly-success-soft); color: var(--loftly-teal); }
+  .status.new   { background: var(--loftly-teal); color: #fff; }
+  .status.soon  { background: var(--loftly-amber-soft); color: var(--loftly-amber-urgent); }
+  .status.wip   { background: color-mix(in srgb, var(--loftly-ink-subtle) 15%, transparent); color: var(--loftly-ink-muted); }
+
+  .note {
+    background: color-mix(in srgb, var(--loftly-amber) 10%, transparent);
     border: 1px solid color-mix(in srgb, var(--loftly-amber) 40%, transparent);
-    border-radius: 12px;
-    padding: 18px 22px;
-    margin: 16px 0;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 14px 0;
     font-size: 14px;
     color: var(--loftly-ink);
   }
-  .limitations strong { color: var(--loftly-ink); }
-  .limitations ul {
-    margin: 10px 0 0;
-    padding-left: 20px;
-  }
-  .limitations li {
-    margin: 6px 0;
-    color: var(--loftly-ink-muted);
-  }
-  .limitations li strong { color: var(--loftly-ink); font-weight: 600; }
+  .note ul { margin: 8px 0 0; padding-left: 20px; }
+  .note li { margin: 4px 0; color: var(--loftly-ink-muted); }
+  .note li strong { color: var(--loftly-ink); font-weight: 600; }
+
   footer {
     margin-top: 64px;
     padding-top: 20px;
@@ -275,373 +215,148 @@
     opacity: 0.7;
     margin-top: 4px;
   }
+
+  @media (max-width: 540px) {
+    .item { grid-template-columns: 1fr auto; }
+    .item .path { grid-column: 1 / -1; font-size: 12px; word-break: break-all; }
+  }
 </style>
 </head>
 <body>
 
-<span class="eyebrow"><span class="dot" aria-hidden="true"></span>Staging · dev-only phase</span>
+<span class="eyebrow"><span class="dot" aria-hidden="true"></span>Staging · ทดลองใช้ได้เลย</span>
 
 <h1>Loftly — คู่มือทดลองใช้</h1>
 <p class="subtitle">
-  <strong>รู้ทันทีว่าใช้บัตรไหนคุ้ม — ที่ทุกร้าน ทุกวัน</strong>
-  <span class="en">Live Thai credit-card intelligence for every merchant.</span>
+  <strong>รูดบัตรไหน ได้คืนมากสุด ที่ร้านนี้?</strong><br>
+  ข้อมูลบัตรไทย · โปรสด · ใช้ได้ทั้งภาษาไทยและอังกฤษ
 </p>
 
 <div class="cta-row">
-  <a href="https://loftly-web-staging-xymb5.ondigitalocean.app/" target="_blank" rel="noopener" class="cta-btn">
+  <a class="cta primary" href="https://loftly-web-staging-xymb5.ondigitalocean.app/" target="_blank" rel="noopener">
     เปิดเว็บไซต์ →
   </a>
-  <a href="https://loftly-web-staging-xymb5.ondigitalocean.app/selector" target="_blank" rel="noopener" class="cta-btn secondary">
-    เริ่ม Selector
+  <a class="cta outline" href="https://loftly-web-staging-xymb5.ondigitalocean.app/merchants/starbucks" target="_blank" rel="noopener">
+    ดู Starbucks เป็นตัวอย่าง
   </a>
-  <a href="https://loftly-web-staging-xymb5.ondigitalocean.app/merchants" target="_blank" rel="noopener" class="cta-btn secondary">
-    ค้นหาร้านค้า
-  </a>
-  <a href="https://loftly-web-staging-xymb5.ondigitalocean.app/promos-today" target="_blank" rel="noopener" class="cta-btn secondary">
-    โปรวันนี้
+  <a class="cta outline" href="https://loftly-web-staging-xymb5.ondigitalocean.app/selector" target="_blank" rel="noopener">
+    ลอง Selector
   </a>
 </div>
 
-<!-- ================================================== -->
+<h2>ใช้งานได้ตอนนี้</h2>
 
-<h2>ฟีเจอร์หลัก</h2>
-
-<div class="card">
-  <h3>🔍 Merchant Lookup — ใช้บัตรไหนคุ้มที่ร้านไหน</h3>
-  <p>
-    พิมพ์ชื่อร้าน (Starbucks · Grab · Shopee · ฯลฯ) → ดูว่าใช้บัตรใบไหนคุ้มที่สุดตอนนี้ พร้อมโปรโมชัน active + ตัวเลข THB ที่ประหยัดได้ —
-    ไม่ต้องกรอก spend ล่วงหน้า
-  </p>
-  <p class="try">
-    ลอง <code>/merchants</code> · <code>/merchants/starbucks</code> · <code>/merchants/grab</code>
-  </p>
+<div class="item">
+  <span class="path"><a href="https://loftly-web-staging-xymb5.ondigitalocean.app/" target="_blank">/</a></span>
+  <span class="desc">หน้าแรก · hero search พิมพ์ชื่อร้านได้เลย + TopPromos + TopMerchants + รีวิว + มูลค่าแต้ม</span>
+  <span class="status ok">✓ ok</span>
 </div>
 
-<div class="card">
-  <h3>📊 Card Selector — จัดอันดับบัตร 3 ใบที่คุ้มสุด</h3>
-  <p>
-    กรอกข้อมูล spend + เป้าหมาย (ไมล์ · เงินคืน · สิทธิประโยชน์) 1 ครั้ง → ได้คำแนะนำ 3 ใบ
-    พร้อมเหตุผลภาษาไทยและตัวเลข THB ที่ประหยัดได้ต่อเดือน
-  </p>
-  <p class="try">ลอง <code>/selector</code></p>
+<div class="item">
+  <span class="path"><a href="https://loftly-web-staging-xymb5.ondigitalocean.app/merchants" target="_blank">/merchants</a></span>
+  <span class="desc">รายการร้าน 50 ร้าน · A–Z + search + category filter</span>
+  <span class="status ok">✓ ok</span>
 </div>
 
-<div class="card">
-  <h3>🔥 Promos Today — ฟีดโปรโมชันบัตรเครดิตไทยสด</h3>
-  <p>
-    รวมทุกโปรที่ active วันนี้ จาก KTC · SCB · KBank อัปเดตทุกวัน จัดกลุ่มตามร้าน
-    พร้อมนับถอยหลังวันหมดอายุ (≤ 7 วัน = แดง, ≤ 21 วัน = ส้ม)
-  </p>
-  <p class="try">ลอง <code>/promos-today</code></p>
+<div class="item">
+  <span class="path"><a href="https://loftly-web-staging-xymb5.ondigitalocean.app/merchants/starbucks" target="_blank">/merchants/[slug]</a></span>
+  <span class="desc">จัดอันดับบัตร 3 ใบต่อร้าน · ทุก 20 ร้านใน grid กดได้มีข้อมูลจริง</span>
+  <span class="status new">✦ เพิ่งเปิด</span>
 </div>
 
-<div class="card">
-  <h3>💎 Valuation Engine — มูลค่า THB ต่อแต้ม</h3>
-  <p>
-    มูลค่า 8 สกุลแต้ม (KrisFlyer · Asia Miles · Royal Orchid · Bonvoy · ฯลฯ) พร้อม confidence band
-    (exact / directional / range ตาม VALUATION_METHOD.md) และ history 4 สัปดาห์ล่าสุด
-  </p>
-  <p class="try">ลอง <code>/valuations</code> · <code>/valuations/krisflyer</code></p>
+<div class="item">
+  <span class="path"><a href="https://loftly-web-staging-xymb5.ondigitalocean.app/selector" target="_blank">/selector</a></span>
+  <span class="desc">ฟอร์มกรอก spend + เป้าหมาย → จัดบัตร 3 ใบ · AI จริง (Claude Sonnet/Haiku)</span>
+  <span class="status ok">✓ ok</span>
 </div>
 
-<div class="card">
-  <h3>📖 Card Reviews — รีวิวรายใบแบบตรงไปตรงมา</h3>
-  <p>
-    รีวิวบัตรเครดิตไทย เน้นอัตราแลกไมล์ ค่าธรรมเนียม สิทธิประโยชน์จริง ไม่มีโฆษณาแฝง ·
-    ทุกลิงก์ Apply มีป้าย Affiliate disclosure ชัดเจน
-  </p>
-  <p class="try">ลอง <code>/cards</code> · <code>/cards/kbank-wisdom</code></p>
+<div class="item">
+  <span class="path">/selector/results/[id]</span>
+  <span class="desc">ผล Selector · URL แชร์ได้ · มี promo chips + chat ถามต่อได้</span>
+  <span class="status ok">✓ ok</span>
 </div>
 
-<!-- ================================================== -->
+<div class="item">
+  <span class="path"><a href="https://loftly-web-staging-xymb5.ondigitalocean.app/promos-today" target="_blank">/promos-today</a></span>
+  <span class="desc">โปรโมชันบัตรเครดิตไทยที่ active วันนี้ · ISR 5 นาที · bank/category filter</span>
+  <span class="status ok">✓ ok</span>
+</div>
 
-<h2>รายการหน้าทั้งหมด + สถานะ</h2>
+<div class="item">
+  <span class="path"><a href="https://loftly-web-staging-xymb5.ondigitalocean.app/cards" target="_blank">/cards</a></span>
+  <span class="desc">รายการบัตร 6 ใบ · UOB PRVI · KBank WISDOM · KTC X U · CardX ONE · SCB Thai · Amex Gold</span>
+  <span class="status new">✦ เพิ่งเปิด</span>
+</div>
 
-<h3 style="margin-top:16px;font-size:14px;color:var(--loftly-ink-muted);text-transform:uppercase;letter-spacing:0.06em;">Tier 1 — หน้าหลักฝั่งผู้ใช้</h3>
-<ul class="route-list">
-  <li class="route">
-    <span class="path">/</span>
-    <span class="desc">Landing — dual-hero (merchant + Selector) · LivePromoStrip · top promos carousel · top merchants grid · why Loftly · latest reviews + valuations</span>
-    <span class="status shipped">✓ shipped</span>
-  </li>
-  <li class="route">
-    <span class="path">/selector</span>
-    <span class="desc">ฟอร์มใส่ spend + เป้าหมาย · slider 4 หมวด + other</span>
-    <span class="status shipped">✓ shipped</span>
-  </li>
-  <li class="route">
-    <span class="path">/selector/results/[id]</span>
-    <span class="desc">3 ใบที่แนะนำ · promo chips · streaming rationale<span class="caveat">Anon เห็นแค่อันดับ 1 ชัด · อีก 2 ใบ blur จนกว่าจะใส่อีเมลรับ magic-link</span></span>
-    <span class="status shipped">✓ shipped</span>
-  </li>
-  <li class="route">
-    <span class="path">/cards</span>
-    <span class="desc">Index รีวิวบัตรเป็น grid<span class="caveat">ยังไม่มี filter UI (issuer/tier/network) — deferred</span></span>
-    <span class="status shipped">✓ shipped</span>
-  </li>
-  <li class="route">
-    <span class="path">/cards/[slug]</span>
-    <span class="desc">Card review · earn rate table · compare widget · Apply CTA พร้อม Affiliate disclosure</span>
-    <span class="status shipped">✓ shipped</span>
-  </li>
-  <li class="route">
-    <span class="path">/merchants</span>
-    <span class="desc">Hub ร้านค้า · A–Z + autocomplete search · seed 50 ร้านยอดนิยม</span>
-    <span class="status shipped">✓ shipped</span>
-  </li>
-  <li class="route">
-    <span class="path">/merchants/[slug]</span>
-    <span class="desc">จัดอันดับบัตรต่อร้าน · มูลค่า THB per ฿1,000 · applicable promo chips · SimilarMerchants rail</span>
-    <span class="status shipped">✓ shipped</span>
-  </li>
-  <li class="route">
-    <span class="path">/valuations</span>
-    <span class="desc">Index สกุลแต้ม 8 สกุล · ValuationBadge ต่อสกุล</span>
-    <span class="status shipped">✓ shipped</span>
-  </li>
-  <li class="route">
-    <span class="path">/valuations/[currency]</span>
-    <span class="desc">Detail · confidence bar p10/p50/p90 · DistributionHistogram · history table</span>
-    <span class="status shipped">✓ shipped</span>
-  </li>
-</ul>
+<div class="item">
+  <span class="path"><a href="https://loftly-web-staging-xymb5.ondigitalocean.app/valuations" target="_blank">/valuations</a></span>
+  <span class="desc">มูลค่า THB ต่อแต้ม · 4 สกุล (KrisFlyer · Asia Miles · Bonvoy · Royal Orchid)</span>
+  <span class="status new">✦ เพิ่งเปิด</span>
+</div>
 
-<h3 style="margin-top:24px;font-size:14px;color:var(--loftly-ink-muted);text-transform:uppercase;letter-spacing:0.06em;">Tier 2 — หน้าใหม่จาก positioning shift</h3>
-<ul class="route-list">
-  <li class="route">
-    <span class="path">/promos-today</span>
-    <span class="desc">ฟีดโปร active กลุ่มตามร้าน · ISR 300s · urgency pills (≤ 7 วัน แดง · ≤ 21 วัน ส้ม)</span>
-    <span class="status new">✦ new</span>
-  </li>
-  <li class="route">
-    <span class="path">/features/merchant-lookup</span>
-    <span class="desc">Marketing page อธิบาย Idea 2 · embedded MerchantSearchBar demo · comparison table vs. ChaiMiles/Punpro</span>
-    <span class="status new">✦ new</span>
-  </li>
-  <li class="route">
-    <span class="path">/features/promo-intelligence</span>
-    <span class="desc">Marketing page อธิบาย Idea 1 · 4-step data pipeline · 3 pillars</span>
-    <span class="status new">✦ new</span>
-  </li>
-</ul>
+<div class="item">
+  <span class="path"><a href="https://loftly-web-staging-xymb5.ondigitalocean.app/en" target="_blank">/en</a></span>
+  <span class="desc">ภาษาอังกฤษ · toggle TH/EN ที่ header · URL <code>/en/*</code> ใช้งานได้ทุกหน้า</span>
+  <span class="status new">✦ เพิ่งเปิด</span>
+</div>
 
-<h3 style="margin-top:24px;font-size:14px;color:var(--loftly-ink-muted);text-transform:uppercase;letter-spacing:0.06em;">Tier 3 — Auth + Account</h3>
-<ul class="route-list">
-  <li class="route">
-    <span class="path">/onboarding</span>
-    <span class="desc">OAuth provider picker (Google · Apple · LINE) + magic-link fallback</span>
-    <span class="status shipped">✓ shipped</span>
-  </li>
-  <li class="route">
-    <span class="path">/onboarding/consent</span>
-    <span class="desc">PDPA consent matrix · 4 toggle (Optimization · Marketing · Analytics · Sharing)</span>
-    <span class="status shipped">✓ shipped</span>
-  </li>
-  <li class="route">
-    <span class="path">/account</span>
-    <span class="desc">Dashboard + quick links<span class="caveat">307 → /onboarding เมื่อยังไม่ได้ล็อกอิน (ถูกต้อง)</span></span>
-    <span class="status shipped">✓ shipped</span>
-  </li>
-  <li class="route">
-    <span class="path">/account/consent</span>
-    <span class="desc">แก้ไข consent + ดู history</span>
-    <span class="status shipped">✓ shipped</span>
-  </li>
-  <li class="route">
-    <span class="path">/account/data-export</span>
-    <span class="desc">Async job · trigger → in-progress → download-ready → expired</span>
-    <span class="status shipped">✓ shipped</span>
-  </li>
-  <li class="route">
-    <span class="path">/account/delete</span>
-    <span class="desc">ลบบัญชี · 14-day grace period · cancel ได้</span>
-    <span class="status shipped">✓ shipped</span>
-  </li>
-</ul>
+<h2>หน้าบัญชี</h2>
 
-<h3 style="margin-top:24px;font-size:14px;color:var(--loftly-ink-muted);text-transform:uppercase;letter-spacing:0.06em;">Tier 4 — Legal / Gated / Errors</h3>
-<ul class="route-list">
-  <li class="route">
-    <span class="path">/legal/privacy</span>
-    <span class="desc">Privacy Policy (PDPA-compliant)</span>
-    <span class="status shipped">✓ shipped</span>
-  </li>
-  <li class="route">
-    <span class="path">/legal/terms</span>
-    <span class="desc">Terms of Service</span>
-    <span class="status shipped">✓ shipped</span>
-  </li>
-  <li class="route">
-    <span class="path">/legal/affiliate-disclosure</span>
-    <span class="desc">Plain-language "we earn commission" explainer</span>
-    <span class="status shipped">✓ shipped</span>
-  </li>
-  <li class="route">
-    <span class="path">/pricing</span>
-    <span class="desc">Pricing page<span class="caveat">Phase 2 Premium subscription ยังไม่กำหนดราคา</span></span>
-    <span class="status stub">◐ stub</span>
-  </li>
-  <li class="route">
-    <span class="path">/gated</span>
-    <span class="desc">Soft-launch invite wall</span>
-    <span class="status shipped">✓ shipped</span>
-  </li>
-  <li class="route">
-    <span class="path">/invite-required</span>
-    <span class="desc">Landing สำหรับผู้ที่ยังไม่ได้รับ invite</span>
-    <span class="status shipped">✓ shipped</span>
-  </li>
-  <li class="route">
-    <span class="path">/not-found</span>
-    <span class="desc">404 branded · CTA กลับ Selector/Merchants</span>
-    <span class="status shipped">✓ shipped</span>
-  </li>
-  <li class="route">
-    <span class="path">/error</span>
-    <span class="desc">500 error boundary</span>
-    <span class="status shipped">✓ shipped</span>
-  </li>
-</ul>
+<div class="item">
+  <span class="path"><a href="https://loftly-web-staging-xymb5.ondigitalocean.app/onboarding" target="_blank">/onboarding</a></span>
+  <span class="desc">Sign-in ผ่าน Google/Apple/LINE OAuth</span>
+  <span class="status ok">✓ ok</span>
+</div>
 
-<h3 style="margin-top:24px;font-size:14px;color:var(--loftly-ink-muted);text-transform:uppercase;letter-spacing:0.06em;">Tier 5 — Admin CMS (English-only, auth-gated, noindex)</h3>
-<ul class="route-list">
-  <li class="route">
-    <span class="path">/admin/cards</span>
-    <span class="desc">CRUD card catalog · /new · /[id]</span>
-    <span class="status shipped">✓ shipped</span>
-  </li>
-  <li class="route">
-    <span class="path">/admin/articles</span>
-    <span class="desc">CRUD reviews + guides · /new · /[id] · /stale (re-verification queue)</span>
-    <span class="status shipped">✓ shipped</span>
-  </li>
-  <li class="route">
-    <span class="path">/admin/promos</span>
-    <span class="desc">Review deal-harvester imports + manual entry · /new · /[id]</span>
-    <span class="status shipped">✓ shipped</span>
-  </li>
-  <li class="route">
-    <span class="path">/admin/mapping-queue</span>
-    <span class="desc">Resolve unmapped promo→card suggestions</span>
-    <span class="status shipped">✓ shipped</span>
-  </li>
-  <li class="route">
-    <span class="path">/admin/ingestion</span>
-    <span class="desc">Bank coverage table · stale-sync alerts</span>
-    <span class="status shipped">✓ shipped</span>
-  </li>
-  <li class="route">
-    <span class="path">/admin/affiliate</span>
-    <span class="desc">30-day funnel dashboard</span>
-    <span class="status shipped">✓ shipped</span>
-  </li>
-  <li class="route">
-    <span class="path">/admin/analytics</span>
-    <span class="desc">KPI panels · retention sparkline</span>
-    <span class="status shipped">✓ shipped</span>
-  </li>
-  <li class="route">
-    <span class="path">/admin/waitlist</span>
-    <span class="desc">Pre-launch email capture review</span>
-    <span class="status shipped">✓ shipped</span>
-  </li>
-  <li class="route">
-    <span class="path">/admin/merchants</span>
-    <span class="desc">Canonical merchants CMS<span class="caveat">ยังไม่ได้ทำ · deferred จาก MVP scope</span></span>
-    <span class="status deferred">— deferred</span>
-  </li>
-  <li class="route">
-    <span class="path">/admin/merchants/mapping-queue</span>
-    <span class="desc">Canonicalization review queue<span class="caveat">ยังไม่ได้ทำ · deferred จาก MVP scope</span></span>
-    <span class="status deferred">— deferred</span>
-  </li>
-</ul>
-
-<!-- ================================================== -->
+<div class="item">
+  <span class="path">/account</span>
+  <span class="desc">Dashboard · consent toggles · data export · delete flow (auth-gated)</span>
+  <span class="status ok">✓ ok</span>
+</div>
 
 <h2>ข้อจำกัดที่ควรรู้</h2>
 
-<div class="limitations">
-  <strong>เวอร์ชันทดสอบ (staging · dev-only phase)</strong> — ยังไม่เปิดใช้งานจริง มีข้อจำกัดที่ควรรู้:
+<div class="note">
+  <strong>staging · ยังไม่ production</strong> — feature ใช้ได้หมดแต่มีข้อจำกัด:
 
   <ul>
-    <li>
-      <strong>ระบบอีเมลยัง 🚫</strong> — magic-link + welcome email ยังเขียนเป็น log เท่านั้น (Resend ยังไม่ได้ provision ตาม dev-only phase memo)
-      · ล็อกอินได้เฉพาะผ่าน OAuth (Google/Apple/LINE) หรือใช้ guest session
-    </li>
-    <li>
-      <strong>Sentry error capture ยัง 🚫</strong> — errors ไม่ถูก forward; ดูจาก DO runtime logs แทน
-    </li>
-    <li>
-      <strong>LLM provider</strong> — <code>LOFTLY_LLM_PROVIDER</code> อาจยังเป็น <code>deterministic</code> บน staging
-      · Card Selector + Valuation + Chat ใช้ rule-based fallback (ไม่ใช่ Claude จริง) จนกว่าจะ flip เป็น <code>anthropic</code>
-      (env-var change บน <code>loftly-api-staging</code> · ไม่ใช่ code change)
-    </li>
-    <li>
-      <strong>Feature flags</strong> — <code>MERCHANTS_REVERSE_LOOKUP_ENABLED</code> + <code>LOFTLY_FF_SELECTOR_PROMO_CONTEXT</code>
-      : ถ้ายัง off · <code>/merchants/*</code> จะคืน 404/503 และ promo chips บน Selector results จะไม่แสดง
-    </li>
-    <li>
-      <strong>LivePromoStrip</strong> — แถบบน landing จะหายไปอัตโนมัติถ้า deal-harvester sync stale > 72 ชม.
-      (brief §15.5 · ไม่ fake liveness)
-    </li>
-    <li>
-      <strong><code>/promos-today</code> อาจว่าง</strong> — ถ้า backend <code>/v1/promos?active=true</code> ยังไม่ expose
-      หน้านี้จะ render empty-state + link ไป <code>/merchants</code>
-    </li>
-    <li>
-      <strong>Filter UI บน <code>/cards</code></strong> — ยังเป็น grid เปล่า · ยังไม่มี filter ตาม issuer/tier/network (deferred)
-    </li>
-    <li>
-      <strong>Chat panel บน Selector results</strong> — UI scaffold อยู่แล้ว แต่ยังไม่ต่อ Haiku API จริง (POST_V1 §1 future)
-    </li>
-    <li>
-      <strong>Hero illustrations</strong> — ตอนนี้เป็น CSS placeholder เรียบ ๆ · รอ designer ทำ custom art
-    </li>
-    <li>
-      <strong>Dark mode</strong> — token ทั้งหมด prepared แล้ว (CSS variable swap ready) แต่ skin ยังไม่ active · v1.1
-    </li>
-    <li>
-      <strong>CI / Cloudflare Pages</strong> — <code>deploy.yml</code> + CI checks ใน <code>loftly-web</code> fail เพราะ GitHub Actions billing issue
-      · ไม่กระทบ DO staging (DO App Platform ดึง git โดยตรง · ไม่ผ่าน Actions runner)
-    </li>
+    <li><strong>Magic-link อีเมลยังส่งไม่จริง</strong> — Resend ยังไม่ได้ provision · login ผ่าน OAuth (Google/Apple/LINE) เท่านั้น</li>
+    <li><strong>รีวิวบัตรยังน้อย</strong> — 6 บัตรใน catalog · เต็ม 40+ หลังเปิดตัวจริง</li>
+    <li><strong>Sentry error tracking ยัง 🚫</strong> — ไม่มี error ที่ส่งไป Sentry</li>
+    <li><strong>Promo ticker บน landing</strong> — แสดงเฉพาะเมื่อ deal-harvester sync < 72 ชม. · ถ้าไม่เห็นแปลว่า backend sync ยังไม่ทัน</li>
+    <li><strong>Valuations สำรอง 4 สกุล</strong> — KrisFlyer/Asia Miles/Bonvoy/ROP เป็น fallback data จนกว่า weekly job จะ populate ตัวจริง</li>
   </ul>
 </div>
 
-<!-- ================================================== -->
+<h2>ข่าวดีวันนี้</h2>
+
+<div class="note" style="background: var(--loftly-teal-soft); border-color: var(--loftly-teal);">
+  <strong>อัปเดตชุดใหญ่ 2026-04-22:</strong>
+  <ul style="margin-top: 6px;">
+    <li><strong>Merchants</strong> (PR #32) — feature flag flip · 50 ร้าน seeded · 20 ร้าน grid กดได้มีข้อมูลจริง</li>
+    <li><strong>Valuations</strong> (PR #35) — list + detail endpoints + confidence band</li>
+    <li><strong>Promos meta</strong> (PR #34) — LivePromoStrip ใช้ <code>last_synced_at</code> ได้</li>
+    <li><strong>Selector CORS</strong> (PR #33) + <strong>token optional</strong> (PR #37) — กด "ค้นหาบัตรแนะนำ" แล้วไม่ error แล้ว</li>
+    <li><strong>/en routing</strong> (PR #48) — middleware fix · /en/* ทุกหน้า 200</li>
+    <li><strong>Card catalog</strong> (PR #36) — เพิ่ม Amex Gold · SCB Prime · KTC Forever</li>
+    <li><strong>UI polish</strong> (PR #46 + #47) — mobile responsive · AppHeader swap · ฿ glyph</li>
+  </ul>
+</div>
 
 <h2>Reference</h2>
 
-<div class="card">
-  <h3>Backend API</h3>
-  <p>
-    <a href="https://loftly-api-staging-w8ia9.ondigitalocean.app/v1/cards" target="_blank" rel="noopener">
-      <code>loftly-api-staging</code>
-    </a>
-    · FastAPI · DO App Platform · Singapore
-  </p>
-</div>
-
-<div class="card">
-  <h3>Source</h3>
-  <p>
-    <a href="https://github.com/chaiyaphum/loftly-web" target="_blank" rel="noopener">github.com/chaiyaphum/loftly-web</a>
-    · auto-deploy on push to <code>main</code>
-  </p>
-</div>
-
-<!-- ================================================== -->
-
-<h2>ส่งข้อเสนอแนะ</h2>
-
 <p>
-  Loftly อยู่ระหว่างพัฒนา · เปิดรับ feedback ทุกแบบ — บัตรที่อยากให้รีวิวก่อน · ฟีเจอร์ที่อยากได้ · เจอ bug ตรงไหน
-  — แจ้งกลับมาได้ที่ email ที่ให้ไว้ในเชิญทดลอง
+  <strong>Backend API</strong>: <a href="https://loftly-api-staging-w8ia9.ondigitalocean.app/v1/cards" target="_blank">loftly-api-staging</a>
+  · FastAPI · DO App Platform · Singapore
+</p>
+<p>
+  <strong>Source</strong>: <a href="https://github.com/chaiyaphum/loftly-web" target="_blank">loftly-web</a> ·
+  <a href="https://github.com/chaiyaphum/loftly-api" target="_blank">loftly-api</a> · auto-deploy on push to <code>main</code>
 </p>
 
 <footer>
-  Loftly MVP · staging environment
-  <div class="meta">updated 2026-04-22 · visual redesign + positioning shift + §9 Merchant Reverse Lookup</div>
+  Loftly MVP · staging
+  <div class="meta">updated 2026-04-22 · round-2 backend fixes + mobile polish + homepage redesign</div>
 </footer>
 
 </body>

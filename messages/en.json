@@ -195,7 +195,7 @@
   "landing": {
     "heroSearch": {
       "statusPill": "{count}+ active promos · synced a few minutes ago",
-      "h1Prefix": "Which card pays you most",
+      "h1Prefix": "Which card earns most",
       "h1Connector": "at",
       "h1Accent": "this shop",
       "h1Suffix": "?",

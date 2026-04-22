@@ -242,6 +242,57 @@
         },
         "newSelectorLink": "ทำ Selector ใหม่"
       }
+    },
+    "promo": {
+      "chip": {
+        "label": "โปรใช้ได้: {merchant} {value}",
+        "expandedTitle": "รายละเอียดโปร",
+        "applicableCards": "บัตรที่ใช้ได้"
+      },
+      "expiry": {
+        "soon": "หมดเขตใน {days} วัน",
+        "urgent": "หมดเขตพรุ่งนี้!",
+        "today": "หมดเขตวันนี้"
+      },
+      "minSpend": "ยอดขั้นต่ำ ฿{amount}",
+      "source": "ดูเงื่อนไขจากธนาคาร ›",
+      "apply": "ใช้โปรนี้",
+      "empty": "ยังไม่มีโปรที่ตรงหมวดใช้จ่ายของคุณตอนนี้ — คำแนะนำอิงอัตราแต้มพื้นฐาน",
+      "stale": "ข้อมูลโปรอัปเดตล่าสุด {days} วันก่อน — ใช้ประกอบการตัดสินใจ",
+      "boostBadge": "+฿{amount}/เดือน จากโปร active"
+    }
+  },
+  "merchants": {
+    "hub": {
+      "title": "ค้นหาร้านค้า",
+      "subtitle": "ดูว่าใช้บัตรไหนคุ้มที่สุดในแต่ละร้าน พร้อมโปรโมชัน active",
+      "browseByLetter": "เรียงตามตัวอักษร",
+      "browseByCategory": "เรียงตามหมวดหมู่",
+      "allMerchants": "ร้านค้าทั้งหมด"
+    },
+    "search": {
+      "placeholder": "ชื่อร้าน เช่น Starbucks, Grab, Shopee",
+      "ariaLabel": "ค้นหาร้านค้า",
+      "empty": "ไม่พบร้าน — ลองร้านที่คล้ายกัน",
+      "viewAll": "ดูร้านทั้งหมด ›"
+    },
+    "page": {
+      "title": "บัตรไหนดีที่ {name}?",
+      "subtitle": "เปรียบเทียบบัตรเครดิต + โปรโมชัน active ที่ {name} ตอนนี้",
+      "activePromoCount": "{count} โปร active",
+      "noActivePromo": "ยังไม่มีโปรโมชันพิเศษตอนนี้ — บัตรเหล่านี้ให้คะแนนฐานสูงสุด",
+      "estValuePerThousand": "ได้ประมาณ ~฿{value} ต่อ ฿1,000 ที่ใช้จ่าย",
+      "applyCta": "สมัครบัตรนี้",
+      "userOwnsBadge": "คุณมีบัตรนี้",
+      "methodologyLink": "วิธีคำนวณ ›",
+      "similarMerchants": "ร้านที่คล้ายกัน"
+    },
+    "category": {
+      "retail": "ค้าปลีก",
+      "fnb": "ร้านอาหาร",
+      "ecommerce": "ออนไลน์",
+      "travel": "ท่องเที่ยว",
+      "service": "บริการ"
     }
   },
   "results": {

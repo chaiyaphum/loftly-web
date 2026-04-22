@@ -242,6 +242,57 @@
         },
         "newSelectorLink": "Start a new Selector"
       }
+    },
+    "promo": {
+      "chip": {
+        "label": "Active offer: {merchant} {value}",
+        "expandedTitle": "Offer details",
+        "applicableCards": "Applicable cards"
+      },
+      "expiry": {
+        "soon": "Expires in {days} days",
+        "urgent": "Expires tomorrow!",
+        "today": "Expires today"
+      },
+      "minSpend": "Min spend ฿{amount}",
+      "source": "View bank terms ›",
+      "apply": "Use this offer",
+      "empty": "No offers match your spend categories right now — ranking by base earn rate.",
+      "stale": "Offer data last synced {days} days ago — use as a reference only.",
+      "boostBadge": "+฿{amount}/mo from active offers"
+    }
+  },
+  "merchants": {
+    "hub": {
+      "title": "Browse merchants",
+      "subtitle": "Which card is best at each merchant, plus active offers",
+      "browseByLetter": "Browse A–Z",
+      "browseByCategory": "Browse by category",
+      "allMerchants": "All merchants"
+    },
+    "search": {
+      "placeholder": "Merchant name e.g. Starbucks, Grab, Shopee",
+      "ariaLabel": "Search merchants",
+      "empty": "No match — try a similar merchant",
+      "viewAll": "View all merchants ›"
+    },
+    "page": {
+      "title": "Best credit cards at {name}",
+      "subtitle": "Compare every card and every active offer at {name} right now",
+      "activePromoCount": "{count} active offers",
+      "noActivePromo": "No active promos — these cards earn the highest base rate here",
+      "estValuePerThousand": "Earn ~฿{value} per ฿1,000 spent",
+      "applyCta": "Apply for this card",
+      "userOwnsBadge": "You hold this card",
+      "methodologyLink": "How we calculate ›",
+      "similarMerchants": "Similar merchants"
+    },
+    "category": {
+      "retail": "Retail",
+      "fnb": "Food & Drink",
+      "ecommerce": "E-commerce",
+      "travel": "Travel",
+      "service": "Services"
     }
   },
   "results": {

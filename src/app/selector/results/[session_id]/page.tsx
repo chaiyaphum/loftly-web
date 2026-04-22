@@ -7,6 +7,8 @@ import { getCard } from '@/lib/api/cards';
 import { LoftlyAPIError } from '@/lib/api/client';
 import { CardResultCard } from '@/components/loftly/CardResultCard';
 import { MagicLinkPrompt } from '@/components/loftly/MagicLinkPrompt';
+import { PromoChip } from '@/components/loftly/PromoChip';
+import { PromoStaleBanner } from '@/components/loftly/PromoStaleBanner';
 import { SelectorApplyCtaLabel } from '@/components/loftly/SelectorApplyCtaLabel';
 import { StreamingRationale } from '@/components/loftly/StreamingRationale';
 import { Badge } from '@/components/ui/badge';
@@ -106,6 +108,17 @@ export default async function SelectorResultsPage({
       primaryCard?.earn_currency.code) ||
     '';
 
+  // POST_V1 §3 Tier A (2026-04-22) — Promo-Aware Card Selector.
+  // `promo_chips` is the denormalized lookup for `cited_promo_ids`. Indexing
+  // it once up front keeps the render loop below O(1) per card.
+  const chipsById = new Map(
+    (result.promo_chips ?? []).map((c) => [c.promo_id, c]),
+  );
+  const promoContextDegraded =
+    result.promo_context_status === 'degraded' ||
+    result.promo_context_status === 'stale';
+  const chipLocale: 'th' | 'en' = locale === 'en' ? 'en' : 'th';
+
   return (
     <main className="mx-auto flex max-w-3xl flex-col gap-8 px-6 py-12">
       {/*
@@ -151,6 +164,10 @@ export default async function SelectorResultsPage({
         )}
       </header>
 
+      {/* Promo-context degraded banner — shown above the stack so users
+          frame recommendations as "ignore the promo signal this run". */}
+      {promoContextDegraded && <PromoStaleBanner daysSinceSync={null} />}
+
       {/* Primary */}
       {primary && primaryCard && (
         <section className="space-y-2">
@@ -169,6 +186,27 @@ export default async function SelectorResultsPage({
           />
           {primary.reason_th && (
             <p className="text-sm text-slate-600">{primary.reason_th}</p>
+          )}
+          {(primary.cited_promo_ids ?? []).length > 0 && (
+            <div className="flex flex-wrap gap-2">
+              {(primary.cited_promo_ids ?? []).map((pid) => {
+                const chip = chipsById.get(pid);
+                if (!chip) return null;
+                return (
+                  <PromoChip
+                    key={pid}
+                    promoId={chip.promo_id}
+                    merchant={chip.merchant ?? null}
+                    discountValue={chip.discount_value ?? null}
+                    discountType={chip.discount_type ?? null}
+                    validUntil={chip.valid_until ?? null}
+                    minSpend={chip.min_spend ?? null}
+                    sourceUrl={chip.source_url ?? undefined}
+                    locale={chipLocale}
+                  />
+                );
+              })}
+            </div>
           )}
         </section>
       )}
@@ -218,6 +256,27 @@ export default async function SelectorResultsPage({
                       }}
                       applyCtaLabel={<SelectorApplyCtaLabel />}
                     />
+                    {(slot.cited_promo_ids ?? []).length > 0 && (
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        {(slot.cited_promo_ids ?? []).map((pid) => {
+                          const chip = chipsById.get(pid);
+                          if (!chip) return null;
+                          return (
+                            <PromoChip
+                              key={pid}
+                              promoId={chip.promo_id}
+                              merchant={chip.merchant ?? null}
+                              discountValue={chip.discount_value ?? null}
+                              discountType={chip.discount_type ?? null}
+                              validUntil={chip.valid_until ?? null}
+                              minSpend={chip.min_spend ?? null}
+                              sourceUrl={chip.source_url ?? undefined}
+                              locale={chipLocale}
+                            />
+                          );
+                        })}
+                      </div>
+                    )}
                   </MobileCollapse>
                 );
               })}

@@ -13,6 +13,17 @@ import thMessages from '../../messages/th.json';
 
 vi.mock('next-intl/server', () => ({
   getTranslations: async (scope: string) => makeT(scope),
+  getLocale: async () => 'th',
+}));
+
+// Mock the post-positioning-shift hero/strip components so these tests stay
+// focused on the "latest reviews + latest valuations" SSR wiring — they don't
+// need to re-exercise LivePromoStrip freshness math or DualHero layout.
+vi.mock('@/components/landing/LivePromoStrip', () => ({
+  LivePromoStrip: () => null,
+}));
+vi.mock('@/components/landing/DualHero', () => ({
+  DualHero: () => null,
 }));
 
 function makeT(scope: string) {

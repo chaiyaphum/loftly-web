@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { ChevronRight, Search, X } from 'lucide-react';
+import { ArrowRight, ChevronRight, Search, X } from 'lucide-react';
 import { Link } from '@/i18n/routing';
 import { searchMerchants, type MerchantSearchResult } from '@/lib/api/merchants';
 import { cn } from '@/lib/utils';
@@ -250,15 +250,29 @@ export function HeroSearch({ initialCount = 160 }: { initialCount?: number }) {
           ) : null}
         </div>
 
-        <p className="mt-10 text-body-sm text-loftly-ink-subtle">
-          {t('altCtaLead')}{' '}
+        <div className="mt-10 flex flex-col items-center gap-3">
+          <span
+            className="flex items-center gap-3 text-caption uppercase tracking-[0.14em] text-loftly-ink-subtle"
+            aria-hidden
+          >
+            <span aria-hidden className="h-px w-10 bg-loftly-divider" />
+            {t('altCtaLead')}
+            <span aria-hidden className="h-px w-10 bg-loftly-divider" />
+          </span>
           <Link
             href="/selector"
-            className="ml-1 inline-flex items-center gap-1 font-medium text-loftly-teal hover:text-loftly-teal-hover"
+            className="group/selector-cta inline-flex h-12 items-center gap-2 rounded-full border-2 border-loftly-teal bg-loftly-surface px-7 text-body font-semibold text-loftly-teal shadow-subtle transition-all hover:-translate-y-0.5 hover:bg-loftly-teal-soft hover:shadow"
           >
-            {t('altCta')}
+            <span>{t('altCta')}</span>
+            <ArrowRight
+              className="h-4 w-4 transition-transform group-hover/selector-cta:translate-x-0.5"
+              aria-hidden
+            />
           </Link>
-        </p>
+          <span className="text-caption text-loftly-ink-subtle">
+            {t('altCtaHint')}
+          </span>
+        </div>
       </div>
     </section>
   );

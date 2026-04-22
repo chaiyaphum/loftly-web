@@ -212,8 +212,9 @@
       "pressEnterSuffix": "เพื่อเปิด",
       "popular": "ยอดนิยม:",
       "loading": "กำลังค้นหา…",
-      "altCtaLead": "— หรือ —",
-      "altCta": "ใช้ Selector แบบเต็ม (30 วินาที) →"
+      "altCtaLead": "หรือ",
+      "altCta": "ใช้ Selector แบบเต็ม",
+      "altCtaHint": "30 วินาที · ฟรี · ไม่ต้องสมัคร"
     },
     "title": "รู้ทันทีว่าใช้บัตรไหนคุ้ม — ที่ทุกร้าน ทุกวัน",
     "subtitle": "Live Thai credit-card intelligence for every merchant",

@@ -212,8 +212,9 @@
       "pressEnterSuffix": "to open",
       "popular": "Popular:",
       "loading": "Searching…",
-      "altCtaLead": "— or —",
-      "altCta": "Run the full Selector (30s) →"
+      "altCtaLead": "or",
+      "altCta": "Run the full Selector",
+      "altCtaHint": "30 seconds · Free · No sign-up"
     },
     "title": "Know which card wins — at every merchant, every day",
     "subtitle": "Live Thai credit-card intelligence for every merchant",

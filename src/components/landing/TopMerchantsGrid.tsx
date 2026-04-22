@@ -59,9 +59,9 @@ export async function TopMerchantsGrid() {
           <li key={m.slug}>
             <Link
               href={`/merchants/${m.slug}`}
-              className="flex h-full items-center justify-between rounded-md border border-loftly-divider bg-loftly-surface px-4 py-3 text-body-sm text-loftly-ink transition-colors hover:border-loftly-teal hover:bg-loftly-teal-soft hover:text-loftly-teal"
+              className="flex h-full min-w-0 items-center justify-between gap-2 rounded-md border border-loftly-divider bg-loftly-surface px-4 py-3 text-body-sm text-loftly-ink transition-colors hover:border-loftly-teal hover:bg-loftly-teal-soft hover:text-loftly-teal"
             >
-              <span className="truncate">
+              <span className="min-w-0 flex-1 truncate">
                 <span className="font-medium">{m.name}</span>
                 {m.nameTh ? (
                   <span className="ml-1 text-caption text-loftly-ink-muted">

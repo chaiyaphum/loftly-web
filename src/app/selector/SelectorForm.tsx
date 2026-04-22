@@ -138,7 +138,7 @@ export function SelectorForm({ initialValues, reviewHint }: SelectorFormProps = 
             onChange={(e) => updateTotal(Number(e.target.value) || 0)}
             aria-describedby="monthly-spend-hint"
             aria-invalid={Boolean(fieldErrors.monthly_spend_thb)}
-            className="max-w-[12rem]"
+            className="w-full sm:max-w-[12rem]"
           />
         </div>
         {fieldErrors.monthly_spend_thb && (

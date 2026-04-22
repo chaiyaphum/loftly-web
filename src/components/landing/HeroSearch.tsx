@@ -154,7 +154,7 @@ export function HeroSearch({ initialCount = 160 }: { initialCount?: number }) {
               aria-label={t('ariaInput')}
               autoComplete="off"
               spellCheck={false}
-              className="flex-1 min-w-0 bg-transparent text-[16px] text-loftly-ink placeholder:text-loftly-ink-subtle focus:outline-none md:text-[18px]"
+              className="flex-1 min-w-0 bg-transparent text-base text-loftly-ink placeholder:text-loftly-ink-subtle focus:outline-none sm:text-lg"
             />
             {query ? (
               <button
@@ -178,7 +178,7 @@ export function HeroSearch({ initialCount = 160 }: { initialCount?: number }) {
             <div
               role="listbox"
               aria-label={t('ariaResults')}
-              className="absolute left-0 right-0 top-[calc(100%+8px)] z-[5] overflow-hidden rounded-[14px] border border-loftly-divider bg-loftly-surface text-left shadow-[0_8px_32px_rgb(30_42_58/0.08),0_2px_8px_rgb(30_42_58/0.04)]"
+              className="absolute left-0 right-0 top-[calc(100%+8px)] z-[5] max-h-[70vh] overflow-y-auto rounded-[14px] border border-loftly-divider bg-loftly-surface text-left shadow-[0_8px_32px_rgb(30_42_58/0.08),0_2px_8px_rgb(30_42_58/0.04)] overscroll-contain"
               onMouseDown={(e) => e.preventDefault()}
             >
               {results.map((m, i) => (

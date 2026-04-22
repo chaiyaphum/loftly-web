@@ -86,7 +86,7 @@ export async function TopPromosCarousel() {
             return (
               <li
                 key={promo.id}
-                className="w-64 shrink-0 md:w-72"
+                className="w-56 shrink-0 md:w-64 lg:w-72"
               >
                 <Link
                   href={href}

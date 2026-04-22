@@ -8,6 +8,9 @@
     "cards": "บัตรทั้งหมด",
     "valuations": "มูลค่าแต้ม",
     "selector": "ค้นหาบัตรที่ใช่",
+    "selectorCta": "ค้นหาบัตรที่ใช่ ▸",
+    "merchants": "ร้านค้า",
+    "promosToday": "โปรวันนี้",
     "account": "บัญชีของคุณ",
     "pricing": "ค่าบริการ"
   },
@@ -43,10 +46,40 @@
     }
   },
   "landing": {
-    "title": "ยกระดับทุกแต้มบัตรเครดิตของคุณ",
-    "subtitle": "Lift your rewards with AI",
+    "title": "รู้ทันทีว่าใช้บัตรไหนคุ้ม — ที่ทุกร้าน ทุกวัน",
+    "subtitle": "Live Thai credit-card intelligence for every merchant",
     "cta": "ค้นหาบัตรที่ใช่ ▸",
     "reassurance": "ใช้ฟรี · ไม่ต้องสมัคร · ได้ผลใน 10 วินาที",
+    "dualHero": {
+      "heading": "รู้ทันทีว่าใช้บัตรไหนคุ้ม — ที่ทุกร้าน ทุกวัน",
+      "subheading": "ข้อมูลโปรโมชันสดจาก 3 ธนาคารไทย + AI แนะนำบัตรที่คุ้มสุดสำหรับคุณ",
+      "merchant": {
+        "title": "ร้านไหน?",
+        "subtitle": "พิมพ์ชื่อร้าน ดูบัตรที่ได้โปร active ตอนนี้ พร้อมคำนวณ THB",
+        "browseLink": "เรียกดูร้านทั้งหมด"
+      },
+      "selector": {
+        "title": "วางแผนภาพรวม",
+        "subtitle": "บอก spend + เป้าหมาย → AI เลือกบัตร 3 ใบคุ้มสุดสำหรับคุณ",
+        "cta": "เริ่ม Selector ▸",
+        "reassurance": "ใช้ฟรี · ไม่ต้องสมัคร · ได้ผลใน 10 วินาที"
+      },
+      "trust": {
+        "promos": "โปรสดจาก deal-harvester",
+        "banks": "3 ธนาคารไทย",
+        "merchants": "50+ ร้านยอดนิยม",
+        "bilingual": "TH + EN",
+        "pdpa": "PDPA-safe"
+      }
+    },
+    "liveStrip": {
+      "liveWith": "สด · {count} โปร active",
+      "banks": "{count} ธนาคารไทย",
+      "merchants": "{count}+ ร้าน",
+      "updated": "อัปเดตล่าสุด {ago}",
+      "cta": "ดูทั้งหมด ›",
+      "ariaLabel": "ดูโปรโมชัน active ทั้งหมด"
+    },
     "hero": {
       "control": {
         "h1": "ยกระดับทุกแต้มบัตรเครดิตของคุณ",

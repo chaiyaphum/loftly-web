@@ -8,18 +8,17 @@ import {
 } from '@/components/homepage/LatestReviewsGrid';
 import { LatestValuationsList } from '@/components/homepage/LatestValuationsList';
 import { buildPageMetadata } from '@/lib/seo/metadata';
-import { LandingHero } from '@/components/landing/LandingHero';
-import { LandingHeroSwitcher } from '@/components/landing/LandingHeroSwitcher';
-import { MerchantSearchBar } from '@/components/merchants/MerchantSearchBar';
+import { DualHero } from '@/components/landing/DualHero';
+import { LivePromoStrip } from '@/components/landing/LivePromoStrip';
 import type { Valuation } from '@/lib/api/types';
 
 export const dynamic = 'force-static';
 export const revalidate = 300;
 
 export const metadata: Metadata = buildPageMetadata({
-  title: 'ยกระดับทุกแต้มบัตรเครดิตของคุณ',
+  title: 'รู้ทันทีว่าใช้บัตรไหนคุ้ม — ที่ทุกร้าน ทุกวัน',
   description:
-    'Loftly — AI-native credit card rewards optimization for Thailand. Find the card that makes every baht count.',
+    'Loftly — live Thai credit-card promo intelligence and merchant-first card recommendations. Know which card wins, at every merchant, every day.',
   path: '/',
 });
 
@@ -94,143 +93,150 @@ export default async function LandingPage() {
   const browseCards = t('browseAllCards');
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-5xl flex-col gap-16 px-6 py-12">
-      <header className="flex items-center justify-between">
-        <Link href="/" className="text-xl font-semibold">
-          Loftly
-        </Link>
-        <nav className="flex items-center gap-4 text-sm">
-          <Link href="/cards" className="text-slate-700 hover:underline">
-            {tn('cards')}
-          </Link>
-          <Link
-            href="/valuations"
-            className="text-slate-700 hover:underline"
-          >
-            {tn('valuations')}
-          </Link>
-          <Link href="/pricing" className="text-slate-700 hover:underline">
-            {tn('pricing')}
-          </Link>
-          <Link href="/onboarding" className="text-slate-700 hover:underline">
-            {tn('signIn')}
-          </Link>
-        </nav>
-      </header>
+    <>
+      {/* LivePromoStrip sits outside the max-w container so its band extends
+          full-width. Renders nothing if the backend can't supply fresh data. */}
+      <LivePromoStrip />
 
-      {/* Hero — SSR renders the fresh-visitor LandingHero (A/B variant island).
-          LandingHeroSwitcher hydrates on the client and, gated behind
-          `post_v1_returning_landing`, either keeps the default hero or swaps in
-          the POST_V1 §3 returning-user variant (personalized or expired banner). */}
-      <LandingHeroSwitcher
-        defaultHero={
-          <LandingHero reassurance={t('reassurance')} ctaHref="/selector" />
-        }
-      />
-
-      {/* Secondary CTA — Merchant Reverse Lookup search bar (post-v1 §9).
-          Sits below the primary Selector hero so users who don't want to
-          fill the full profile form can still ask "best card at Starbucks?"
-          and land on a ranked answer. */}
-      <section className="flex flex-col items-center gap-3 text-center">
-        <p className="text-sm font-medium text-slate-700">
-          หรือค้นหาบัตรที่ดีที่สุดสำหรับร้านโปรดของคุณ
-        </p>
-        <MerchantSearchBar variant="inline" />
-      </section>
-
-      {/* How it works */}
-      <section className="flex flex-col gap-4">
-        <h2 className="text-2xl font-semibold">{t('howItWorksTitle')}</h2>
-        <ol className="grid gap-4 sm:grid-cols-3">
-          {[1, 2, 3].map((n) => (
-            <li
-              key={n}
-              className="rounded-md border border-slate-200 p-4 text-slate-700"
+      <main className="mx-auto flex min-h-screen max-w-5xl flex-col gap-16 px-6 py-8">
+        <header className="flex items-center justify-between">
+          <Link href="/" className="text-xl font-semibold">
+            Loftly
+          </Link>
+          <nav className="flex items-center gap-4 text-sm">
+            <Link
+              href="/merchants"
+              className="font-medium text-slate-800 hover:underline"
             >
-              <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
-                Step {n}
-              </span>
-              <span className="block">
-                {t(
-                  `howItWorks.step${n}` as
-                    | 'howItWorks.step1'
-                    | 'howItWorks.step2'
-                    | 'howItWorks.step3',
-                )}
-              </span>
-            </li>
-          ))}
-        </ol>
-      </section>
+              {tn('merchants')}
+            </Link>
+            <Link href="/cards" className="text-slate-700 hover:underline">
+              {tn('cards')}
+            </Link>
+            <Link
+              href="/valuations"
+              className="text-slate-700 hover:underline"
+            >
+              {tn('valuations')}
+            </Link>
+            <Link href="/pricing" className="text-slate-700 hover:underline">
+              {tn('pricing')}
+            </Link>
+            <Link
+              href="/selector"
+              className="inline-flex items-center rounded-md bg-emerald-700 px-3 py-1.5 font-medium text-white hover:bg-emerald-800"
+            >
+              {tn('selectorCta')}
+            </Link>
+            <Link href="/onboarding" className="text-slate-600 hover:underline">
+              {tn('signIn')}
+            </Link>
+          </nav>
+        </header>
 
-      {/* Latest reviews */}
-      <section className="flex flex-col gap-4" data-testid="latest-reviews">
-        <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-semibold">{t('latestReviewsTitle')}</h2>
-          <Link
-            href="/cards"
-            className="text-sm text-slate-600 hover:underline"
-          >
-            {tn('cards')} →
-          </Link>
-        </div>
-        {reviews.kind === 'error' ? (
-          <p
-            role="status"
-            data-testid="latest-reviews-error"
-            className="text-sm text-slate-500"
-          >
-            {errorFallback}
-          </p>
-        ) : (
-          <LatestReviewsGrid
-            articles={reviews.value}
-            emptyLabel={reviewsEmpty}
-            browseAllLabel={browseCards}
-          />
-        )}
-      </section>
+        {/* Dual hero — Merchant quick-lookup + Selector deep-analysis as
+            co-equal primary CTAs. Replaces the single-CTA LandingHero after
+            the 2026-04-22 (PM) positioning shift (see POSITIONING_SHIFT.md).
+            Returning-user personalization (POST_V1 §3) is temporarily not
+            wired through this component — see DEVLOG. */}
+        <DualHero />
 
-      {/* Latest valuations */}
-      <section className="flex flex-col gap-4" data-testid="latest-valuations">
-        <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-semibold">
-            {t('latestValuationsTitle')}
-          </h2>
-          <Link
-            href="/valuations"
-            className="text-sm text-slate-600 hover:underline"
-          >
-            {tn('valuations')} →
-          </Link>
-        </div>
-        {valuations.kind === 'error' ? (
-          <p
-            role="status"
-            data-testid="latest-valuations-error"
-            className="text-sm text-slate-500"
-          >
-            {errorFallback}
-          </p>
-        ) : (
-          <LatestValuationsList
-            valuations={valuations.value}
-            emptyLabel={valuationsEmpty}
-            browseAllLabel={browseCards}
-          />
-        )}
-      </section>
+        {/* How it works */}
+        <section className="flex flex-col gap-4">
+          <h2 className="text-2xl font-semibold">{t('howItWorksTitle')}</h2>
+          <ol className="grid gap-4 sm:grid-cols-3">
+            {[1, 2, 3].map((n) => (
+              <li
+                key={n}
+                className="rounded-md border border-slate-200 p-4 text-slate-700"
+              >
+                <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+                  Step {n}
+                </span>
+                <span className="block">
+                  {t(
+                    `howItWorks.step${n}` as
+                      | 'howItWorks.step1'
+                      | 'howItWorks.step2'
+                      | 'howItWorks.step3',
+                  )}
+                </span>
+              </li>
+            ))}
+          </ol>
+        </section>
 
-      <footer className="mt-auto border-t pt-6 text-sm text-slate-500">
-        <div className="flex flex-wrap gap-4">
-          <Link href="/legal/privacy">{t('footer.privacy')}</Link>
-          <Link href="/legal/terms">{t('footer.terms')}</Link>
-          <Link href="/legal/affiliate-disclosure">
-            {t('footer.affiliate')}
-          </Link>
-        </div>
-      </footer>
-    </main>
+        {/* Latest reviews */}
+        <section className="flex flex-col gap-4" data-testid="latest-reviews">
+          <div className="flex items-center justify-between">
+            <h2 className="text-2xl font-semibold">{t('latestReviewsTitle')}</h2>
+            <Link
+              href="/cards"
+              className="text-sm text-slate-600 hover:underline"
+            >
+              {tn('cards')} →
+            </Link>
+          </div>
+          {reviews.kind === 'error' ? (
+            <p
+              role="status"
+              data-testid="latest-reviews-error"
+              className="text-sm text-slate-500"
+            >
+              {errorFallback}
+            </p>
+          ) : (
+            <LatestReviewsGrid
+              articles={reviews.value}
+              emptyLabel={reviewsEmpty}
+              browseAllLabel={browseCards}
+            />
+          )}
+        </section>
+
+        {/* Latest valuations */}
+        <section
+          className="flex flex-col gap-4"
+          data-testid="latest-valuations"
+        >
+          <div className="flex items-center justify-between">
+            <h2 className="text-2xl font-semibold">
+              {t('latestValuationsTitle')}
+            </h2>
+            <Link
+              href="/valuations"
+              className="text-sm text-slate-600 hover:underline"
+            >
+              {tn('valuations')} →
+            </Link>
+          </div>
+          {valuations.kind === 'error' ? (
+            <p
+              role="status"
+              data-testid="latest-valuations-error"
+              className="text-sm text-slate-500"
+            >
+              {errorFallback}
+            </p>
+          ) : (
+            <LatestValuationsList
+              valuations={valuations.value}
+              emptyLabel={valuationsEmpty}
+              browseAllLabel={browseCards}
+            />
+          )}
+        </section>
+
+        <footer className="mt-auto border-t pt-6 text-sm text-slate-500">
+          <div className="flex flex-wrap gap-4">
+            <Link href="/legal/privacy">{t('footer.privacy')}</Link>
+            <Link href="/legal/terms">{t('footer.terms')}</Link>
+            <Link href="/legal/affiliate-disclosure">
+              {t('footer.affiliate')}
+            </Link>
+          </div>
+        </footer>
+      </main>
+    </>
   );
 }

@@ -8,15 +8,21 @@ import { MerchantSearchBar } from '@/components/merchants/MerchantSearchBar';
 /**
  * `/merchants` — browse hub.
  *
- * SSG with a 1-hour revalidate; each category/letter filter combo renders
- * a fresh page through ISR on demand. Primary entry points:
+ * Dynamic-rendered (server on each request). Previously `force-static` +
+ * 1h revalidate, but build-time prerender hung indefinitely when the
+ * upstream API was unreachable (contributor builds without
+ * `NEXT_PUBLIC_API_BASE` set, or a transient staging outage). The hub is
+ * a bilingual A–Z nav surface — SEO-valuable pages are the individual
+ * `/merchants/[slug]` entries (still ISR'd with a 5m revalidate), so
+ * nothing is lost by skipping prerender here.
+ *
+ * Primary entry points:
  *   - Deep link from blog/SEO backlinks.
  *   - Landing-page CTA bounce when the user bails on the primary Selector.
  *   - Post-404 rescue: `/merchants/[unknown]` 404 copy links back here.
  */
 
-export const dynamic = 'force-static';
-export const revalidate = 3600;
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = buildPageMetadata({
   title: 'ค้นหาร้านค้า',

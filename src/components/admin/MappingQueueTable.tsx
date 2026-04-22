@@ -266,7 +266,7 @@ export function MappingQueueTable({
 
       {selected.size > 0 && (
         <div
-          className="flex flex-wrap items-center gap-3 rounded-md border border-loftly-baht/40 bg-loftly-baht/5 p-3"
+          className="flex flex-wrap items-center gap-3 rounded-md border border-loftly-teal/40 bg-loftly-teal/5 p-3"
           data-testid="mapping-queue-bulk-bar"
           role="region"
           aria-label={labels.bulkBar.assignTo(selected.size)}
@@ -307,7 +307,7 @@ export function MappingQueueTable({
             onClick={handleBulkAssign}
             disabled={!cardId || isSubmitting}
             data-testid="mapping-queue-bulk-assign"
-            className="rounded-md bg-loftly-baht px-3 py-1.5 text-xs font-medium text-white hover:bg-loftly-baht/90 disabled:opacity-50"
+            className="rounded-md bg-loftly-teal px-3 py-1.5 text-xs font-medium text-white hover:bg-loftly-teal/90 disabled:opacity-50"
           >
             {labels.bulkBar.assign}
           </button>

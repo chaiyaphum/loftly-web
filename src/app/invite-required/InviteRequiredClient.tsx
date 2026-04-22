@@ -196,7 +196,7 @@ export function InviteRequiredClient({ hasError }: { hasError: boolean }) {
               href={LAUNCH_LINKS.pantip}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-loftly-baht underline underline-offset-2 hover:text-loftly-baht/80"
+              className="text-loftly-teal underline underline-offset-2 hover:text-loftly-teal/80"
               data-testid="invite-follow-pantip"
             >
               {tr('section.followLaunch.pantip')}
@@ -207,7 +207,7 @@ export function InviteRequiredClient({ hasError }: { hasError: boolean }) {
               href={LAUNCH_LINKS.line}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-loftly-baht underline underline-offset-2 hover:text-loftly-baht/80"
+              className="text-loftly-teal underline underline-offset-2 hover:text-loftly-teal/80"
               data-testid="invite-follow-line"
             >
               {tr('section.followLaunch.line')}
@@ -218,7 +218,7 @@ export function InviteRequiredClient({ hasError }: { hasError: boolean }) {
               href={LAUNCH_LINKS.twitter}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-loftly-baht underline underline-offset-2 hover:text-loftly-baht/80"
+              className="text-loftly-teal underline underline-offset-2 hover:text-loftly-teal/80"
               data-testid="invite-follow-twitter"
             >
               {tr('section.followLaunch.twitter')}

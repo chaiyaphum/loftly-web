@@ -276,7 +276,7 @@ function ExpiredBanner({ sessionId }: { sessionId: string }) {
       <Link
         href="/selector"
         onClick={onRestart}
-        className="font-medium text-loftly-baht hover:underline"
+        className="font-medium text-loftly-teal hover:underline"
       >
         {t('cta')}
       </Link>

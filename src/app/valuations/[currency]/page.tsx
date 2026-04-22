@@ -214,7 +214,7 @@ export default async function ValuationDetailPage({
           <h2 className="mb-2 text-xl font-semibold tracking-tight">
             {t('detail.topRedemption')}
           </h2>
-          <blockquote className="rounded-md border-l-4 border-loftly-baht bg-loftly-teal-soft/40 p-4 text-sm italic text-loftly-ink">
+          <blockquote className="rounded-md border-l-4 border-loftly-teal bg-loftly-teal-soft/40 p-4 text-sm italic text-loftly-ink">
             {detail.top_redemption_example}
           </blockquote>
         </section>
@@ -251,7 +251,7 @@ export default async function ValuationDetailPage({
       <section>
         <Link
           href={`/cards?earn_currency=${encodeURIComponent(detail.currency.code)}`}
-          className="text-sm text-loftly-baht hover:underline"
+          className="text-sm text-loftly-teal hover:underline"
         >
           {t('detail.viewCardsCta', { currency: currencyLabel })}
         </Link>

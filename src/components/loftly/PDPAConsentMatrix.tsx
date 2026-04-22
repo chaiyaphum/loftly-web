@@ -97,7 +97,7 @@ export function PDPAConsentMatrix({
                 <label htmlFor={inputId} className="text-base font-medium">
                   {t(`purposes.${purpose}.title`)}
                   {locked && (
-                    <span className="ml-2 text-xs font-normal text-loftly-consent">
+                    <span className="ml-2 text-xs font-normal text-loftly-amber">
                       {t('required')}
                     </span>
                   )}

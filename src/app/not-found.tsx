@@ -61,7 +61,7 @@ export default async function NotFound() {
                     <a
                       key={i}
                       href={`mailto:${supportEmail}`}
-                      className="text-loftly-baht underline underline-offset-2 hover:opacity-80"
+                      className="text-loftly-teal underline underline-offset-2 hover:opacity-80"
                     >
                       {supportEmail}
                     </a>,

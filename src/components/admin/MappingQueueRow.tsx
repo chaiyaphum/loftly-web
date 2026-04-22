@@ -92,7 +92,7 @@ export function MappingQueueRow({
           type="button"
           onClick={handleAssign}
           disabled={status === 'saving' || status === 'done'}
-          className="rounded-md bg-loftly-baht px-3 py-1.5 text-xs font-medium text-white hover:bg-loftly-baht/90 disabled:opacity-50"
+          className="rounded-md bg-loftly-teal px-3 py-1.5 text-xs font-medium text-white hover:bg-loftly-teal/90 disabled:opacity-50"
         >
           {status === 'saving'
             ? 'Assigning…'

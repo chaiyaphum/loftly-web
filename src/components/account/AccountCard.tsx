@@ -70,7 +70,7 @@ export function AccountCard({
           'mt-auto inline-flex items-center gap-1 text-sm font-medium',
           tone === 'danger'
             ? 'text-loftly-danger group-hover:text-red-800'
-            : 'text-loftly-baht group-hover:text-loftly-baht/80',
+            : 'text-loftly-teal group-hover:text-loftly-teal/80',
         )}
         data-testid={testId ? `${testId}-cta` : undefined}
       >

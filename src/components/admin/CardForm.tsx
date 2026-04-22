@@ -307,7 +307,7 @@ export function CardForm({ card, accessToken }: Props) {
         <button
           type="submit"
           disabled={state === 'saving'}
-          className="rounded-md bg-loftly-baht px-4 py-2 text-sm font-medium text-white hover:bg-loftly-baht/90 disabled:opacity-50"
+          className="rounded-md bg-loftly-teal px-4 py-2 text-sm font-medium text-white hover:bg-loftly-teal/90 disabled:opacity-50"
         >
           {state === 'saving' ? 'Saving…' : 'Save'}
         </button>

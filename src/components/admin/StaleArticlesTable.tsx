@@ -139,7 +139,7 @@ export function StaleArticlesTable({
                     <div className="inline-flex items-center gap-2">
                       <Link
                         href={`/admin/articles/${a.id}`}
-                        className="text-xs text-loftly-sky hover:underline"
+                        className="text-xs text-loftly-teal hover:underline"
                       >
                         Open article
                       </Link>
@@ -148,7 +148,7 @@ export function StaleArticlesTable({
                         onClick={() => setConfirmFor(a.id)}
                         disabled={status === 'saving' || status === 'done'}
                         data-testid={`mark-reviewed-${a.id}`}
-                        className="rounded-md bg-loftly-baht px-3 py-1 text-xs font-medium text-white hover:bg-loftly-baht/90 disabled:opacity-50"
+                        className="rounded-md bg-loftly-teal px-3 py-1 text-xs font-medium text-white hover:bg-loftly-teal/90 disabled:opacity-50"
                       >
                         {status === 'saving'
                           ? 'Marking…'
@@ -225,7 +225,7 @@ export function StaleArticlesTable({
                 type="button"
                 data-testid="mark-confirm-yes"
                 onClick={() => void handleMark(confirmFor)}
-                className="rounded-md bg-loftly-baht px-4 py-2 text-sm font-medium text-white hover:bg-loftly-baht/90"
+                className="rounded-md bg-loftly-teal px-4 py-2 text-sm font-medium text-white hover:bg-loftly-teal/90"
               >
                 Yes, mark reviewed
               </button>

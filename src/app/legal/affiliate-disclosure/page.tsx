@@ -39,7 +39,7 @@ export default async function AffiliateDisclosurePage() {
           Our editorial rankings and scores are computed by the same model for
           every card regardless of commercial relationship — see
           {' '}
-          <Link href="/valuations" className="text-loftly-sky hover:underline">
+          <Link href="/valuations" className="text-loftly-teal hover:underline">
             the methodology page
           </Link>{' '}
           for details.

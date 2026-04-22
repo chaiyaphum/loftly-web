@@ -137,7 +137,7 @@ export function CardCompareWidget({
         onClick={handleToggle}
         aria-expanded={open}
         aria-controls={panelId}
-        className="flex w-full items-center justify-between gap-3 rounded-md px-4 py-3 text-left text-sm font-medium text-loftly-ink hover:bg-loftly-teal-soft/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-loftly-sky"
+        className="flex w-full items-center justify-between gap-3 rounded-md px-4 py-3 text-left text-sm font-medium text-loftly-ink hover:bg-loftly-teal-soft/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-loftly-teal"
       >
         <span>{t('title')}</span>
         <span
@@ -192,7 +192,7 @@ export function CardCompareWidget({
                           'flex cursor-pointer items-start gap-2 rounded-md border border-loftly-divider p-2 text-sm hover:bg-loftly-teal-soft/40',
                           disabled &&
                             'cursor-not-allowed opacity-50 hover:bg-transparent',
-                          checked && 'border-loftly-baht bg-loftly-teal-soft/40',
+                          checked && 'border-loftly-teal bg-loftly-teal-soft/40',
                         )}
                       >
                         <input

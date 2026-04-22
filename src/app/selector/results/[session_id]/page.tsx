@@ -145,7 +145,7 @@ export default async function SelectorResultsPage({
           result.stack.length > 0 &&
           primary &&
           primaryCard && (
-            <p className="rounded-md bg-loftly-sky/10 p-4 text-sm text-loftly-ink">
+            <p className="rounded-md bg-loftly-teal/10 p-4 text-sm text-loftly-ink">
               {t('monthsToGoalBanner', {
                 targetPoints: formatNumber(
                   sumTargetPoints(result) ?? 0,

@@ -100,7 +100,7 @@ export default async function ValuationsIndexPage() {
         <p className="text-xs text-loftly-ink-muted">
           <Link
             href="/guides/how-loftly-calculates-point-valuations"
-            className="text-loftly-baht hover:underline"
+            className="text-loftly-teal hover:underline"
           >
             {t('methodologyGuideLink')}
           </Link>
@@ -166,7 +166,7 @@ export default async function ValuationsIndexPage() {
       <footer className="mt-12 border-t border-loftly-divider pt-6 text-xs text-loftly-ink-muted">
         <Link
           href="/legal/valuation-method"
-          className="text-loftly-baht hover:underline"
+          className="text-loftly-teal hover:underline"
         >
           {t('methodologyLink')}
         </Link>

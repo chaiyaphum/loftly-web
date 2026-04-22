@@ -48,7 +48,7 @@ export default async function AdminCardsPage({
         <h1 className="text-2xl font-semibold">Cards</h1>
         <Link
           href="/admin/cards/new"
-          className="rounded-md bg-loftly-baht px-4 py-2 text-sm font-medium text-white hover:bg-loftly-baht/90"
+          className="rounded-md bg-loftly-teal px-4 py-2 text-sm font-medium text-white hover:bg-loftly-teal/90"
         >
           New card
         </Link>
@@ -114,7 +114,7 @@ export default async function AdminCardsPage({
                   <td className="px-4 py-2 text-right">
                     <Link
                       href={`/admin/cards/${c.id}`}
-                      className="text-loftly-sky hover:underline"
+                      className="text-loftly-teal hover:underline"
                     >
                       Edit
                     </Link>

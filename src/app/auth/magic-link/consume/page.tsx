@@ -88,7 +88,7 @@ function ExpiredView({
       <p className="mt-6">
         <Link
           href="/onboarding"
-          className="inline-flex items-center rounded-md bg-loftly-baht px-4 py-2 text-sm font-medium text-white hover:bg-loftly-baht/90"
+          className="inline-flex items-center rounded-md bg-loftly-teal px-4 py-2 text-sm font-medium text-white hover:bg-loftly-teal/90"
         >
           {t('expiredCta')}
         </Link>

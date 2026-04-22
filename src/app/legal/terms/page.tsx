@@ -40,7 +40,7 @@ export default async function TermsPage() {
         <ol className="mt-2 list-decimal space-y-1 pl-5 text-sm">
           {sections.map((s) => (
             <li key={s.id}>
-              <a href={`#${s.id}`} className="text-loftly-sky hover:underline">
+              <a href={`#${s.id}`} className="text-loftly-teal hover:underline">
                 {s.title}
               </a>
             </li>

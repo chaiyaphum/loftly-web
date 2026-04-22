@@ -57,7 +57,7 @@ export function RetentionSparkline({
       width={width}
       height={height}
       viewBox={`0 0 ${width} ${height}`}
-      className="text-loftly-sky"
+      className="text-loftly-teal"
       data-testid={testId}
     >
       <path

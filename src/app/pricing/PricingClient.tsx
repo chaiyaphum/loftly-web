@@ -144,11 +144,11 @@ function PremiumTier({ variant }: { variant: PremiumVariant }) {
       </article>
 
       <article
-        className="flex flex-col gap-4 rounded-lg border-2 border-loftly-baht p-6"
+        className="flex flex-col gap-4 rounded-lg border-2 border-loftly-teal p-6"
         data-testid="pricing-premium-card"
       >
         <header className="flex flex-col gap-1">
-          <span className="text-xs font-medium uppercase tracking-wide text-loftly-baht">
+          <span className="text-xs font-medium uppercase tracking-wide text-loftly-teal">
             {t('coming_phase_2')}
           </span>
           <h2 className="text-2xl font-semibold">{t('premium_tier')}</h2>

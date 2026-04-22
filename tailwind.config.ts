@@ -28,13 +28,6 @@ const config: Config = {
         'loftly-danger': 'rgb(var(--loftly-danger) / <alpha-value>)',
         'loftly-charcoal': 'rgb(var(--loftly-charcoal) / <alpha-value>)',
         'loftly-charcoal-elev': 'rgb(var(--loftly-charcoal-elev) / <alpha-value>)',
-
-        // --- Legacy aliases (migrating phase-by-phase; do not add new usage) ---
-        // `loftly-sky` previously held a wrong sky-blue hex; remapped to teal
-        // so pre-migration callsites no longer clash with the brand palette.
-        'loftly-sky': 'rgb(var(--loftly-teal) / <alpha-value>)',
-        'loftly-baht': 'rgb(var(--loftly-teal) / <alpha-value>)',
-        'loftly-consent': 'rgb(var(--loftly-amber) / <alpha-value>)',
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'var(--font-noto-thai)', 'system-ui', 'sans-serif'],

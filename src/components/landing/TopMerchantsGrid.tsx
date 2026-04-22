@@ -9,27 +9,33 @@ import { Link } from '@/i18n/routing';
 
 type SeedMerchant = { slug: string; name: string; nameTh?: string };
 
+/**
+ * Slugs below are aligned to the backend-seeded canonical merchant slugs
+ * (see `/v1/merchants?limit=100` on staging, 50 entries). Names/nameTh
+ * are frontend display labels — the backend may use slightly different
+ * display names, but slug is the linking contract.
+ */
 const SEED: SeedMerchant[] = [
-  { slug: 'starbucks', name: 'Starbucks' },
-  { slug: 'grab', name: 'Grab' },
-  { slug: 'shopee', name: 'Shopee' },
-  { slug: 'lazada', name: 'Lazada' },
-  { slug: '7-eleven', name: '7-Eleven', nameTh: 'เซเว่น-อีเลฟเว่น' },
-  { slug: 'central', name: 'Central', nameTh: 'เซ็นทรัล' },
-  { slug: 'siam-paragon', name: 'Siam Paragon' },
-  { slug: 'agoda', name: 'Agoda' },
-  { slug: 'foodpanda', name: 'Foodpanda' },
-  { slug: 'line-man', name: 'LINE MAN' },
+  { slug: 'starbucks', name: 'Starbucks', nameTh: 'สตาร์บัคส์' },
+  { slug: 'grab-food', name: 'GrabFood', nameTh: 'แกร็บฟู้ด' },
+  { slug: 'shopee', name: 'Shopee', nameTh: 'ช้อปปี้' },
+  { slug: 'lazada', name: 'Lazada', nameTh: 'ลาซาด้า' },
+  { slug: 'seven-eleven', name: '7-Eleven', nameTh: 'เซเว่น-อีเลฟเว่น' },
+  { slug: 'central-department-store', name: 'Central', nameTh: 'เซ็นทรัล' },
+  { slug: 'siam-paragon', name: 'Siam Paragon', nameTh: 'สยามพารากอน' },
+  { slug: 'agoda', name: 'Agoda', nameTh: 'อโกด้า' },
+  { slug: 'foodpanda', name: 'Foodpanda', nameTh: 'ฟู้ดแพนด้า' },
+  { slug: 'mcdonalds', name: "McDonald's", nameTh: 'แมคโดนัลด์' },
   { slug: 'bts', name: 'BTS' },
-  { slug: 'tops', name: 'Tops', nameTh: 'ท็อปส์' },
-  { slug: 'bigc', name: 'Big C', nameTh: 'บิ๊กซี' },
+  { slug: 'tops-supermarket', name: 'Tops', nameTh: 'ท็อปส์' },
+  { slug: 'big-c', name: 'Big C', nameTh: 'บิ๊กซี' },
   { slug: 'robinson', name: 'Robinson', nameTh: 'โรบินสัน' },
   { slug: 'the-mall', name: 'The Mall', nameTh: 'เดอะมอลล์' },
-  { slug: 'emquartier', name: 'EmQuartier' },
-  { slug: 'cafe-amazon', name: 'Café Amazon' },
+  { slug: 'emporium', name: 'Emporium', nameTh: 'เอ็มโพเรียม' },
+  { slug: 'amazon-cafe', name: 'Café Amazon', nameTh: 'คาเฟ่ อเมซอน' },
   { slug: 'makro', name: 'Makro', nameTh: 'แม็คโคร' },
-  { slug: 'king-power', name: 'King Power' },
-  { slug: 'booking', name: 'Booking.com' },
+  { slug: 'booking-com', name: 'Booking.com' },
+  { slug: 'uniqlo-thailand', name: 'UNIQLO', nameTh: 'ยูนิโคล่' },
 ];
 
 export async function TopMerchantsGrid() {

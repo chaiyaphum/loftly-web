@@ -70,7 +70,7 @@ export function StaleArticlesTable({
 
   if (items.length === 0) {
     return (
-      <p className="rounded-md border border-dashed border-slate-200 p-6 text-sm text-slate-500">
+      <p className="rounded-md border border-dashed border-loftly-divider p-6 text-sm text-loftly-ink-muted">
         Nothing is stale right now.
       </p>
     );
@@ -92,9 +92,9 @@ export function StaleArticlesTable({
 
   return (
     <div className="space-y-4">
-      <div className="overflow-auto rounded-md border border-slate-200 bg-white">
+      <div className="overflow-auto rounded-md border border-loftly-divider bg-white">
         <table className="w-full text-sm">
-          <thead className="border-b bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-500">
+          <thead className="border-b bg-loftly-teal-soft/40 text-left text-xs uppercase tracking-wide text-loftly-ink-muted">
             <tr>
               <th className="px-4 py-2">Card</th>
               <th className="px-4 py-2">Issuer</th>
@@ -113,26 +113,26 @@ export function StaleArticlesTable({
                   <td className="px-4 py-2 font-medium">
                     {a.card?.display_name ?? '—'}
                   </td>
-                  <td className="px-4 py-2 text-slate-600">
+                  <td className="px-4 py-2 text-loftly-ink-muted">
                     {a.bank?.display_name_en ?? a.bank?.slug ?? '—'}
                   </td>
-                  <td className="px-4 py-2 text-slate-700">{a.title_th}</td>
-                  <td className="px-4 py-2 text-xs text-slate-500">
+                  <td className="px-4 py-2 text-loftly-ink">{a.title_th}</td>
+                  <td className="px-4 py-2 text-xs text-loftly-ink-muted">
                     <span title={absolute}>{relative}</span>
                     <br />
-                    <span className="text-slate-400">{absolute}</span>
+                    <span className="text-loftly-ink-muted/70">{absolute}</span>
                   </td>
-                  <td className="px-4 py-2 text-xs text-slate-500">
+                  <td className="px-4 py-2 text-xs text-loftly-ink-muted">
                     {a.last_reviewed_by ? (
                       <>
                         <span>{a.last_reviewed_by.actor_email}</span>
                         <br />
-                        <span className="text-slate-400">
+                        <span className="text-loftly-ink-muted/70">
                           {a.last_reviewed_by.reviewed_at?.slice(0, 10)}
                         </span>
                       </>
                     ) : (
-                      <span className="text-slate-400">Never</span>
+                      <span className="text-loftly-ink-muted/70">Never</span>
                     )}
                   </td>
                   <td className="px-4 py-2 text-right">
@@ -160,7 +160,7 @@ export function StaleArticlesTable({
                     {rowError[a.id] ? (
                       <p
                         role="alert"
-                        className="mt-1 text-xs text-red-700"
+                        className="mt-1 text-xs text-loftly-danger"
                       >
                         {rowError[a.id]}
                       </p>
@@ -175,14 +175,14 @@ export function StaleArticlesTable({
 
       {totalPages > 1 ? (
         <nav className="flex items-center justify-between text-sm">
-          <span className="text-slate-500">
+          <span className="text-loftly-ink-muted">
             Page {pagination.page} of {totalPages}
           </span>
           <div className="flex items-center gap-2">
             {pagination.page > 1 ? (
               <Link
                 href={buildPageHref(pagination.page - 1)}
-                className="rounded-md border border-slate-300 px-3 py-1 text-xs hover:bg-slate-50"
+                className="rounded-md border border-loftly-divider px-3 py-1 text-xs hover:bg-loftly-teal-soft/40"
               >
                 ← Prev
               </Link>
@@ -190,7 +190,7 @@ export function StaleArticlesTable({
             {pagination.has_more ? (
               <Link
                 href={buildPageHref(pagination.page + 1)}
-                className="rounded-md border border-slate-300 px-3 py-1 text-xs hover:bg-slate-50"
+                className="rounded-md border border-loftly-divider px-3 py-1 text-xs hover:bg-loftly-teal-soft/40"
               >
                 Next →
               </Link>
@@ -208,7 +208,7 @@ export function StaleArticlesTable({
         >
           <div className="w-full max-w-md space-y-4 rounded-lg bg-white p-6 shadow-xl">
             <h2 className="text-lg font-semibold">Mark article as reviewed?</h2>
-            <p className="text-sm text-slate-600">
+            <p className="text-sm text-loftly-ink-muted">
               This bumps updated_at and logs an audit entry — use it after
               you&apos;ve verified earn rates, valuation, and signup bonus
               against the bank&apos;s current site.
@@ -217,7 +217,7 @@ export function StaleArticlesTable({
               <button
                 type="button"
                 onClick={() => setConfirmFor(null)}
-                className="rounded-md border border-slate-300 px-4 py-2 text-sm hover:bg-slate-50"
+                className="rounded-md border border-loftly-divider px-4 py-2 text-sm hover:bg-loftly-teal-soft/40"
               >
                 Cancel
               </button>

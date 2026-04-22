@@ -43,7 +43,7 @@ describe('AnalyticsPanel', () => {
     expect(pill).toHaveTextContent('+12.5%');
     // Screen-reader text tells direction without relying on colour.
     expect(pill).toHaveTextContent('Up from previous period');
-    expect(pill.className).toContain('emerald');
+    expect(pill.className).toContain('loftly-teal');
   });
 
   it('renders a negative delta pill without adding a second minus sign', () => {
@@ -61,7 +61,7 @@ describe('AnalyticsPanel', () => {
     expect(pill).toHaveTextContent('-3.0%');
     expect(pill.textContent).not.toContain('--');
     expect(pill).toHaveTextContent('Down from previous period');
-    expect(pill.className).toContain('red');
+    expect(pill.className).toContain('loftly-danger');
   });
 
   it('renders the footer slot when provided', () => {

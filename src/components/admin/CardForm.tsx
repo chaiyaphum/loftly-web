@@ -268,7 +268,7 @@ export function CardForm({ card, accessToken }: Props) {
 
       <Field label="Description (Thai)">
         <textarea
-          className="h-24 w-full rounded-md border border-slate-300 p-2 text-sm"
+          className="h-24 w-full rounded-md border border-loftly-divider p-2 text-sm"
           value={formValues.description_th}
           onChange={(e) => set('description_th', e.target.value)}
         />
@@ -276,7 +276,7 @@ export function CardForm({ card, accessToken }: Props) {
 
       <Field label="Description (English)">
         <textarea
-          className="h-24 w-full rounded-md border border-slate-300 p-2 text-sm"
+          className="h-24 w-full rounded-md border border-loftly-divider p-2 text-sm"
           value={formValues.description_en}
           onChange={(e) => set('description_en', e.target.value)}
         />
@@ -284,7 +284,7 @@ export function CardForm({ card, accessToken }: Props) {
 
       <Field label="Status" required>
         <select
-          className="h-10 rounded-md border border-slate-300 px-2 text-sm"
+          className="h-10 rounded-md border border-loftly-divider px-2 text-sm"
           value={formValues.status}
           onChange={(e) => set('status', e.target.value as CardStatus)}
         >
@@ -297,7 +297,7 @@ export function CardForm({ card, accessToken }: Props) {
       {error && (
         <p
           role="alert"
-          className="rounded-md bg-red-50 p-3 text-sm text-red-900"
+          className="rounded-md bg-loftly-danger/10 p-3 text-sm text-loftly-danger"
         >
           {error}
         </p>
@@ -327,7 +327,7 @@ function Field({
 }) {
   return (
     <label className="block space-y-1">
-      <span className="text-sm font-medium text-slate-700">
+      <span className="text-sm font-medium text-loftly-ink">
         {label}
         {required && <span className="ml-1 text-red-500">*</span>}
       </span>
@@ -347,7 +347,7 @@ function JsonTextarea({
 }) {
   return (
     <textarea
-      className="h-32 w-full rounded-md border border-slate-300 p-2 font-mono text-xs"
+      className="h-32 w-full rounded-md border border-loftly-divider p-2 font-mono text-xs"
       value={value}
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}

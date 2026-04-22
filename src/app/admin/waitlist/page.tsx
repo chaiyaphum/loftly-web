@@ -88,13 +88,13 @@ export default async function AdminWaitlistPage({
     <section className="space-y-5" data-testid="admin-waitlist-page">
       <header className="space-y-1">
         <h1 className="text-2xl font-semibold">{labels.title}</h1>
-        <p className="text-sm text-slate-500">{labels.subtitle}</p>
+        <p className="text-sm text-loftly-ink-muted">{labels.subtitle}</p>
       </header>
 
       {error ? (
         <p
           role="alert"
-          className="rounded-md border border-red-200 bg-red-50 p-3 text-sm text-red-900"
+          className="rounded-md border border-red-200 bg-loftly-danger/10 p-3 text-sm text-loftly-danger"
           data-testid="admin-waitlist-error"
         >
           {error}

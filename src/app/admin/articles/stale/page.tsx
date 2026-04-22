@@ -62,18 +62,18 @@ export default async function AdminStaleArticlesPage({
     <section className="space-y-5">
       <header className="space-y-2">
         <h1 className="text-2xl font-semibold">Re-verify content</h1>
-        <p className="text-sm text-slate-600">
+        <p className="text-sm text-loftly-ink-muted">
           Articles with updated_at older than the threshold — review, then mark
           as re-verified.
         </p>
         {payload && payload.pagination.total > 0 ? (
-          <p className="rounded-md bg-amber-50 px-3 py-2 text-sm text-amber-900">
+          <p className="rounded-md bg-loftly-amber/15 px-3 py-2 text-sm text-loftly-amber-urgent">
             You have {payload.pagination.total}{' '}
             {payload.pagination.total === 1 ? 'article' : 'articles'} needing
             re-verification
           </p>
         ) : payload ? (
-          <p className="rounded-md bg-emerald-50 px-3 py-2 text-sm text-emerald-900">
+          <p className="rounded-md bg-loftly-teal-soft px-3 py-2 text-sm text-loftly-teal">
             No articles are currently overdue — nice work.
           </p>
         ) : null}
@@ -81,9 +81,9 @@ export default async function AdminStaleArticlesPage({
 
       <form
         method="GET"
-        className="flex flex-wrap items-end gap-3 rounded-md border border-slate-200 bg-white p-4"
+        className="flex flex-wrap items-end gap-3 rounded-md border border-loftly-divider bg-white p-4"
       >
-        <label className="flex flex-col text-xs text-slate-600">
+        <label className="flex flex-col text-xs text-loftly-ink-muted">
           Threshold (days)
           <input
             type="number"
@@ -91,15 +91,15 @@ export default async function AdminStaleArticlesPage({
             defaultValue={days}
             min={1}
             max={3650}
-            className="mt-1 w-28 rounded-md border border-slate-300 px-2 py-1 text-sm"
+            className="mt-1 w-28 rounded-md border border-loftly-divider px-2 py-1 text-sm"
           />
         </label>
-        <label className="flex flex-col text-xs text-slate-600">
+        <label className="flex flex-col text-xs text-loftly-ink-muted">
           State
           <select
             name="state"
             defaultValue={state}
-            className="mt-1 w-32 rounded-md border border-slate-300 px-2 py-1 text-sm"
+            className="mt-1 w-32 rounded-md border border-loftly-divider px-2 py-1 text-sm"
           >
             {STATE_FILTERS.map((s) => (
               <option key={s} value={s}>
@@ -108,14 +108,14 @@ export default async function AdminStaleArticlesPage({
             ))}
           </select>
         </label>
-        <label className="flex flex-col text-xs text-slate-600">
+        <label className="flex flex-col text-xs text-loftly-ink-muted">
           Issuer (bank slug)
           <input
             type="text"
             name="issuer"
             defaultValue={sp.issuer ?? ''}
             placeholder="kbank"
-            className="mt-1 w-32 rounded-md border border-slate-300 px-2 py-1 text-sm"
+            className="mt-1 w-32 rounded-md border border-loftly-divider px-2 py-1 text-sm"
           />
         </label>
         <button
@@ -129,7 +129,7 @@ export default async function AdminStaleArticlesPage({
       {error ? (
         <p
           role="alert"
-          className="rounded-md bg-red-50 p-3 text-sm text-red-900"
+          className="rounded-md bg-loftly-danger/10 p-3 text-sm text-loftly-danger"
         >
           {error}
         </p>

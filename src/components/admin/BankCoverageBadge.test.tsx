@@ -15,27 +15,27 @@ describe('BankCoverageBadge', () => {
     expect(screen.getByTestId('b')).toHaveTextContent('Full coverage');
   });
 
-  it('applies emerald classes when status is full', () => {
+  it('applies teal classes when status is full', () => {
     render(<BankCoverageBadge status="full" label="Full" testId="b" />);
     const el = screen.getByTestId('b');
     expect(el).toHaveAttribute('data-status', 'full');
-    expect(el.className).toContain('bg-emerald-50');
-    expect(el.className).toContain('text-emerald-700');
+    expect(el.className).toContain('bg-loftly-teal-soft');
+    expect(el.className).toContain('text-loftly-teal');
   });
 
   it('applies amber classes when status is partial', () => {
     render(<BankCoverageBadge status="partial" label="Partial" testId="b" />);
     const el = screen.getByTestId('b');
     expect(el).toHaveAttribute('data-status', 'partial');
-    expect(el.className).toContain('bg-amber-50');
-    expect(el.className).toContain('text-amber-800');
+    expect(el.className).toContain('bg-loftly-amber/15');
+    expect(el.className).toContain('text-loftly-amber-urgent');
   });
 
-  it('applies red classes when status is gap', () => {
+  it('applies danger classes when status is gap', () => {
     render(<BankCoverageBadge status="gap" label="Gap" testId="b" />);
     const el = screen.getByTestId('b');
     expect(el).toHaveAttribute('data-status', 'gap');
-    expect(el.className).toContain('bg-red-50');
-    expect(el.className).toContain('text-red-700');
+    expect(el.className).toContain('bg-loftly-danger/10');
+    expect(el.className).toContain('text-loftly-danger');
   });
 });

@@ -75,17 +75,17 @@ export default async function MappingQueuePage() {
     <section className="space-y-5" data-testid="mapping-queue-page">
       <header className="space-y-2">
         <h1 className="text-2xl font-semibold">Mapping queue</h1>
-        <p className="text-sm text-slate-600">
+        <p className="text-sm text-loftly-ink-muted">
           Unresolved promos harvested from banks — assign to cards to publish
           them.
         </p>
-        <p className="text-xs text-slate-500">
+        <p className="text-xs text-loftly-ink-muted">
           {queue.total} pending · showing {queue.data.length}
         </p>
       </header>
 
       {error ? (
-        <p className="rounded-md bg-red-50 p-3 text-sm text-red-900">{error}</p>
+        <p className="rounded-md bg-loftly-danger/10 p-3 text-sm text-loftly-danger">{error}</p>
       ) : (
         <MappingQueueTable
           items={queue.data}

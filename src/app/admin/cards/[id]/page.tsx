@@ -35,12 +35,12 @@ export default async function EditAdminCardPage({
   return (
     <section className="space-y-4">
       <nav className="text-sm">
-        <Link href="/admin/cards" className="text-slate-500 hover:underline">
+        <Link href="/admin/cards" className="text-loftly-ink-muted hover:underline">
           ← Cards
         </Link>
       </nav>
       <h1 className="text-2xl font-semibold">Edit card</h1>
-      <p className="text-sm text-slate-500">
+      <p className="text-sm text-loftly-ink-muted">
         {card.display_name} · {card.id}
       </p>
       <CardForm card={card} accessToken={session.accessToken} />

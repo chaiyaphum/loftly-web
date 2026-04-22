@@ -137,7 +137,7 @@ export function ArticleForm({ article, accessToken }: Props) {
         </Field>
         <Field label="Article type" required>
           <select
-            className="h-10 rounded-md border border-slate-300 px-2 text-sm"
+            className="h-10 rounded-md border border-loftly-divider px-2 text-sm"
             value={form.article_type}
             onChange={(e) => upd('article_type', e.target.value as ArticleType)}
           >
@@ -149,7 +149,7 @@ export function ArticleForm({ article, accessToken }: Props) {
         </Field>
         <Field label="State" required>
           <select
-            className="h-10 rounded-md border border-slate-300 px-2 text-sm"
+            className="h-10 rounded-md border border-loftly-divider px-2 text-sm"
             value={form.currentState}
             onChange={(e) =>
               upd('currentState', e.target.value as ArticleState)
@@ -180,7 +180,7 @@ export function ArticleForm({ article, accessToken }: Props) {
 
       <Field label="Summary (Thai)" required>
         <textarea
-          className="h-20 w-full rounded-md border border-slate-300 p-2 text-sm"
+          className="h-20 w-full rounded-md border border-loftly-divider p-2 text-sm"
           value={form.summary_th}
           onChange={(e) => upd('summary_th', e.target.value)}
           required
@@ -188,7 +188,7 @@ export function ArticleForm({ article, accessToken }: Props) {
       </Field>
       <Field label="Summary (English)">
         <textarea
-          className="h-20 w-full rounded-md border border-slate-300 p-2 text-sm"
+          className="h-20 w-full rounded-md border border-loftly-divider p-2 text-sm"
           value={form.summary_en}
           onChange={(e) => upd('summary_en', e.target.value)}
         />
@@ -196,7 +196,7 @@ export function ArticleForm({ article, accessToken }: Props) {
 
       <div>
         <div className="mb-2 flex items-center justify-between">
-          <span className="text-sm font-medium text-slate-700">
+          <span className="text-sm font-medium text-loftly-ink">
             Body (Markdown)
           </span>
           <div className="flex items-center gap-2 text-xs">
@@ -205,7 +205,7 @@ export function ArticleForm({ article, accessToken }: Props) {
               className={
                 previewLang === 'th'
                   ? 'rounded bg-slate-900 px-2 py-1 text-white'
-                  : 'rounded border border-slate-300 px-2 py-1 text-slate-700'
+                  : 'rounded border border-loftly-divider px-2 py-1 text-loftly-ink'
               }
               onClick={() => setPreviewLang('th')}
             >
@@ -216,7 +216,7 @@ export function ArticleForm({ article, accessToken }: Props) {
               className={
                 previewLang === 'en'
                   ? 'rounded bg-slate-900 px-2 py-1 text-white'
-                  : 'rounded border border-slate-300 px-2 py-1 text-slate-700'
+                  : 'rounded border border-loftly-divider px-2 py-1 text-loftly-ink'
               }
               onClick={() => setPreviewLang('en')}
             >
@@ -226,7 +226,7 @@ export function ArticleForm({ article, accessToken }: Props) {
         </div>
         <div className="grid gap-3 md:grid-cols-2">
           <textarea
-            className="h-80 w-full rounded-md border border-slate-300 p-2 font-mono text-sm"
+            className="h-80 w-full rounded-md border border-loftly-divider p-2 font-mono text-sm"
             value={previewLang === 'th' ? form.body_th : form.body_en}
             onChange={(e) =>
               previewLang === 'th'
@@ -236,10 +236,10 @@ export function ArticleForm({ article, accessToken }: Props) {
             placeholder={previewLang === 'th' ? 'Markdown body (Thai)' : 'Markdown body (English)'}
           />
           <div
-            className="h-80 overflow-auto rounded-md border border-slate-200 bg-slate-50 p-3 text-sm"
+            className="h-80 overflow-auto rounded-md border border-loftly-divider bg-loftly-teal-soft/40 p-3 text-sm"
             aria-label="Markdown preview"
           >
-            <pre className="whitespace-pre-wrap text-xs text-slate-700">
+            <pre className="whitespace-pre-wrap text-xs text-loftly-ink">
               {previewLang === 'th' ? form.body_th : form.body_en ||
                 '(empty)'}
             </pre>
@@ -255,7 +255,7 @@ export function ArticleForm({ article, accessToken }: Props) {
       </Field>
 
       {error && (
-        <p role="alert" className="rounded-md bg-red-50 p-3 text-sm text-red-900">
+        <p role="alert" className="rounded-md bg-loftly-danger/10 p-3 text-sm text-loftly-danger">
           {error}
         </p>
       )}
@@ -270,7 +270,7 @@ export function ArticleForm({ article, accessToken }: Props) {
         </button>
 
         {article && transitions.length > 0 && (
-          <span className="ml-3 flex flex-wrap items-center gap-2 text-sm text-slate-600">
+          <span className="ml-3 flex flex-wrap items-center gap-2 text-sm text-loftly-ink-muted">
             Transition →
             {transitions.map((st) => (
               <button
@@ -278,7 +278,7 @@ export function ArticleForm({ article, accessToken }: Props) {
                 type="button"
                 disabled={state === 'saving'}
                 onClick={() => void save(st)}
-                className="rounded-md border border-slate-300 px-3 py-1.5 text-xs hover:bg-slate-50 disabled:opacity-50"
+                className="rounded-md border border-loftly-divider px-3 py-1.5 text-xs hover:bg-loftly-teal-soft/40 disabled:opacity-50"
               >
                 {st}
               </button>
@@ -301,7 +301,7 @@ function Field({
 }) {
   return (
     <label className="block space-y-1">
-      <span className="text-sm font-medium text-slate-700">
+      <span className="text-sm font-medium text-loftly-ink">
         {label}
         {required && <span className="ml-1 text-red-500">*</span>}
       </span>

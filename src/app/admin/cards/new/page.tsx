@@ -12,7 +12,7 @@ export default async function NewAdminCardPage() {
   return (
     <section className="space-y-4">
       <nav className="text-sm">
-        <Link href="/admin/cards" className="text-slate-500 hover:underline">
+        <Link href="/admin/cards" className="text-loftly-ink-muted hover:underline">
           ← Cards
         </Link>
       </nav>

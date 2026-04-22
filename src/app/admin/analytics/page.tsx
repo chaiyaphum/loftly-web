@@ -77,7 +77,7 @@ export default async function AdminAnalyticsPage() {
     <section className="space-y-5" data-testid="admin-analytics-page">
       <header className="space-y-1">
         <h1 className="text-2xl font-semibold">Analytics</h1>
-        <p className="text-sm text-slate-500">
+        <p className="text-sm text-loftly-ink-muted">
           Seed-round metrics · {metrics?.as_of ?? todayIsoUtc()}
         </p>
       </header>
@@ -85,7 +85,7 @@ export default async function AdminAnalyticsPage() {
       {error ? (
         <p
           role="alert"
-          className="rounded-md border border-red-200 bg-red-50 p-3 text-sm text-red-900"
+          className="rounded-md border border-red-200 bg-loftly-danger/10 p-3 text-sm text-loftly-danger"
           data-testid="admin-analytics-error"
         >
           {error}
@@ -104,22 +104,22 @@ export default async function AdminAnalyticsPage() {
               <div className="space-y-2">
                 <dl className="grid grid-cols-2 gap-2 text-xs">
                   <div>
-                    <dt className="text-slate-500">WAU</dt>
+                    <dt className="text-loftly-ink-muted">WAU</dt>
                     <dd className="font-medium">{formatInt(metrics.users.wau)}</dd>
                   </div>
                   <div>
-                    <dt className="text-slate-500">MAU</dt>
+                    <dt className="text-loftly-ink-muted">MAU</dt>
                     <dd className="font-medium">{formatInt(metrics.users.mau)}</dd>
                   </div>
                   <div>
-                    <dt className="text-slate-500">Consent grant</dt>
+                    <dt className="text-loftly-ink-muted">Consent grant</dt>
                     <dd className="font-medium">
                       {formatPct(metrics.users.consent_grant_pct)}
                     </dd>
                   </div>
                 </dl>
                 <div>
-                  <p className="mb-1 text-xs text-slate-500">12-week retention</p>
+                  <p className="mb-1 text-xs text-loftly-ink-muted">12-week retention</p>
                   <RetentionSparkline
                     points={metrics.users.retention_12w ?? []}
                     testId="panel-users-sparkline"
@@ -137,25 +137,25 @@ export default async function AdminAnalyticsPage() {
             footer={
               <dl className="grid grid-cols-2 gap-2 text-xs">
                 <div>
-                  <dt className="text-slate-500">Unique users</dt>
+                  <dt className="text-loftly-ink-muted">Unique users</dt>
                   <dd className="font-medium">
                     {formatInt(metrics.selector.unique_users)}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-slate-500">Avg latency</dt>
+                  <dt className="text-loftly-ink-muted">Avg latency</dt>
                   <dd className="font-medium">
                     {formatMs(metrics.selector.avg_latency_ms)}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-slate-500">Top-1 conversion</dt>
+                  <dt className="text-loftly-ink-muted">Top-1 conversion</dt>
                   <dd className="font-medium">
                     {formatPct(metrics.selector.top1_conversion_rate)}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-slate-500">Eval recall</dt>
+                  <dt className="text-loftly-ink-muted">Eval recall</dt>
                   <dd className="font-medium">
                     {formatPct(metrics.selector.eval_recall)}
                   </dd>
@@ -202,12 +202,12 @@ export default async function AdminAnalyticsPage() {
                   formatTotal={formatTHB}
                 />
                 <div>
-                  <p className="mb-1 text-xs text-slate-500">Top 5 cards</p>
+                  <p className="mb-1 text-xs text-loftly-ink-muted">Top 5 cards</p>
                   <table
                     className="w-full text-xs"
                     data-testid="panel-affiliate-topcards"
                   >
-                    <thead className="text-left text-slate-500">
+                    <thead className="text-left text-loftly-ink-muted">
                       <tr>
                         <th className="py-1 font-medium">Card</th>
                         <th className="py-1 font-medium">Conv.</th>
@@ -218,7 +218,7 @@ export default async function AdminAnalyticsPage() {
                       {(metrics.affiliate.top_cards ?? [])
                         .slice(0, 5)
                         .map((c) => (
-                          <tr key={c.card_slug} className="border-t border-slate-100">
+                          <tr key={c.card_slug} className="border-t border-loftly-divider">
                             <td className="py-1 font-medium">{c.card_slug}</td>
                             <td className="py-1">{formatInt(c.conversions)}</td>
                             <td className="py-1">{formatTHB(c.commission_thb)}</td>
@@ -239,13 +239,13 @@ export default async function AdminAnalyticsPage() {
             footer={
               <dl className="grid grid-cols-2 gap-2 text-xs">
                 <div>
-                  <dt className="text-slate-500">Avg article age</dt>
+                  <dt className="text-loftly-ink-muted">Avg article age</dt>
                   <dd className="font-medium">
                     {formatInt(metrics.content.avg_article_age_days)} days
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-slate-500">schema.org valid</dt>
+                  <dt className="text-loftly-ink-muted">schema.org valid</dt>
                   <dd className="font-medium">
                     {formatPct(metrics.content.schema_validation_rate)}
                   </dd>
@@ -262,19 +262,19 @@ export default async function AdminAnalyticsPage() {
             footer={
               <dl className="grid grid-cols-2 gap-2 text-xs">
                 <div>
-                  <dt className="text-slate-500">Spend / MAU</dt>
+                  <dt className="text-loftly-ink-muted">Spend / MAU</dt>
                   <dd className="font-medium">
                     {formatTHB(metrics.llm_costs.spend_per_mau_thb)}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-slate-500">Prompt-cache hit</dt>
+                  <dt className="text-loftly-ink-muted">Prompt-cache hit</dt>
                   <dd className="font-medium">
                     {formatPct(metrics.llm_costs.prompt_cache_hit_rate)}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-slate-500">Haiku fallback</dt>
+                  <dt className="text-loftly-ink-muted">Haiku fallback</dt>
                   <dd className="font-medium">
                     {formatPct(metrics.llm_costs.haiku_fallback_rate)}
                   </dd>
@@ -291,13 +291,13 @@ export default async function AdminAnalyticsPage() {
             footer={
               <dl className="grid grid-cols-2 gap-2 text-xs">
                 <div>
-                  <dt className="text-slate-500">5xx rate</dt>
+                  <dt className="text-loftly-ink-muted">5xx rate</dt>
                   <dd className="font-medium">
                     {formatPct(metrics.system.error_rate_5xx, 2)}
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-slate-500">p95 latency</dt>
+                  <dt className="text-loftly-ink-muted">p95 latency</dt>
                   <dd className="font-medium">
                     {formatMs(metrics.system.p95_latency_ms)}
                   </dd>
@@ -308,7 +308,7 @@ export default async function AdminAnalyticsPage() {
         </div>
       ) : (
         <p
-          className="rounded-md border border-dashed border-slate-200 p-6 text-sm text-slate-500"
+          className="rounded-md border border-dashed border-loftly-divider p-6 text-sm text-loftly-ink-muted"
           data-testid="admin-analytics-loading"
         >
           Loading metrics…

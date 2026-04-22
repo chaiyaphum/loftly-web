@@ -178,7 +178,7 @@ export function WaitlistClient({
         <div className="flex items-center gap-3">
           <label
             htmlFor="waitlist-source"
-            className="text-sm font-medium text-slate-700"
+            className="text-sm font-medium text-loftly-ink"
           >
             {labels.filterSource}
           </label>
@@ -188,7 +188,7 @@ export function WaitlistClient({
             onChange={(ev) =>
               applyFilter(ev.target.value as SourceFilterValue)
             }
-            className="rounded-md border border-slate-300 bg-white px-2 py-1 text-sm"
+            className="rounded-md border border-loftly-divider bg-white px-2 py-1 text-sm"
             data-testid="admin-waitlist-source-filter"
           >
             <option value="all">{labels.filterAll}</option>
@@ -196,7 +196,7 @@ export function WaitlistClient({
             <option value="coming-soon">{labels.filterComingSoon}</option>
           </select>
           <span
-            className="text-sm text-slate-600"
+            className="text-sm text-loftly-ink-muted"
             data-testid="admin-waitlist-summary"
           >
             {labels.summaryShown(entries.length)} · pricing:{' '}
@@ -207,7 +207,7 @@ export function WaitlistClient({
           type="button"
           onClick={handleExport}
           disabled={exporting || entries.length === 0}
-          className="rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-60"
+          className="rounded-md border border-loftly-divider bg-white px-3 py-1.5 text-sm font-medium text-loftly-ink hover:bg-loftly-teal-soft/40 disabled:cursor-not-allowed disabled:opacity-60"
           data-testid="admin-waitlist-export"
         >
           {exporting ? labels.exporting : labels.exportCsv}
@@ -217,7 +217,7 @@ export function WaitlistClient({
       {exportError && (
         <p
           role="alert"
-          className="rounded-md border border-red-200 bg-red-50 p-2 text-sm text-red-900"
+          className="rounded-md border border-red-200 bg-loftly-danger/10 p-2 text-sm text-loftly-danger"
           data-testid="admin-waitlist-export-error"
         >
           {exportError}
@@ -227,19 +227,19 @@ export function WaitlistClient({
       {loadError && (
         <p
           role="alert"
-          className="rounded-md border border-red-200 bg-red-50 p-2 text-sm text-red-900"
+          className="rounded-md border border-red-200 bg-loftly-danger/10 p-2 text-sm text-loftly-danger"
           data-testid="admin-waitlist-load-error"
         >
           {loadError}
         </p>
       )}
 
-      <div className="overflow-x-auto rounded-md border border-slate-200 bg-white">
+      <div className="overflow-x-auto rounded-md border border-loftly-divider bg-white">
         <table
           className="w-full text-sm"
           data-testid="admin-waitlist-table"
         >
-          <thead className="bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-500">
+          <thead className="bg-loftly-teal-soft/40 text-left text-xs uppercase tracking-wide text-loftly-ink-muted">
             <tr>
               <th className="px-3 py-2 font-medium">
                 {labels.columns.createdAt}
@@ -260,7 +260,7 @@ export function WaitlistClient({
               <tr data-testid="admin-waitlist-empty">
                 <td
                   colSpan={6}
-                  className="px-3 py-6 text-center text-sm text-slate-500"
+                  className="px-3 py-6 text-center text-sm text-loftly-ink-muted"
                 >
                   {labels.emptyState}
                 </td>
@@ -269,21 +269,21 @@ export function WaitlistClient({
               entries.map((e) => (
                 <tr
                   key={e.id}
-                  className="border-t border-slate-100"
+                  className="border-t border-loftly-divider"
                   data-testid={`admin-waitlist-row-${e.id}`}
                 >
-                  <td className="px-3 py-2 text-xs text-slate-600">
+                  <td className="px-3 py-2 text-xs text-loftly-ink-muted">
                     {formatCreatedAt(e.created_at)}
                   </td>
-                  <td className="px-3 py-2 font-medium text-slate-900">
+                  <td className="px-3 py-2 font-medium text-loftly-ink">
                     {e.email}
                   </td>
-                  <td className="px-3 py-2 text-slate-700">{e.source}</td>
-                  <td className="px-3 py-2 text-slate-700">
+                  <td className="px-3 py-2 text-loftly-ink">{e.source}</td>
+                  <td className="px-3 py-2 text-loftly-ink">
                     {e.variant ?? '—'}
                   </td>
-                  <td className="px-3 py-2 text-slate-700">{e.tier ?? '—'}</td>
-                  <td className="px-3 py-2 tabular-nums text-slate-700">
+                  <td className="px-3 py-2 text-loftly-ink">{e.tier ?? '—'}</td>
+                  <td className="px-3 py-2 tabular-nums text-loftly-ink">
                     {e.monthly_price_thb ?? '—'}
                   </td>
                 </tr>
@@ -299,7 +299,7 @@ export function WaitlistClient({
             type="button"
             onClick={handleLoadMore}
             disabled={loadingMore}
-            className="rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-60"
+            className="rounded-md border border-loftly-divider bg-white px-3 py-1.5 text-sm font-medium text-loftly-ink hover:bg-loftly-teal-soft/40 disabled:cursor-not-allowed disabled:opacity-60"
             data-testid="admin-waitlist-load-more"
           >
             {loadingMore ? labels.loadingMore : labels.loadMore}

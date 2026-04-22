@@ -101,12 +101,12 @@ export function IngestionCoverageTable({
   }
 
   return (
-    <div className="overflow-x-auto rounded-md border border-slate-200 bg-white">
+    <div className="overflow-x-auto rounded-md border border-loftly-divider bg-white">
       <table
         className="w-full text-sm"
         data-testid="admin-ingestion-table"
       >
-        <thead className="bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-500">
+        <thead className="bg-loftly-teal-soft/40 text-left text-xs uppercase tracking-wide text-loftly-ink-muted">
           <tr>
             <th className="px-3 py-2 font-medium">{labels.columns.bank}</th>
             <th className="px-3 py-2 font-medium">
@@ -129,12 +129,12 @@ export function IngestionCoverageTable({
             return (
               <tr
                 key={b.bank_slug}
-                className="border-t border-slate-100"
+                className="border-t border-loftly-divider"
                 data-testid={`admin-ingestion-row-${b.bank_slug}`}
               >
-                <td className="px-3 py-2 font-medium text-slate-900">
+                <td className="px-3 py-2 font-medium text-loftly-ink">
                   {b.bank_name}
-                  <div className="text-xs text-slate-500">{b.bank_slug}</div>
+                  <div className="text-xs text-loftly-ink-muted">{b.bank_slug}</div>
                 </td>
                 <td className="px-3 py-2 tabular-nums">
                   {b.deal_harvester_count}
@@ -145,7 +145,7 @@ export function IngestionCoverageTable({
                 <td className="px-3 py-2 tabular-nums font-semibold">
                   {b.active_promos_count}
                 </td>
-                <td className="px-3 py-2 text-xs text-slate-600">
+                <td className="px-3 py-2 text-xs text-loftly-ink-muted">
                   {formatLastSynced(b.last_synced_at, labels.never)}
                 </td>
                 <td className="px-3 py-2">
@@ -168,7 +168,7 @@ export function IngestionCoverageTable({
                       type="button"
                       onClick={() => handleResync(b.bank_slug)}
                       disabled={state.status === 'running'}
-                      className="rounded-md border border-slate-300 bg-white px-2 py-1 text-xs font-medium text-slate-700 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-60"
+                      className="rounded-md border border-loftly-divider bg-white px-2 py-1 text-xs font-medium text-loftly-ink hover:bg-loftly-teal-soft/40 disabled:cursor-not-allowed disabled:opacity-60"
                       data-testid={`admin-ingestion-resync-${b.bank_slug}`}
                     >
                       {state.status === 'running'
@@ -180,7 +180,7 @@ export function IngestionCoverageTable({
                     {state.status === 'error' && state.message && (
                       <span
                         role="alert"
-                        className="text-xs text-red-700"
+                        className="text-xs text-loftly-danger"
                         data-testid={`admin-ingestion-resync-error-${b.bank_slug}`}
                       >
                         {state.message}

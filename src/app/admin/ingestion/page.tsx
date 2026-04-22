@@ -169,7 +169,7 @@ export default async function AdminIngestionPage() {
     <section className="space-y-5" data-testid="admin-ingestion-page">
       <header className="space-y-1">
         <h1 className="text-2xl font-semibold">Data ingestion coverage</h1>
-        <p className="text-sm text-slate-500">
+        <p className="text-sm text-loftly-ink-muted">
           Per-bank view of deal-harvester vs. manual-catalog counts — use this
           page weekly to spot where the pipeline has gaps.
         </p>
@@ -178,7 +178,7 @@ export default async function AdminIngestionPage() {
       {usingStub && (
         <p
           role="note"
-          className="rounded-md border border-amber-300 bg-amber-50 p-3 text-sm text-amber-900"
+          className="rounded-md border border-amber-300 bg-loftly-amber/15 p-3 text-sm text-loftly-amber-urgent"
           data-testid="admin-ingestion-stub-banner"
         >
           <strong>TODO(backend):</strong> <code>GET /v1/admin/ingestion/coverage</code>{' '}
@@ -191,7 +191,7 @@ export default async function AdminIngestionPage() {
       {error ? (
         <p
           role="alert"
-          className="rounded-md border border-red-200 bg-red-50 p-3 text-sm text-red-900"
+          className="rounded-md border border-red-200 bg-loftly-danger/10 p-3 text-sm text-loftly-danger"
           data-testid="admin-ingestion-error"
         >
           {error}
@@ -202,28 +202,28 @@ export default async function AdminIngestionPage() {
             className="grid grid-cols-1 gap-3 sm:grid-cols-3"
             data-testid="admin-ingestion-summary"
           >
-            <div className="rounded-md border border-slate-200 bg-white p-4">
-              <p className="text-xs uppercase tracking-wide text-slate-500">
+            <div className="rounded-md border border-loftly-divider bg-white p-4">
+              <p className="text-xs uppercase tracking-wide text-loftly-ink-muted">
                 Overall coverage
               </p>
               <p
-                className="mt-1 text-2xl font-semibold text-slate-900"
+                className="mt-1 text-2xl font-semibold text-loftly-ink"
                 data-testid="admin-ingestion-overall-pct"
               >
                 {coverage.overall_coverage_pct.toFixed(1)}%
               </p>
             </div>
-            <div className="rounded-md border border-slate-200 bg-white p-4">
-              <p className="text-xs uppercase tracking-wide text-slate-500">
+            <div className="rounded-md border border-loftly-divider bg-white p-4">
+              <p className="text-xs uppercase tracking-wide text-loftly-ink-muted">
                 Unmapped promos
               </p>
               <p
-                className="mt-1 text-2xl font-semibold text-slate-900"
+                className="mt-1 text-2xl font-semibold text-loftly-ink"
                 data-testid="admin-ingestion-unmapped"
               >
                 {coverage.unmapped_promos_count}
               </p>
-              <p className="mt-1 text-xs text-slate-500">
+              <p className="mt-1 text-xs text-loftly-ink-muted">
                 Harvested but not yet tied to a card — see{' '}
                 <a
                   href="/admin/mapping-queue"
@@ -234,12 +234,12 @@ export default async function AdminIngestionPage() {
                 .
               </p>
             </div>
-            <div className="rounded-md border border-slate-200 bg-white p-4">
-              <p className="text-xs uppercase tracking-wide text-slate-500">
+            <div className="rounded-md border border-loftly-divider bg-white p-4">
+              <p className="text-xs uppercase tracking-wide text-loftly-ink-muted">
                 Most recent sync
               </p>
               <p
-                className="mt-1 text-lg font-semibold text-slate-900"
+                className="mt-1 text-lg font-semibold text-loftly-ink"
                 data-testid="admin-ingestion-last-sync"
               >
                 {formatLastSynced(mostRecentSync, labels.never)}
@@ -255,7 +255,7 @@ export default async function AdminIngestionPage() {
         </>
       ) : (
         <p
-          className="rounded-md border border-dashed border-slate-200 p-6 text-sm text-slate-500"
+          className="rounded-md border border-dashed border-loftly-divider p-6 text-sm text-loftly-ink-muted"
           data-testid="admin-ingestion-loading"
         >
           Loading ingestion coverage…

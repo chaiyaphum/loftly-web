@@ -136,7 +136,7 @@ export function PromoForm({ promo, accessToken }: Props) {
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
       {readOnly && (
-        <p className="rounded-md bg-amber-50 p-3 text-sm text-amber-900">
+        <p className="rounded-md bg-loftly-amber/15 p-3 text-sm text-loftly-amber-urgent">
           Synced from external source — editing key fields is disabled to
           prevent drift.
         </p>
@@ -160,7 +160,7 @@ export function PromoForm({ promo, accessToken }: Props) {
         </Field>
         <Field label="Promo type" required>
           <select
-            className="h-10 rounded-md border border-slate-300 px-2 text-sm"
+            className="h-10 rounded-md border border-loftly-divider px-2 text-sm"
             value={form.promo_type}
             onChange={(e) =>
               upd('promo_type', e.target.value as Promo['promo_type'])
@@ -239,7 +239,7 @@ export function PromoForm({ promo, accessToken }: Props) {
 
       <Field label="Description (Thai)">
         <textarea
-          className="h-24 w-full rounded-md border border-slate-300 p-2 text-sm"
+          className="h-24 w-full rounded-md border border-loftly-divider p-2 text-sm"
           value={form.description_th}
           onChange={(e) => upd('description_th', e.target.value)}
         />
@@ -262,7 +262,7 @@ export function PromoForm({ promo, accessToken }: Props) {
       </label>
 
       {error && (
-        <p role="alert" className="rounded-md bg-red-50 p-3 text-sm text-red-900">
+        <p role="alert" className="rounded-md bg-loftly-danger/10 p-3 text-sm text-loftly-danger">
           {error}
         </p>
       )}
@@ -289,7 +289,7 @@ function Field({
 }) {
   return (
     <label className="block space-y-1">
-      <span className="text-sm font-medium text-slate-700">
+      <span className="text-sm font-medium text-loftly-ink">
         {label}
         {required && <span className="ml-1 text-red-500">*</span>}
       </span>

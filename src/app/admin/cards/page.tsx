@@ -62,7 +62,7 @@ export default async function AdminCardsPage({
             className={
               status === opt
                 ? 'rounded-md bg-slate-900 px-3 py-1.5 text-xs font-medium text-white'
-                : 'rounded-md border border-slate-300 px-3 py-1.5 text-xs text-slate-700 hover:bg-slate-50'
+                : 'rounded-md border border-loftly-divider px-3 py-1.5 text-xs text-loftly-ink hover:bg-loftly-teal-soft/40'
             }
           >
             {opt}
@@ -71,15 +71,15 @@ export default async function AdminCardsPage({
       </div>
 
       {error ? (
-        <p className="rounded-md bg-red-50 p-3 text-sm text-red-900">{error}</p>
+        <p className="rounded-md bg-loftly-danger/10 p-3 text-sm text-loftly-danger">{error}</p>
       ) : cards.length === 0 ? (
-        <p className="rounded-md border border-dashed border-slate-200 p-6 text-sm text-slate-500">
+        <p className="rounded-md border border-dashed border-loftly-divider p-6 text-sm text-loftly-ink-muted">
           No cards yet. Create one to get started.
         </p>
       ) : (
-        <div className="overflow-auto rounded-md border border-slate-200 bg-white">
+        <div className="overflow-auto rounded-md border border-loftly-divider bg-white">
           <table className="w-full text-sm">
-            <thead className="border-b bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-500">
+            <thead className="border-b bg-loftly-teal-soft/40 text-left text-xs uppercase tracking-wide text-loftly-ink-muted">
               <tr>
                 <th className="px-4 py-2">Name</th>
                 <th className="px-4 py-2">Bank</th>
@@ -93,11 +93,11 @@ export default async function AdminCardsPage({
               {cards.map((c) => (
                 <tr key={c.id}>
                   <td className="px-4 py-2 font-medium">{c.display_name}</td>
-                  <td className="px-4 py-2 text-slate-600">
+                  <td className="px-4 py-2 text-loftly-ink-muted">
                     {c.bank.display_name_en}
                   </td>
-                  <td className="px-4 py-2 text-slate-600">{c.network}</td>
-                  <td className="px-4 py-2 text-slate-600">
+                  <td className="px-4 py-2 text-loftly-ink-muted">{c.network}</td>
+                  <td className="px-4 py-2 text-loftly-ink-muted">
                     {c.annual_fee_thb != null
                       ? `THB ${new Intl.NumberFormat('en-US').format(
                           c.annual_fee_thb,

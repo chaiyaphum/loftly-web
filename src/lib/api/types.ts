@@ -151,9 +151,30 @@ export interface SelectorStackItem {
   annual_fee_thb?: number | null;
   reason_th: string;
   reason_en?: string | null;
+  /**
+   * POST_V1 §3 Tier A (2026-04-22) — ids of promos the LLM cited for this
+   * stack card. Server-validated against the live snapshot; unknown ids are
+   * stripped before reaching the client.
+   */
+  cited_promo_ids?: string[];
 }
 
 export type SelectorStackCard = SelectorStackItem;
+
+/**
+ * Minimal promo details denormalized onto SelectorResult so the frontend
+ * can render a PromoChip without a second round-trip. Mirrors the backend
+ * `PromoChipPayload` (see `loftly-api/src/loftly/schemas/selector.py`).
+ */
+export interface PromoChipPayload {
+  promo_id: string;
+  merchant?: string | null;
+  discount_value?: string | null;
+  discount_type?: string | null;
+  valid_until?: string | null;
+  min_spend?: number | null;
+  source_url?: string | null;
+}
 
 export interface SelectorResult {
   session_id: string;
@@ -169,6 +190,11 @@ export interface SelectorResult {
   llm_model: string;
   fallback: boolean;
   partial_unlock?: boolean;
+  /** POST_V1 §3 Tier A — union of all stack items' cited promo ids. */
+  cited_promo_ids?: string[];
+  promo_context_status?: 'ok' | 'degraded' | 'stale';
+  promo_snapshot_digest?: string | null;
+  promo_chips?: PromoChipPayload[];
 }
 
 export interface MagicLinkRequest {

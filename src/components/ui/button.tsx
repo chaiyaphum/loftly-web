@@ -3,28 +3,35 @@ import { Slot } from '@radix-ui/react-slot';
 import { cn } from '@/lib/utils';
 
 /**
- * Minimal shadcn-style Button — proves the shadcn/ui pattern works in this repo.
- * Additional variants (outline, ghost, destructive) are added as needed; we
- * deliberately do NOT run `shadcn add` for every primitive up front.
+ * Button primitive — brief §7 variants.
  */
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   asChild?: boolean;
-  variant?: 'default' | 'outline';
-  size?: 'default' | 'sm' | 'lg';
+  variant?: 'default' | 'outline' | 'ghost' | 'danger' | 'secondary';
+  size?: 'default' | 'sm' | 'lg' | 'icon';
 }
 
 const baseStyles =
-  'inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-loftly-sky disabled:pointer-events-none disabled:opacity-50';
+  'inline-flex items-center justify-center gap-2 rounded-md font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 whitespace-nowrap';
 
 const variantStyles: Record<NonNullable<ButtonProps['variant']>, string> = {
-  default: 'bg-loftly-baht text-white hover:bg-loftly-baht/90',
-  outline: 'border border-slate-300 bg-transparent text-loftly-ink hover:bg-slate-50',
+  default:
+    'bg-loftly-teal text-white hover:bg-loftly-teal-hover shadow-subtle',
+  secondary:
+    'bg-loftly-teal-soft text-loftly-teal hover:bg-loftly-teal-soft/80',
+  outline:
+    'border border-loftly-divider bg-loftly-surface text-loftly-ink hover:bg-loftly-teal-soft hover:border-loftly-teal hover:text-loftly-teal',
+  ghost:
+    'bg-transparent text-loftly-ink hover:bg-loftly-teal-soft hover:text-loftly-teal',
+  danger:
+    'bg-loftly-danger text-white hover:bg-loftly-danger/90',
 };
 
 const sizeStyles: Record<NonNullable<ButtonProps['size']>, string> = {
   default: 'h-10 px-4 text-sm',
   sm: 'h-8 px-3 text-sm',
   lg: 'h-12 px-6 text-base',
+  icon: 'h-10 w-10',
 };
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(function Button(

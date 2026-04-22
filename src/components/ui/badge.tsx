@@ -1,13 +1,23 @@
 import * as React from 'react';
 import { cn } from '@/lib/utils';
 
-export type BadgeVariant = 'default' | 'outline' | 'warn' | 'success';
+export type BadgeVariant =
+  | 'default'
+  | 'outline'
+  | 'warn'
+  | 'success'
+  | 'teal'
+  | 'amber'
+  | 'danger';
 
 const styles: Record<BadgeVariant, string> = {
-  default: 'bg-slate-100 text-slate-900',
-  outline: 'border border-slate-300 bg-transparent text-slate-700',
-  warn: 'bg-amber-50 text-amber-900',
-  success: 'bg-emerald-50 text-emerald-900',
+  default: 'bg-loftly-divider/60 text-loftly-ink',
+  outline: 'border border-loftly-divider bg-transparent text-loftly-ink-muted',
+  teal: 'bg-loftly-teal-soft text-loftly-teal',
+  amber: 'bg-loftly-amber/10 text-loftly-amber-urgent',
+  success: 'bg-loftly-teal-soft text-loftly-success',
+  warn: 'bg-loftly-amber/15 text-loftly-amber-urgent',
+  danger: 'bg-loftly-danger/10 text-loftly-danger',
 };
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
@@ -22,7 +32,7 @@ export function Badge({
   return (
     <span
       className={cn(
-        'inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium',
+        'inline-flex items-center rounded-full px-2 py-0.5 text-caption font-medium',
         styles[variant],
         className,
       )}

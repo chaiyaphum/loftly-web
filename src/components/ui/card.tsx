@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { cn } from '@/lib/utils';
 
-/**
- * shadcn-style Card primitive — minimal. Used for review blocks, result cards,
- * and content panels. Add more subcomponents only when pages need them.
- */
-
 export const Card = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
@@ -14,7 +9,7 @@ export const Card = React.forwardRef<
     <div
       ref={ref}
       className={cn(
-        'rounded-lg border border-slate-200 bg-white text-loftly-ink shadow-sm',
+        'rounded-lg border border-loftly-divider bg-loftly-surface text-loftly-ink shadow-subtle',
         className,
       )}
       {...props}
@@ -42,7 +37,7 @@ export const CardTitle = React.forwardRef<
   return (
     <h3
       ref={ref}
-      className={cn('text-lg font-semibold leading-tight', className)}
+      className={cn('text-heading font-semibold leading-tight', className)}
       {...props}
     />
   );
@@ -55,7 +50,7 @@ export const CardDescription = React.forwardRef<
   return (
     <p
       ref={ref}
-      className={cn('text-sm text-slate-600', className)}
+      className={cn('text-body-sm text-loftly-ink-muted', className)}
       {...props}
     />
   );

@@ -11,8 +11,21 @@
     "selectorCta": "Find the right card ▸",
     "merchants": "Merchants",
     "promosToday": "Today's promos",
-    "account": "Your account",
+    "account": "Account",
     "pricing": "Pricing"
+  },
+  "footer": {
+    "affiliateNote": "Loftly earns a commission when you apply through our links — we rank cards by the numbers, not by what pays us.",
+    "featuresHeading": "Features",
+    "featurePromoIntelligence": "Promo Intelligence",
+    "featureMerchantLookup": "Merchant Lookup",
+    "featureSelector": "Card Selector",
+    "featureValuations": "Valuation Engine",
+    "browseHeading": "Browse",
+    "legalHeading": "Legal",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "affiliate": "Affiliate disclosure"
   },
   "common": {
     "back": "← Back",

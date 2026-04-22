@@ -98,47 +98,9 @@ export default async function LandingPage() {
           full-width. Renders nothing if the backend can't supply fresh data. */}
       <LivePromoStrip />
 
-      <main className="mx-auto flex min-h-screen max-w-5xl flex-col gap-16 px-6 py-8">
-        <header className="flex items-center justify-between">
-          <Link href="/" className="text-xl font-semibold">
-            Loftly
-          </Link>
-          <nav className="flex items-center gap-4 text-sm">
-            <Link
-              href="/merchants"
-              className="font-medium text-slate-800 hover:underline"
-            >
-              {tn('merchants')}
-            </Link>
-            <Link href="/cards" className="text-slate-700 hover:underline">
-              {tn('cards')}
-            </Link>
-            <Link
-              href="/valuations"
-              className="text-slate-700 hover:underline"
-            >
-              {tn('valuations')}
-            </Link>
-            <Link href="/pricing" className="text-slate-700 hover:underline">
-              {tn('pricing')}
-            </Link>
-            <Link
-              href="/selector"
-              className="inline-flex items-center rounded-md bg-emerald-700 px-3 py-1.5 font-medium text-white hover:bg-emerald-800"
-            >
-              {tn('selectorCta')}
-            </Link>
-            <Link href="/onboarding" className="text-slate-600 hover:underline">
-              {tn('signIn')}
-            </Link>
-          </nav>
-        </header>
-
+      <main className="mx-auto flex max-w-5xl flex-col gap-16 px-6 py-8">
         {/* Dual hero — Merchant quick-lookup + Selector deep-analysis as
-            co-equal primary CTAs. Replaces the single-CTA LandingHero after
-            the 2026-04-22 (PM) positioning shift (see POSITIONING_SHIFT.md).
-            Returning-user personalization (POST_V1 §3) is temporarily not
-            wired through this component — see DEVLOG. */}
+            co-equal primary CTAs (brief §15.2 + POSITIONING_SHIFT §4.1). */}
         <DualHero />
 
         {/* How it works */}
@@ -227,15 +189,6 @@ export default async function LandingPage() {
           )}
         </section>
 
-        <footer className="mt-auto border-t pt-6 text-sm text-slate-500">
-          <div className="flex flex-wrap gap-4">
-            <Link href="/legal/privacy">{t('footer.privacy')}</Link>
-            <Link href="/legal/terms">{t('footer.terms')}</Link>
-            <Link href="/legal/affiliate-disclosure">
-              {t('footer.affiliate')}
-            </Link>
-          </div>
-        </footer>
       </main>
     </>
   );

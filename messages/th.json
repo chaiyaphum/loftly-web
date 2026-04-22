@@ -11,8 +11,21 @@
     "selectorCta": "ค้นหาบัตรที่ใช่ ▸",
     "merchants": "ร้านค้า",
     "promosToday": "โปรวันนี้",
-    "account": "บัญชีของคุณ",
+    "account": "บัญชี",
     "pricing": "ค่าบริการ"
+  },
+  "footer": {
+    "affiliateNote": "Loftly ได้รับค่าคอมมิชชันเมื่อคุณสมัครบัตรผ่านลิงก์ของเรา — เราแนะนำบัตรที่คุ้มตามข้อมูลเท่านั้น ไม่ใช่จากค่าคอม",
+    "featuresHeading": "ฟีเจอร์",
+    "featurePromoIntelligence": "Promo Intelligence",
+    "featureMerchantLookup": "Merchant Lookup",
+    "featureSelector": "Card Selector",
+    "featureValuations": "Valuation Engine",
+    "browseHeading": "สำรวจ",
+    "legalHeading": "กฎหมาย",
+    "privacy": "ความเป็นส่วนตัว",
+    "terms": "ข้อกำหนด",
+    "affiliate": "เปิดเผย Affiliate"
   },
   "common": {
     "back": "← กลับ",

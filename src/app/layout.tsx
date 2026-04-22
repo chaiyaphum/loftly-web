@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 import './globals.css';
 import { DEFAULT_METADATA, SITE_URL } from '@/lib/seo/metadata';
+import { SiteShell } from '@/components/layout/SiteShell';
 
 // Self-hosted via next/font (per UI_WEB.md §i18n spec — no runtime Google Fonts request).
 const inter = Inter({
@@ -47,7 +48,7 @@ export default async function RootLayout({
     >
       <body className="min-h-screen bg-loftly-warm-white font-sans text-loftly-ink antialiased">
         <NextIntlClientProvider locale={locale} messages={messages}>
-          {children}
+          <SiteShell>{children}</SiteShell>
         </NextIntlClientProvider>
       </body>
     </html>

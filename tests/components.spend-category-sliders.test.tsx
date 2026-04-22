@@ -39,8 +39,8 @@ describe('SpendCategorySliders', () => {
     // 5 sliders total; `other` is disabled (auto-residual).
     const sliders = screen.getAllByRole('slider');
     expect(sliders).toHaveLength(5);
-    expect(screen.getByTestId('spend-value-dining').textContent).toBe('THB 15,000');
-    expect(screen.getByTestId('spend-value-other').textContent).toBe('THB 10,000');
+    expect(screen.getByTestId('spend-value-dining').textContent).toBe('฿15,000');
+    expect(screen.getByTestId('spend-value-other').textContent).toBe('฿10,000');
   });
 
   it('reallocates residual to `other` when one slider moves', () => {

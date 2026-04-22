@@ -148,8 +148,8 @@ describe('CardCompareTable', () => {
     expect(within(table).getAllByText('ธนาคารเอ').length).toBeGreaterThan(0);
     expect(within(table).getAllByText('ธนาคารบี').length).toBeGreaterThan(0);
 
-    // Annual fee formatting (THB prefix + comma separator).
-    expect(within(table).getAllByText(/THB 1,000/).length).toBeGreaterThan(0);
+    // Annual fee formatting (฿ glyph + comma separator).
+    expect(within(table).getAllByText(/฿1,000/).length).toBeGreaterThan(0);
 
     // Missing values render as em-dash somewhere in the tree.
     expect(within(table).getAllByText('—').length).toBeGreaterThan(0);

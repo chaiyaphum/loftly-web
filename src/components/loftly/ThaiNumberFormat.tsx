@@ -3,11 +3,14 @@ import { cn } from '@/lib/utils';
 /**
  * THB display helper.
  *
- * - `full` (default): `THB 80,000` via `Intl.NumberFormat('th-TH')`
- * - `compact`: `80k`, `2m` (ascii, not Thai numerals) — used in dense UI
+ * - `full` (default): `฿80,000` via `Intl.NumberFormat('th-TH')`
+ * - `compact`: `฿80k`, `฿2m` (ascii, not Thai numerals) — used in dense UI
  *   surfaces like the selector results secondary tiers.
  *
- * Per UI_WEB.md §i18n spec: we prefix `THB`, never use `฿` glyph.
+ * Per BRAND.md §3 (canonical): always render THB with the `฿` glyph +
+ * comma thousands. The older `UI_WEB.md §i18n` note that said "prefix THB"
+ * is superseded by BRAND.md and the UI_REDESIGN_BRIEF.md §5 colour
+ * system + V1 design handoff — both consistently use `฿`.
  */
 
 export interface ThaiNumberFormatProps {
@@ -24,7 +27,7 @@ const fullFormatter = new Intl.NumberFormat('th-TH', {
 
 export function formatTHBFull(value: number, hidePrefix = false): string {
   const formatted = fullFormatter.format(Math.round(value));
-  return hidePrefix ? formatted : `THB ${formatted}`;
+  return hidePrefix ? formatted : `฿${formatted}`;
 }
 
 export function formatTHBCompact(value: number, hidePrefix = false): string {
@@ -39,7 +42,7 @@ export function formatTHBCompact(value: number, hidePrefix = false): string {
     body = String(Math.round(abs));
   }
   const out = `${sign}${body}`;
-  return hidePrefix ? out : `THB ${out}`;
+  return hidePrefix ? out : `฿${out}`;
 }
 
 function trimZero(n: number): string {

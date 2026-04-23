@@ -16,7 +16,12 @@ import { TopPromosCarousel } from '@/components/landing/TopPromosCarousel';
 import { WhyLoftly } from '@/components/landing/WhyLoftly';
 import type { Valuation } from '@/lib/api/types';
 
-export const dynamic = 'force-static';
+// Intentionally NOT `force-static`: with `localePrefix: 'as-needed'`, the
+// middleware rewrites `/en` → `/` internally. DO's edge CDN was caching
+// one variant (RSC or HTML) and serving it for both — browsers requesting
+// `/en` got a `text/x-component` response and crashed. Letting this page
+// SSR per-request fixes it; individual data fetches inside the page keep
+// their own `revalidate: 300` ISR so origin load stays flat.
 export const revalidate = 300;
 
 export const metadata: Metadata = buildPageMetadata({

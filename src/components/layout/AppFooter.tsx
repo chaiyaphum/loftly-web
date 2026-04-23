@@ -103,6 +103,14 @@ export function AppFooter() {
             </li>
             <li>
               <a
+                href="/overview.html"
+                className="text-loftly-ink hover:text-loftly-teal"
+              >
+                {t('footer.overview')}
+              </a>
+            </li>
+            <li>
+              <a
                 href="/staging-ui-guide.html"
                 className="text-loftly-ink hover:text-loftly-teal"
               >

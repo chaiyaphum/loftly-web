@@ -1,0 +1,774 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="index, follow" />
+<title>Loftly — ภาพรวม · Overview</title>
+<meta name="description" content="Loftly — live Thai credit-card intelligence. รู้ทันทีว่าใช้บัตรไหนคุ้ม ที่ทุกร้าน ทุกวัน." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+Thai+Looped:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --loftly-teal: #1D9E75;
+    --loftly-teal-hover: #178661;
+    --loftly-teal-soft: #E6F4EF;
+    --loftly-ink: #1E2A3A;
+    --loftly-ink-muted: #4A5568;
+    --loftly-ink-subtle: #7A8699;
+    --loftly-amber: #EF9F27;
+    --loftly-amber-urgent: #D97706;
+    --loftly-amber-soft: #FDF3E3;
+    --loftly-warm-white: #FAF7F2;
+    --loftly-surface: #FFFFFF;
+    --loftly-divider: #E8E4DC;
+    --loftly-success: #15803D;
+  }
+  * { box-sizing: border-box; }
+  html { color-scheme: light; scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', 'Noto Sans Thai Looped', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    font-feature-settings: 'cv11', 'ss01';
+    line-height: 1.6;
+    color: var(--loftly-ink);
+    margin: 0;
+    padding: 0;
+    background: var(--loftly-warm-white);
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    position: relative;
+    padding: 80px 24px 88px;
+    text-align: center;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(60% 80% at 50% 0%, rgba(29,158,117,0.08), transparent 60%),
+      radial-gradient(30% 40% at 85% 25%, rgba(239,159,39,0.06), transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+  }
+  .hero > * { position: relative; z-index: 1; }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: var(--loftly-surface);
+    border: 1px solid var(--loftly-divider);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--loftly-ink-muted);
+    box-shadow: 0 1px 2px rgba(30,42,58,0.04);
+  }
+  .eyebrow .dot {
+    width: 7px; height: 7px; border-radius: 999px;
+    background: var(--loftly-success);
+    animation: pulse 2.2s ease-in-out infinite;
+    box-shadow: 0 0 0 0 rgba(21,128,61,0.4);
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(21,128,61,0.5); }
+    50%      { opacity: 0.8; transform: scale(0.85); box-shadow: 0 0 0 8px rgba(21,128,61,0); }
+  }
+  @media (prefers-reduced-motion: reduce) { .eyebrow .dot { animation: none; } }
+
+  h1 {
+    font-size: clamp(36px, 6vw + 0.5rem, 64px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.04;
+    margin: 18px auto 20px;
+    max-width: 760px;
+    color: var(--loftly-ink);
+    text-wrap: balance;
+  }
+  h1 .accent {
+    position: relative;
+    color: var(--loftly-teal);
+    white-space: nowrap;
+  }
+  h1 .accent svg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -8px;
+    width: 100%;
+    height: 10px;
+    z-index: -1;
+  }
+  .hero .sub {
+    font-size: clamp(16px, 2vw, 19px);
+    color: var(--loftly-ink-muted);
+    max-width: 600px;
+    margin: 0 auto 32px;
+    text-wrap: pretty;
+  }
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 28px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 13px 22px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.14s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: var(--loftly-teal);
+    color: #fff;
+    box-shadow: 0 2px 4px rgba(29,158,117,0.2), 0 1px 2px rgba(30,42,58,0.06);
+  }
+  .btn-primary:hover {
+    background: var(--loftly-teal-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(29,158,117,0.28), 0 2px 4px rgba(30,42,58,0.08);
+  }
+  .btn-outline {
+    background: var(--loftly-surface);
+    color: var(--loftly-ink);
+    border: 1px solid var(--loftly-divider);
+  }
+  .btn-outline:hover {
+    border-color: var(--loftly-teal);
+    color: var(--loftly-teal);
+    background: var(--loftly-teal-soft);
+    transform: translateY(-1px);
+  }
+
+  /* ============ SECTION BASE ============ */
+  section.block {
+    padding: 72px 24px;
+  }
+  section.block.tight {
+    padding: 48px 24px;
+  }
+  .block h2 {
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin: 0 0 12px;
+    color: var(--loftly-ink);
+  }
+  .block .lede {
+    color: var(--loftly-ink-muted);
+    font-size: 16px;
+    max-width: 620px;
+    margin: 0 0 32px;
+  }
+  .section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--loftly-teal);
+    margin-bottom: 10px;
+  }
+
+  /* ============ PILLARS (WHAT WE DO) ============ */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  .pillar {
+    background: var(--loftly-surface);
+    border: 1px solid var(--loftly-divider);
+    border-radius: 14px;
+    padding: 24px;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .pillar:hover {
+    border-color: var(--loftly-teal);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(30,42,58,0.08);
+  }
+  .pillar .icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--loftly-teal-soft);
+    color: var(--loftly-teal);
+    margin-bottom: 14px;
+  }
+  .pillar h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0 0 6px;
+    color: var(--loftly-ink);
+    letter-spacing: -0.01em;
+  }
+  .pillar p {
+    font-size: 14px;
+    color: var(--loftly-ink-muted);
+    line-height: 1.55;
+    margin: 0;
+  }
+  .pillar .stat {
+    margin-top: 12px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--loftly-teal);
+  }
+
+  /* ============ NUMBERS ============ */
+  .numbers-section {
+    background: linear-gradient(135deg, #FDFCFA 0%, var(--loftly-warm-white) 50%, #F7F3EB 100%);
+    border-top: 1px solid var(--loftly-divider);
+    border-bottom: 1px solid var(--loftly-divider);
+  }
+  .numbers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 24px;
+  }
+  .stat-card {
+    text-align: center;
+  }
+  .stat-card .value {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: clamp(34px, 5vw, 44px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--loftly-teal);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-card .label {
+    margin-top: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--loftly-ink);
+  }
+  .stat-card .hint {
+    margin-top: 2px;
+    font-size: 12px;
+    color: var(--loftly-ink-muted);
+  }
+
+  /* ============ FEATURE LISTS ============ */
+  .feature-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  @media (min-width: 720px) {
+    .feature-list { grid-template-columns: 1fr 1fr; }
+  }
+  .feature {
+    background: var(--loftly-surface);
+    border: 1px solid var(--loftly-divider);
+    border-radius: 12px;
+    padding: 18px 20px;
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 14px;
+    align-items: start;
+    transition: all 0.18s ease;
+  }
+  .feature:hover {
+    border-color: var(--loftly-teal);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(30,42,58,0.06);
+  }
+  .feature.next:hover {
+    border-color: var(--loftly-amber);
+    box-shadow: 0 4px 14px rgba(239,159,39,0.12);
+  }
+  .feature .fi {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: var(--loftly-teal-soft);
+    color: var(--loftly-teal);
+    flex-shrink: 0;
+  }
+  .feature.next .fi {
+    background: var(--loftly-amber-soft);
+    color: var(--loftly-amber-urgent);
+  }
+  .feature .body { min-width: 0; }
+  .feature .title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--loftly-ink);
+    letter-spacing: -0.005em;
+    line-height: 1.3;
+  }
+  .feature .title-en {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    color: var(--loftly-ink-subtle);
+    letter-spacing: 0.01em;
+    margin-top: 1px;
+  }
+  .feature .desc {
+    font-size: 13px;
+    color: var(--loftly-ink-muted);
+    margin: 6px 0 0;
+    line-height: 1.5;
+  }
+
+  /* ============ TRUST ROW ============ */
+  .trust-section {
+    padding: 56px 24px 48px;
+    text-align: center;
+    border-top: 1px solid var(--loftly-divider);
+  }
+  .trust-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 20px;
+    margin-top: 20px;
+  }
+  .trust-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    background: var(--loftly-surface);
+    border: 1px solid var(--loftly-divider);
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--loftly-ink-muted);
+  }
+  .trust-chip .cm {
+    color: var(--loftly-success);
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    padding: 36px 24px 48px;
+    border-top: 1px solid var(--loftly-divider);
+    background: var(--loftly-surface);
+  }
+  footer .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  footer .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--loftly-ink);
+  }
+  footer .brand svg { color: var(--loftly-teal); }
+  footer nav {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+  footer a {
+    color: var(--loftly-ink-muted);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.12s ease;
+  }
+  footer a:hover { color: var(--loftly-teal); }
+  footer .meta {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--loftly-divider);
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px;
+    color: var(--loftly-ink-subtle);
+    text-align: center;
+  }
+
+  /* ============ FOCUS + LINKS ============ */
+  :focus-visible {
+    outline: 2px solid var(--loftly-teal);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  a { color: var(--loftly-teal); }
+
+  /* ============ MOBILE ============ */
+  @media (max-width: 540px) {
+    .hero { padding: 60px 20px 64px; }
+    section.block { padding: 48px 20px; }
+    section.block.tight { padding: 36px 20px; }
+    .feature { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow"><span class="dot" aria-hidden="true"></span>Live · Thai credit-card intelligence</span>
+    <h1>
+      รูดบัตรไหน ได้คืนมากสุด<br>
+      ที่ <span class="accent">
+        ร้านนี้
+        <svg viewBox="0 0 200 10" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M2 6 Q50 2 100 5 T198 4" stroke="currentColor" stroke-width="2.5" fill="none" opacity="0.35" stroke-linecap="round"/>
+        </svg>
+      </span>?
+    </h1>
+    <p class="sub">
+      Loftly = ข้อมูลบัตรเครดิตไทยสด ๆ · โปรโมชันอัปเดตทุกวัน · AI ภาษาไทย · ใช้ได้โดยไม่ต้องสมัคร
+    </p>
+    <div class="cta-row">
+      <a href="https://loftly.biggo-analytics.dev/" class="btn btn-primary">เปิดเว็บไซต์ →</a>
+      <a href="https://loftly.biggo-analytics.dev/merchants" class="btn btn-outline">ค้นหาร้านค้า</a>
+      <a href="https://loftly.biggo-analytics.dev/selector" class="btn btn-outline">ลอง Selector</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ WHAT WE DO ============ -->
+<section class="block">
+  <div class="wrap">
+    <div class="section-eyebrow">สิ่งที่ Loftly ทำ</div>
+    <h2>คำตอบเป็นตัวเลข ไม่ใช่ความเห็น</h2>
+    <p class="lede">ทุกคำแนะนำมี THB · ทุกรีวิวมีตัวเลข · ทุกคำตอบอ้างอิงข้อมูลที่ตรวจสอบได้</p>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg>
+        </div>
+        <h3>Live promo data</h3>
+        <p>โปรจาก KTC · SCB · KBank อัปเดตทุกวัน — freshness &lt; 24h ไม่ใช่รีวิวปีเก่าลิงก์ตาย</p>
+        <div class="stat">20+ โปร active · 3 ธนาคาร</div>
+      </div>
+      <div class="pillar">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg>
+        </div>
+        <h3>Merchant-level intel</h3>
+        <p>ถามตรง ๆ: ร้าน X → บัตรไหนคุ้ม + THB ต่อเดือน · ไม่ต้องไล่อ่านรีวิว 10 หน้า</p>
+        <div class="stat">50+ ร้านยอดนิยม</div>
+      </div>
+      <div class="pillar">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3M5.6 5.6l2.1 2.1M3 12h3M5.6 18.4l2.1-2.1M12 18v3M18.4 18.4l-2.1-2.1M21 12h-3M18.4 5.6l-2.1 2.1"/></svg>
+        </div>
+        <h3>Thai-language AI</h3>
+        <p>เหตุผลภาษาไทยที่เข้าใจจริง · ไม่ใช่ translation-smell · Sonnet + Haiku + Typhoon</p>
+        <div class="stat">TH + EN · bilingual</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NUMBERS ============ -->
+<section class="block numbers-section tight">
+  <div class="wrap">
+    <div class="numbers">
+      <div class="stat-card">
+        <div class="value">50+</div>
+        <div class="label">ร้านค้าที่ค้นหาได้</div>
+        <div class="hint">merchant pages</div>
+      </div>
+      <div class="stat-card">
+        <div class="value">20+</div>
+        <div class="label">โปร active ทุกวัน</div>
+        <div class="hint">deal-harvester sync</div>
+      </div>
+      <div class="stat-card">
+        <div class="value">6</div>
+        <div class="label">บัตรในรีวิวเริ่มต้น</div>
+        <div class="hint">catalog growing</div>
+      </div>
+      <div class="stat-card">
+        <div class="value">3</div>
+        <div class="label">ธนาคารไทย</div>
+        <div class="hint">KTC · SCB · KBank</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SHIPPED FEATURES ============ -->
+<section class="block" id="shipped">
+  <div class="wrap">
+    <div class="section-eyebrow">ใช้งานได้แล้ว</div>
+    <h2>MVP · สิ่งที่ Loftly ทำได้ตอนนี้</h2>
+    <p class="lede">10 ฟีเจอร์ที่ทดลองใช้ได้จริงบน staging · กด CTA ด้านบนเพื่อเปิดเว็บ</p>
+
+    <div class="feature-list">
+
+      <div class="feature">
+        <span class="fi" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        <div class="body">
+          <span class="title">Card Selector
+            <span class="title-en">Smart card recommender</span>
+          </span>
+          <p class="desc">ตอบ 3 ข้อ (ใช้จ่าย · หมวด · เป้าหมาย) → บัตร 1–3 ใบพร้อมเหตุผลไทย + ตัวเลข THB · Claude Sonnet + Haiku fallback</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <span class="fi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <div class="body">
+          <span class="title">Merchant Reverse Lookup
+            <span class="title-en">Which card wins at this shop?</span>
+          </span>
+          <p class="desc">พิมพ์ชื่อร้าน (Starbucks · Grab · Shopee · …) → เห็นบัตรที่คุ้มสุด + promo ที่ใช้ได้ · 50 ร้าน seeded</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <span class="fi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <div class="body">
+          <span class="title">โปรสดทุกวัน
+            <span class="title-en">Live promo intelligence</span>
+          </span>
+          <p class="desc">~20 โปร active จาก KTC · SCB · KBank · อัปเดต real-time ผ่าน deal-harvester · กรองตาม bank / category / expiry</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <span class="fi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <div class="body">
+          <span class="title">Chat ถามต่อได้
+            <span class="title-en">Follow-up questions on results</span>
+          </span>
+          <p class="desc">"ทำไมอันดับ 1?" · "ถ้า spend เปลี่ยน 5,000 เพิ่ม Dining?" · ถามได้โดยไม่ต้องกรอกฟอร์มใหม่</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <span class="fi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <div class="body">
+          <span class="title">รีวิวบัตรไทย
+            <span class="title-en">Thai card review library</span>
+          </span>
+          <p class="desc">6+ รีวิวภาษาไทย · earn-rate table ต่อหมวด · confidence band ที่ transparent · กำลังขยายไปครบ 40+</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <span class="fi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <div class="body">
+          <span class="title">มูลค่า THB ต่อแต้ม
+            <span class="title-en">Point-to-THB valuation engine</span>
+          </span>
+          <p class="desc">ค่าแต้ม KrisFlyer · Asia Miles · Bonvoy · Royal Orchid · ROP แบบ transparent + confidence score · อิง redemption จริง</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <span class="fi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <div class="body">
+          <span class="title">Sign-in + PDPA
+            <span class="title-en">OAuth + consent matrix</span>
+          </span>
+          <p class="desc">Google · Apple · LINE · 4-toggle consent (Optimization · Marketing · Analytics · Sharing) + audit log</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <span class="fi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <div class="body">
+          <span class="title">Self-service privacy
+            <span class="title-en">Consent · data export · delete</span>
+          </span>
+          <p class="desc">เปลี่ยน consent ได้เมื่อไร · Download JSON ข้อมูลตัวเอง · ลบบัญชี 14-day grace period</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <span class="fi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <div class="body">
+          <span class="title">One-tap Apply + Affiliate
+            <span class="title-en">Apply CTA with disclosure</span>
+          </span>
+          <p class="desc">แตะ Apply → ลิงก์ธนาคารจริงพร้อม UTM tracking · affiliate disclosure ชัดเจนทุก CTA</p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <span class="fi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <div class="body">
+          <span class="title">TH + EN bilingual
+            <span class="title-en">First-class English locale</span>
+          </span>
+          <p class="desc">ทุกหน้าใช้ได้ทั้ง `/` (ไทย default) · `/en/*` (English) · URL แชร์ข้ามประเทศได้</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEXT PHASE ============ -->
+<section class="block" style="background: linear-gradient(180deg, transparent 0%, rgba(239,159,39,0.04) 100%);" id="next">
+  <div class="wrap">
+    <div class="section-eyebrow" style="color: var(--loftly-amber-urgent);">แผนถัดไป</div>
+    <h2>ฟีเจอร์รอบต่อไป · ที่กำลังวางไว้</h2>
+    <p class="lede">สิ่งที่เราคิด + ออกแบบไว้แล้ว · รอการพัฒนาเพิ่ม · ลำดับปรับตาม feedback</p>
+
+    <div class="feature-list">
+
+      <div class="feature next">
+        <span class="fi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        <div class="body">
+          <span class="title">รีวิวบัตรแบบ personalized
+            <span class="title-en">Personalized card context on reviews</span>
+          </span>
+          <p class="desc">อ่านรีวิว → เห็นตัวเลข "สำหรับคุณ: ประหยัด ~฿X / ปี" เพิ่มจากตัวเลข average · คำนวณจาก Selector profile</p>
+        </div>
+      </div>
+
+      <div class="feature next">
+        <span class="fi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        <div class="body">
+          <span class="title">บริหารบัตรที่ถืออยู่
+            <span class="title-en">Manual balance tracker</span>
+          </span>
+          <p class="desc">บันทึกแต้มปัจจุบันแต่ละบัตร → progress bar ไปเป้าหมาย (เช่น KrisFlyer 90k สำหรับญี่ปุ่น) · ดู trajectory</p>
+        </div>
+      </div>
+
+      <div class="feature next">
+        <span class="fi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        <div class="body">
+          <span class="title">Digest โปรรายสัปดาห์
+            <span class="title-en">Personal promo digest email</span>
+          </span>
+          <p class="desc">รับ email สัปดาห์ละครั้ง · 3–5 โปรที่ตรงกับ spend + บัตรของคุณ · opt-in ตาม Marketing consent</p>
+        </div>
+      </div>
+
+      <div class="feature next">
+        <span class="fi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        <div class="body">
+          <span class="title">แจ้งเตือนลดค่าแต้ม
+            <span class="title-en">Devaluation impact alerts</span>
+          </span>
+          <p class="desc">ถ้าแต้มที่ Selector ใช้มีการลดค่า &gt; 10% → email แจ้งพร้อมบัตร top-1 ที่ปรับใหม่ · ไม่ต้องติดตามเอง</p>
+        </div>
+      </div>
+
+      <div class="feature next">
+        <span class="fi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        <div class="body">
+          <span class="title">Transfer bonus alerts
+            <span class="title-en">Real-time transfer-bonus push</span>
+          </span>
+          <p class="desc">แจ้งทันทีเมื่อธนาคารเปิด transfer bonus (เช่น "K Points → KrisFlyer +15%") · ได้ใช้ช่วงโอกาส</p>
+        </div>
+      </div>
+
+      <div class="feature next">
+        <span class="fi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        <div class="body">
+          <span class="title">Dashboard รวม
+            <span class="title-en">Unified balance dashboard</span>
+          </span>
+          <p class="desc">หน้าเดียวรวมแต้มทุกบัตร · ความคืบหน้าไปเป้า · apply history · คำแนะนำที่ปรับตามการใช้จริง</p>
+        </div>
+      </div>
+
+      <div class="feature next">
+        <span class="fi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        <div class="body">
+          <span class="title">Trip feasibility
+            <span class="title-en">Trip goal reachability model</span>
+          </span>
+          <p class="desc">ด้วย spend + บัตรปัจจุบัน · คำนวณว่าถึงเป้า (เช่น ROP 90k) ได้ไหม · เสนอบัตรเสริมถ้าช้าเกิน</p>
+        </div>
+      </div>
+
+      <div class="feature next">
+        <span class="fi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        <div class="body">
+          <span class="title">Cohort signal
+            <span class="title-en">k-anonymous cohort match</span>
+          </span>
+          <p class="desc">"คนที่ใช้จ่ายคล้ายคุณ 35% ได้คำแนะนำบัตรนี้" · privacy-first · aggregate only · ไม่มีข้อมูลบุคคล</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST ============ -->
+<section class="trust-section">
+  <div class="wrap">
+    <div class="section-eyebrow">Trust</div>
+    <h2 style="font-size: clamp(22px, 3vw, 28px);">ออกแบบมาเพื่อให้ตรวจสอบได้</h2>
+    <div class="trust-row">
+      <span class="trust-chip"><svg class="cm" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>PDPA-compliant</span>
+      <span class="trust-chip"><svg class="cm" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Affiliate-disclosed ทุก CTA</span>
+      <span class="trust-chip"><svg class="cm" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>No fake liveness</span>
+      <span class="trust-chip"><svg class="cm" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Open source ranking rules</span>
+      <span class="trust-chip"><svg class="cm" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>TH + EN parity</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <span class="brand">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M3 18 L12 6 L21 18"/>
+        <path d="M7 20 L12 14 L17 20" opacity="0.4"/>
+      </svg>
+      Loftly · ล็อฟลี่
+    </span>
+    <nav>
+      <a href="https://loftly.biggo-analytics.dev/">หน้าแรก</a>
+      <a href="https://loftly.biggo-analytics.dev/merchants">ร้านค้า</a>
+      <a href="https://loftly.biggo-analytics.dev/cards">บัตรทั้งหมด</a>
+      <a href="https://loftly.biggo-analytics.dev/valuations">มูลค่าแต้ม</a>
+      <a href="https://loftly.biggo-analytics.dev/legal/affiliate-disclosure">Affiliate</a>
+    </nav>
+  </div>
+  <div class="meta">Loftly · staging build · รู้ทันทีว่าใช้บัตรไหนคุ้ม — ที่ทุกร้าน ทุกวัน</div>
+</footer>
+
+</body>
+</html>
